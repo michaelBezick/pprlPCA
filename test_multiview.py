@@ -27,7 +27,6 @@ train_cameras = [
 # ------------------------------------------------------------------ #
 # 2.  Create the SOFA environment (depth images only)                #
 # ------------------------------------------------------------------ #
-breakpoint()
 base_env = ThreadInHoleEnv(
     create_scene_kwargs=dict(camera_configs=train_cameras),
     observation_type=ObservationType.DEPTH,   # LEGAL value

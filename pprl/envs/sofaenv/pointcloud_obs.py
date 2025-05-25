@@ -145,7 +145,15 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         cam_list = getattr(self.env, "cameras", [self.env.camera])
 
         for cam in cam_list:
-            self.camera_object = cam.sofa_object if hasattr(cam, "sofa_object") else cam
+            old_cam = self.env.unwrapped._camera_object
+
+            # self.camera_object = cam.sofa_object if hasattr(cam, "sofa_object") else cam
+
+            self.env.unwrapped._camera_object = (
+                cam.sofa_object if hasattr(cam, "sofa_object") else cam
+            )
+
+            self.camera_object = self.unwrapped._camera_object
 
             # (re‑compute intrinsics if resolutions can differ)
             w = int(self.camera_object.widthViewport.array())
@@ -154,6 +162,8 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
             self.intrinsic.set_intrinsics(w, h, fx, fy, w / 2, h / 2)
 
             pcs.append(self.pointcloud_old(observation))
+
+            self.env.unwrapped._camera_object = old_cam
 
         merged = np.vstack(pcs)
 
