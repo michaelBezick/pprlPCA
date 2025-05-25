@@ -57,8 +57,8 @@ diameter = np.linalg.norm(
     np.asarray(pcd.get_max_bound()) - np.asarray(pcd.get_min_bound())
 )
 
-camera = [0, 0, diameter]
-radius = diameter * 100
+camera = [diameter, 0, diameter]
+radius = diameter * 2
 
 _, pt_map = pcd.hidden_point_removal(camera, radius)
 
@@ -70,7 +70,7 @@ print("Dropout cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
 
 # Optional: save to disk for visual inspection
 o3d.io.write_point_cloud(
-    "multi_view_test.ply",
+    "multi_view_test2.ply",
     o3d.geometry.PointCloud(o3d.utility.Vector3dVector(pcd[:, :3])),
 )
 print("Saved multi_view_test.ply – open it in MeshLab / CloudCompare.")
