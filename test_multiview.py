@@ -38,6 +38,7 @@ base_env = ThreadInHoleEnv(
 # ------------------------------------------------------------------ #
 env = PCObs(
     base_env,
+    obs_frame="world",
     random_downsample=None,   # fixed cloud size
     depth_cutoff=None,        # default 0.99 * max(depth)
     voxel_grid_size=None,
