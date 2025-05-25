@@ -58,7 +58,7 @@ diameter = np.linalg.norm(
 )
 
 camera = [diameter, 0, diameter]
-radius = diameter * 2
+radius = diameter * 200
 
 _, pt_map = pcd.hidden_point_removal(camera, radius)
 
