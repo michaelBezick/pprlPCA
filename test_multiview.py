@@ -3,6 +3,7 @@
 
 import numpy as np
 import open3d as o3d
+from pprl.utils.o3d import np_to_o3d, o3d_to_np
 
 from dependencies.sofa_env.sofa_env.scenes.thread_in_hole.thread_in_hole_env import (
     ThreadInHoleEnv,
@@ -49,6 +50,23 @@ env = PCObs(
 # ------------------------------------------------------------------ #
 pcd, _ = env.reset()
 print("Merged cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
+
+pcd = np_to_o3d(pcd)
+
+diameter = np.linalg.norm(
+    np.asarray(pcd.get_max_bound()) - np.asarray(pcd.get_min_bound())
+)
+
+camera = [0, 0, diameter]
+radius = diameter * 100
+
+_, pt_map = pcd.hidden_point_removal(camera, radius)
+
+pcd = pcd.select_by_index(pt_map)
+
+pcd = o3d_to_np(pcd)
+
+print("Dropout cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
 
 # Optional: save to disk for visual inspection
 o3d.io.write_point_cloud(
