@@ -153,7 +153,11 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
                 cam.sofa_object if hasattr(cam, "sofa_object") else cam
             )
 
-            self.camera_object = self.unwrapped._camera_object
+            print("GOT HERE GOT HERE")
+
+            self.camera_object = self.env.unwrapped._camera_object
+
+            self.env.unwrapped._update_sofa_visuals()
 
             # (re‑compute intrinsics if resolutions can differ)
             w = int(self.camera_object.widthViewport.array())
