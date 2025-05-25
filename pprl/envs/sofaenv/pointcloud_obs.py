@@ -141,6 +141,32 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
             }
 
     def pointcloud(self, observation) -> np.ndarray:
+        pcs = []
+        cam_list = getattr(self.env, "cameras", [self.env.camera])
+
+        for cam in cam_list:
+            self.camera_object = cam.sofa_object if hasattr(cam, "sofa_object") else cam
+
+            # (re‑compute intrinsics if resolutions can differ)
+            w = int(self.camera_object.widthViewport.array())
+            h = int(self.camera_object.heightViewport.array())
+            fx, fy = get_focal_length(self.camera_object, w, h)
+            self.intrinsic.set_intrinsics(w, h, fx, fy, w / 2, h / 2)
+
+            pcs.append(self.pointcloud_old(observation))
+
+        merged = np.vstack(pcs)
+
+        # optional fixed‑size sampling
+        if self.random_downsample and merged.shape[0] > self.random_downsample:
+            choice = self.np_random.choice(
+                merged.shape[0], self.random_downsample, replace=False
+            )
+            merged = merged[choice]
+
+        return merged.astype(np.float32)
+
+    def pointcloud_old(self, observation) -> np.ndarray:
         """Returns a point cloud calculated from the depth image of the sofa scene"""
         # Get the depth image from the SOFA scene
         depth = self.env.unwrapped.get_depth_from_open_gl()
