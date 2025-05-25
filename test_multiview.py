@@ -19,9 +19,9 @@ from pprl.envs.sofaenv.pointcloud_obs import (
 # ------------------------------------------------------------------ #
 train_cameras = [
     {"position": [   0, -175, 120], "lookAt": [10,  0, 55]},
-    {"position": [-175,    0, 120], "lookAt": [ 0,  0, 55]},
+    {"position": [-175,    0, 120], "lookAt": [ 10,  0, 55]},
     {"position": [   0,  175, 120], "lookAt": [10,  0, 55]},
-    {"position": [ 175,    0, 120], "lookAt": [ 0,  0, 55]},
+    {"position": [ 0,    0, 200], "lookAt": [ 10,  0, 55]},
 ]
 
 # ------------------------------------------------------------------ #
@@ -38,8 +38,9 @@ base_env = ThreadInHoleEnv(
 # ------------------------------------------------------------------ #
 env = PCObs(
     base_env,
-    random_downsample=2048,   # fixed cloud size
+    random_downsample=None,   # fixed cloud size
     depth_cutoff=None,        # default 0.99 * max(depth)
+    voxel_grid_size=None,
 )
 
 # ------------------------------------------------------------------ #
