@@ -8,7 +8,7 @@ import open3d as o3d
 from sofa_env.base import RenderMode, SofaEnv
 from sofa_env.utils.camera import get_focal_length
 
-from pprl.utils.o3d import o3d_to_np
+from pprl.utils.o3d import np_to_o3d, o3d_to_np
 
 from .. import PointCloudSpace
 
@@ -76,11 +76,18 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
             feature_shape=(6,) if self.color else (3,),
         )
 
+        self.max_expected_num_points = max_expected_num_points
+
     def reset(self, **kwargs):
         """Reads the data for the point clouds from the sofa_env after it is resetted."""
 
         # First reset calls _init_sim to setup the scene
         observation, reset_info = self.env.reset(**kwargs)
+
+        if self.post_processing_functions:
+            for fn in self.post_processing_functions:
+                if hasattr(fn, "new_episode"):
+                    fn.new_episode()
 
         if not self._initialized:
             env = self.env.unwrapped
@@ -144,7 +151,7 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
     def pointcloud(self, observation) -> np.ndarray:
         pcs = []
-        cam_list = getattr(self.env, "cameras", [self.env.camera])
+        cam_list = getattr(self.env.unwrapped, "cameras", [self.env.unwrapped.camera])
 
         for cam in cam_list:
             old_cam = self.env.unwrapped._camera_object
@@ -165,20 +172,28 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
             fx, fy = get_focal_length(self.camera_object, w, h)
             self.intrinsic.set_intrinsics(w, h, fx, fy, w / 2, h / 2)
 
-            pcs.append(self.pointcloud_old(observation))
+            pc = self.pointcloud_old(observation)
+
+            pcs.append(pc)
 
             self.env.unwrapped._camera_object = old_cam
 
         merged = np.vstack(pcs)
 
+
         if self.post_processing_functions is not None:
             for fn in self.post_processing_functions:
                 merged = fn(merged)
 
-        # optional fixed‑size sampling
-        if self.random_downsample and merged.shape[0] > self.random_downsample:
+        if self.random_downsample is None:
+            self.random_downsample = 900
+
+        if (
+            self.random_downsample is not None
+            and (num_points := len(merged)) > self.random_downsample
+        ):
             choice = self.np_random.choice(
-                merged.shape[0], self.random_downsample, replace=False
+                num_points, self.random_downsample, replace=False
             )
             merged = merged[choice]
 

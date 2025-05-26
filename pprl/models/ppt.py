@@ -79,11 +79,8 @@ class PointPatchTransformer(nn.Module):
         )
 
 
-        # if not self.obs_is_dict:
-        #     print('ERROR OBS IS NOT DICT IN PPT.PY')
-            # exit()
-
         points, ptr = point_cloud["pos"], point_cloud["ptr"]
+
 
         # preprocessing points to be PCA canonicalized
 
@@ -95,6 +92,7 @@ class PointPatchTransformer(nn.Module):
             points[ptr[i] : ptr[i+1] - 3, :3]
             for i in range(len(ptr) - 1)
         ] 
+
 
         if PCA:
             pca_basis_list = [

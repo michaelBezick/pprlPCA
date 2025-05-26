@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Iterator
 from pprl.envs.sofaenv.pointcloud_obs import SofaEnvPointCloudObservations as PCObs
 from pprl.observation.hpr import hpr_partial, random_eye
+import functools
 
 import gymnasium.spaces as spaces
 import hydra
@@ -28,8 +29,11 @@ from parllel.types import BatchSpec
 import numpy as np
 
 from pprl.utils.array_dict import build_obs_array
+from pprl.observation.hpr import EpisodeHPR, random_eye
 
 from omegaconf import OmegaConf
+
+MAX_PTS = 1000
 
 # ------------------------------------------------------------------ #
 # choose the camera rings once, reuse every build() call             #
@@ -38,15 +42,52 @@ TRAIN_CAMERAS = [
     {"position": [   0, -175, 120], "lookAt": [10, 0, 55]},
     {"position": [-175,    0, 120], "lookAt": [10, 0, 55]},
     {"position": [   0,  175, 120], "lookAt": [10, 0, 55]},
-    {"position": [   0,    0, 200], "lookAt": [10, 0, 55]},
 ]
 
 EVAL_CAMERA  = [
-    {"position": [100, 0, 150], "lookAt": [10, 0, 55]}      # pick any pose
+    {"position": [0, -120, 150], "lookAt": [10, 0, 55]}      # pick any pose
 ]
+
+hpr_fn = EpisodeHPR(random_eye)
+
+import copy
+
+def _pylist_of_dicts(seq):
+    return [copy.deepcopy(d) for d in seq]
+def _ensure_pylist(cam_cfgs):
+    if isinstance(cam_cfgs, np.ndarray):
+        cam_cfgs = cam_cfgs.tolist()        # array(dtype=object) → list
+    return cam_cfgs
 
 # --- after the standard imports -----------------------------------------
 import open3d as o3d
+# ---------------- TRAIN factory (picklable) ----------------------------
+def build_train_env(base_env_factory, **env_kwargs):
+    env = base_env_factory(**env_kwargs)     # forward extras
+    env.unwrapped.create_scene_kwargs["camera_configs"] = _ensure_pylist(
+        env.unwrapped.create_scene_kwargs.get("camera_configs")
+    )
+    return PCObs(
+        env,
+        obs_frame="world",
+        random_downsample=MAX_PTS-3,
+        post_processing_functions=[hpr_fn],
+        max_expected_num_points=MAX_PTS,
+    )
+
+# ---------------- EVAL factory (picklable) -----------------------------
+def build_eval_env(base_env_factory, **env_kwargs):
+    env = base_env_factory(**env_kwargs)     # forward extras
+    env.unwrapped.create_scene_kwargs["camera_configs"] = _ensure_pylist(
+        env.unwrapped.create_scene_kwargs.get("camera_configs")
+    )
+    return PCObs(
+        env,
+        obs_frame="world",
+        random_downsample=MAX_PTS-3,
+        post_processing_functions=[],        # no HPR
+        max_expected_num_points=MAX_PTS,
+    )
 
 
 @contextmanager
@@ -68,26 +109,16 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
     # ----- TRAIN CAMERAS ----------------------------------------------------
     with open_dict(config.env.create_scene_kwargs):
         config.env.create_scene_kwargs.pop("camera_config", None)   # remove old key
-        config.env.create_scene_kwargs["camera_configs"] = TRAIN_CAMERAS
+        config.env.create_scene_kwargs["camera_configs"] = _pylist_of_dicts(TRAIN_CAMERAS)
 
 
-    _base_train_factory = instantiate(config.env, _convert_="partial", _partial_=True)
+    base_train_factory = instantiate(config.env, _convert_="partial", _partial_=True)
 
-    def make_train_env():
-        env = _base_train_factory()
-        return PCObs(
-            env,
-            obs_frame         = "world",
-            random_downsample = 2048,
-            post_processing_functions=[
-                lambda pts: hpr_partial(pts, random_eye())
-            ],
-        )
 
 
 
     cages, metadata = build_cages(
-        EnvClass=make_train_env,
+        EnvClass=functools.partial(build_train_env, base_train_factory),
         n_envs=batch_spec.B,
         TrajInfoClass=TrajInfoClass,
         parallel=parallel,
@@ -95,24 +126,15 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
 
     # ----- EVAL CAMERA ------------------------------------------------------
     with open_dict(config.env.create_scene_kwargs):
-        config.env.create_scene_kwargs["camera_configs"] = EVAL_CAMERA
+        config.env.create_scene_kwargs["camera_configs"] = _pylist_of_dicts(EVAL_CAMERA)
 
 
-    _base_eval_factory = instantiate(config.env, _convert_="partial", _partial_=True)
-
-    def make_eval_env():
-        env = _base_eval_factory()
-        return PCObs(
-            env,
-            obs_frame         = "world",
-            random_downsample = 2048,
-            post_processing_functions=[],   # ← NO HPR for evaluation
-        )
+    base_eval_factory = instantiate(config.env, _convert_="partial", _partial_=True)
 
     """EVAL CAGE"""
 
     eval_cages, eval_metadata = build_cages(
-        EnvClass=make_eval_env,
+        EnvClass=functools.partial(build_eval_env, base_eval_factory),
         n_envs=config.eval.n_eval_envs,
         env_kwargs={"add_rendering_to_info": True,
                     },

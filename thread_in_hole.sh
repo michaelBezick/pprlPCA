@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
+
 if (( $# != 2 )); then
   echo "Error, usage: bash thread_in_hole.sh [num_runs] \"group_name\" "
   exit
