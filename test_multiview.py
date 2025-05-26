@@ -51,26 +51,26 @@ env = PCObs(
 pcd, _ = env.reset()
 print("Merged cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
 
-pcd = np_to_o3d(pcd)
-
-diameter = np.linalg.norm(
-    np.asarray(pcd.get_max_bound()) - np.asarray(pcd.get_min_bound())
-)
-
-camera = [diameter, 0, diameter]
-radius = diameter * 200
-
-_, pt_map = pcd.hidden_point_removal(camera, radius)
-
-pcd = pcd.select_by_index(pt_map)
-
-pcd = o3d_to_np(pcd)
-
-print("Dropout cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
-
+# pcd = np_to_o3d(pcd)
+#
+# diameter = np.linalg.norm(
+#     np.asarray(pcd.get_max_bound()) - np.asarray(pcd.get_min_bound())
+# )
+#
+# camera = [diameter, 0, diameter]
+# radius = diameter * 200
+#
+# _, pt_map = pcd.hidden_point_removal(camera, radius)
+#
+# pcd = pcd.select_by_index(pt_map)
+#
+# pcd = o3d_to_np(pcd)
+#
+# print("Dropout cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
+#
 # Optional: save to disk for visual inspection
 o3d.io.write_point_cloud(
-    "multi_view_test2.ply",
+    "multi_view_test.ply",
     o3d.geometry.PointCloud(o3d.utility.Vector3dVector(pcd[:, :3])),
 )
 print("Saved multi_view_test.ply – open it in MeshLab / CloudCompare.")
