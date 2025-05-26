@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal, Mapping, Sequence
+from typing import Literal, Mapping, Sequence, Callable, List, Optional
 
 import gymnasium as gym
 import numpy as np
@@ -33,10 +33,12 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         normalize: bool = False,
         points_only: bool = True,
         points_key: str = "points",
+        post_processing_functions: Optional[List[Callable[[np.ndarray], np.ndarray]]] = None,
     ) -> None:
         super().__init__(env)
         self.depth_cutoff = depth_cutoff
         self.color = color
+        self.post_processing_functions = post_processing_functions
 
         if crop is not None:
             self.crop_min = np.asarray(crop["min_bound"])
@@ -168,6 +170,10 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
             self.env.unwrapped._camera_object = old_cam
 
         merged = np.vstack(pcs)
+
+        if self.post_processing_functions is not None:
+            for fn in self.post_processing_functions:
+                merged = fn(merged)
 
         # optional fixed‑size sampling
         if self.random_downsample and merged.shape[0] > self.random_downsample:
