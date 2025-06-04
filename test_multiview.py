@@ -22,8 +22,20 @@ train_cameras = [
     {"position": [   0, -175, 120], "lookAt": [10,  0, 55]},
     {"position": [-175,    0, 120], "lookAt": [ 10,  0, 55]},
     {"position": [   0,  175, 120], "lookAt": [10,  0, 55]},
-    {"position": [ 0,    0, 200], "lookAt": [ 10,  0, 55]},
+    {"position": [ 175,    0, 120], "lookAt": [ 10,  0, 55]},
 ]
+
+# train_cameras = [
+#     {"position": [   0, 0, 200], "lookAt": [10,  0, 55]},
+#     {"position": [   0, 80, 120], "lookAt": [10,  0, 55]},
+#     {"position": [80, 80, 120], "lookAt": [ 10,  0, 55]},
+#     {"position": [-80, -80, 120], "lookAt": [ 10,  0, 55]},
+#     {"position": [45, -45, 120], "lookAt": [ 10,  0, 55]},
+#     {"position": [-175, 175, 120], "lookAt": [ 10,  0, 55]},
+#     {"position": [   0,  200, 120], "lookAt": [10,  0, 55]},
+#     {"position": [ 200,    0, 120], "lookAt": [ 10,  0, 55]},
+# ]
+
 
 # ------------------------------------------------------------------ #
 # 2.  Create the SOFA environment (depth images only)                #
@@ -40,7 +52,7 @@ base_env = ThreadInHoleEnv(
 env = PCObs(
     base_env,
     obs_frame="world",
-    random_downsample=None,   # fixed cloud size
+    random_downsample=100_000,   # fixed cloud size
     depth_cutoff=None,        # default 0.99 * max(depth)
     voxel_grid_size=None,
 )
@@ -50,6 +62,11 @@ env = PCObs(
 # ------------------------------------------------------------------ #
 pcd, _ = env.reset()
 print("Merged cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
+o3d.io.write_point_cloud(
+    "multi_view_test.ply",
+    o3d.geometry.PointCloud(o3d.utility.Vector3dVector(pcd[:, :3])),
+)
+print("Saved multi_view_test.ply")
 
 # pcd = np_to_o3d(pcd)
 #
@@ -69,9 +86,9 @@ print("Merged cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
 # print("Dropout cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
 #
 # Optional: save to disk for visual inspection
-o3d.io.write_point_cloud(
-    "multi_view_test.ply",
-    o3d.geometry.PointCloud(o3d.utility.Vector3dVector(pcd[:, :3])),
-)
-print("Saved multi_view_test.ply – open it in MeshLab / CloudCompare.")
+# o3d.io.write_point_cloud(
+#     "multi_view_test.ply",
+#     o3d.geometry.PointCloud(o3d.utility.Vector3dVector(pcd[:, :3])),
+# )
+# print("Saved multi_view_test.ply – open it in MeshLab / CloudCompare.")
 

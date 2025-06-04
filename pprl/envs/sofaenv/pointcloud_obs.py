@@ -14,6 +14,25 @@ from .. import PointCloudSpace
 
 STATE_KEY = "state"
 
+def np_to_o3d(array: np.ndarray):
+    assert (shape := array.shape[-1]) in (3, 6)
+    pos = array[:, :3]
+    pcd = o3d.geometry.PointCloud(points=o3d.utility.Vector3dVector(pos))
+    if shape == 6:
+        color = array[:, 3:]
+        pcd.colors = o3d.utility.Vector3dVector(color)
+    return pcd
+
+def visualize(pos):
+    try:
+        o3d.visualization.draw_geometries([np_to_o3d(pos)])
+    except:
+        o3d.visualization.draw_geometries([pos])
+
+def save_point_cloud(pcd, filename):
+    pcd = np_to_o3d(pcd)
+    o3d.io.write_point_cloud(filename, pcd)
+    print(f"pcd saved to {filename}")
 
 class SofaEnvPointCloudObservations(gym.ObservationWrapper):
     def __init__(
@@ -50,6 +69,7 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         self.target_points_scale = target_points_scale
 
         self.voxel_grid_size = voxel_grid_size
+        print(voxel_grid_size)
         self.random_downsample = random_downsample
 
         self.obs_frame = obs_frame
@@ -58,6 +78,8 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         self.normalize = normalize
         self.points_only = points_only
         self.points_key = points_key
+
+        self.mode = None
 
         self._initialized = False
 
@@ -132,7 +154,15 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
     def observation(self, observation) -> np.ndarray | dict:
         """Replaces the observation of a step in a sofa_env scene with a point cloud."""
 
+        """ maybe just add PCA translation here instead of in forward """
         pcd = self.pointcloud(observation)
+
+
+        if self.voxel_grid_size is not None:
+            pcd = np_to_o3d(pcd)
+            pcd = pcd.voxel_down_sample(self.voxel_grid_size)
+            pcd = o3d_to_np(pcd)
+
 
         centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
 
@@ -153,10 +183,8 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         pcs = []
         cam_list = getattr(self.env.unwrapped, "cameras", [self.env.unwrapped.camera])
 
-        for cam in cam_list:
-            old_cam = self.env.unwrapped._camera_object
 
-            # self.camera_object = cam.sofa_object if hasattr(cam, "sofa_object") else cam
+        for cam in cam_list:
 
             self.env.unwrapped._camera_object = (
                 cam.sofa_object if hasattr(cam, "sofa_object") else cam
@@ -176,15 +204,28 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
             pcs.append(pc)
 
-            self.env.unwrapped._camera_object = old_cam
 
         merged = np.vstack(pcs)
 
+        # if (len(cam_list) == 1):
+        #     self.mode = "EVAL"
+        # else:
+        #     self.mode = "TRAIN"
+        #     save_point_cloud(merged, "merged.ply")
+        #     breakpoint()
+        #
 
         if self.post_processing_functions is not None:
             for fn in self.post_processing_functions:
                 merged = fn(merged)
 
+        # if (len(cam_list) == 1):
+        #     self.mode = "EVAL"
+        # else:
+        #     self.mode = "TRAIN"
+        #     save_point_cloud(merged, "merged_after_hpr.ply")
+        #     exit()
+        #
         if self.random_downsample is None:
             self.random_downsample = 900
 

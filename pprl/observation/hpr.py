@@ -23,13 +23,18 @@ def hpr_partial(points: np.ndarray, eye: np.ndarray, min_pts=100) -> np.ndarray:
 # ---------- eye samplers -------------------------------------------------
 def random_eye(radius: float = 200.0,
                lookat: np.ndarray = np.array([10., 0., 55.]),
-               z_floor: float = 0.0) -> np.ndarray:
+               z_floor: float = 70) -> np.ndarray:
     theta = np.random.uniform(-np.pi,  np.pi)
     phi   = np.random.uniform(0, np.pi/2)         # upper hemisphere
     x = radius*np.cos(theta)*np.sin(phi)
     y = radius*np.sin(theta)*np.sin(phi)
     z = max(z_floor, radius*np.cos(phi))
     return lookat + np.array([x, y, z], np.float32)
+
+def perfect_eye():
+    lookat = np.array([10., 0., 55.])
+    loc = np.array([0., 0., 200.])
+    return lookat + loc
 
 class EpisodeHPR:
     """

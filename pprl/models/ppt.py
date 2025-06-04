@@ -12,7 +12,9 @@ from pprl.envs import PointCloudSpace
 from pprl.models.modules.tokenizer import Tokenizer
 from pprl.models.modules.transformer import SequencePooling, TransformerEncoder
 from pprl.utils.array_dict import dict_to_batched_data, dict_to_batched_data_pca
+import numpy as np
 
+import open3d as o3d
 
 class PointPatchTransformer(nn.Module):
     def __init__(
@@ -84,7 +86,7 @@ class PointPatchTransformer(nn.Module):
 
         # preprocessing points to be PCA canonicalized
 
-        PCA = True
+        PCA = False
         random_rotation = False
 
 
