@@ -51,6 +51,7 @@ base_env = ThreadInHoleEnv(
 # ------------------------------------------------------------------ #
 env = PCObs(
     base_env,
+    eval_mode=False,
     obs_frame="world",
     random_downsample=100_000,   # fixed cloud size
     depth_cutoff=None,        # default 0.99 * max(depth)
@@ -61,6 +62,7 @@ env = PCObs(
 # 4.  Reset once and inspect                                         #
 # ------------------------------------------------------------------ #
 pcd, _ = env.reset()
+pcd = env.step(action=np.array([0, 0, 0, 0]))
 print("Merged cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
 o3d.io.write_point_cloud(
     "multi_view_test.ply",
