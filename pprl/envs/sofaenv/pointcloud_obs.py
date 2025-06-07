@@ -186,6 +186,7 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         pcs = []
         cam_list = getattr(self.env.unwrapped, "cameras", [self.env.unwrapped.camera])
 
+        self.env.unwrapped._update_sofa_visuals()
 
         for cam in cam_list:
 
@@ -195,7 +196,6 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
             self.camera_object = self.env.unwrapped._camera_object
 
-            self.env.unwrapped._update_sofa_visuals()
 
             # (re‑compute intrinsics if resolutions can differ)
             w = int(self.camera_object.widthViewport.array())
