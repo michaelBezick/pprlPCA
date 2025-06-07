@@ -38,6 +38,7 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
     def __init__(
         self,
         env: SofaEnv,
+        eval_mode,
         depth_cutoff: float | None = None,
         max_expected_num_points: int | None = None,
         color: bool = False,
@@ -58,6 +59,7 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         self.depth_cutoff = depth_cutoff
         self.color = color
         self.post_processing_functions = post_processing_functions
+        self.eval_mode = eval_mode
 
         if crop is not None:
             self.crop_min = np.asarray(crop["min_bound"])
@@ -69,7 +71,6 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         self.target_points_scale = target_points_scale
 
         self.voxel_grid_size = voxel_grid_size
-        print(voxel_grid_size)
         self.random_downsample = random_downsample
 
         self.obs_frame = obs_frame
@@ -156,6 +157,8 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
         """ maybe just add PCA translation here instead of in forward """
         pcd = self.pointcloud(observation)
+
+        save_point_cloud(pcd, f"eval_{self.eval_mode}.ply")
 
 
         if self.voxel_grid_size is not None:

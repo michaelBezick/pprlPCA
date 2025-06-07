@@ -137,16 +137,18 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         config.env.create_scene_kwargs["camera_configs"] = _pylist_of_dicts(TRAIN_CAMERAS)
 
 
-    base_train_factory = instantiate(config.env, _convert_="partial", _partial_=True)
-
-
+    env_factory = instantiate(config.env, _convert_="partial", _partial_=True)
 
 
     cages, metadata = build_cages(
-        EnvClass=functools.partial(build_train_env, base_train_factory),
+        EnvClass=env_factory,
         n_envs=batch_spec.B,
         TrajInfoClass=TrajInfoClass,
         parallel=parallel,
+        env_kwargs={"eval_mode":False,
+                    "post_processing_functions": None,
+                    "obs_frame": "world"
+                    },
     )
 
 
@@ -160,9 +162,11 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
     """EVAL CAGE"""
 
     eval_cages, eval_metadata = build_cages(
-        EnvClass=functools.partial(build_eval_env, base_eval_factory),
+        EnvClass=base_eval_factory,
         n_envs=config.eval.n_eval_envs,
         env_kwargs={"add_rendering_to_info": True,
+                    "eval_mode": True,
+                    "post_processing_functions": None,
                     },
         TrajInfoClass=TrajInfoClass,
         parallel=parallel,
