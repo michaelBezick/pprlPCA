@@ -42,7 +42,7 @@ TRAIN_CAMERAS = [
     {"position": [   0, -175, 120], "lookAt": [10,  0, 55]},
     {"position": [-175,    0, 120], "lookAt": [ 10,  0, 55]},
     {"position": [   0,  175, 120], "lookAt": [10,  0, 55]},
-    {"position": [ 0,    0, 200], "lookAt": [ 10,  0, 55]},
+    # {"position": [ 0,    0, 200], "lookAt": [ 10,  0, 55]},
 ]
 
 EVAL_CAMERA  = [
