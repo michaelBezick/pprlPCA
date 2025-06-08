@@ -12,7 +12,7 @@ voxel_grid_size: 5.0
 # random_downsample: 600
 # center: [0.0, 0.0, 175.0]
 # scale: 75
-normalize: True  # agent doesn't learn without this!
+normalize: False  # agent doesn't learn without this!
 
 # env args
 time_step: 0.01

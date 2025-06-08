@@ -7,6 +7,7 @@ import numpy as np
 import open3d as o3d
 from sofa_env.base import RenderMode, SofaEnv
 from sofa_env.utils.camera import get_focal_length
+import torch
 
 from pprl.utils.o3d import np_to_o3d, o3d_to_np
 
@@ -150,10 +151,70 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
         return self.observation(observation), reset_info
 
+    def line_distance_sums(self, centered_points: torch.Tensor,
+                           direction: torch.Tensor):
+        """
+        points      : (N,3) centered cloud (float32/64, CPU or CUDA)
+        direction   : (3,)  line direction (need not be unit length)
+
+        Returns
+        -------
+        pos_sum, neg_sum  (each scalar tensor)
+        """
+
+        v_hat = direction / direction.norm()          # (3,)
+        dots  = centered_points @ v_hat                        # (N,)  u·v  (torch.mv is fine too)
+
+        # squared distance ‖u‖² - (u·v̂)²
+        r2 = centered_points.pow(2).sum(dim=1) - dots.pow(2)   # (N,)
+
+        dists = r2.clamp_min_(0.)                 # avoid tiny neg. due to FP error
+
+        # masks for the two half‑spaces
+        pos_mask = dots > 0
+        neg_mask = dots < 0
+
+        pos_sum = dists[pos_mask].sum()
+        neg_sum = dists[neg_mask].sum()
+        return pos_sum, neg_sum
+
+    def disambiguate(self, centered_pcd, eig_vecs):
+        """
+        Function takes in centered_pcd and returns PCA normalized cloud
+        eig_vecs are row vecs
+        """
+
+        #if cos(theta) is +, then point is on one side of centroid, and vice versa
+
+        differences = []
+        for i in range(3):
+            pos_sum, neg_sum = self.line_distance_sums(centered_pcd, eig_vecs[i])
+
+            if neg_sum > pos_sum:
+            # invert direction
+                eig_vecs[i] *= -1
+
+            differences.append(abs(pos_sum - neg_sum))
+
+        stability_order = np.argsort(differences)[::-1]
+        i1, i2 = stability_order[:2]
+
+        v1 = eig_vecs[i1]
+        v2 = eig_vecs[i2]
+
+        v3 = torch.cross(v1, v2)
+        v3 /= v3.norm()
+
+        eig_vecs = torch.stack([v1, v2, v3], dim=0)
+
+
+        return centered_pcd @ eig_vecs.T
+
     def observation(self, observation) -> np.ndarray | dict:
         """Replaces the observation of a step in a sofa_env scene with a point cloud."""
 
         """ maybe just add PCA translation here instead of in forward """
+
         pcd = self.pointcloud(observation)
 
 
@@ -168,14 +229,16 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         _, _, vh = np.linalg.svd(centered, full_matrices=False)
         components = vh.astype(np.float32)  # shape (3, 3)
 
-        pcd = np.concatenate([centered, components], axis=0)
+        new_points = self.disambiguate(torch.tensor(centered, dtype=torch.float32), torch.tensor(components, dtype=torch.float32)).numpy()
+
+        # pcd = np.concatenate([centered, components], axis=0)
 
         if self.points_only:
-            return pcd
+            return new_points
         else:
             return {
                 STATE_KEY: observation,
-                self.points_key: pcd,
+                self.points_key: new_points,
             }
 
     def pointcloud(self, observation) -> np.ndarray:

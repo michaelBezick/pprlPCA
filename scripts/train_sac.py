@@ -39,17 +39,17 @@ MAX_PTS = 1000
 # choose the camera rings once, reuse every build() call             #
 # ------------------------------------------------------------------ #
 TRAIN_CAMERAS = [
-    {"position": [   0, -175, 120], "lookAt": [10,  0, 55]},
-    {"position": [-175,    0, 120], "lookAt": [ 10,  0, 55]},
-    {"position": [   0,  175, 120], "lookAt": [10,  0, 55]},
+    {"position": [   0, 175, 120], "lookAt": [10,  0, 55]},
+    # {"position": [-175,    0, 120], "lookAt": [ 10,  0, 55]},
+    # {"position": [   0,  175, 120], "lookAt": [10,  0, 55]},
     # {"position": [ 0,    0, 200], "lookAt": [ 10,  0, 55]},
 ]
 
 EVAL_CAMERA  = [
-    {"position": [0, 0, 200], "lookAt": [10, 0, 55]}      # pick any pose
+    {"position": [0, 175, 120], "lookAt": [10, 0, 55]}      # pick any pose
 ]
 
-hpr_fn = EpisodeHPR(perfect_eye)
+# hpr_fn = EpisodeHPR(perfect_eye)
 
 import copy
 
@@ -89,7 +89,7 @@ def build_train_env(base_env_factory, **env_kwargs):
         env,
         obs_frame="world",
         random_downsample=MAX_PTS-3,
-        post_processing_functions=[hpr_fn],
+        post_processing_functions=[],
         max_expected_num_points=MAX_PTS,
         voxel_grid_size=5,
     )
@@ -104,7 +104,7 @@ def build_eval_env(base_env_factory, **env_kwargs):
     )
     return PCObs(
         env,
-        obs_frame="world",
+        obs_frame="camera",
         random_downsample=MAX_PTS-3,
         post_processing_functions=[],        # no HPR
         max_expected_num_points=MAX_PTS,
