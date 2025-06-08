@@ -16,6 +16,20 @@ import numpy as np
 
 import open3d as o3d
 
+def np_to_o3d(array: np.ndarray):
+    assert (shape := array.shape[-1]) in (3, 6)
+    pos = array[:, :3]
+    pcd = o3d.geometry.PointCloud(points=o3d.utility.Vector3dVector(pos))
+    if shape == 6:
+        color = array[:, 3:]
+        pcd.colors = o3d.utility.Vector3dVector(color)
+    return pcd
+
+def save_point_cloud(pcd, filename):
+    pcd = np_to_o3d(pcd)
+    o3d.io.write_point_cloud(filename, pcd)
+    print(f"pcd saved to {filename}")
+
 class PointPatchTransformer(nn.Module):
     def __init__(
         self,
@@ -84,9 +98,11 @@ class PointPatchTransformer(nn.Module):
         points, ptr = point_cloud["pos"], point_cloud["ptr"]
 
 
+
+
         # preprocessing points to be PCA canonicalized
 
-        PCA = False
+        PCA = True
         random_rotation = False
 
 
@@ -127,6 +143,9 @@ class PointPatchTransformer(nn.Module):
 
         # pos, batch, color = dict_to_batched_data(point_cloud)  # type: ignore
         pos, batch = dict_to_batched_data_pca(rotated_flat, ptr_shifted)
+
+        # save_point_cloud(pos.detach().cpu().numpy(), "training.ply")
+
         color = None
 
         x, _, center_points = self.tokenizer(pos, batch, color)

@@ -9,7 +9,7 @@ def hpr_partial(points: np.ndarray, eye: np.ndarray, min_pts=100) -> np.ndarray:
     """
     pcd = o3d.geometry.PointCloud(o3d.utility.Vector3dVector(points[:, :3]))
     diameter = np.linalg.norm(points.max(0) - points.min(0))
-    radius   = diameter * 100.0
+    radius   = diameter * 2000
     _, idx = pcd.hidden_point_removal(eye, radius)
 
     idx = np.asarray(idx)

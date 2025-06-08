@@ -63,25 +63,25 @@ def _ensure_pylist(cam_cfgs):
 
 from gymnasium.wrappers import TimeLimit
 
-def _strip_pcobs(env):
-    """If `env` is already wrapped with PCObs (or TimeLimit→PCObs), unwrap it."""
-    # un‑TimeLimit first
-    if isinstance(env, TimeLimit):
-        if isinstance(env.env, PCObs):
-            env = env.env.env          # TimeLimit → PCObs → raw env
-        else:
-            env = env.env              # TimeLimit → raw env
-    # plain PCObs on top?
-    if isinstance(env, PCObs):
-        env = env.env                  # PCObs → raw env
-    return env    
+# def _strip_pcobs(env):
+#     """If `env` is already wrapped with PCObs (or TimeLimit→PCObs), unwrap it."""
+#     # un‑TimeLimit first
+#     if isinstance(env, TimeLimit):
+#         if isinstance(env.env, PCObs):
+#             env = env.env.env          # TimeLimit → PCObs → raw env
+#         else:
+#             env = env.env              # TimeLimit → raw env
+#     # plain PCObs on top?
+#     if isinstance(env, PCObs):
+#         env = env.env                  # PCObs → raw env
+#     return env    
 
 # --- after the standard imports -----------------------------------------
 import open3d as o3d
 # ---------------- TRAIN factory (picklable) ----------------------------
 def build_train_env(base_env_factory, **env_kwargs):
     env = base_env_factory(**env_kwargs)     # forward extras
-    env = _strip_pcobs(env)
+    # env = _strip_pcobs(env)
     env.unwrapped.create_scene_kwargs["camera_configs"] = _ensure_pylist(
         env.unwrapped.create_scene_kwargs.get("camera_configs")
     )
@@ -99,7 +99,6 @@ def build_train_env(base_env_factory, **env_kwargs):
 # ---------------- EVAL factory (picklable) -----------------------------
 def build_eval_env(base_env_factory, **env_kwargs):
     env = base_env_factory(**env_kwargs)     # forward extras
-    env = _strip_pcobs(env)
     env.unwrapped.create_scene_kwargs["camera_configs"] = _ensure_pylist(
         env.unwrapped.create_scene_kwargs.get("camera_configs")
     )
@@ -138,9 +137,6 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
 
 
     base_train_factory = instantiate(config.env, _convert_="partial", _partial_=True)
-
-
-
 
     cages, metadata = build_cages(
         EnvClass=functools.partial(build_train_env, base_train_factory),

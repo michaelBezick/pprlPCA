@@ -69,7 +69,6 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         self.target_points_scale = target_points_scale
 
         self.voxel_grid_size = voxel_grid_size
-        print(voxel_grid_size)
         self.random_downsample = random_downsample
 
         self.obs_frame = obs_frame

@@ -22,7 +22,8 @@ max_episode_steps: 300
 camera_reset_noise: null
 settle_steps: 50
 hole_rotation_reset_noise: [0.0, 0.0, 0.0]
-hole_position_reset_noise: [20., 20., 20.]
+# hole_position_reset_noise: [20., 20., 20.]
+hole_position_reset_noise: [0.0, 0.0, 0.0]
 insertion_ratio_threshold: 0.3
 simple_success_check: false
 
