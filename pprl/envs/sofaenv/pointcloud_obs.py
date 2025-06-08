@@ -269,25 +269,10 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
         merged = np.vstack(pcs)
 
-        # if (len(cam_list) == 1):
-        #     self.mode = "EVAL"
-        # else:
-        #     self.mode = "TRAIN"
-        #     save_point_cloud(merged, "merged.ply")
-        #     breakpoint()
-        #
-
         if self.post_processing_functions is not None:
             for fn in self.post_processing_functions:
                 merged = fn(merged)
 
-        # if (len(cam_list) == 1):
-        #     self.mode = "EVAL"
-        # else:
-        #     self.mode = "TRAIN"
-        #     save_point_cloud(merged, "merged_after_hpr.ply")
-        #     exit()
-        #
         if self.random_downsample is None:
             self.random_downsample = 900
 

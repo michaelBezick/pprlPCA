@@ -1,0 +1,17 @@
+Problems:
+------------------------------
+
+1. need tripod camera + multi camera fusion with maniskill environment, probably can do similar code to sofaenv
+
+2. it looks like the current method of instantiating the train and eval cages has some weird effects (might be fixed now not sure)
+it would be nice to have a self.mode variable within
+
+class SofaEnvPointCloudObservations(gym.ObservationWrapper):
+
+that indicates train and eval modes. I've had issues getting the parameters I want passed into this, so investigating the best
+way to instantiate cages is useful.
+
+In the past, I've also tried just instantiating it the original way (check original repo), but this produced a very weird
+bug where the 3 point clouds were linearly misaligned.
+
+3. code cleanup for supplying parameters with config files
