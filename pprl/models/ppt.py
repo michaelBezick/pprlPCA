@@ -122,7 +122,7 @@ class PointPatchTransformer(nn.Module):
             pca_bases *= (torch.randint(0, 2, (len(pca_basis_list), 3), device=pca_bases.device) * 2 - 1).unsqueeze(1)
 
             """
-            VERY IMPORTANT, PCA COLUMNS ARE THE BASES, AND ORTHOGONALITY HAS BEEN VERIFIED
+            VERY IMPORTANT, PCA COLUMNS ARE THE ROWS
             """
 
             pca_basis_list = list(pca_bases)
