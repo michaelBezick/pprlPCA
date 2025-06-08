@@ -1105,4 +1105,278 @@ wandb: WARNING `fps` argument does not affect the frame rate of the video when p
 |    fps               | 10.7     |
 |    elapsed_time      | 3.94e+03 |
 |    elapsed_steps     | 46080    |
-----------------------------------  2%|▏         | 48640/2000000 [1:08:55<49:59:33, 10.84steps/s]   2%|▏         | 48640/2000000 [1:09:32<50:52:26, 10.65steps/   2%|▏         | 48640/2000000 [1:09:50<50:52:26, 10.65steps/s]�         | 51200/2000000 [1:09:35<46:49:43, 11.56steps/s]  3%|▎         | 51200/2000000 [1:09:50<46:49:43, 11.56steps/s]eps/s]
+----------------------------------  2%|▏         | 48640/2000000 [1:08:55<49:59:33, 10.84steps/s]   2%|▏         | 48640/2000000 [1:09:32<50:52:26, 10.65steps/  3%|▎         | 51200/2000000 [1:12:43<49:22:43, 10.96steps/s]   3%|▎         | 51200/2000000 [1:13:26<50:24:38, 10.74steps/  3%|▎         | 53760/2000000 [1:16:30<48:55:35, 11.05steps/s]   3%|▎         | 53760/2000000 [1:17:20<50:02:25, 10.80steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent   3%|▎         | 53760/2000000 [1:17:40<50:02:25, 10.80steps/SaSaved video of policy to videos/2025-06-08/7v04u92g/policy_step_53760.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+RLRunner: Finished evaluating agent.
+                                                                 3%|▎         | 53760/2000000 [1:18:06<50:02:25, 10.80steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 269      |
+|    Return            | -30.1    |
+|    NonzeroRewards    | 269      |
+|    DiscountedReturn  | -30.1    |
+|    Success           | 0.13     |
+| algo/                |          |
+|    critic_loss       | 3.39     |
+|    mean_entropy      | 1.24     |
+|    mean_ent_bonus    | 0.0444   |
+|    max_target_q      | 23.2     |
+|    min_target_q      | -7.28    |
+|    max_reward        | 5.49     |
+|    min_reward        | -2.31    |
+|    chamfer_loss      | 26.7     |
+|    encoder_grad_norm | 47       |
+|    q1_grad_norm      | 8.19     |
+|    q2_grad_norm      | 7.85     |
+|    actor_loss        | -5.16    |
+|    ent_coeff         | 0.0357   |
+|    ent_coeff_loss    | -17.5    |
+|    pi_grad_norm      | 0.198    |
+|    n_updates         | 11520    |
+| eval/                |          |
+|    Length            | 300      |
+|    Return            | -41      |
+|    NonzeroRewards    | 300      |
+|    DiscountedReturn  | -41      |
+|    Success           | 0        |
+| time/                |          |
+|    iterations        | 21       |
+|    fps               | 10.3     |
+|    elapsed_time      | 4.69e+03 |
+|     3%|▎         | 56320/2000000 [1:21:01<51:22:01, 10.51steps/s]  3%|▎         | 58880/2000000 [1:24:46<50:07:50, 10.76steps/s]   3%|▎         | 58880/2000000 [1:25:46<51:09:00, 10.54steps/  3%|▎         | 61440/2000000 [1:28:36<49:30:42, 10.88steps/s]   3%|▎         | 61440/2000000 [1:29:37<50:21:28, 10.69steps/s]                                                                 3%|▎         | 61440/2000000 [1:29:37<50:21:28, 10.69steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 292      |
+|    Return            | -41.2    |
+|    NonzeroRewards    | 292      |
+|    DiscountedReturn  | -41.2    |
+|    Success           | 0.0263   |
+| algo/                |          |
+|    critic_loss       | 3.1      |
+|    mean_entropy      | 0.945    |
+|    mean_ent_bonus    | 0.0281   |
+|    max_target_q      | 29.2     |
+|    min_target_q      | -8.97    |
+|    max_reward        | 4.49     |
+|    min_reward        | -2.31    |
+|    chamfer_loss      | 25.3     |
+|    encoder_grad_norm | 48.8     |
+|    q1_grad_norm      | 9.01     |
+|    q2_grad_norm      | 8.58     |
+|    actor_loss        | -5.09    |
+|    ent_coeff         | 0.0296   |
+|    ent_coeff_loss    | -17.4    |
+|    pi_grad_norm      | 0.216    |
+|    n_updates         | 13440    |
+| time/                |          |
+|    iterations        | 24       |
+|    fps               | 11.1     |
+|    elapsed_time      | 5.38e+03 |
+|    elapsed_steps     | 61440    |
+----------------------------------  3%|▎         | 64000/2000000 [1:32:26<49:07:10, 10.95steps/s]   3%|▎         | 64000/2000000 [1:33:26<49:37:22, 10.84steps/  3%|▎         | 66560/2000000 [1:36:16<48:47:58, 11.01steps/s]   3%|▎         | 66560/2000000 [1:37:16<49:11:45, 10.92steps/  3%|▎         | 69120/2000000 [1:40:06<48:34:52, 11.04steps/s]   3%|▎         | 69120/2000000 [1:41:09<48:59:36, 10.95steps/s]                                                                 3%|▎         | 69120/2000000 [1:41:09<48:59:36, 10.95steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 298      |
+|    Return            | -41.1    |
+|    NonzeroRewards    | 298      |
+|    DiscountedReturn  | -41.1    |
+|    Success           | 0.0455   |
+| algo/                |          |
+|    critic_loss       | 4.2      |
+|    mean_entropy      | 0.626    |
+|    mean_ent_bonus    | 0.0155   |
+|    max_target_q      | 33.4     |
+|    min_target_q      | -11      |
+|    max_reward        | 5.45     |
+|    min_reward        | -2.26    |
+|    chamfer_loss      | 24.8     |
+|    encoder_grad_norm | 62       |
+|    q1_grad_norm      | 12.2     |
+|    q2_grad_norm      | 11.5     |
+|    actor_loss        | -5.4     |
+|    ent_coeff         | 0.0246   |
+|    ent_coeff_loss    | -17.1    |
+|    pi_grad_norm      | 0.248    |
+|    n_updates         | 15360    |
+| time/                |          |
+|    iterations        | 27       |
+|    fps               | 11.1     |
+|    elapsed_time      | 6.07e+03 |
+|    elapsed_steps     | 69120    |
+----------------------------------  4%|▎         | 71680/2000000 [1:43:56<48:25:49, 11.06steps/s]   4%|▎         | 71680/2000000 [1:44:55<48:27:51, 11.05steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent   4%|▎         | 71680/2000000 [1:45:10<48:27:51, 11.05steps/SaSaved video of policy to videos/2025-06-08/7v04u92g/policy_step_71680.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when provi  4%|▎         | 74240/2000000 [1:48:27<50:49:08, 10.53steps/s]  4%|▍         | 76800/2000000 [1:52:16<49:52:16, 10.71steps/s]   4%|▍         | 76800/2000000 [1:53:19<50:08:28, 10.65steps/s]                                                                 4%|▍         | 76800/2000000 [1:53:19<50:08:28, 10.65steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 218      |
+|    Return            | 10.6     |
+|    NonzeroRewards    | 218      |
+|    DiscountedReturn  | 10.6     |
+|    Success           | 0.344    |
+| algo/                |          |
+|    critic_loss       | 3.88     |
+|    mean_entropy      | 0.386    |
+|    mean_ent_bonus    | 0.00798  |
+|    max_target_q      | 27.8     |
+|    min_target_q      | -12      |
+|    max_reward        | 5.6      |
+|    min_reward        | -2.24    |
+|    chamfer_loss      | 23.9     |
+|    encoder_grad_norm | 51       |
+|    q1_grad_norm      | 9.38     |
+|    q2_grad_norm      | 8.82     |
+|    actor_loss        | -5.35    |
+|    ent_coeff         | 0.0204   |
+|    ent_coeff_loss    | -17      |
+|    pi_grad_norm      | 0.245    |
+|    n_updates         | 17280    |
+| eval/                |          |
+|    Length            | 300      |
+|    Return            | -60.3    |
+|    NonzeroRewards    | 300      |
+|    DiscountedReturn  | -60.3    |
+|    Success           | 0        |
+| time/                |          |
+|    iterations        | 30       |
+|    fps               | 10.5     |
+|    elapsed_time      | 6.8e+03  |
+|    elapsed_steps     | 76800    |
+----------------------------------  4%|▍         | 79360/2000000 [1:56:09<49:26:22, 10.79steps/s]   4%|▍         | 79360/2000000 [1:57:18<49:58:25, 10.68steps/  4%|▍         | 81920/2000000 [2:00:04<49:14:37, 10.82steps/s]   4%|▍         | 81920/2000000 [2:01:16<49:48:58, 10.70steps/  4%|▍         | 84480/2000000 [2:03:55<48:47:32, 10.91steps/s]   4%|▍         | 84480/2000000 [2:05:07<49:10:58, 10.82steps/s]                                                                 4%|▍         | 84480/2000000 [2:05:07<49:10:58, 10.82steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 210      |
+|    Return            | 29.3     |
+|    NonzeroRewards    | 210      |
+|    DiscountedReturn  | 29.3     |
+|    Success           | 0.4      |
+| algo/                |          |
+|    critic_loss       | 4.76     |
+|    mean_entropy      | -0.418   |
+|    mean_ent_bonus    | -0.00678 |
+|    max_target_q      | 24.7     |
+|    min_target_q      | -12.7    |
+|    max_reward        | 7.81     |
+|    min_reward        | -2.15    |
+|    chamfer_loss      | 23.2     |
+|    encoder_grad_norm | 52.3     |
+|    q1_grad_norm      | 11.3     |
+|    q2_grad_norm      | 10.7     |
+|    actor_loss        | -5.52    |
+|    ent_coeff         | 0.017    |
+|    ent_coeff_loss    | -14.6    |
+|    pi_grad_norm      | 0.32     |
+|    n_updates         | 19200    |
+| time/                |          |
+|    iterations        | 33       |
+|    fps               | 10.9     |
+|    elapsed_time      | 7.51e+03 |
+|    elapsed_steps     | 84480    |
+----------------------------------  4%|▍         | 87040/2000000 [2:07:50<48:45:36, 10.90steps/s]   4%|▍         | 87040/2000000 [2:09:06<49:15:35, 10.79steps/  4%|▍         | 89600/2000000 [2:11:40<48:24:10, 10.96steps/s]   4%|▍         | 89600/2000000 [2:12:59<48:56:46, 10.84steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent   4%|▍         | 89600/2000000 [2:13:10<48:56:46, 10.84steps/SaSaved video of policy to videos/2025-06-08/7v04u92g/policy_step_89600.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when provi  5%|▍         | 92160/2000000 [2:16:11<50:40:16, 10.46steps/s]   5%|▍         | 92160/2000000 [2:17:32<51:09:05, 10.36steps/s]                                                                 5%|▍         | 92160/2000000 [2:17:32<51:09:05, 10.36steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 259      |
+|    Return            | 33.3     |
+|    NonzeroRewards    | 259      |
+|    DiscountedReturn  | 33.3     |
+|    Success           | 0.37     |
+| algo/                |          |
+|    critic_loss       | 5.06     |
+|    mean_entropy      | -1.43    |
+|    mean_ent_bonus    | -0.0206  |
+|    max_target_q      | 27       |
+|    min_target_q      | -13.4    |
+|    max_reward        | 8.83     |
+|    min_reward        | -2.2     |
+|    chamfer_loss      | 22.3     |
+|    encoder_grad_norm | 51.6     |
+|    q1_grad_norm      | 12.8     |
+|    q2_grad_norm      | 12       |
+|    actor_loss        | -7.45    |
+|    ent_coeff         | 0.0145   |
+|    ent_coeff_loss    | -10.8    |
+|    pi_grad_norm      | 0.369    |
+|    n_updates         | 21120    |
+| eval/                |          |
+|    Length            | 300      |
+|    Return            | -64.6    |
+|    NonzeroRewards    | 300      |
+|    DiscountedReturn  | -64.6    |
+|    Success           | 0        |
+| time/                |          |
+|    iterations        | 36       |
+|    fps               | 10.3     |
+|    elapsed_time      | 8.25e+03 |
+|     5%|▍         | 94720/2000000 [2:20:03<49:47:16, 10.63steps/s]   5%|▍         | 94720/2000000 [2:21:24<50:11:07, 10.55steps/  5%|▍         | 97280/2000000 [2:23:54<49:06:31, 10.76steps/s]   5%|▍         | 97280/2000000 [2:25:20<49:41:30, 10.64steps/  5%|▍         | 99840/2000000 [2:27:46<48:42:50, 10.84steps/s]   5%|▍         | 99840/2000000 [2:29:18<49:27:33, 10.67steps/s]                                                                 5%|▍         | 99840/2000000 [2:29:18<49:27:33, 10.67steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 294      |
+|    Return            | -10.2    |
+|    NonzeroRewards    | 294      |
+|    DiscountedReturn  | -10.2    |
+|    Success           | 0.1      |
+| algo/                |          |
+|    critic_loss       | 5.82     |
+|    mean_entropy      | -2.04    |
+|    mean_ent_bonus    | -0.0252  |
+|    max_target_q      | 31.4     |
+|    min_target_q      | -13.1    |
+|    max_reward        | 10.1     |
+|    min_reward        | -2.26    |
+|    chamfer_loss      | 22.1     |
+|    encoder_grad_norm | 60.9     |
+|    q1_grad_norm      | 15.4     |
+|    q2_grad_norm      | 14.3     |
+|    actor_loss        | -9.4     |
+|    ent_coeff         | 0.0124   |
+|    ent_coeff_loss    | -8.59    |
+|    pi_grad_norm      | 0.417    |
+|    n_updates         | 23040    |
+| time/                |          |
+|    iterations        | 39       |
+|    fps               | 10.9     |
+|    elapsed_time      | 8.96e+03 |
+|    elapsed_steps     | 99840    |
+----------------------------------  5%|▌         | 102400/2000000 [2:31:40<48:28:01, 10.88steps/s  5%|▌         | 102400/2000000 [2:33:16<49:49:59, 10.58steps/s]  5%|▌         | 104960/2000000 [2:35:35<48:25:06, 10.87steps/s]  5%|▌         | 104960/2000000 [2:35:50<48:25:06, 10.87steps/s]��         | 104960/2000000 [2:28:00<45:27:10, 11.58steps/s]  5%|▌         | 107520/2000000 [2:31:06<44:18:53, 11.86steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+  5%|▌         | 107520/2000000 [2:31:20<44:18:53, 11.86steps/s]Saved video of policy to videos/2025-06-08/zjlg9a5y/policy_step_107520.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+RLRunner: Finished evaluating agent.
+                                                                  5%|▌         | 107520/2000000 [2:31:44<44:18:53, 11.86steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 275      |
+|    Return            | -84      |
+|    NonzeroRewards    | 275      |
+|    DiscountedReturn  | -84      |
+|    Success           | 0.087    |
+| algo/                |          |
+|    critic_loss       | 3.27     |
+|    mean_entropy      | -0.463   |
+|    mean_ent_bonus    | -0.00437 |
+|    max_target_q      | 14.4     |
+|    min_target_q      | -24.1    |
+|    max_reward        | 4.08     |
+|    min_reward        | -2.69    |
+|    chamfer_loss      | 22.4     |
+|    encoder_grad_norm | 47.4     |
+|    q1_grad_norm      | 10       |
+|    q2_grad_norm      | 9.85     |
+|    actor_loss        | 3.45     |
+|    ent_coeff         | 0.00968  |
+|    ent_coeff_loss    | -16.4    |
+|    pi_grad_norm      | 0.137    |
+|    n_updates         | 24960    |
+| eval/                |          |
+|    Length            | 300      |
+|    Return            | -60.5    |
+|    NonzeroRewards    | 300      |
+|    DiscountedReturn  | -60.5    |
+|    Success           | 0        |
+| time/                |          |
+|    iterations        | 42       |
+|    fps               | 11.3     |
+|    elapsed_time      | 9.1e+03  |
+|    elapsed_steps     | 107520   |
+-----------------------------------
+  6%|▌         | 110080/2000000 [2:35:30<47:12:40, 11.12steps/s]    elapsed_steps     | 107520   |
+-----------------------------------
+  6%|▌         | 110080/2000000 [2:33:40<45:36:39, 11.51steps/s]  6%|▌         | 110080/2000000 [2:33:50<45:36:39, 11.51steps/s]
