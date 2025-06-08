@@ -40,16 +40,16 @@ MAX_PTS = 1000
 # ------------------------------------------------------------------ #
 TRAIN_CAMERAS = [
     {"position": [   0, 175, 120], "lookAt": [10,  0, 55]},
-    # {"position": [-175,    0, 120], "lookAt": [ 10,  0, 55]},
-    # {"position": [   0,  175, 120], "lookAt": [10,  0, 55]},
+    {"position": [-175,    0, 120], "lookAt": [ 10,  0, 55]},
+    {"position": [   0,  175, 120], "lookAt": [10,  0, 55]},
     # {"position": [ 0,    0, 200], "lookAt": [ 10,  0, 55]},
 ]
 
 EVAL_CAMERA  = [
-    {"position": [0, 175, 120], "lookAt": [10, 0, 55]}      # pick any pose
+    {"position": [100, 100, 120], "lookAt": [10, 0, 55]}      # pick any pose
 ]
 
-# hpr_fn = EpisodeHPR(perfect_eye)
+hpr_fn = EpisodeHPR(perfect_eye)
 
 import copy
 
@@ -61,27 +61,9 @@ def _ensure_pylist(cam_cfgs):
         cam_cfgs = cam_cfgs.tolist()        # array(dtype=object) → list
     return cam_cfgs
 
-from gymnasium.wrappers import TimeLimit
 
-# def _strip_pcobs(env):
-#     """If `env` is already wrapped with PCObs (or TimeLimit→PCObs), unwrap it."""
-#     # un‑TimeLimit first
-#     if isinstance(env, TimeLimit):
-#         if isinstance(env.env, PCObs):
-#             env = env.env.env          # TimeLimit → PCObs → raw env
-#         else:
-#             env = env.env              # TimeLimit → raw env
-#     # plain PCObs on top?
-#     if isinstance(env, PCObs):
-#         env = env.env                  # PCObs → raw env
-#     return env    
-
-# --- after the standard imports -----------------------------------------
-import open3d as o3d
-# ---------------- TRAIN factory (picklable) ----------------------------
 def build_train_env(base_env_factory, **env_kwargs):
     env = base_env_factory(**env_kwargs)     # forward extras
-    # env = _strip_pcobs(env)
     env.unwrapped.create_scene_kwargs["camera_configs"] = _ensure_pylist(
         env.unwrapped.create_scene_kwargs.get("camera_configs")
     )
@@ -89,14 +71,13 @@ def build_train_env(base_env_factory, **env_kwargs):
         env,
         obs_frame="world",
         random_downsample=MAX_PTS-3,
-        post_processing_functions=[],
+        post_processing_functions=[hpr_fn],
         max_expected_num_points=MAX_PTS,
         voxel_grid_size=5,
     )
 
     return wrapped
 
-# ---------------- EVAL factory (picklable) -----------------------------
 def build_eval_env(base_env_factory, **env_kwargs):
     env = base_env_factory(**env_kwargs)     # forward extras
     env.unwrapped.create_scene_kwargs["camera_configs"] = _ensure_pylist(
@@ -114,7 +95,6 @@ def build_eval_env(base_env_factory, **env_kwargs):
 
 @contextmanager
 def build(config: DictConfig) -> Iterator[RLRunner]:
-
 
     parallel = config.parallel
     discount = config.algo.discount

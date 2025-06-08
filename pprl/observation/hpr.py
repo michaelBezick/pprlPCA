@@ -33,7 +33,7 @@ def random_eye(radius: float = 200.0,
 
 def perfect_eye():
     lookat = np.array([10., 0., 55.])
-    loc = np.array([0., 0., 200.])
+    loc = np.array([100, 100, 120.])
     return lookat + loc
 
 class EpisodeHPR:
