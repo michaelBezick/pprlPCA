@@ -5,6 +5,24 @@ import numpy as np
 import open3d as o3d
 from pprl.utils.o3d import np_to_o3d, o3d_to_np
 
+def hpr_partial(points: np.ndarray, eye: np.ndarray, min_pts=100) -> np.ndarray:
+    """
+    Same heuristic as your standalone script:
+    radius = cloud diameter * 100
+    """
+    pcd = o3d.geometry.PointCloud(o3d.utility.Vector3dVector(points[:, :3]))
+    diameter = np.linalg.norm(points.max(0) - points.min(0))
+    radius   = diameter * 1000
+    _, idx = pcd.hidden_point_removal(eye, radius)
+
+    idx = np.asarray(idx)
+
+    if idx.size < min_pts:
+        return points
+
+
+    return points[idx]
+
 from dependencies.sofa_env.sofa_env.scenes.thread_in_hole.thread_in_hole_env import (
     ThreadInHoleEnv,
     ObservationType,                  # <-- import the enum
@@ -22,7 +40,6 @@ train_cameras = [
     {"position": [   0, -175, 120], "lookAt": [10,  0, 55]},
     {"position": [-175,    0, 120], "lookAt": [ 10,  0, 55]},
     {"position": [   0,  175, 120], "lookAt": [10,  0, 55]},
-    {"position": [ 175,    0, 120], "lookAt": [ 10,  0, 55]},
 ]
 
 # train_cameras = [
@@ -62,33 +79,19 @@ env = PCObs(
 # ------------------------------------------------------------------ #
 pcd, _ = env.reset()
 print("Merged cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
+
 o3d.io.write_point_cloud(
     "multi_view_test.ply",
     o3d.geometry.PointCloud(o3d.utility.Vector3dVector(pcd[:, :3])),
 )
 print("Saved multi_view_test.ply")
 
-# pcd = np_to_o3d(pcd)
-#
-# diameter = np.linalg.norm(
-#     np.asarray(pcd.get_max_bound()) - np.asarray(pcd.get_min_bound())
-# )
-#
-# camera = [diameter, 0, diameter]
-# radius = diameter * 200
-#
-# _, pt_map = pcd.hidden_point_removal(camera, radius)
-#
-# pcd = pcd.select_by_index(pt_map)
-#
-# pcd = o3d_to_np(pcd)
-#
-# print("Dropout cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
-#
-# Optional: save to disk for visual inspection
-# o3d.io.write_point_cloud(
-#     "multi_view_test.ply",
-#     o3d.geometry.PointCloud(o3d.utility.Vector3dVector(pcd[:, :3])),
-# )
-# print("Saved multi_view_test.ply – open it in MeshLab / CloudCompare.")
+camera = np.array([0, 0, 200])
+pcd = hpr_partial(pcd, camera)
 
+print("Dropout cloud shape:", pcd.shape)        # (2048, 3)  or  (2048, 6)
+
+o3d.io.write_point_cloud(
+    "multi_view_test_hpr.ply",
+    o3d.geometry.PointCloud(o3d.utility.Vector3dVector(pcd[:, :3])),
+)

@@ -1,2 +1,0 @@
-1. run debug mode and make sure that the helper function to only reset camera position at the start of the episode is working
-2. change PCA to happen in observation() of pointcloud_obs.py
