@@ -37,6 +37,7 @@ def plot_curves(
     y_labels=None,
     num_bootstrap=1_000,
     palette="tab10",
+    color_cycle=True,
 ):
     """
     Parameters
@@ -77,6 +78,8 @@ def plot_curves(
         # Inner loop: metrics ▸ linestyle
         for m_idx, key_y in enumerate(y_keys):
             style = next(line_styles)
+            if color_cycle:
+                base_color = colour_cycle[m_idx % len(colour_cycle)]
 
             # aggregate over runs ― identical to your existing logic
             buckets = collections.defaultdict(list)
