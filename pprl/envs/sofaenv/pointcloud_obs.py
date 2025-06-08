@@ -231,7 +231,7 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
         new_points = self.disambiguate(torch.tensor(centered, dtype=torch.float32), torch.tensor(components, dtype=torch.float32)).numpy()
 
-        # pcd = np.concatenate([centered, components], axis=0)
+
 
         if self.points_only:
             return new_points
