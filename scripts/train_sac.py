@@ -127,13 +127,12 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         config.env.create_scene_kwargs.pop("camera_config", None)   # remove old key
         config.env.create_scene_kwargs["camera_configs"] = _pylist_of_dicts(TRAIN_CAMERAS)
 
-        breakpoint()
-
 
     base_train_factory = instantiate(config.env, _convert_="partial", _partial_=True)
 
     cages, metadata = build_cages(
-        EnvClass=functools.partial(build_train_env, base_train_factory),
+        # EnvClass=functools.partial(build_train_env, base_train_factory),
+        EnvClass=base_train_factory,
         n_envs=batch_spec.B,
         TrajInfoClass=TrajInfoClass,
         parallel=parallel,
@@ -145,6 +144,8 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         config.env.create_scene_kwargs.pop("camera_config", None)   # remove old key
         config.env.create_scene_kwargs["camera_configs"] = _pylist_of_dicts(EVAL_CAMERA)
 
+        config.env.mode = "eval"
+
         # config.env.create_scene_kwargs.pop("mode", None)   # remove old key
         # config.env.create_scene_kwargs["mode"] = "eval"
 
@@ -154,7 +155,8 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
     """EVAL CAGE"""
 
     eval_cages, eval_metadata = build_cages(
-        EnvClass=functools.partial(build_eval_env, base_eval_factory),
+        # EnvClass=functools.partial(build_eval_env, base_eval_factory),
+        EnvClass=base_eval_factory,
         n_envs=config.eval.n_eval_envs,
         env_kwargs={"add_rendering_to_info": True,
                     },
