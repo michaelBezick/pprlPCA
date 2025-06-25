@@ -214,16 +214,15 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
     def observation(self, observation) -> np.ndarray | dict:
         """Replaces the observation of a step in a sofa_env scene with a point cloud."""
 
-        """ maybe just add PCA translation here instead of in forward """
 
         pcd = self.pointcloud(observation)
 
-        if (self.mode == "train"):
-            save_point_cloud(pcd, "train.ply")
-        elif (self.mode == "eval"):
-            save_point_cloud(pcd, "eval.ply")
-        else:
-            assert False
+        # if (self.mode == "train"):
+        #     save_point_cloud(pcd, "train.ply")
+        # elif (self.mode == "eval"):
+        #     save_point_cloud(pcd, "eval.ply")
+        # else:
+        #     assert False
 
 
 
