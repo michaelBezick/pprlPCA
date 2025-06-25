@@ -40,13 +40,25 @@ MAX_PTS = 1000
 # ------------------------------------------------------------------ #
 TRAIN_CAMERAS = [
     {"position": [   0, 175, 120], "lookAt": [10,  0, 55]},
-    {"position": [-175,    0, 120], "lookAt": [ 10,  0, 55]},
-    {"position": [   0,  175, 120], "lookAt": [10,  0, 55]},
+    # {"position": [-175,    0, 120], "lookAt": [ 10,  0, 55]},
+    # {"position": [   0,  175, 120], "lookAt": [10,  0, 55]},
     # {"position": [ 0,    0, 200], "lookAt": [ 10,  0, 55]},
 ]
 
+"""MOVING CAMERA BACK ALONG ITS AXIS"""
+
+old_position = np.array([0, 175, 120])
+lookat = np.array([10, 0, 55])
+
+v = lookat - old_position 
+unit_v = v / np.linalg.norm(v)
+
+MOVE_DISTANCE_CM = 50
+
+new_position = old_position - MOVE_DISTANCE_CM * unit_v
+
 EVAL_CAMERA  = [
-    {"position": [100, 100, 120], "lookAt": [10, 0, 55]}      # pick any pose
+    {"position": new_position.tolist(), "lookAt": [10,  0, 55]},
 ]
 
 hpr_fn = EpisodeHPR(perfect_eye)
@@ -69,7 +81,7 @@ def build_train_env(base_env_factory, **env_kwargs):
     )
     wrapped = PCObs(
         env,
-        obs_frame="world",
+        obs_frame="camera",
         random_downsample=MAX_PTS-3,
         post_processing_functions=[hpr_fn],
         max_expected_num_points=MAX_PTS,
@@ -115,6 +127,8 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         config.env.create_scene_kwargs.pop("camera_config", None)   # remove old key
         config.env.create_scene_kwargs["camera_configs"] = _pylist_of_dicts(TRAIN_CAMERAS)
 
+        breakpoint()
+
 
     base_train_factory = instantiate(config.env, _convert_="partial", _partial_=True)
 
@@ -128,7 +142,11 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
 
     # ----- EVAL CAMERA ------------------------------------------------------
     with open_dict(config.env.create_scene_kwargs):
+        config.env.create_scene_kwargs.pop("camera_config", None)   # remove old key
         config.env.create_scene_kwargs["camera_configs"] = _pylist_of_dicts(EVAL_CAMERA)
+
+        # config.env.create_scene_kwargs.pop("mode", None)   # remove old key
+        # config.env.create_scene_kwargs["mode"] = "eval"
 
 
     base_eval_factory = instantiate(config.env, _convert_="partial", _partial_=True)

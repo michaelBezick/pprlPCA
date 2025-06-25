@@ -22,7 +22,7 @@ run_number=0
 
 while (( gpu_id < 3)); do
   CUDA_VISIBLE_DEVICES=$gpu_id nohup python scripts/train_sac.py wandb.group_name="$log_filename" env=thread_in_hole model=pointgpt_rl algo=aux_sac  \
-  env.image_shape="[64, 64]" runner.n_steps=2000000 > "./logs/$log_filename.log" 2>&1 &
+  env.image_shape="[64, 64]" runner.n_steps=1000000 > "./logs/$log_filename.log" 2>&1 &
 
 
   ((run_number++))

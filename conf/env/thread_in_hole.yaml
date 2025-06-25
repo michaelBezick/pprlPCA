@@ -9,10 +9,11 @@ _target_: pprl.envs.sofaenv.thread_in_hole.build
 # pointcloud wrapper args
 max_expected_num_points: 1000
 voxel_grid_size: 5.0
-# random_downsample: 600
+random_downsample: 600
 # center: [0.0, 0.0, 175.0]
 # scale: 75
 normalize: False 
+mode: "train"
 
 # env args
 time_step: 0.01

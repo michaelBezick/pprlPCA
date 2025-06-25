@@ -54,6 +54,7 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         points_only: bool = True,
         points_key: str = "points",
         post_processing_functions: Optional[List[Callable[[np.ndarray], np.ndarray]]] = None,
+        mode=None,
     ) -> None:
         super().__init__(env)
         self.depth_cutoff = depth_cutoff
@@ -79,7 +80,7 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         self.points_only = points_only
         self.points_key = points_key
 
-        self.mode = None
+        self.mode = mode
 
         self._initialized = False
 
@@ -214,6 +215,8 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         """Replaces the observation of a step in a sofa_env scene with a point cloud."""
 
         """ maybe just add PCA translation here instead of in forward """
+
+        breakpoint()
 
         pcd = self.pointcloud(observation)
 

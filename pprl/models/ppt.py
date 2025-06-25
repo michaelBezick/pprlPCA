@@ -89,7 +89,6 @@ class PointPatchTransformer(nn.Module):
 
     def forward(self, observation: ArrayTree[Tensor]) -> Tensor:
 
-
         point_cloud: ArrayTree[Tensor] = (
             observation["points"] if self.obs_is_dict else observation
         )
