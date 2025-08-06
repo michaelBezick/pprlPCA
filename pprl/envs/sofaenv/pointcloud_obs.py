@@ -249,6 +249,7 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
 
         pcd = self.pointcloud(observation)
+
         save_point_cloud(pcd, "original.ply")
 
         our_method = True

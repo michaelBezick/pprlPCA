@@ -5545,4 +5545,12 @@ RLRunner: Finished evaluating agent.
 |    elapsed_time      | 1.17e+05 |
 |    elapsed_steps     | 798720   |
 -----------------------------------
- 80%|████████  | 801280/1000000 [32:28:48<7:46:11,  7.10steps/s] 80%|████████  | 803840/1000000 [32:34:46<7:39:01,  7.12steps/s]
+ 80%|████████  | 801280/1000000 [32:28:48<7:46:11,  7.10steps/s] 80%|████████  | 803840/1000000 [32:34:46<7:39:01,  7.12steps/s] 81%|████████  | 806400/1000000 [32:40:39<7:30:41,  7.16steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+Saved video of policy to videos/2025-08-04/h3f49w99/nominal/policy_step_806400.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
