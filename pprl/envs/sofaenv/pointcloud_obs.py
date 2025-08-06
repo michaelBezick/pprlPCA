@@ -15,6 +15,39 @@ from .. import PointCloudSpace
 
 STATE_KEY = "state"
 
+import numpy as np
+
+def farthest_point_sampling(points, num_samples, init_idx=None):
+    """
+    Fast Farthest Point Sampling (FPS) from a point cloud.
+
+    Parameters:
+        points (np.ndarray): (N, 3) array of points
+        num_samples (int): Number of points to sample
+        init_idx (int or None): Optional starting index
+
+    Returns:
+        np.ndarray: (num_samples,) indices of sampled points
+    """
+    N = points.shape[0]
+    sampled_idxs = np.zeros(num_samples, dtype=np.int64)
+    distances = np.full(N, np.inf)
+
+    if init_idx is None:
+        init_idx = np.random.randint(N)
+    sampled_idxs[0] = init_idx
+    current_point = points[init_idx]
+
+    for i in range(1, num_samples):
+        dist = np.sum((points - current_point) ** 2, axis=1)
+        distances = np.minimum(distances, dist)
+        idx = np.argmax(distances)
+        sampled_idxs[i] = idx
+        current_point = points[idx]
+
+    return sampled_idxs
+
+
 def np_to_o3d(array: np.ndarray):
     assert (shape := array.shape[-1]) in (3, 6)
     pos = array[:, :3]
@@ -216,29 +249,32 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
 
         pcd = self.pointcloud(observation)
+        save_point_cloud(pcd, "original.ply")
 
-        # if (self.mode == "train"):
-        #     save_point_cloud(pcd, "train.ply")
-        # elif (self.mode == "eval"):
-        #     save_point_cloud(pcd, "eval.ply")
-        # else:
-        #     assert False
+        our_method = True
 
+        if (our_method):
 
-
-        if self.voxel_grid_size is not None:
-            pcd = np_to_o3d(pcd)
-            pcd = pcd.voxel_down_sample(self.voxel_grid_size)
-            pcd = o3d_to_np(pcd)
+            # FPS
+            idx = farthest_point_sampling(pcd[:, :3], 650)
+            pcd = pcd[idx]
 
 
-        centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
+            # PCA
+            centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
+            _, _, vh = np.linalg.svd(centered, full_matrices=False)
+            components = vh.astype(np.float32)  # shape (3, 3)
 
-        _, _, vh = np.linalg.svd(centered, full_matrices=False)
-        components = vh.astype(np.float32)  # shape (3, 3)
+            new_points = self.disambiguate(torch.tensor(centered, dtype=torch.float32), torch.tensor(components, dtype=torch.float32)).numpy()
 
-        new_points = self.disambiguate(torch.tensor(centered, dtype=torch.float32), torch.tensor(components, dtype=torch.float32)).numpy()
+            if (self.color):
+                new_points = np.concatenate([new_points, pcd[:, 3:]], axis=1)
+        else:
+            new_points = pcd
 
+
+        # visualize(new_points)
+        save_point_cloud(new_points, "our_method.ply")
 
 
         if self.points_only:
@@ -252,7 +288,6 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
     def pointcloud(self, observation) -> np.ndarray:
         pcs = []
         cam_list = getattr(self.env.unwrapped, "cameras", [self.env.unwrapped.camera])
-
 
         for cam in cam_list:
 

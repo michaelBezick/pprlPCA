@@ -45,20 +45,20 @@ TRAIN_CAMERAS = [
     # {"position": [ 0,    0, 200], "lookAt": [ 10,  0, 55]},
 ]
 
-"""MOVING CAMERA BACK ALONG ITS AXIS"""
-
-old_position = np.array([0, 175, 120])
-lookat = np.array([10, 0, 55])
-
-v = lookat - old_position 
-unit_v = v / np.linalg.norm(v)
-
-MOVE_DISTANCE_CM = 50
-
-new_position = old_position - MOVE_DISTANCE_CM * unit_v
+# """MOVING CAMERA BACK ALONG ITS AXIS"""
+#
+# old_position = np.array([0, 175, 120])
+# lookat = np.array([10, 0, 55])
+#
+# v = lookat - old_position 
+# unit_v = v / np.linalg.norm(v)
+#
+# MOVE_DISTANCE_CM = 50
+#
+# new_position = old_position - MOVE_DISTANCE_CM * unit_v
 
 EVAL_CAMERA  = [
-    {"position": new_position.tolist(), "lookAt": [10,  0, 55]},
+    {"position": [0, 175, 170], "lookAt": [10,  0, 105]},
 ]
 
 hpr_fn = EpisodeHPR(perfect_eye)

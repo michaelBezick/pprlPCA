@@ -26,7 +26,7 @@ runner:
   log_interval_steps: 10000
   eval_interval_steps: 20000
 eval:
-  n_eval_envs: 4
+  n_eval_envs: 1
   max_trajectories: 100
 
 wandb:
