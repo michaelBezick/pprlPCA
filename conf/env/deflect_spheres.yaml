@@ -7,9 +7,9 @@ _target_: pprl.envs.sofaenv.deflect_spheres.build
 
 # pointcloud wrapper args
 color: True
-max_expected_num_points: 1000
-voxel_grid_size: 5.0
-random_downsample: 1000
+max_expected_num_points: 3000
+voxel_grid_size: 2.0
+random_downsample: 3000
 center: [0.0, 0.0, 175.0]
 scale: 50
 

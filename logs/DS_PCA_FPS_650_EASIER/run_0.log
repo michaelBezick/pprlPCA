@@ -5554,3 +5554,53 @@ EvalSampler: Resetting all environments.
 EvalSampler: Resetting agent.
 EvalSampler: Resetting all environments.
 EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+                                                                 81%|████████  | 806400/1000000 [32:46:07<7:30:41,  7.16steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 500      |
+|    Return            | -172     |
+|    NonzeroRewards    | 500      |
+|    DiscountedReturn  | -172     |
+|    Success           | 0        |
+| algo/                |          |
+|    critic_loss       | 0.0875   |
+|    mean_entropy      | -8.15    |
+|    mean_ent_bonus    | -0.00694 |
+|    max_target_q      | -0.768   |
+|    min_target_q      | -6.68    |
+|    max_reward        | 0.413    |
+|    min_reward        | -0.862   |
+|    chamfer_loss      | 0.0123   |
+|    color_loss        | 0.00809  |
+|    encoder_grad_norm | 0.855    |
+|    q1_grad_norm      | 2.07     |
+|    q2_grad_norm      | 2.19     |
+|    actor_loss        | 3.31     |
+|    ent_coeff         | 0.000852 |
+|    ent_coeff_loss    | 0.994    |
+|    pi_grad_norm      | 0.0315   |
+|    n_updates         | 199680   |
+| eval/                |          |
+|    Length            | 500      |
+|    Return            | -191     |
+|    NonzeroRewards    | 500      |
+|    DiscountedReturn  | -191     |
+|    Success           | 0        |
+| time/                |          |
+|    iterations        | 315      |
+|    fps               | 5.51     |
+|    elapsed_time      | 1.18e+05 |
+|    elapsed_steps     | 806400   |
+-----------------------------------
