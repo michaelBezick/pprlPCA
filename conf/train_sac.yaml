@@ -24,6 +24,7 @@ lr_scheduler_gamma: null
 runner:
   n_steps: 1e6
   log_interval_steps: 10000
+  # eval_interval_steps: 20000
   eval_interval_steps: 20000
 eval:
   n_eval_envs: 1

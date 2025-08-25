@@ -5456,3 +5456,771 @@ EvalSampler: Resetting agent.
 wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
 EvalSampler: Resetting all environments.
 EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+
+
+########## SIG ########## SIG 1515 -  - SIGTERM: a termination request was sent to the programSIGTERM: a termination request was sent to the program ########## ##########
+
+
+########## SIG 
+15########## SIG  - 15SIGTERM: a termination request was sent to the program
+ -  #################### SIG SIGTERM: a termination request was sent to the program
+15 ########## - 
+SIGTERM: a termination request was sent to the program ##########
+  
+
+sofa::helper::BackTrace::sig(int)
+########## SIG 
+
+########## SIG ########## SIG 15
+
+  ########## SIG 151515 - ########## SIG 
+
+read########## SIG  -  -  - SIGTERM: a termination request was sent to the program15
+########## SIG ########## SIG SIGTERM: a termination request was sent to the program15SIGTERM: a termination request was sent to the programSIGTERM: a termination request was sent to the program ########## -    ##########1515 -  ##########
+ ##########
+_Py_readSIGTERM: a termination request was sent to the program
+ -  - SIGTERM: a termination request was sent to the program
+
+ ##########SIGTERM: a termination request was sent to the programSIGTERM: a termination request was sent to the program ##########  
+ ########## ##########
+_PyEval_EvalFrameDefault
+
+
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+########## SIG 15 -   SIGTERM: a termination request was sent to the programsofa::helper::BackTrace::sig(int) ##########
+
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+    sofa::helper::BackTrace::sig(int)  sofa::helper::BackTrace::sig(int)
+sofa::helper::BackTrace::sig(int)
+  
+  read  read
+read
+  
+  _Py_read  _Py_read
+_Py_read
+  
+  _PyEval_EvalFrameDefault    _PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefaultsofa::helper::BackTrace::sig(int)
+  
+
+  _PyFunction_Vectorcall    _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+_PyFunction_Vectorcallread  
+  
+
+
+sofa::helper::BackTrace::sig(int)  _PyEval_EvalFrameDefault  ########## SIG   
+_PyFunction_Vectorcall
+_PyEval_EvalFrameDefault15_Py_read  
+  
+ - 
+read  _PyFunction_Vectorcall  SIGTERM: a termination request was sent to the program  
+_PyEval_EvalFrameDefault
+_PyFunction_Vectorcall ##########_PyEval_EvalFrameDefault  
+  
+
+
+_Py_read  _PyEval_EvalFrameDefault    
+
+_PyFunction_Vectorcall
+_PyEval_EvalFrameDefault_PyFunction_Vectorcall  ########## SIG 
+  
+
+_PyEval_EvalFrameDefault15  _PyFunction_Vectorcall    
+ - _PyEval_EvalFrameDefault
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault  SIGTERM: a termination request was sent to the program
+  
+
+_PyFunction_Vectorcall ##########  _PyEval_EvalFrameDefault    
+
+_PyFunction_Vectorcall
+_PyEval_EvalFrameDefault_PyFunction_Vectorcall  
+  
+
+_PyEval_EvalFrameDefault  _PyFunction_Vectorcall    
+_PyEval_EvalFrameDefault
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault  
+  
+
+_PyFunction_Vectorcall  _PyEval_EvalFrameDefault    
+_PyFunction_Vectorcall
+_PyEval_EvalFrameDefault_PyFunction_Vectorcall  
+  
+
+_PyEval_EvalFrameDefault  _PyFunction_Vectorcall    
+  _PyEval_EvalFrameDefault
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault    sofa::helper::BackTrace::sig(int)
+  
+
+_PyFunction_Vectorcallsofa::helper::BackTrace::sig(int)
+  _PyEval_EvalFrameDefault    
+  
+  _PyFunction_Vectorcall
+_PyEval_EvalFrameDefault_PyFunction_Vectorcall  sofa::helper::BackTrace::sig(int)  read
+  
+
+_PyEval_EvalFrameDefault
+read
+  _PyFunction_Vectorcall    
+  
+  _PyEval_EvalFrameDefault
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault  read    _Py_read
+  
+
+_PyFunction_Vectorcall
+sofa::helper::BackTrace::sig(int)_Py_read
+  _PyEval_EvalFrameDefault    
+  
+
+  _PyFunction_Vectorcall
+_PyEval_EvalFrameDefault_PyFunction_Vectorcall  _Py_read      _PyEval_EvalFrameDefault
+  
+
+_PyEval_EvalFrameDefault
+read_PyEval_EvalFrameDefaultsofa::helper::BackTrace::sig(int)
+  _PyFunction_Vectorcall    
+  
+
+
+  _PyEval_EvalFrameDefault
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault  _PyEval_EvalFrameDefault      _PyFunction_Vectorcall
+  
+
+_PyFunction_Vectorcall
+_Py_read_PyFunction_Vectorcallread
+  _PyEval_EvalFrameDefault      
+  
+
+
+  PyEval_EvalCode
+sofa::helper::BackTrace::sig(int)_PyEval_EvalFrameDefault_PyFunction_Vectorcall  _PyFunction_Vectorcall      _PyEval_EvalFrameDefault
+  
+
+
+_PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault_Py_read
+  PyEval_EvalCode      
+  
+
+
+  PyRun_StringFlags
+readPyEval_EvalCode_PyEval_EvalFrameDefault  _PyEval_EvalFrameDefault      _PyFunction_Vectorcall
+  
+
+
+_PyFunction_Vectorcall
+_PyFunction_Vectorcall_PyFunction_Vectorcall_PyEval_EvalFrameDefault
+  PyRun_StringFlags      
+  
+
+
+  PyRun_SimpleStringFlags
+_Py_readPyRun_StringFlags_PyFunction_Vectorcall  _PyFunction_Vectorcall      _PyEval_EvalFrameDefault
+  
+
+
+_PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault_PyFunction_Vectorcall
+  PyRun_SimpleStringFlags      
+  
+
+
+  Py_RunMain
+_PyEval_EvalFrameDefaultPyRun_SimpleStringFlags_PyEval_EvalFrameDefault  _PyEval_EvalFrameDefault      _PyFunction_Vectorcall
+
+
+
+_PyFunction_Vectorcall
+_PyFunction_Vectorcall_PyFunction_Vectorcall_PyEval_EvalFrameDefault
+  
+    
+  
+
+
+  _PyFunction_Vectorcall########## SIG Py_RunMain  _PyFunction_Vectorcall      _PyEval_EvalFrameDefault
+15
+_PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault_PyFunction_Vectorcall
+   - 
+SIGTERM: a termination request was sent to the program  
+
+
+  _PyEval_EvalFrameDefault   ##########_PyEval_EvalFrameDefault      _PyFunction_Vectorcall
+PyEval_EvalCode
+
+_PyFunction_Vectorcall_PyFunction_Vectorcall_PyEval_EvalFrameDefault
+  
+  
+
+
+  _PyFunction_Vectorcall  _PyFunction_Vectorcall      _PyEval_EvalFrameDefault
+PyRun_StringFlags
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault_PyFunction_Vectorcall
+  
+  
+
+
+  _PyEval_EvalFrameDefault  _PyEval_EvalFrameDefault      _PyFunction_Vectorcall
+PyRun_SimpleStringFlags
+_PyFunction_Vectorcall_PyFunction_Vectorcall_PyEval_EvalFrameDefault
+  
+  
+
+
+  _PyFunction_Vectorcall  _PyFunction_Vectorcall      _PyFunction_Vectorcall_PyEval_EvalFrameDefault
+Py_RunMain
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+
+  
+  
+
+    _PyEval_EvalFrameDefault  _PyEval_EvalFrameDefaultPy_BytesMain    _PyEval_EvalFrameDefault_PyFunction_Vectorcall
+
+
+_PyFunction_Vectorcall_PyFunction_Vectorcall
+
+      
+
+    _PyFunction_Vectorcall_PyFunction_Vectorcall__libc_start_main    _PyFunction_Vectorcall_PyEval_EvalFrameDefault
+
+
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+
+    
+
+    _PyEval_EvalFrameDefault_PyEval_EvalFrameDefault  _PyEval_EvalFrameDefault_PyFunction_Vectorcall
+
+_PyFunction_Vectorcall
+
+    
+    _PyFunction_Vectorcall  _PyFunction_Vectorcall_PyEval_EvalFrameDefault
+  PyEval_EvalCode
+    PyRun_StringFlags
+_PyFunction_Vectorcall  
+
+PyRun_SimpleStringFlags  ########## SIG 
+_PyEval_EvalFrameDefault15  
+ - Py_RunMain  SIGTERM: a termination request was sent to the program
+
+PyEval_EvalCode #################### SIG   
+
+15Py_BytesMain   - 
+PyRun_StringFlags  SIGTERM: a termination request was sent to the program  
+ ##########__libc_start_mainPy_BytesMain  
+
+
+PyRun_SimpleStringFlags  
+__libc_start_main  
+Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+########## SIG 15 - SIGTERM: a termination request was sent to the program ##########
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+
+  _PyFunction_Vectorcall########## SIG 
+  15_PyEval_EvalFrameDefault - 
+SIGTERM: a termination request was sent to the program   ##########_PyFunction_Vectorcall
+
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+########## SIG 15 - SIGTERM: a termination request was sent to the program ##########
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+########## SIG 15 - SIGTERM: a termination request was sent to the program ##########
+_PyEval_EvalFrameDefault
+
+  _PyFunction_Vectorcall
+    _PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+
+    _PyFunction_VectorcallPyEval_EvalCode
+
+    _PyEval_EvalFrameDefaultPyRun_StringFlags
+
+    PyEval_EvalCodePyRun_SimpleStringFlags
+
+    PyRun_StringFlagsPy_RunMain
+
+    PyRun_SimpleStringFlagsPy_BytesMain
+
+    Py_RunMain__libc_start_main
+
+  Py_BytesMain
+  __libc_start_main
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+
+########## SIG 
+15########## SIG  - 15SIGTERM: a termination request was sent to the program - ########## SIG  ##########SIGTERM: a termination request was sent to the program15
+ ########## - 
+SIGTERM: a termination request was sent to the program ##########
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+    sofa::helper::BackTrace::sig(int)_PyEval_EvalFrameDefault
+
+    read_PyFunction_Vectorcall
+
+    _Py_read_PyEval_EvalFrameDefault
+
+    _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall_PyFunction_Vectorcall
+
+    _PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+
+    _PyFunction_Vectorcall_PyFunction_Vectorcall
+
+    _PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+
+    _PyFunction_Vectorcall_PyFunction_Vectorcall
+
+    _PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+
+    _PyFunction_Vectorcall_PyFunction_Vectorcall
+
+    _PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+
+    _PyFunction_Vectorcall_PyFunction_Vectorcall
+
+    _PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+
+    PyEval_EvalCode_PyFunction_Vectorcall
+
+    PyRun_StringFlags_PyEval_EvalFrameDefault
+
+    PyRun_SimpleStringFlags_PyFunction_Vectorcall
+
+    Py_RunMain_PyEval_EvalFrameDefault
+
+    Py_BytesMainPyEval_EvalCode
+
+    __libc_start_mainPyRun_StringFlags
+
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+########## SIG 15 - SIGTERM: a termination request was sent to the program ##########
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+########## SIG 15 - SIGTERM: a termination request was sent to the program ##########
+PyEval_EvalCode  
+    Py_BytesMainPyRun_StringFlags  
+
+sofa::helper::BackTrace::sig(int)    
+PyRun_SimpleStringFlags__libc_start_mainsofa::helper::BackTrace::sig(int)  
+
+read
+  
+  Py_RunMain  read
+_Py_read
+  
+  Py_BytesMain  _Py_read
+_PyEval_EvalFrameDefault
+  
+  __libc_start_main  _PyEval_EvalFrameDefault
+_PyFunction_Vectorcall
+
+    _PyFunction_Vectorcall_PyEval_EvalFrameDefault_PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+    _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+sofa::helper::BackTrace::sig(int)  
+_PyEval_EvalFrameDefault  
+read  
+_PyFunction_Vectorcall  
+_Py_read  
+_PyEval_EvalFrameDefault  
+_PyEval_EvalFrameDefault  
+_PyFunction_Vectorcall  
+_PyFunction_Vectorcall  
+_PyEval_EvalFrameDefault  
+_PyEval_EvalFrameDefault  
+_PyFunction_Vectorcall  
+_PyFunction_Vectorcall  
+_PyEval_EvalFrameDefault  
+_PyEval_EvalFrameDefault  
+_PyFunction_Vectorcall  
+_PyFunction_Vectorcall  
+_PyEval_EvalFrameDefault  
+_PyEval_EvalFrameDefault  
+_PyFunction_Vectorcall  
+_PyFunction_Vectorcall  
+_PyEval_EvalFrameDefault  
+_PyEval_EvalFrameDefault  
+PyEval_EvalCode  
+_PyFunction_Vectorcall  
+PyRun_StringFlags  
+_PyEval_EvalFrameDefault  
+PyRun_SimpleStringFlags  
+_PyFunction_Vectorcall  
+Py_RunMain  
+_PyEval_EvalFrameDefault  
+Py_BytesMain  
+_PyFunction_Vectorcall  
+__libc_start_main  
+_PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+########## SIG 15 - SIGTERM: a termination request was sent to the program ##########
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+/home/michaelbezick/.conda/envs/pprl/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 855 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

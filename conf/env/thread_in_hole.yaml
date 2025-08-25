@@ -21,6 +21,7 @@ frame_skip: 10
 max_episode_steps: 300
 
 camera_reset_noise: null
+# camera_reset_noise: [20.0, 20.0, 20.0, 20.0, 20.0, 20.0]
 settle_steps: 50
 hole_rotation_reset_noise: [0.0, 0.0, 0.0]
 # hole_position_reset_noise: [20., 20., 20.]

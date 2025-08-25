@@ -219,28 +219,20 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         """
 
         #if cos(theta) is +, then point is on one side of centroid, and vice versa
-
-        differences = []
-        for i in range(3):
+        for i in range(2):
             pos_sum, neg_sum = self.line_distance_sums(centered_pcd, eig_vecs[i])
 
             if neg_sum > pos_sum:
             # invert direction
                 eig_vecs[i] *= -1
 
-            differences.append(abs(pos_sum - neg_sum))
-
-        stability_order = np.argsort(differences)[::-1]
-        i1, i2 = stability_order[:2]
-
-        v1 = eig_vecs[i1]
-        v2 = eig_vecs[i2]
+        v1 = eig_vecs[0]
+        v2 = eig_vecs[1]
 
         v3 = torch.cross(v1, v2)
         v3 /= v3.norm()
 
         eig_vecs = torch.stack([v1, v2, v3], dim=0)
-
 
         return centered_pcd @ eig_vecs.T
 
@@ -250,16 +242,14 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
         pcd = self.pointcloud(observation)
 
-        save_point_cloud(pcd, "original.ply")
+        # save_point_cloud(pcd, "original.ply")
 
         our_method = True
 
         if (our_method):
-
             # FPS
-            idx = farthest_point_sampling(pcd[:, :3], 650)
+            idx = farthest_point_sampling(pcd[:, :3], 200)
             pcd = pcd[idx]
-
 
             # PCA
             centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
@@ -275,7 +265,7 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
 
         # visualize(new_points)
-        save_point_cloud(new_points, "our_method.ply")
+        # save_point_cloud(new_points, "our_method.ply")
 
 
         if self.points_only:

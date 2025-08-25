@@ -11,7 +11,7 @@ from torch import Tensor
 from pprl.envs import PointCloudSpace
 from pprl.models.modules.tokenizer import Tokenizer
 from pprl.models.modules.transformer import SequencePooling, TransformerEncoder
-from pprl.utils.array_dict import dict_to_batched_data, dict_to_batched_data_pca
+from pprl.utils.array_dict import dict_to_batched_data
 import numpy as np
 
 import open3d as o3d

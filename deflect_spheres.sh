@@ -28,19 +28,19 @@ while (( gpu_id < 3)); do
 
   log_file="$log_dir/run_${run_number}.log"
 
+  echo "$gpu_id"
 
-  CUDA_VISIBLE_DEVICES=$gpu_id nohup python scripts/original_train_sac.py parallel=True wandb.group_name="$group_name" env=deflect_spheres model=pointgpt_rl algo=aux_sac  \
-  env.image_shape="[128, 128]" runner.n_steps=1000000 > "$log_file" 2>&1 &
+
+  CUDA_VISIBLE_DEVICES=$gpu_id nohup python scripts/original_train_sac.py parallel=True wandb.group_name="$group_name" env=deflect_spheres model=ppt \
+  env.image_shape="[128, 128]" > "$log_file" 2>&1 &
 
 
   ((run_number++))
 
+  gpu_id=$(( run_number % 3 ))
+
   if (( run_number == $num_runs )); then
     exit
-  fi
-
-  if (( run_number % 2 == 0 )); then
-    ((gpu_id++))
   fi
 
 done
