@@ -10,7 +10,9 @@ from mani_skill2.envs.sapien_env import BaseEnv as SapienBaseEnv
 from sapien.core import Pose
 
 from pprl.utils.o3d import np_to_o3d, o3d_to_np
+import torch
 
+import open3d as o3d
 from .. import PointCloudSpace
 
 STATE_KEY = "state"
@@ -21,6 +23,10 @@ STATE_KEY = "state"
 def apply_pose_to_points(x, pose):
     return to_normal(to_generalized(x) @ pose.to_transformation_matrix().T)
 
+def save_point_cloud(pcd, filename):
+    pcd = np_to_o3d(pcd)
+    o3d.io.write_point_cloud(filename, pcd)
+    print(f"pcd saved to {filename}")
 
 def to_generalized(x):
     if x.shape[-1] == 4:
@@ -53,6 +59,24 @@ def merge_dicts(ds, asarray=False):
     if asarray:
         ret = {k: np.concatenate(v) for k, v in ret.items()}
     return ret
+
+def farthest_point_sampling(points, num_samples, init_idx=None):
+    """
+    Fast Farthest Point Sampling (FPS) from a point cloud.
+
+    Parameters:
+        points (np.ndarray): (N, 3) array of points
+        num_samples (int): Number of points to sample
+        init_idx (int or None): Optional starting index
+
+    Returns:
+        np.ndarray: (num_samples,) indices of sampled points
+    """
+
+    points = np_to_o3d(points)
+    points.farthest_point_down_sample(num_samples)
+    points = o3d_to_np(points)
+    return points
 
 
 class PointCloudWrapper(gym.ObservationWrapper):
@@ -141,40 +165,150 @@ class PointCloudWrapper(gym.ObservationWrapper):
 
         return self.observation(obs), info
 
+    def line_distance_sums(self, centered_points: torch.Tensor,
+                               direction: torch.Tensor):
+            """
+            points      : (N,3) centered cloud (float32/64, CPU or CUDA)
+            direction   : (3,)  line direction (need not be unit length)
+
+            Returns
+            -------
+            pos_sum, neg_sum  (each scalar tensor)
+            """
+
+            v_hat = direction / direction.norm()          # (3,)
+            dots  = centered_points @ v_hat                        # (N,)  u·v  (torch.mv is fine too)
+
+            # squared distance ‖u‖² - (u·v̂)²
+            r2 = centered_points.pow(2).sum(dim=1) - dots.pow(2)   # (N,)
+
+            dists = r2.clamp_min_(0.)                 # avoid tiny neg. due to FP error
+
+            # masks for the two half‑spaces
+            pos_mask = dots > 0
+            neg_mask = dots < 0
+
+            pos_sum = dists[pos_mask].sum()
+            neg_sum = dists[neg_mask].sum()
+            return pos_sum, neg_sum
+
+    def score_r4(self, centered_points: torch.Tensor,
+                               direction: torch.Tensor):
+            """
+            points      : (N,3) centered cloud (float32/64, CPU or CUDA)
+            direction   : (3,)  line direction (need not be unit length)
+
+            Returns
+            -------
+            pos_sum, neg_sum  (each scalar tensor)
+            """
+
+            v_hat = direction / direction.norm()          # (3,)
+            dots  = centered_points @ v_hat                        # (N,)  u·v  (torch.mv is fine too)
+
+            r2 = centered_points.pow(2).sum(dim=1)
+            
+            r4 = r2 * r2
+
+            r4 = r4.clamp_min_(0.)                 # avoid tiny neg. due to FP error
+
+            # masks for the two half‑spaces
+            pos_mask = dots > 0
+            neg_mask = dots < 0
+
+            pos_sum = r4[pos_mask].sum()
+            neg_sum = r4[neg_mask].sum()
+            return pos_sum, neg_sum
+
+    def disambiguate(self, centered_pcd, eig_vecs):
+        """
+        Function takes in centered_pcd and returns PCA normalized cloud
+        eig_vecs are row vecs
+        """
+
+        #if cos(theta) is +, then point is on one side of centroid, and vice versa
+        for i in range(2):
+            pos_sum, neg_sum = self.score_r4(centered_pcd, eig_vecs[i])
+
+            if neg_sum > pos_sum:
+            # invert direction
+                eig_vecs[i] *= -1
+
+        v1 = eig_vecs[0]
+        v2 = eig_vecs[1]
+
+        v3 = torch.cross(v1, v2)
+        v3 /= v3.norm()
+
+        eig_vecs = torch.stack([v1, v2, v3], dim=0)
+
+        return centered_pcd @ eig_vecs.T
+
     def observation(self, observation: dict) -> np.ndarray | dict:
         """Replaces the observation of a step in a sofa_env scene with a point cloud."""
 
         pcd = self.pointcloud(observation)
 
-        centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
+        save_point_cloud(pcd, "original.ply")
 
-        """ we do not want to normalize to unit sphere because scale is guaranteed """
+        our_method = True
 
-        # scale = np.linalg.norm(centered, axis=1).max()
-        #
-        # normalized_and_centered = centered / scale
+        if (our_method):
+            # FPS
+            pcd = farthest_point_sampling(pcd[:, :3], 200)
+            # pcd = pcd[idx]
 
+            # PCA
+            centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
+            _, _, vh = np.linalg.svd(centered, full_matrices=False)
+            components = vh.astype(np.float32)  # shape (3, 3)
 
-        _, _, vh = np.linalg.svd(centered, full_matrices=False)
-        components = vh.astype(np.float32)  # shape (3, 3)
-        # dummy = np.array([[-999, -999, -999]])
+            new_points = self.disambiguate(torch.tensor(centered, dtype=torch.float32), torch.tensor(components, dtype=torch.float32)).numpy()
 
-        pcd = np.concatenate([centered, components], axis=0) # huge correction to unit sphere
-        # pcd = np.concatenate([pcd, dummy], axis=0)
+            if (self.color):
+                new_points = np.concatenate([new_points, pcd[:, 3:]], axis=1)
+        else:
+            new_points = pcd
+
+        save_point_cloud(new_points, "our_method.ply")
 
         if self.points_only:
-            print('POINTS ONLY')
-            exit()
-            return pcd
+            return new_points
         else:
-            state = spaces.flatten(
-                self.state_space,
-                {"agent": observation["agent"], "extra": observation["extra"]},
-            )
             return {
-                STATE_KEY: state,
-                self.points_key: pcd,
+                STATE_KEY: observation,
+                self.points_key: new_points,
             }
+
+        # centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
+        #
+        # """ we do not want to normalize to unit sphere because scale is guaranteed """
+        #
+        # # scale = np.linalg.norm(centered, axis=1).max()
+        # #
+        # # normalized_and_centered = centered / scale
+        #
+        #
+        # _, _, vh = np.linalg.svd(centered, full_matrices=False)
+        # components = vh.astype(np.float32)  # shape (3, 3)
+        # # dummy = np.array([[-999, -999, -999]])
+        #
+        # pcd = np.concatenate([centered, components], axis=0) # huge correction to unit sphere
+        # # pcd = np.concatenate([pcd, dummy], axis=0)
+        #
+        # if self.points_only:
+        #     print('POINTS ONLY')
+        #     exit()
+        #     return pcd
+        # else:
+        #     state = spaces.flatten(
+        #         self.state_space,
+        #         {"agent": observation["agent"], "extra": observation["extra"]},
+        #     )
+        #     return {
+        #         STATE_KEY: state,
+        #         self.points_key: pcd,
+        #     }
 
     def pointcloud(self, observation) -> np.ndarray:
 

@@ -2582,4 +2582,2610 @@ RLRunner: Finished evaluating agent.
 |    elapsed_time      | 1.85e+04 |
 |    elapsed_steps     | 199680   |
 -----------------------------------
- 40%|████      | 202240/500000 [5:12:04<10:22:59,  7.97steps/s] 40%|████      | 202240/500000 [5:12:20<10:22:59,  7.97steps/s] 41%|████      | 204800/500000 [5:14:57<8:52:19,  9.24steps/s]  41%|████      | 204800/500000 [5:15:10<8:52:19,  9.24steps/s]
+ 40%|████      | 202240/500000 [5:12:04<10:22:59,  7.97steps/s] 40%|████      | 202240/500000 [5:12:20<10:22:59,  7.97steps/s] 41%|████      | 204800/500000 [5:14:57<8:52:19,  9.24steps/s]  41%|████      | 204800/500000 [5:15:10<8:52:19,  9.24steps/s] 41%|████▏     | 207360/500000 [5:17:49<7:47:27, 10.43steps/s]                                                               41%|████▏     | 207360/500000 [5:17:49<7:47:27, 10.43steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 16.7     |
+|    Return            | 118      |
+|    NonzeroRewards    | 16.7     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 3.51     |
+|    mean_entropy      | -4       |
+|    mean_ent_bonus    | -0.0771  |
+|    max_target_q      | 111      |
+|    min_target_q      | 12.3     |
+|    max_reward        | 101      |
+|    min_reward        | -2.13    |
+|    chamfer_loss      | 14.8     |
+|    encoder_grad_norm | 53.9     |
+|    q1_grad_norm      | 57.9     |
+|    q2_grad_norm      | 58       |
+|    actor_loss        | -91.9    |
+|    ent_coeff         | 0.0193   |
+|    ent_coeff_loss    | 0.0408   |
+|    pi_grad_norm      | 0.57     |
+|    n_updates         | 49920    |
+| time/                |          |
+|    iterations        | 81       |
+|    fps               | 14.8     |
+|    elapsed_time      | 1.91e+04 |
+|    elapsed_steps     | 207360   |
+-----------------------------------
+ 41%|████▏     | 207360/500000 [5:18:00<7:47:27, 10.43steps/s] 42%|████▏     | 209920/500000 [5:20:44<7:03:57, 11.40steps/s] 42%|████▏     | 209920/500000 [5:21:00<7:03:57, 11.40steps/s] 42%|████▏     | 212480/500000 [5:23:35<6:30:11, 12.28steps/s] 42%|████▏     | 212480/500000 [5:23:50<6:30:11, 12.28steps/s] 43%|████▎     | 215040/500000 [5:26:27<6:06:02, 12.97steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 43%|████▎     | 215040/500000 [5:26:40<6:06:02, 12.97steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_215040.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+                                                               43%|████▎     | 215040/500000 [5:37:51<6:06:02, 12.97steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.9     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.9     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 3.61     |
+|    mean_entropy      | -4.09    |
+|    mean_ent_bonus    | -0.0807  |
+|    max_target_q      | 112      |
+|    min_target_q      | 12       |
+|    max_reward        | 102      |
+|    min_reward        | -2.05    |
+|    chamfer_loss      | 14.6     |
+|    encoder_grad_norm | 57.3     |
+|    q1_grad_norm      | 59.7     |
+|    q2_grad_norm      | 59.6     |
+|    actor_loss        | -93.1    |
+|    ent_coeff         | 0.0197   |
+|    ent_coeff_loss    | 0.333    |
+|    pi_grad_norm      | 0.59     |
+|    n_updates         | 51840    |
+| eval/                |          |
+|    Length            | 31.3     |
+|    Return            | 112      |
+|    NonzeroRewards    | 31.3     |
+|    DiscountedReturn  | 112      |
+|    Success           | 0.958    |
+| time/                |          |
+|    iterations        | 84       |
+|    fps               | 6.39     |
+|    elapsed_time      | 2.03e+04 |
+|    elapsed_steps     | 215040   |
+-----------------------------------
+ 44%|████▎     | 217600/500000 [5:40:41<12:04:55,  6.49steps/s] 44%|████▍     | 220160/500000 [5:43:35<9:58:00,  7.80steps/s]  44%|████▍     | 220160/500000 [5:43:50<9:58:00,  7.80steps/s] 45%|████▍     | 222720/500000 [5:46:27<8:27:57,  9.10steps/s]                                                               45%|████▍     | 222720/500000 [5:46:27<8:27:57,  9.10steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.9     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.9     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 3.27     |
+|    mean_entropy      | -4       |
+|    mean_ent_bonus    | -0.0792  |
+|    max_target_q      | 112      |
+|    min_target_q      | 12.3     |
+|    max_reward        | 102      |
+|    min_reward        | -2.11    |
+|    chamfer_loss      | 14.4     |
+|    encoder_grad_norm | 55.3     |
+|    q1_grad_norm      | 55.7     |
+|    q2_grad_norm      | 55.8     |
+|    actor_loss        | -94.2    |
+|    ent_coeff         | 0.0198   |
+|    ent_coeff_loss    | 0.0577   |
+|    pi_grad_norm      | 0.553    |
+|    n_updates         | 53760    |
+| time/                |          |
+|    iterations        | 87       |
+|    fps               | 14.9     |
+|    elapsed_time      | 2.08e+04 |
+|    elapsed_steps     | 222720   |
+-----------------------------------
+ 45%|████▍     | 222720/500000 [5:46:40<8:27:57,  9.10steps/s] 45%|████▌     | 225280/500000 [5:49:22<7:26:00, 10.27steps/s] 45%|████▌     | 225280/500000 [5:49:40<7:26:00, 10.27steps/s] 46%|████▌     | 227840/500000 [5:52:12<6:39:49, 11.34steps/s] 46%|████▌     | 227840/500000 [5:52:30<6:39:49, 11.34steps/s] 46%|████▌     | 230400/500000 [5:55:03<6:07:07, 12.24steps/s]                                                               46%|████▌     | 230400/500000 [5:55:03<6:07:07, 12.24steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.4     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.4     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 3.17     |
+|    mean_entropy      | -3.98    |
+|    mean_ent_bonus    | -0.0807  |
+|    max_target_q      | 112      |
+|    min_target_q      | 12.2     |
+|    max_reward        | 102      |
+|    min_reward        | -2.09    |
+|    chamfer_loss      | 14.2     |
+|    encoder_grad_norm | 52.4     |
+|    q1_grad_norm      | 56.2     |
+|    q2_grad_norm      | 56.2     |
+|    actor_loss        | -95      |
+|    ent_coeff         | 0.0203   |
+|    ent_coeff_loss    | -0.00361 |
+|    pi_grad_norm      | 0.566    |
+|    n_updates         | 55680    |
+| time/                |          |
+|    iterations        | 90       |
+|    fps               | 14.9     |
+|    elapsed_time      | 2.13e+04 |
+|    elapsed_steps     | 230400   |
+-----------------------------------
+ 46%|████▌     | 230400/500000 [5:55:20<6:07:07, 12.24steps/s] 47%|████▋     | 232960/500000 [5:57:50<5:41:55, 13.02steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 47%|████▋     | 232960/500000 [5:58:00<5:41:55, 13.02steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_232960.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+ 47%|████▋     | 235520/500000 [6:16:48<13:44:55,  5.34steps/s] 48%|████▊     | 238080/500000 [6:19:42<11:00:38,  6.61steps/s]                                                                48%|████▊     | 238080/500000 [6:19:42<11:00:38,  6.61steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.6     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.6     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 3.06     |
+|    mean_entropy      | -3.96    |
+|    mean_ent_bonus    | -0.0807  |
+|    max_target_q      | 112      |
+|    min_target_q      | 14.2     |
+|    max_reward        | 102      |
+|    min_reward        | -2.09    |
+|    chamfer_loss      | 14.1     |
+|    encoder_grad_norm | 51.9     |
+|    q1_grad_norm      | 56.7     |
+|    q2_grad_norm      | 56.8     |
+|    actor_loss        | -95.8    |
+|    ent_coeff         | 0.0204   |
+|    ent_coeff_loss    | -0.1     |
+|    pi_grad_norm      | 0.545    |
+|    n_updates         | 57600    |
+| eval/                |          |
+|    Length            | 26       |
+|    Return            | 115      |
+|    NonzeroRewards    | 26       |
+|    DiscountedReturn  | 115      |
+|    Success           | 0.967    |
+| time/                |          |
+|    iterations        | 93       |
+|    fps               | 5.19     |
+|    elapsed_time      | 2.28e+04 |
+|    elapsed_steps     | 238080   |
+-----------------------------------
+ 48%|████▊     | 238080/500000 [6:20:00<11:00:38,  6.61steps/s] 48%|████▊     | 240640/500000 [6:22:32<9:04:21,  7.94steps/s]  48%|████▊     | 240640/500000 [6:22:50<9:04:21,  7.94steps/s] 49%|████▊     | 243200/500000 [6:25:20<7:41:37,  9.27steps/s] 49%|████▊     | 243200/500000 [6:25:40<7:41:37,  9.27steps/s] 49%|████▉     | 245760/500000 [6:28:11<6:44:22, 10.48steps/s]                                                               49%|████▉     | 245760/500000 [6:28:11<6:44:22, 10.48steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 16.2     |
+|    Return            | 118      |
+|    NonzeroRewards    | 16.2     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 2.62     |
+|    mean_entropy      | -4.01    |
+|    mean_ent_bonus    | -0.0804  |
+|    max_target_q      | 112      |
+|    min_target_q      | 17.3     |
+|    max_reward        | 102      |
+|    min_reward        | -1.97    |
+|    chamfer_loss      | 13.9     |
+|    encoder_grad_norm | 45.6     |
+|    q1_grad_norm      | 56.8     |
+|    q2_grad_norm      | 56.6     |
+|    actor_loss        | -96.3    |
+|    ent_coeff         | 0.02     |
+|    ent_coeff_loss    | 0.0177   |
+|    pi_grad_norm      | 0.523    |
+|    n_updates         | 59520    |
+| time/                |          |
+|    iterations        | 96       |
+|    fps               | 15.1     |
+|    elapsed_time      | 2.33e+04 |
+|    elapsed_steps     | 245760   |
+-----------------------------------
+ 49%|████▉     | 245760/500000 [6:28:30<6:44:22, 10.48steps/s]ReplayBuffer: Replay buffer is now full. cursor=0.
+ 50%|████▉     | 248320/500000 [6:31:01<6:04:02, 11.52steps/s] 50%|████▉     | 248320/500000 [6:31:20<6:04:02, 11.52steps/s] 50%|█████     | 250880/500000 [6:33:49<5:33:49, 12.44steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 50%|█████     | 250880/500000 [6:34:00<5:33:49, 12.44steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_250880.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+ 51%|█████     | 253440/500000 [6:47:19<10:21:21,  6.61steps/s]                                                                51%|█████     | 253440/500000 [6:47:19<10:21:21,  6.61steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.3     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.3     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 2.84     |
+|    mean_entropy      | -3.93    |
+|    mean_ent_bonus    | -0.0769  |
+|    max_target_q      | 112      |
+|    min_target_q      | 17.3     |
+|    max_reward        | 103      |
+|    min_reward        | -2       |
+|    chamfer_loss      | 13.8     |
+|    encoder_grad_norm | 48.1     |
+|    q1_grad_norm      | 53.8     |
+|    q2_grad_norm      | 53.6     |
+|    actor_loss        | -96.4    |
+|    ent_coeff         | 0.0196   |
+|    ent_coeff_loss    | -0.264   |
+|    pi_grad_norm      | 0.525    |
+|    n_updates         | 61440    |
+| eval/                |          |
+|    Length            | 30.5     |
+|    Return            | 109      |
+|    NonzeroRewards    | 30.5     |
+|    DiscountedReturn  | 109      |
+|    Success           | 0.954    |
+| time/                |          |
+|    iterations        | 99       |
+|    fps               | 6.69     |
+|    elapsed_time      | 2.44e+04 |
+|    elapsed_steps     | 253440   |
+-----------------------------------
+ 51%|█████     | 256000/500000 [6:50:08<8:30:57,  7.96steps/s]  51%|█████     | 256000/500000 [6:50:20<8:30:57,  7.96steps/s] 52%|█████▏    | 258560/500000 [6:52:55<7:12:46,  9.30steps/s] 52%|█████▏    | 258560/500000 [6:53:10<7:12:46,  9.30steps/s] 52%|█████▏    | 261120/500000 [6:55:44<6:18:47, 10.51steps/s]                                                               52%|█████▏    | 261120/500000 [6:55:44<6:18:47, 10.51steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.8     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.8     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 2.59     |
+|    mean_entropy      | -3.94    |
+|    mean_ent_bonus    | -0.0745  |
+|    max_target_q      | 112      |
+|    min_target_q      | 16.9     |
+|    max_reward        | 103      |
+|    min_reward        | -2.09    |
+|    chamfer_loss      | 13.5     |
+|    encoder_grad_norm | 44.3     |
+|    q1_grad_norm      | 53       |
+|    q2_grad_norm      | 52.9     |
+|    actor_loss        | -96.6    |
+|    ent_coeff         | 0.0189   |
+|    ent_coeff_loss    | -0.191   |
+|    pi_grad_norm      | 0.513    |
+|    n_updates         | 63360    |
+| time/                |          |
+|    iterations        | 102      |
+|    fps               | 15.2     |
+|    elapsed_time      | 2.49e+04 |
+|    elapsed_steps     | 261120   |
+-----------------------------------
+ 52%|█████▏    | 261120/500000 [6:56:00<6:18:47, 10.51steps/s] 53%|█████▎    | 263680/500000 [6:58:38<5:42:17, 11.51steps/s] 53%|█████▎    | 263680/500000 [6:58:50<5:42:17, 11.51steps/s] 53%|█████▎    | 266240/500000 [7:01:28<5:14:52, 12.37steps/s] 53%|█████▎    | 266240/500000 [7:01:40<5:14:52, 12.37steps/s] 54%|█████▍    | 268800/500000 [7:04:18<4:54:44, 13.07steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 54%|█████▍    | 268800/500000 [7:04:30<4:54:44, 13.07steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_268800.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+                                                               54%|█████▍    | 268800/500000 [7:14:33<4:54:44, 13.07steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.4     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.4     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 2.67     |
+|    mean_entropy      | -4.08    |
+|    mean_ent_bonus    | -0.0773  |
+|    max_target_q      | 112      |
+|    min_target_q      | 14.8     |
+|    max_reward        | 103      |
+|    min_reward        | -2.05    |
+|    chamfer_loss      | 13.1     |
+|    encoder_grad_norm | 44.1     |
+|    q1_grad_norm      | 54.9     |
+|    q2_grad_norm      | 54.6     |
+|    actor_loss        | -97.7    |
+|    ent_coeff         | 0.019    |
+|    ent_coeff_loss    | 0.301    |
+|    pi_grad_norm      | 0.524    |
+|    n_updates         | 65280    |
+| eval/                |          |
+|    Length            | 30.8     |
+|    Return            | 112      |
+|    NonzeroRewards    | 30.8     |
+|    DiscountedReturn  | 112      |
+|    Success           | 0.954    |
+| time/                |          |
+|    iterations        | 105      |
+|    fps               | 6.81     |
+|    elapsed_time      | 2.61e+04 |
+|    elapsed_steps     | 268800   |
+-----------------------------------
+ 54%|█████▍    | 271360/500000 [7:17:27<9:16:27,  6.85steps/s] 55%|█████▍    | 273920/500000 [7:20:17<7:39:53,  8.19steps/s] 55%|█████▍    | 273920/500000 [7:20:30<7:39:53,  8.19steps/s] 55%|█████▌    | 276480/500000 [7:23:09<6:33:35,  9.46steps/s]                                                               55%|█████▌    | 276480/500000 [7:23:09<6:33:35,  9.46steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.7     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.7     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 2.92     |
+|    mean_entropy      | -3.94    |
+|    mean_ent_bonus    | -0.0762  |
+|    max_target_q      | 112      |
+|    min_target_q      | 14.8     |
+|    max_reward        | 104      |
+|    min_reward        | -2.12    |
+|    chamfer_loss      | 12.7     |
+|    encoder_grad_norm | 49.2     |
+|    q1_grad_norm      | 56       |
+|    q2_grad_norm      | 55.9     |
+|    actor_loss        | -98.4    |
+|    ent_coeff         | 0.0193   |
+|    ent_coeff_loss    | -0.206   |
+|    pi_grad_norm      | 0.499    |
+|    n_updates         | 67200    |
+| time/                |          |
+|    iterations        | 108      |
+|    fps               | 14.9     |
+|    elapsed_time      | 2.66e+04 |
+|    elapsed_steps     | 276480   |
+-----------------------------------
+ 55%|█████▌    | 276480/500000 [7:23:20<6:33:35,  9.46steps/s] 56%|█████▌    | 279040/500000 [7:25:56<5:44:29, 10.69steps/s] 56%|█████▌    | 279040/500000 [7:26:10<5:44:29, 10.69steps/s] 56%|█████▋    | 281600/500000 [7:28:46<5:10:38, 11.72steps/s] 56%|█████▋    | 281600/500000 [7:29:00<5:10:38, 11.72steps/s] 57%|█████▋    | 284160/500000 [7:31:38<4:47:40, 12.50steps/s]                                                               57%|█████▋    | 284160/500000 [7:31:38<4:47:40, 12.50steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 16       |
+|    Return            | 118      |
+|    NonzeroRewards    | 16       |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 2.52     |
+|    mean_entropy      | -4.05    |
+|    mean_ent_bonus    | -0.0785  |
+|    max_target_q      | 112      |
+|    min_target_q      | 15.6     |
+|    max_reward        | 104      |
+|    min_reward        | -2.05    |
+|    chamfer_loss      | 12.4     |
+|    encoder_grad_norm | 41.2     |
+|    q1_grad_norm      | 54.6     |
+|    q2_grad_norm      | 54.1     |
+|    actor_loss        | -98.7    |
+|    ent_coeff         | 0.0194   |
+|    ent_coeff_loss    | 0.203    |
+|    pi_grad_norm      | 0.506    |
+|    n_updates         | 69120    |
+| time/                |          |
+|    iterations        | 111      |
+|    fps               | 15.1     |
+|    elapsed_time      | 2.71e+04 |
+|    elapsed_steps     | 284160   |
+-----------------------------------
+ 57%|█████▋    | 284160/500000 [7:31:50<4:47:40, 12.50steps/s] 57%|█████▋    | 286720/500000 [7:34:35<4:32:21, 13.05steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 57%|█████▋    | 286720/500000 [7:34:50<4:32:21, 13.05steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_286720.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+ 58%|█████▊    | 289280/500000 [7:48:10<8:43:56,  6.70steps/s] 58%|█████▊    | 291840/500000 [7:51:02<7:12:16,  8.03steps/s]                                                               58%|█████▊    | 291840/500000 [7:51:02<7:12:16,  8.03steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.7     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.7     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 2.79     |
+|    mean_entropy      | -4.02    |
+|    mean_ent_bonus    | -0.0802  |
+|    max_target_q      | 112      |
+|    min_target_q      | 14.9     |
+|    max_reward        | 104      |
+|    min_reward        | -1.94    |
+|    chamfer_loss      | 12.3     |
+|    encoder_grad_norm | 48.4     |
+|    q1_grad_norm      | 58.2     |
+|    q2_grad_norm      | 57.8     |
+|    actor_loss        | -99.2    |
+|    ent_coeff         | 0.0199   |
+|    ent_coeff_loss    | 0.0562   |
+|    pi_grad_norm      | 0.526    |
+|    n_updates         | 71040    |
+| eval/                |          |
+|    Length            | 28.5     |
+|    Return            | 114      |
+|    NonzeroRewards    | 28.5     |
+|    DiscountedReturn  | 114      |
+|    Success           | 0.96     |
+| time/                |          |
+|    iterations        | 114      |
+|    fps               | 6.6      |
+|    elapsed_time      | 2.83e+04 |
+|    elapsed_steps     | 291840   |
+-----------------------------------
+ 58%|█████▊    | 291840/500000 [7:51:21<7:12:16,  8.03steps/s] 59%|█████▉    | 294400/500000 [7:53:53<6:07:42,  9.32steps/s] 59%|█████▉    | 294400/500000 [7:54:11<6:07:42,  9.32steps/s] 59%|█████▉    | 296960/500000 [7:56:47<5:23:02, 10.48steps/s] 59%|█████▉    | 296960/500000 [7:57:01<5:23:02, 10.48steps/s] 60%|█████▉    | 299520/500000 [7:59:40<4:51:09, 11.48steps/s]                                                               60%|█████▉    | 299520/500000 [7:59:40<4:51:09, 11.48steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.3     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.3     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 2.76     |
+|    mean_entropy      | -4.07    |
+|    mean_ent_bonus    | -0.0816  |
+|    max_target_q      | 112      |
+|    min_target_q      | 13.9     |
+|    max_reward        | 104      |
+|    min_reward        | -2.02    |
+|    chamfer_loss      | 12       |
+|    encoder_grad_norm | 46.3     |
+|    q1_grad_norm      | 54.6     |
+|    q2_grad_norm      | 54.2     |
+|    actor_loss        | -99.8    |
+|    ent_coeff         | 0.0201   |
+|    ent_coeff_loss    | 0.214    |
+|    pi_grad_norm      | 0.522    |
+|    n_updates         | 72960    |
+| time/                |          |
+|    iterations        | 117      |
+|    fps               | 14.8     |
+|    elapsed_time      | 2.88e+04 |
+|    elapsed_steps     | 299520   |
+-----------------------------------
+ 60%|█████▉    | 299520/500000 [7:59:51<4:51:09, 11.48steps/s] 60%|██████    | 302080/500000 [8:02:29<4:26:28, 12.38steps/s] 60%|██████    | 302080/500000 [8:02:41<4:26:28, 12.38steps/s] 61%|██████    | 304640/500000 [8:05:18<4:08:24, 13.11steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 61%|██████    | 304640/500000 [8:05:31<4:08:24, 13.11steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_304640.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+ 61%|██████▏   | 307200/500000 [8:18:39<7:53:28,  6.79steps/s]                                                               61%|██████▏   | 307200/500000 [8:18:39<7:53:28,  6.79steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.2     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.2     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 2.3      |
+|    mean_entropy      | -3.91    |
+|    mean_ent_bonus    | -0.0777  |
+|    max_target_q      | 112      |
+|    min_target_q      | 13.1     |
+|    max_reward        | 104      |
+|    min_reward        | -2.06    |
+|    chamfer_loss      | 11.5     |
+|    encoder_grad_norm | 40.6     |
+|    q1_grad_norm      | 54.1     |
+|    q2_grad_norm      | 53.6     |
+|    actor_loss        | -101     |
+|    ent_coeff         | 0.0199   |
+|    ent_coeff_loss    | -0.42    |
+|    pi_grad_norm      | 0.481    |
+|    n_updates         | 74880    |
+| eval/                |          |
+|    Length            | 28.9     |
+|    Return            | 114      |
+|    NonzeroRewards    | 28.9     |
+|    DiscountedReturn  | 114      |
+|    Success           | 0.96     |
+| time/                |          |
+|    iterations        | 120      |
+|    fps               | 6.74     |
+|    elapsed_time      | 2.99e+04 |
+|    elapsed_steps     | 307200   |
+-----------------------------------
+ 62%|██████▏   | 309760/500000 [8:21:28<6:29:35,  8.14steps/s] 62%|██████▏   | 309760/500000 [8:21:41<6:29:35,  8.14steps/s] 62%|██████▏   | 312320/500000 [8:24:21<5:32:23,  9.41steps/s] 62%|██████▏   | 312320/500000 [8:24:41<5:32:23,  9.41steps/s] 63%|██████▎   | 314880/500000 [8:27:12<4:51:37, 10.58steps/s]                                                               63%|██████▎   | 314880/500000 [8:27:12<4:51:37, 10.58steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.6     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.6     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.92     |
+|    mean_entropy      | -4.06    |
+|    mean_ent_bonus    | -0.0787  |
+|    max_target_q      | 112      |
+|    min_target_q      | 22.3     |
+|    max_reward        | 104      |
+|    min_reward        | -2.03    |
+|    chamfer_loss      | 11.1     |
+|    encoder_grad_norm | 34.4     |
+|    q1_grad_norm      | 54.7     |
+|    q2_grad_norm      | 54.3     |
+|    actor_loss        | -103     |
+|    ent_coeff         | 0.0194   |
+|    ent_coeff_loss    | 0.145    |
+|    pi_grad_norm      | 0.493    |
+|    n_updates         | 76800    |
+| time/                |          |
+|    iterations        | 123      |
+|    fps               | 15       |
+|    elapsed_time      | 3.04e+04 |
+|    elapsed_steps     | 314880   |
+-----------------------------------
+ 63%|██████▎   | 314880/500000 [8:27:31<4:51:37, 10.58steps/s] 63%|██████▎   | 317440/500000 [8:30:06<4:23:19, 11.56steps/s] 63%|██████▎   | 317440/500000 [8:30:21<4:23:19, 11.56steps/s] 64%|██████▍   | 320000/500000 [8:32:56<4:01:16, 12.43steps/s] 64%|██████▍   | 320000/500000 [8:33:11<4:01:16, 12.43steps/s] 65%|██████▍   | 322560/500000 [8:35:43<3:44:38, 13.16steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 65%|██████▍   | 322560/500000 [8:36:01<3:44:38, 13.16steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_322560.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+                                                               65%|██████▍   | 322560/500000 [8:46:05<3:44:38, 13.16steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 16.3     |
+|    Return            | 118      |
+|    NonzeroRewards    | 16.3     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.78     |
+|    mean_entropy      | -3.97    |
+|    mean_ent_bonus    | -0.0772  |
+|    max_target_q      | 113      |
+|    min_target_q      | 27.5     |
+|    max_reward        | 104      |
+|    min_reward        | -2.04    |
+|    chamfer_loss      | 10.9     |
+|    encoder_grad_norm | 32.5     |
+|    q1_grad_norm      | 51.1     |
+|    q2_grad_norm      | 50.6     |
+|    actor_loss        | -104     |
+|    ent_coeff         | 0.0195   |
+|    ent_coeff_loss    | -0.252   |
+|    pi_grad_norm      | 0.465    |
+|    n_updates         | 78720    |
+| eval/                |          |
+|    Length            | 27.3     |
+|    Return            | 114      |
+|    NonzeroRewards    | 27.3     |
+|    DiscountedReturn  | 114      |
+|    Success           | 0.968    |
+| time/                |          |
+|    iterations        | 126      |
+|    fps               | 6.78     |
+|    elapsed_time      | 3.16e+04 |
+|    elapsed_steps     | 322560   |
+-----------------------------------
+ 65%|██████▌   | 325120/500000 [8:48:59<7:06:42,  6.83steps/s] 66%|██████▌   | 327680/500000 [8:51:51<5:52:20,  8.15steps/s] 66%|██████▌   | 327680/500000 [8:52:11<5:52:20,  8.15steps/s] 66%|██████▌   | 330240/500000 [8:54:41<4:59:14,  9.46steps/s]                                                               66%|██████▌   | 330240/500000 [8:54:41<4:59:14,  9.46steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.6     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.6     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.55     |
+|    mean_entropy      | -4.07    |
+|    mean_ent_bonus    | -0.0773  |
+|    max_target_q      | 113      |
+|    min_target_q      | 51       |
+|    max_reward        | 105      |
+|    min_reward        | -1.98    |
+|    chamfer_loss      | 10.5     |
+|    encoder_grad_norm | 30.2     |
+|    q1_grad_norm      | 53.6     |
+|    q2_grad_norm      | 53.2     |
+|    actor_loss        | -105     |
+|    ent_coeff         | 0.019    |
+|    ent_coeff_loss    | 0.0476   |
+|    pi_grad_norm      | 0.428    |
+|    n_updates         | 80640    |
+| time/                |          |
+|    iterations        | 129      |
+|    fps               | 14.9     |
+|    elapsed_time      | 3.21e+04 |
+|    elapsed_steps     | 330240   |
+-----------------------------------
+ 66%|██████▌   | 330240/500000 [8:55:01<4:59:14,  9.46steps/s] 67%|██████▋   | 332800/500000 [8:57:32<4:22:09, 10.63steps/s] 67%|██████▋   | 332800/500000 [8:57:51<4:22:09, 10.63steps/s] 67%|██████▋   | 335360/500000 [9:00:24<3:56:07, 11.62steps/s] 67%|██████▋   | 335360/500000 [9:00:41<3:56:07, 11.62steps/s] 68%|██████▊   | 337920/500000 [9:03:17<3:37:18, 12.43steps/s]                                                               68%|██████▊   | 337920/500000 [9:03:17<3:37:18, 12.43steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.6     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.6     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.39     |
+|    mean_entropy      | -4.06    |
+|    mean_ent_bonus    | -0.077   |
+|    max_target_q      | 113      |
+|    min_target_q      | 74.9     |
+|    max_reward        | 105      |
+|    min_reward        | -1.95    |
+|    chamfer_loss      | 10.2     |
+|    encoder_grad_norm | 28       |
+|    q1_grad_norm      | 51.3     |
+|    q2_grad_norm      | 50.9     |
+|    actor_loss        | -106     |
+|    ent_coeff         | 0.019    |
+|    ent_coeff_loss    | -0.0313  |
+|    pi_grad_norm      | 0.412    |
+|    n_updates         | 82560    |
+| time/                |          |
+|    iterations        | 132      |
+|    fps               | 14.9     |
+|    elapsed_time      | 3.26e+04 |
+|    elapsed_steps     | 337920   |
+-----------------------------------
+ 68%|██████▊   | 337920/500000 [9:03:31<3:37:18, 12.43steps/s] 68%|██████▊   | 340480/500000 [9:06:06<3:22:25, 13.13steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 68%|██████▊   | 340480/500000 [9:06:21<3:22:25, 13.13steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_340480.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+ 69%|██████▊   | 343040/500000 [9:19:16<6:21:37,  6.85steps/s] 69%|██████▉   | 345600/500000 [9:22:05<5:13:36,  8.21steps/s]                                                               69%|██████▉   | 345600/500000 [9:22:05<5:13:36,  8.21steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15       |
+|    Return            | 118      |
+|    NonzeroRewards    | 15       |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.3      |
+|    mean_entropy      | -3.99    |
+|    mean_ent_bonus    | -0.0742  |
+|    max_target_q      | 113      |
+|    min_target_q      | 80       |
+|    max_reward        | 105      |
+|    min_reward        | -1.92    |
+|    chamfer_loss      | 9.93     |
+|    encoder_grad_norm | 28.1     |
+|    q1_grad_norm      | 50.1     |
+|    q2_grad_norm      | 49.7     |
+|    actor_loss        | -106     |
+|    ent_coeff         | 0.0186   |
+|    ent_coeff_loss    | -0.349   |
+|    pi_grad_norm      | 0.426    |
+|    n_updates         | 84480    |
+| eval/                |          |
+|    Length            | 25.7     |
+|    Return            | 113      |
+|    NonzeroRewards    | 25.7     |
+|    DiscountedReturn  | 113      |
+|    Success           | 0.97     |
+| time/                |          |
+|    iterations        | 135      |
+|    fps               | 6.81     |
+|    elapsed_time      | 3.37e+04 |
+|    elapsed_steps     | 345600   |
+-----------------------------------
+ 69%|██████▉   | 345600/500000 [9:22:21<5:13:36,  8.21steps/s] 70%|██████▉   | 348160/500000 [9:24:55<4:26:20,  9.50steps/s] 70%|██████▉   | 348160/500000 [9:25:11<4:26:20,  9.50steps/s] 70%|███████   | 350720/500000 [9:27:48<3:53:50, 10.64steps/s] 70%|███████   | 350720/500000 [9:28:01<3:53:50, 10.64steps/s] 71%|███████   | 353280/500000 [9:30:41<3:30:29, 11.62steps/s]                                                               71%|███████   | 353280/500000 [9:30:41<3:30:29, 11.62steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.1     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.1     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.22     |
+|    mean_entropy      | -4.01    |
+|    mean_ent_bonus    | -0.0707  |
+|    max_target_q      | 113      |
+|    min_target_q      | 80.7     |
+|    max_reward        | 105      |
+|    min_reward        | -1.88    |
+|    chamfer_loss      | 9.74     |
+|    encoder_grad_norm | 26.6     |
+|    q1_grad_norm      | 51.2     |
+|    q2_grad_norm      | 50.8     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0176   |
+|    ent_coeff_loss    | -0.246   |
+|    pi_grad_norm      | 0.398    |
+|    n_updates         | 86400    |
+| time/                |          |
+|    iterations        | 138      |
+|    fps               | 14.9     |
+|    elapsed_time      | 3.42e+04 |
+|    elapsed_steps     | 353280   |
+-----------------------------------
+ 71%|███████   | 353280/500000 [9:31:01<3:30:29, 11.62steps/s] 71%|███████   | 355840/500000 [9:33:31<3:12:35, 12.48steps/s] 71%|███████   | 355840/500000 [9:33:51<3:12:35, 12.48steps/s] 72%|███████▏  | 358400/500000 [9:36:19<2:58:52, 13.19steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 72%|███████▏  | 358400/500000 [9:36:31<2:58:52, 13.19steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_358400.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+ 72%|███████▏  | 360960/500000 [9:49:25<5:36:15,  6.89steps/s]                                                               72%|███████▏  | 360960/500000 [9:49:25<5:36:15,  6.89steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15       |
+|    Return            | 118      |
+|    NonzeroRewards    | 15       |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.12     |
+|    mean_entropy      | -3.99    |
+|    mean_ent_bonus    | -0.0679  |
+|    max_target_q      | 113      |
+|    min_target_q      | 93.8     |
+|    max_reward        | 105      |
+|    min_reward        | -1.78    |
+|    chamfer_loss      | 9.57     |
+|    encoder_grad_norm | 26.1     |
+|    q1_grad_norm      | 48.1     |
+|    q2_grad_norm      | 47.6     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.017    |
+|    ent_coeff_loss    | -0.29    |
+|    pi_grad_norm      | 0.366    |
+|    n_updates         | 88320    |
+| eval/                |          |
+|    Length            | 27.4     |
+|    Return            | 113      |
+|    NonzeroRewards    | 27.4     |
+|    DiscountedReturn  | 113      |
+|    Success           | 0.959    |
+| time/                |          |
+|    iterations        | 141      |
+|    fps               | 6.84     |
+|    elapsed_time      | 3.54e+04 |
+|    elapsed_steps     | 360960   |
+-----------------------------------
+ 73%|███████▎  | 363520/500000 [9:52:14<4:36:10,  8.24steps/s] 73%|███████▎  | 363520/500000 [9:52:31<4:36:10,  8.24steps/s] 73%|███████▎  | 366080/500000 [9:55:05<3:54:25,  9.52steps/s] 73%|███████▎  | 366080/500000 [9:55:21<3:54:25,  9.52steps/s] 74%|███████▎  | 368640/500000 [9:57:56<3:24:44, 10.69steps/s]                                                               74%|███████▎  | 368640/500000 [9:57:56<3:24:44, 10.69steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 14.9     |
+|    Return            | 118      |
+|    NonzeroRewards    | 14.9     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.07     |
+|    mean_entropy      | -4.02    |
+|    mean_ent_bonus    | -0.0652  |
+|    max_target_q      | 113      |
+|    min_target_q      | 98.4     |
+|    max_reward        | 105      |
+|    min_reward        | -1.81    |
+|    chamfer_loss      | 9.48     |
+|    encoder_grad_norm | 25.5     |
+|    q1_grad_norm      | 50.2     |
+|    q2_grad_norm      | 49.7     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0162   |
+|    ent_coeff_loss    | -0.315   |
+|    pi_grad_norm      | 0.364    |
+|    n_updates         | 90240    |
+| time/                |          |
+|    iterations        | 144      |
+|    fps               | 15       |
+|    elapsed_time      | 3.59e+04 |
+|    elapsed_steps     | 368640   |
+-----------------------------------
+ 74%|███████▎  | 368640/500000 [9:58:11<3:24:44, 10.69steps/s] 74%|███████▍  | 371200/500000 [10:00:53<3:05:15, 11.59steps/s] 74%|███████▍  | 371200/500000 [10:01:11<3:05:15, 11.59steps/s] 75%|███████▍  | 373760/500000 [10:03:46<2:49:34, 12.41steps/s] 75%|███████▍  | 373760/500000 [10:04:01<2:49:34, 12.41steps/s] 75%|███████▌  | 376320/500000 [10:06:35<2:37:06, 13.12steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 75%|███████▌  | 376320/500000 [10:06:51<2:37:06, 13.12steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_376320.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+                                                                75%|███████▌  | 376320/500000 [10:16:49<2:37:06, 13.12steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.1     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.1     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.05     |
+|    mean_entropy      | -4.02    |
+|    mean_ent_bonus    | -0.0622  |
+|    max_target_q      | 113      |
+|    min_target_q      | 98.6     |
+|    max_reward        | 105      |
+|    min_reward        | -1.75    |
+|    chamfer_loss      | 9.4      |
+|    encoder_grad_norm | 24.9     |
+|    q1_grad_norm      | 45.4     |
+|    q2_grad_norm      | 45       |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0155   |
+|    ent_coeff_loss    | -0.452   |
+|    pi_grad_norm      | 0.351    |
+|    n_updates         | 92160    |
+| eval/                |          |
+|    Length            | 26       |
+|    Return            | 112      |
+|    NonzeroRewards    | 26       |
+|    DiscountedReturn  | 112      |
+|    Success           | 0.966    |
+| time/                |          |
+|    iterations        | 147      |
+|    fps               | 6.78     |
+|    elapsed_time      | 3.7e+04  |
+|    elapsed_steps     | 376320   |
+-----------------------------------
+ 76%|███████▌  | 378880/500000 [10:19:38<4:52:56,  6.89steps/s] 76%|███████▋  | 381440/500000 [10:22:27<3:59:57,  8.24steps/s] 76%|███████▋  | 381440/500000 [10:22:41<3:59:57,  8.24steps/s] 77%|███████▋  | 384000/500000 [10:25:18<3:23:01,  9.52steps/s]                                                                77%|███████▋  | 384000/500000 [10:25:18<3:23:01,  9.52steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.1     |
+|    Return            | 118      |
+|    NonzeroRewards    | 15.1     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.01     |
+|    mean_entropy      | -4.06    |
+|    mean_ent_bonus    | -0.0588  |
+|    max_target_q      | 113      |
+|    min_target_q      | 98.8     |
+|    max_reward        | 105      |
+|    min_reward        | -1.76    |
+|    chamfer_loss      | 9.34     |
+|    encoder_grad_norm | 24.8     |
+|    q1_grad_norm      | 46.1     |
+|    q2_grad_norm      | 45.6     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0145   |
+|    ent_coeff_loss    | -0.309   |
+|    pi_grad_norm      | 0.344    |
+|    n_updates         | 94080    |
+| time/                |          |
+|    iterations        | 150      |
+|    fps               | 15.1     |
+|    elapsed_time      | 3.75e+04 |
+|    elapsed_steps     | 384000   |
+-----------------------------------
+ 77%|███████▋  | 384000/500000 [10:25:31<3:23:01,  9.52steps/s] 77%|███████▋  | 386560/500000 [10:28:11<2:57:17, 10.66steps/s] 77%|███████▋  | 386560/500000 [10:28:21<2:57:17, 10.66steps/s] 78%|███████▊  | 389120/500000 [10:31:06<2:39:17, 11.60steps/s] 78%|███████▊  | 389120/500000 [10:31:21<2:39:17, 11.60steps/s] 78%|███████▊  | 391680/500000 [10:33:57<2:25:06, 12.44steps/s]                                                                78%|███████▊  | 391680/500000 [10:33:57<2:25:06, 12.44steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 14.8     |
+|    Return            | 118      |
+|    NonzeroRewards    | 14.8     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 0.999    |
+|    mean_entropy      | -4.12    |
+|    mean_ent_bonus    | -0.0587  |
+|    max_target_q      | 113      |
+|    min_target_q      | 98.7     |
+|    max_reward        | 105      |
+|    min_reward        | -1.7     |
+|    chamfer_loss      | 9.26     |
+|    encoder_grad_norm | 24.5     |
+|    q1_grad_norm      | 44.7     |
+|    q2_grad_norm      | 44.2     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0143   |
+|    ent_coeff_loss    | -0.0392  |
+|    pi_grad_norm      | 0.331    |
+|    n_updates         | 96000    |
+| time/                |          |
+|    iterations        | 153      |
+|    fps               | 14.8     |
+|    elapsed_time      | 3.8e+04  |
+|    elapsed_steps     | 391680   |
+-----------------------------------
+ 78%|███████▊  | 391680/500000 [10:34:11<2:25:06, 12.44steps/s] 79%|███████▉  | 394240/500000 [10:36:47<2:14:12, 13.13steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 79%|███████▉  | 394240/500000 [10:37:01<2:14:12, 13.13steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_394240.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+ 79%|███████▉  | 396800/500000 [10:49:38<4:07:09,  6.96steps/s] 80%|███████▉  | 399360/500000 [10:52:29<3:22:15,  8.29steps/s]                                                                80%|███████▉  | 399360/500000 [10:52:29<3:22:15,  8.29steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 14.5     |
+|    Return            | 118      |
+|    NonzeroRewards    | 14.5     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 0.982    |
+|    mean_entropy      | -4.11    |
+|    mean_ent_bonus    | -0.059   |
+|    max_target_q      | 113      |
+|    min_target_q      | 98.9     |
+|    max_reward        | 105      |
+|    min_reward        | -1.73    |
+|    chamfer_loss      | 9.19     |
+|    encoder_grad_norm | 24.2     |
+|    q1_grad_norm      | 45.2     |
+|    q2_grad_norm      | 44.8     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0144   |
+|    ent_coeff_loss    | -0.0899  |
+|    pi_grad_norm      | 0.335    |
+|    n_updates         | 97920    |
+| eval/                |          |
+|    Length            | 28.1     |
+|    Return            | 113      |
+|    NonzeroRewards    | 28.1     |
+|    DiscountedReturn  | 113      |
+|    Success           | 0.958    |
+| time/                |          |
+|    iterations        | 156      |
+|    fps               | 6.91     |
+|    elapsed_time      | 3.91e+04 |
+|    elapsed_steps     | 399360   |
+-----------------------------------
+ 80%|███████▉  | 399360/500000 [10:52:41<3:22:15,  8.29steps/s] 80%|████████  | 401920/500000 [10:55:21<2:51:01,  9.56steps/s] 80%|████████  | 401920/500000 [10:55:41<2:51:01,  9.56steps/s] 81%|████████  | 404480/500000 [10:58:15<2:28:55, 10.69steps/s] 81%|████████  | 404480/500000 [10:58:31<2:28:55, 10.69steps/s] 81%|████████▏ | 407040/500000 [11:01:11<2:13:26, 11.61steps/s]                                                                81%|████████▏ | 407040/500000 [11:01:11<2:13:26, 11.61steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 14.7     |
+|    Return            | 118      |
+|    NonzeroRewards    | 14.7     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 0.952    |
+|    mean_entropy      | -4.14    |
+|    mean_ent_bonus    | -0.0593  |
+|    max_target_q      | 113      |
+|    min_target_q      | 99.6     |
+|    max_reward        | 105      |
+|    min_reward        | -1.69    |
+|    chamfer_loss      | 9.15     |
+|    encoder_grad_norm | 24.1     |
+|    q1_grad_norm      | 44.8     |
+|    q2_grad_norm      | 44.3     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0143   |
+|    ent_coeff_loss    | 0.0496   |
+|    pi_grad_norm      | 0.335    |
+|    n_updates         | 99840    |
+| time/                |          |
+|    iterations        | 159      |
+|    fps               | 14.7     |
+|    elapsed_time      | 3.97e+04 |
+|    elapsed_steps     | 407040   |
+-----------------------------------
+ 81%|████████▏ | 407040/500000 [11:01:21<2:13:26, 11.61steps/s] 82%|████████▏ | 409600/500000 [11:04:03<2:01:12, 12.43steps/s] 82%|████████▏ | 409600/500000 [11:04:21<2:01:12, 12.43steps/s] 82%|████████▏ | 412160/500000 [11:06:53<1:51:43, 13.10steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 82%|████████▏ | 412160/500000 [11:07:11<1:51:43, 13.10steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_412160.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+ 83%|████████▎ | 414720/500000 [11:20:27<3:31:24,  6.72steps/s]                                                                83%|████████▎ | 414720/500000 [11:20:27<3:31:24,  6.72steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 14.3     |
+|    Return            | 118      |
+|    NonzeroRewards    | 14.3     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 0.949    |
+|    mean_entropy      | -4.06    |
+|    mean_ent_bonus    | -0.0561  |
+|    max_target_q      | 113      |
+|    min_target_q      | 99.7     |
+|    max_reward        | 105      |
+|    min_reward        | -1.73    |
+|    chamfer_loss      | 9.11     |
+|    encoder_grad_norm | 24.3     |
+|    q1_grad_norm      | 44.6     |
+|    q2_grad_norm      | 44.1     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0138   |
+|    ent_coeff_loss    | -0.296   |
+|    pi_grad_norm      | 0.335    |
+|    n_updates         | 101760   |
+| eval/                |          |
+|    Length            | 25.9     |
+|    Return            | 109      |
+|    NonzeroRewards    | 25.9     |
+|    DiscountedReturn  | 109      |
+|    Success           | 0.961    |
+| time/                |          |
+|    iterations        | 162      |
+|    fps               | 6.64     |
+|    elapsed_time      | 4.08e+04 |
+|    elapsed_steps     | 414720   |
+-----------------------------------
+ 83%|████████▎ | 417280/500000 [11:23:23<2:51:56,  8.02steps/s] 83%|████████▎ | 417280/500000 [11:23:41<2:51:56,  8.02steps/s] 84%|████████▍ | 419840/500000 [11:26:16<2:23:45,  9.29steps/s] 84%|████████▍ | 419840/500000 [11:26:31<2:23:45,  9.29steps/s] 84%|████████▍ | 422400/500000 [11:29:07<2:03:20, 10.49steps/s]                                                                84%|████████▍ | 422400/500000 [11:29:07<2:03:20, 10.49steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 14.5     |
+|    Return            | 118      |
+|    NonzeroRewards    | 14.5     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 0.921    |
+|    mean_entropy      | -4.18    |
+|    mean_ent_bonus    | -0.0588  |
+|    max_target_q      | 113      |
+|    min_target_q      | 99.7     |
+|    max_reward        | 105      |
+|    min_reward        | -1.75    |
+|    chamfer_loss      | 9.06     |
+|    encoder_grad_norm | 23.8     |
+|    q1_grad_norm      | 41.3     |
+|    q2_grad_norm      | 40.8     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0141   |
+|    ent_coeff_loss    | 0.101    |
+|    pi_grad_norm      | 0.319    |
+|    n_updates         | 103680   |
+| time/                |          |
+|    iterations        | 165      |
+|    fps               | 14.8     |
+|    elapsed_time      | 4.13e+04 |
+|    elapsed_steps     | 422400   |
+-----------------------------------
+ 84%|████████▍ | 422400/500000 [11:29:21<2:03:20, 10.49steps/s] 85%|████████▍ | 424960/500000 [11:32:03<1:49:19, 11.44steps/s] 85%|████████▍ | 424960/500000 [11:32:21<1:49:19, 11.44steps/s] 86%|████████▌ | 427520/500000 [11:34:55<1:38:17, 12.29steps/s] 86%|████████▌ | 427520/500000 [11:35:11<1:38:17, 12.29steps/s] 86%|████████▌ | 430080/500000 [11:37:50<1:30:13, 12.92steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 86%|████████▌ | 430080/500000 [11:38:01<1:30:13, 12.92steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_430080.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+                                                                86%|████████▌ | 430080/500000 [11:48:06<1:30:13, 12.92steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 14.6     |
+|    Return            | 118      |
+|    NonzeroRewards    | 14.6     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 0.905    |
+|    mean_entropy      | -4.1     |
+|    mean_ent_bonus    | -0.0559  |
+|    max_target_q      | 113      |
+|    min_target_q      | 99.7     |
+|    max_reward        | 105      |
+|    min_reward        | -1.68    |
+|    chamfer_loss      | 9.02     |
+|    encoder_grad_norm | 23.7     |
+|    q1_grad_norm      | 42       |
+|    q2_grad_norm      | 41.5     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0136   |
+|    ent_coeff_loss    | -0.16    |
+|    pi_grad_norm      | 0.331    |
+|    n_updates         | 105600   |
+| eval/                |          |
+|    Length            | 27.8     |
+|    Return            | 114      |
+|    NonzeroRewards    | 27.8     |
+|    DiscountedReturn  | 114      |
+|    Success           | 0.958    |
+| time/                |          |
+|    iterations        | 168      |
+|    fps               | 6.74     |
+|    elapsed_time      | 4.25e+04 |
+|    elapsed_steps     | 430080   |
+-----------------------------------
+ 87%|████████▋ | 432640/500000 [11:50:55<2:44:07,  6.84steps/s] 87%|████████▋ | 435200/500000 [11:53:46<2:12:10,  8.17steps/s] 87%|████████▋ | 435200/500000 [11:54:01<2:12:10,  8.17steps/s] 88%|████████▊ | 437760/500000 [11:56:35<1:49:27,  9.48steps/s]                                                                88%|████████▊ | 437760/500000 [11:56:35<1:49:27,  9.48steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 14.1     |
+|    Return            | 118      |
+|    NonzeroRewards    | 14.1     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 0.893    |
+|    mean_entropy      | -4.14    |
+|    mean_ent_bonus    | -0.0565  |
+|    max_target_q      | 113      |
+|    min_target_q      | 99.9     |
+|    max_reward        | 105      |
+|    min_reward        | -1.67    |
+|    chamfer_loss      | 8.98     |
+|    encoder_grad_norm | 23.6     |
+|    q1_grad_norm      | 40.7     |
+|    q2_grad_norm      | 40.3     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0137   |
+|    ent_coeff_loss    | 0.0946   |
+|    pi_grad_norm      | 0.329    |
+|    n_updates         | 107520   |
+| time/                |          |
+|    iterations        | 171      |
+|    fps               | 15.1     |
+|    elapsed_time      | 4.3e+04  |
+|    elapsed_steps     | 437760   |
+-----------------------------------
+ 88%|████████▊ | 437760/500000 [11:56:51<1:49:27,  9.48steps/s] 88%|████████▊ | 440320/500000 [11:59:25<1:33:11, 10.67steps/s] 88%|████████▊ | 440320/500000 [11:59:41<1:33:11, 10.67steps/s] 89%|████████▊ | 442880/500000 [12:02:18<1:21:47, 11.64steps/s] 89%|████████▊ | 442880/500000 [12:02:31<1:21:47, 11.64steps/s] 89%|████████▉ | 445440/500000 [12:05:11<1:13:04, 12.45steps/s]                                                                89%|████████▉ | 445440/500000 [12:05:11<1:13:04, 12.45steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.3     |
+|    Return            | 117      |
+|    NonzeroRewards    | 15.3     |
+|    DiscountedReturn  | 117      |
+|    Success           | 0.998    |
+| algo/                |          |
+|    critic_loss       | 0.894    |
+|    mean_entropy      | -4.04    |
+|    mean_ent_bonus    | -0.0551  |
+|    max_target_q      | 113      |
+|    min_target_q      | 99.4     |
+|    max_reward        | 105      |
+|    min_reward        | -1.7     |
+|    chamfer_loss      | 8.97     |
+|    encoder_grad_norm | 23.5     |
+|    q1_grad_norm      | 41.2     |
+|    q2_grad_norm      | 40.8     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0136   |
+|    ent_coeff_loss    | -0.353   |
+|    pi_grad_norm      | 0.328    |
+|    n_updates         | 109440   |
+| time/                |          |
+|    iterations        | 174      |
+|    fps               | 14.9     |
+|    elapsed_time      | 4.35e+04 |
+|    elapsed_steps     | 445440   |
+-----------------------------------
+ 89%|████████▉ | 445440/500000 [12:05:21<1:13:04, 12.45steps/s] 90%|████████▉ | 448000/500000 [12:08:01<1:06:04, 13.12steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 90%|████████▉ | 448000/500000 [12:08:21<1:06:04, 13.12steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_448000.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+ 90%|█████████ | 450560/500000 [12:21:13<2:00:28,  6.84steps/s] 91%|█████████ | 453120/500000 [12:24:05<1:35:41,  8.16steps/s]                                                                91%|█████████ | 453120/500000 [12:24:05<1:35:41,  8.16steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 14.5     |
+|    Return            | 119      |
+|    NonzeroRewards    | 14.5     |
+|    DiscountedReturn  | 119      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 0.879    |
+|    mean_entropy      | -4.23    |
+|    mean_ent_bonus    | -0.0561  |
+|    max_target_q      | 113      |
+|    min_target_q      | 96.5     |
+|    max_reward        | 105      |
+|    min_reward        | -1.65    |
+|    chamfer_loss      | 8.91     |
+|    encoder_grad_norm | 23.5     |
+|    q1_grad_norm      | 44.2     |
+|    q2_grad_norm      | 43.7     |
+|    actor_loss        | -108     |
+|    ent_coeff         | 0.0133   |
+|    ent_coeff_loss    | 0.34     |
+|    pi_grad_norm      | 0.307    |
+|    n_updates         | 111360   |
+| eval/                |          |
+|    Length            | 26.9     |
+|    Return            | 113      |
+|    NonzeroRewards    | 26.9     |
+|    DiscountedReturn  | 113      |
+|    Success           | 0.957    |
+| time/                |          |
+|    iterations        | 177      |
+|    fps               | 6.77     |
+|    elapsed_time      | 4.46e+04 |
+|    elapsed_steps     | 453120   |
+-----------------------------------
+ 91%|█████████ | 453120/500000 [12:24:21<1:35:41,  8.16steps/s] 91%|█████████ | 455680/500000 [12:26:56<1:18:06,  9.46steps/s] 91%|█████████ | 455680/500000 [12:27:11<1:18:06,  9.46steps/s] 92%|█████████▏| 458240/500000 [12:29:47<1:05:26, 10.64steps/s] 92%|█████████▏| 458240/500000 [12:30:01<1:05:26, 10.64steps/s] 92%|█████████▏| 460800/500000 [12:32:42<56:24, 11.58steps/s]                                                                92%|█████████▏| 460800/500000 [12:32:42<56:24, 11.58steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 14.5     |
+|    Return            | 118      |
+|    NonzeroRewards    | 14.5     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 0.996    |
+|    mean_entropy      | -4.11    |
+|    mean_ent_bonus    | -0.0576  |
+|    max_target_q      | 113      |
+|    min_target_q      | 93.5     |
+|    max_reward        | 105      |
+|    min_reward        | -1.72    |
+|    chamfer_loss      | 8.95     |
+|    encoder_grad_norm | 24.9     |
+|    q1_grad_norm      | 41.2     |
+|    q2_grad_norm      | 40.7     |
+|    actor_loss        | -108     |
+|    ent_coeff         | 0.014    |
+|    ent_coeff_loss    | 0.194    |
+|    pi_grad_norm      | 0.325    |
+|    n_updates         | 113280   |
+| time/                |          |
+|    iterations        | 180      |
+|    fps               | 14.9     |
+|    elapsed_time      | 4.52e+04 |
+|    elapsed_steps     | 460800   |
+-----------------------------------
+ 92%|█████████▏| 460800/500000 [12:33:01<56:24, 11.58steps/s] 93%|█████████▎| 463360/500000 [12:35:34<49:14, 12.40steps/s] 93%|█████████▎| 463360/500000 [12:35:51<49:14, 12.40steps/s] 93%|█████████▎| 465920/500000 [12:38:29<43:40, 13.01steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 93%|█████████▎| 465920/500000 [12:38:41<43:40, 13.01steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_465920.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+ 94%|█████████▎| 468480/500000 [12:51:49<1:17:33,  6.77steps/s]                                                                94%|█████████▎| 468480/500000 [12:51:49<1:17:33,  6.77steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 14.6     |
+|    Return            | 118      |
+|    NonzeroRewards    | 14.6     |
+|    DiscountedReturn  | 118      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.3      |
+|    mean_entropy      | -4.06    |
+|    mean_ent_bonus    | -0.0567  |
+|    max_target_q      | 113      |
+|    min_target_q      | 91       |
+|    max_reward        | 105      |
+|    min_reward        | -1.7     |
+|    chamfer_loss      | 9.03     |
+|    encoder_grad_norm | 30       |
+|    q1_grad_norm      | 44.4     |
+|    q2_grad_norm      | 44.3     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.014    |
+|    ent_coeff_loss    | -0.0293  |
+|    pi_grad_norm      | 0.348    |
+|    n_updates         | 115200   |
+| eval/                |          |
+|    Length            | 26.6     |
+|    Return            | 114      |
+|    NonzeroRewards    | 26.6     |
+|    DiscountedReturn  | 114      |
+|    Success           | 0.962    |
+| time/                |          |
+|    iterations        | 183      |
+|    fps               | 6.69     |
+|    elapsed_time      | 4.63e+04 |
+|    elapsed_steps     | 468480   |
+-----------------------------------
+ 94%|█████████▍| 471040/500000 [12:54:39<59:30,  8.11steps/s]   94%|█████████▍| 471040/500000 [12:54:51<59:30,  8.11steps/s] 95%|█████████▍| 473600/500000 [12:57:30<46:45,  9.41steps/s] 95%|█████████▍| 473600/500000 [12:57:41<46:45,  9.41steps/s] 95%|█████████▌| 476160/500000 [13:00:20<37:30, 10.60steps/s]                                                              95%|█████████▌| 476160/500000 [13:00:20<37:30, 10.60steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 15.4     |
+|    Return            | 119      |
+|    NonzeroRewards    | 15.4     |
+|    DiscountedReturn  | 119      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.2      |
+|    mean_entropy      | -4.04    |
+|    mean_ent_bonus    | -0.056   |
+|    max_target_q      | 113      |
+|    min_target_q      | 90.4     |
+|    max_reward        | 105      |
+|    min_reward        | -1.72    |
+|    chamfer_loss      | 8.88     |
+|    encoder_grad_norm | 25.9     |
+|    q1_grad_norm      | 41       |
+|    q2_grad_norm      | 40.6     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0139   |
+|    ent_coeff_loss    | -0.28    |
+|    pi_grad_norm      | 0.326    |
+|    n_updates         | 117120   |
+| time/                |          |
+|    iterations        | 186      |
+|    fps               | 15       |
+|    elapsed_time      | 4.68e+04 |
+|    elapsed_steps     | 476160   |
+-----------------------------------
+ 95%|█████████▌| 476160/500000 [13:00:31<37:30, 10.60steps/s] 96%|█████████▌| 478720/500000 [13:03:07<30:20, 11.69steps/s] 96%|█████████▌| 478720/500000 [13:03:21<30:20, 11.69steps/s] 96%|█████████▋| 481280/500000 [13:05:52<24:44, 12.61steps/s] 96%|█████████▋| 481280/500000 [13:06:11<24:44, 12.61steps/s] 97%|█████████▋| 483840/500000 [13:08:33<20:00, 13.46steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+ 97%|█████████▋| 483840/500000 [13:08:51<20:00, 13.46steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_483840.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+                                                              97%|█████████▋| 483840/500000 [13:17:52<20:00, 13.46steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 16.4     |
+|    Return            | 119      |
+|    NonzeroRewards    | 16.4     |
+|    DiscountedReturn  | 119      |
+|    Success           | 1        |
+| algo/                |          |
+|    critic_loss       | 1.02     |
+|    mean_entropy      | -4.13    |
+|    mean_ent_bonus    | -0.0551  |
+|    max_target_q      | 113      |
+|    min_target_q      | 89.5     |
+|    max_reward        | 105      |
+|    min_reward        | -1.8     |
+|    chamfer_loss      | 8.84     |
+|    encoder_grad_norm | 25       |
+|    q1_grad_norm      | 40.2     |
+|    q2_grad_norm      | 39.8     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0134   |
+|    ent_coeff_loss    | -0.113   |
+|    pi_grad_norm      | 0.305    |
+|    n_updates         | 119040   |
+| eval/                |          |
+|    Length            | 33.8     |
+|    Return            | 109      |
+|    NonzeroRewards    | 33.8     |
+|    DiscountedReturn  | 109      |
+|    Success           | 0.937    |
+| time/                |          |
+|    iterations        | 189      |
+|    fps               | 7.31     |
+|    elapsed_time      | 4.79e+04 |
+|    elapsed_steps     | 483840   |
+-----------------------------------
+ 97%|█████████▋| 486400/500000 [13:20:34<30:57,  7.32steps/s] 98%|█████████▊| 488960/500000 [13:23:18<21:07,  8.71steps/s] 98%|█████████▊| 488960/500000 [13:23:31<21:07,  8.71steps/s] 98%|█████████▊| 491520/500000 [13:25:59<14:01, 10.08steps/s]                                                              98%|█████████▊| 491520/500000 [13:25:59<14:01, 10.08steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 17.8     |
+|    Return            | 117      |
+|    NonzeroRewards    | 17.8     |
+|    DiscountedReturn  | 117      |
+|    Success           | 0.991    |
+| algo/                |          |
+|    critic_loss       | 1.3      |
+|    mean_entropy      | -4.21    |
+|    mean_ent_bonus    | -0.0562  |
+|    max_target_q      | 113      |
+|    min_target_q      | 87.5     |
+|    max_reward        | 105      |
+|    min_reward        | -2.05    |
+|    chamfer_loss      | 8.95     |
+|    encoder_grad_norm | 30.2     |
+|    q1_grad_norm      | 46.1     |
+|    q2_grad_norm      | 45.7     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0133   |
+|    ent_coeff_loss    | 0.317    |
+|    pi_grad_norm      | 0.329    |
+|    n_updates         | 120960   |
+| time/                |          |
+|    iterations        | 192      |
+|    fps               | 15.8     |
+|    elapsed_time      | 4.84e+04 |
+|    elapsed_steps     | 491520   |
+-----------------------------------
+ 98%|█████████▊| 491520/500000 [13:26:11<14:01, 10.08steps/s] 99%|█████████▉| 494080/500000 [13:28:40<08:42, 11.32steps/s] 99%|█████████▉| 494080/500000 [13:28:51<08:42, 11.32steps/s] 99%|█████████▉| 496640/500000 [13:31:20<04:30, 12.40steps/s] 99%|█████████▉| 496640/500000 [13:31:31<04:30, 12.40steps/s]100%|█████████▉| 499200/500000 [13:33:58<00:59, 13.36steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+100%|█████████▉| 499200/500000 [13:34:11<00:59, 13.36steps/s]Saved video of policy to videos/2025-08-25/6bjmhx8h/nominal/policy_step_499200.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+                                                             100%|█████████▉| 499200/500000 [13:43:01<00:59, 13.36steps/s]-----------------------------------
+| rollout/             |          |
+|    Length            | 17.5     |
+|    Return            | 118      |
+|    NonzeroRewards    | 17.5     |
+|    DiscountedReturn  | 118      |
+|    Success           | 0.998    |
+| algo/                |          |
+|    critic_loss       | 1.67     |
+|    mean_entropy      | -4.33    |
+|    mean_ent_bonus    | -0.0616  |
+|    max_target_q      | 113      |
+|    min_target_q      | 83.5     |
+|    max_reward        | 105      |
+|    min_reward        | -2.12    |
+|    chamfer_loss      | 9.18     |
+|    encoder_grad_norm | 40.5     |
+|    q1_grad_norm      | 46.3     |
+|    q2_grad_norm      | 45.3     |
+|    actor_loss        | -107     |
+|    ent_coeff         | 0.0142   |
+|    ent_coeff_loss    | 0.853    |
+|    pi_grad_norm      | 0.346    |
+|    n_updates         | 122880   |
+| eval/                |          |
+|    Length            | 32.4     |
+|    Return            | 112      |
+|    NonzeroRewards    | 32.4     |
+|    DiscountedReturn  | 112      |
+|    Success           | 0.954    |
+| time/                |          |
+|    iterations        | 195      |
+|    fps               | 7.52     |
+|    elapsed_time      | 4.94e+04 |
+|    elapsed_steps     | 499200   |
+-----------------------------------
+100%|█████████▉| 499200/500000 [13:43:01<01:19, 10.11steps/s]
+RLRunner: Finished training.
+RLRunner: Log files saved to /home/michaelbezick/Repos/pprlPCA/wandb/run-20250825_100208-6bjmhx8h/files
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+
+########## SIG 11 - SIGSEGV: segfault ##########
+  sofa::helper::BackTrace::sig(int)
+  PyErr_Fetch
+  on_exit+0
+  PyErr_PrintEx
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:                  algo/actor_loss █████▇▅▃▃▃▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                algo/chamfer_loss █▆▅▅▅▄▄▄▄▄▄▃▃▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁
+wandb:                 algo/critic_loss ▁▁▂▂▃▄▆█▇▆▄▄▄▃▃▃▃▃▂▃▂▃▂▂▂▂▂▁▁▁▁▁▁▁▁▁▂▂▁▂
+wandb:           algo/encoder_grad_norm ▂▂▂▂▂▃▃▄▄█▅▄▄▄▄▃▃▃▃▃▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▂
+wandb:                   algo/ent_coeff █▇▅▄▄▂▂▂▁▁▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁
+wandb:              algo/ent_coeff_loss ▂▁▁▁▁▂▃▅██▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆▆
+wandb:                  algo/max_reward ▁▁▁▁▁▁▁▁▂▂▅▆▆▇▇█████████████████████████
+wandb:                algo/max_target_q ▁▁▁▂▂▃▄▅▆▇██████████████████████████████
+wandb:              algo/mean_ent_bonus █▅▄▄▃▂▂▁▁▁▂▂▂▂▂▂▁▁▁▁▁▂▁▁▁▁▁▁▂▂▂▂▂▂▂▂▂▂▂▂
+wandb:                algo/mean_entropy ██▇▆▆▅▄▁▁▁▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂
+wandb:                  algo/min_reward █▄▃▄▄▄▃▃▁▂▂▂▂▂▂▂▂▂▃▃▂▂▃▂▂▂▃▃▄▄▄▄▄▄▄▄▅▄▄▂
+wandb:                algo/min_target_q ▂▂▁▁▁▁▁▁▁▂▂▂▂▂▂▂▂▂▂▃▂▃▂▂▃▅▆▇▇███████▇▇▇▇
+wandb:                   algo/n_updates ▁▁▁▁▂▂▂▂▃▃▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▆▇▇▇▇▇██
+wandb:                algo/pi_grad_norm ▁▁▁▂▂▃▃▄▄▆█▇▇▇▇▇▇▇▇▇▇▇▇▇▆▇▇▆▅▅▅▅▄▄▄▄▄▄▄▄
+wandb:                algo/q1_grad_norm ▁▁▁▂▂▇█▇▇▇▇▆▆▆▆▆▆▆▆▆▆▆▆▅▆▅▅▅▅▅▅▅▅▅▅▅▅▅▅▅
+wandb:                algo/q2_grad_norm ▁▁▁▁▂▂▂▃▃▄█▇▇▇▇▆▆▆▆▆▆▆▆▆▆▆▅▆▅▅▅▅▅▅▅▅▅▅▅▅
+wandb:            eval/DiscountedReturn ▃▁▂▂▃▃▇██████████████████████
+wandb:                      eval/Length █████▇▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:              eval/NonzeroRewards █████▇▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                      eval/Return ▃▁▂▂▃▃▇██████████████████████
+wandb:                     eval/Success ▁▁▁▁▁▂▇██████████████████████
+wandb: eval/along_view+150/success_rate ▁▁▁▁▁▁▁▁▁▅▅█▁▁▁▁▁▁▅▅▁▁▁▁▁▁▁▁▅
+wandb:          eval/fov30/success_rate ▁▁▁▁▁▅███████████████████████
+wandb:          eval/fov70/success_rate ▁▁▁▁▁▅█████████████████████▅█
+wandb:        eval/nominal/success_rate ▁▁▁▁▁▁███████████████████████
+wandb:     eval/roll+15deg/success_rate ▁▁▁▁▁▁▁▁▁▁▁██▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:     eval/roll+30deg/success_rate ▁▁▁▁▁▁▁▁▅▁█▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:    eval/shift+x+150/success_rate ▁▁▁▁▅▁█████████████████████▅█
+wandb:    eval/shift+y+150/success_rate ▁▁▁▁▁▁▁▅▁▅▅▁▁█▁▁▅▅▅▅▁▅▁▁▁▁▅▁▅
+wandb:    eval/shift+z+150/success_rate ▁▁▁▁▁▁███████████████████████
+wandb:                      global_step ▁▁▁▁▁▁▁▂▂▂▂▂▃▃▃▃▃▃▄▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇███
+wandb:         rollout/DiscountedReturn ▂▁▄▃▁▃▄█████████████████████████████████
+wandb:                   rollout/Length ██▇▇▇▇▇▇▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:           rollout/NonzeroRewards █████▇▇▇▇▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:                   rollout/Return ▃▁▂▃▄▃▄▇████████████████████████████████
+wandb:                  rollout/Success ▁▁▁▃▂▂▂▃▆███████████████████████████████
+wandb:                time/elapsed_time ▁▁▁▁▁▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇██
+wandb:                         time/fps █▂▁▂▁▂▁▂▂▁▁▂▁▂▂▂▁▁▂▁▂▁▂▂▁▂▂▁▂▁▂▁▂▂▁▁▂▁▂▁
+wandb:                  time/iterations ▁▁▁▁▁▂▂▂▂▂▂▃▃▃▃▃▃▃▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▆▇▇▇▇██
+wandb: 
+wandb: Run summary:
+wandb:                  algo/actor_loss -107.40586
+wandb:                algo/chamfer_loss 9.18086
+wandb:                 algo/critic_loss 1.6654
+wandb:           algo/encoder_grad_norm 40.45793
+wandb:                   algo/ent_coeff 0.01424
+wandb:              algo/ent_coeff_loss 0.85255
+wandb:                  algo/max_reward 105.25453
+wandb:                algo/max_target_q 113.00063
+wandb:              algo/mean_ent_bonus -0.06165
+wandb:                algo/mean_entropy -4.32958
+wandb:                  algo/min_reward -2.1191
+wandb:                algo/min_target_q 83.54054
+wandb:                   algo/n_updates 122880
+wandb:                algo/pi_grad_norm 0.34593
+wandb:                algo/q1_grad_norm 46.32725
+wandb:                algo/q2_grad_norm 45.25387
+wandb:            eval/DiscountedReturn 111.77708
+wandb:                      eval/Length 32.36154
+wandb:              eval/NonzeroRewards 32.36154
+wandb:                      eval/Return 111.77708
+wandb:                     eval/Success 0.95385
+wandb: eval/along_view+150/success_rate 0.5
+wandb:          eval/fov30/success_rate 1
+wandb:          eval/fov70/success_rate 1
+wandb:        eval/nominal/success_rate 1
+wandb:     eval/roll+15deg/success_rate 0
+wandb:     eval/roll+30deg/success_rate 0
+wandb:    eval/shift+x+150/success_rate 1
+wandb:    eval/shift+y+150/success_rate 0.5
+wandb:    eval/shift+z+150/success_rate 1
+wandb:                      global_step 499200
+wandb:         rollout/DiscountedReturn 117.89024
+wandb:                   rollout/Length 17.46247
+wandb:           rollout/NonzeroRewards 17.46247
+wandb:                   rollout/Return 117.89024
+wandb:                  rollout/Success 0.99758
+wandb:                time/elapsed_time 49381.36
+wandb:                         time/fps 7.51676
+wandb:                  time/iterations 195
+wandb: 
+wandb: 🚀 View run divine-mountain-866 at: https://wandb.ai/michael-bezick-purdue-university/pprl/runs/6bjmhx8h
+wandb: ⭐️ View project at: https://wandb.ai/michael-bezick-purdue-university/pprl
+wandb: Synced 8 W&B file(s), 29 media file(s), 0 artifact file(s) and 1 other file(s)
+wandb: Find logs at: ./wandb/run-20250825_100208-6bjmhx8h/logs
+
+
+########## SIG ########## SIG 1515
+ - ########## SIG  - 15
+SIGTERM: a termination request was sent to the program########## SIG 
+SIGTERM: a termination request was sent to the program - 
+ ##########15########## SIG  ##########
+SIGTERM: a termination request was sent to the program########## SIG 
+
+ - ########## SIG 
+15
+########## SIG  ##########15SIGTERM: a termination request was sent to the program15########## SIG  - 
+ -  ########## - 15SIGTERM: a termination request was sent to the programSIGTERM: a termination request was sent to the program
+SIGTERM: a termination request was sent to the program -  ########## ########## ##########SIGTERM: a termination request was sent to the program
+
+
+ ##########
+15 - SIGTERM: a termination request was sent to the program ##########
+    sofa::helper::BackTrace::sig(int)sofa::helper::BackTrace::sig(int)
+
+      readsofa::helper::BackTrace::sig(int)read
+
+
+      _Py_read  read_Py_read
+sofa::helper::BackTrace::sig(int)
+
+  
+      _PyEval_EvalFrameDefault  _Py_readsofa::helper::BackTrace::sig(int)_PyEval_EvalFrameDefault
+  read  
+
+
+    sofa::helper::BackTrace::sig(int)
+sofa::helper::BackTrace::sig(int)      sofa::helper::BackTrace::sig(int)_PyFunction_Vectorcall
+  
+_PyEval_EvalFrameDefaultread_PyFunction_Vectorcall
+
+  _Py_read  
+
+
+    read
+read      read_PyEval_EvalFrameDefault
+  
+_PyFunction_Vectorcall_Py_read_PyEval_EvalFrameDefault  
+
+  _PyEval_EvalFrameDefault  
+
+
+sofa::helper::BackTrace::sig(int)    _Py_read
+_Py_read      
+_Py_read_PyFunction_Vectorcall
+  
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault_PyFunction_Vectorcall  
+  _PyFunction_Vectorcall  
+
+
+
+read  _PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault        
+_PyEval_EvalFrameDefault
+  
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault_PyFunction_Vectorcall_PyEval_EvalFrameDefault  
+  _PyEval_EvalFrameDefault  
+
+
+
+_Py_read  _PyFunction_Vectorcall
+_PyFunction_Vectorcall        
+_PyFunction_Vectorcall
+  
+_PyEval_EvalFrameDefault_PyFunction_Vectorcall_PyEval_EvalFrameDefault_PyFunction_Vectorcall  
+  _PyFunction_Vectorcall  
+
+
+
+_PyEval_EvalFrameDefault  _PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault        
+_PyEval_EvalFrameDefault
+  
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault_PyFunction_Vectorcall_PyEval_EvalFrameDefault  
+  _PyEval_EvalFrameDefault  
+
+
+
+_PyFunction_Vectorcall  _PyFunction_Vectorcall
+_PyFunction_Vectorcall        
+_PyFunction_Vectorcall
+  
+_PyEval_EvalFrameDefault_PyFunction_Vectorcall_PyEval_EvalFrameDefault_PyFunction_Vectorcall  
+  _PyFunction_Vectorcall  
+
+
+
+_PyEval_EvalFrameDefault  _PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault        
+_PyEval_EvalFrameDefault
+  
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault_PyFunction_Vectorcall_PyEval_EvalFrameDefault  
+  _PyEval_EvalFrameDefault  
+
+
+
+_PyFunction_Vectorcall  
+_PyFunction_Vectorcall        
+_PyFunction_Vectorcall  
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault_PyFunction_Vectorcall  
+_PyFunction_Vectorcall  
+
+
+_PyEval_EvalFrameDefault  
+_PyEval_EvalFrameDefault      _PyEval_EvalFrameDefault  _PyFunction_Vectorcall
+
+_PyFunction_Vectorcall_PyFunction_Vectorcall_PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault
+    
+
+
+  
+  _PyFunction_Vectorcall_PyFunction_Vectorcall      _PyFunction_Vectorcall  _PyEval_EvalFrameDefault
+
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault_PyFunction_Vectorcall
+_PyFunction_Vectorcall
+    
+
+
+  
+  _PyEval_EvalFrameDefault_PyEval_EvalFrameDefault      _PyEval_EvalFrameDefault  _PyFunction_Vectorcall
+
+_PyFunction_Vectorcall_PyFunction_Vectorcall_PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault
+    
+
+
+  
+  _PyFunction_Vectorcall_PyFunction_Vectorcall      _PyFunction_Vectorcall  _PyEval_EvalFrameDefault
+
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault_PyFunction_Vectorcall
+_PyFunction_Vectorcall
+    
+
+
+  _PyFunction_Vectorcall  
+    _PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault
+  
+
+  _PyEval_EvalFrameDefault    _PyFunction_Vectorcall_PyEval_EvalFrameDefault  _PyEval_EvalFrameDefaultPyEval_EvalCode_PyFunction_Vectorcall
+
+_PyFunction_Vectorcall
+  
+
+
+    
+      _PyFunction_Vectorcall_PyFunction_Vectorcall  _PyFunction_Vectorcall_PyEval_EvalFrameDefault  _PyFunction_Vectorcall_PyFunction_VectorcallPyRun_StringFlags
+_PyEval_EvalFrameDefault
+
+
+_PyEval_EvalFrameDefault
+
+
+  
+      
+      _PyEval_EvalFrameDefault  _PyEval_EvalFrameDefault_PyEval_EvalFrameDefault_PyFunction_Vectorcall  _PyEval_EvalFrameDefaultPyRun_SimpleStringFlags
+PyEval_EvalCode
+
+
+
+  
+      PyEval_EvalCode  _PyFunction_Vectorcall_PyFunction_VectorcallPy_RunMainPyRun_StringFlags
+
+
+
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  Py_BytesMain
+  __libc_start_main
+
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain_PyEval_EvalFrameDefault
+  Py_BytesMain  
+
+  _PyFunction_Vectorcall  __libc_start_mainPyEval_EvalCode_PyFunction_Vectorcall
+
+
+
+      
+PyRun_StringFlags_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+
+  
+    _PyEval_EvalFrameDefault  PyRun_SimpleStringFlagsPyEval_EvalCode
+PyEval_EvalCode
+
+  
+    _PyFunction_Vectorcall  Py_RunMainPyRun_StringFlags
+PyRun_StringFlags
+  
+  _PyEval_EvalFrameDefault  PyRun_SimpleStringFlags
+
+    PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+  Py_BytesMain
+  __libc_start_main

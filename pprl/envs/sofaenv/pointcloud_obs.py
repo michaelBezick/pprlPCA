@@ -17,6 +17,39 @@ STATE_KEY = "state"
 
 import numpy as np
 
+
+
+# def np_to_o3d(array: np.ndarray):
+#     assert (shape := array.shape[-1]) in (3, 6)
+#     pos = array[:, :3]
+#     pcd = o3d.geometry.PointCloud(points=o3d.utility.Vector3dVector(pos))
+#     if shape == 6:
+#         color = array[:, 3:]
+#         pcd.colors = o3d.utility.Vector3dVector(color)
+#     return pcd
+#
+# def o3d_to_np(pcd) -> np.ndarray:
+#     if pcd.has_colors():
+#         return np.hstack(
+#             (
+#                 np.asarray(pcd.points, dtype=np.float32),
+#                 np.asarray(pcd.colors, dtype=np.float32),
+#             )
+#         )
+#     else:
+#         return np.asarray(pcd.points, dtype=np.float32)
+
+def visualize(pos):
+    try:
+        o3d.visualization.draw_geometries([np_to_o3d(pos)])
+    except:
+        o3d.visualization.draw_geometries([pos])
+
+def save_point_cloud(pcd, filename):
+    pcd = np_to_o3d(pcd)
+    o3d.io.write_point_cloud(filename, pcd)
+    print(f"pcd saved to {filename}")
+
 def farthest_point_sampling(points, num_samples, init_idx=None):
     """
     Fast Farthest Point Sampling (FPS) from a point cloud.
@@ -29,44 +62,30 @@ def farthest_point_sampling(points, num_samples, init_idx=None):
     Returns:
         np.ndarray: (num_samples,) indices of sampled points
     """
-    N = points.shape[0]
-    sampled_idxs = np.zeros(num_samples, dtype=np.int64)
-    distances = np.full(N, np.inf)
 
-    if init_idx is None:
-        init_idx = np.random.randint(N)
-    sampled_idxs[0] = init_idx
-    current_point = points[init_idx]
-
-    for i in range(1, num_samples):
-        dist = np.sum((points - current_point) ** 2, axis=1)
-        distances = np.minimum(distances, dist)
-        idx = np.argmax(distances)
-        sampled_idxs[i] = idx
-        current_point = points[idx]
-
-    return sampled_idxs
+    points = np_to_o3d(points)
+    points.farthest_point_down_sample(num_samples)
+    points = o3d_to_np(points)
+    return points
 
 
-def np_to_o3d(array: np.ndarray):
-    assert (shape := array.shape[-1]) in (3, 6)
-    pos = array[:, :3]
-    pcd = o3d.geometry.PointCloud(points=o3d.utility.Vector3dVector(pos))
-    if shape == 6:
-        color = array[:, 3:]
-        pcd.colors = o3d.utility.Vector3dVector(color)
-    return pcd
-
-def visualize(pos):
-    try:
-        o3d.visualization.draw_geometries([np_to_o3d(pos)])
-    except:
-        o3d.visualization.draw_geometries([pos])
-
-def save_point_cloud(pcd, filename):
-    pcd = np_to_o3d(pcd)
-    o3d.io.write_point_cloud(filename, pcd)
-    print(f"pcd saved to {filename}")
+    # N = points.shape[0]
+    # sampled_idxs = np.zeros(num_samples, dtype=np.int64)
+    # distances = np.full(N, np.inf)
+    #
+    # if init_idx is None:
+    #     init_idx = np.random.randint(N)
+    # sampled_idxs[0] = init_idx
+    # current_point = points[init_idx]
+    #
+    # for i in range(1, num_samples):
+    #     dist = np.sum((points - current_point) ** 2, axis=1)
+    #     distances = np.minimum(distances, dist)
+    #     idx = np.argmax(distances)
+    #     sampled_idxs[i] = idx
+    #     current_point = points[idx]
+    #
+    # return sampled_idxs
 
 class SofaEnvPointCloudObservations(gym.ObservationWrapper):
     def __init__(
@@ -248,8 +267,8 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
         if (our_method):
             # FPS
-            idx = farthest_point_sampling(pcd[:, :3], 200)
-            pcd = pcd[idx]
+            pcd = farthest_point_sampling(pcd[:, :3], 200)
+            # pcd = pcd[idx]
 
             # PCA
             centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
