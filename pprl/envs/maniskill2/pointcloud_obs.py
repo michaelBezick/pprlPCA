@@ -249,7 +249,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
 
         pcd = self.pointcloud(observation)
 
-        save_point_cloud(pcd, "original.ply")
+        save_point_cloud(pcd, "original_ego.ply")
 
         our_method = True
 
@@ -270,7 +270,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
         else:
             new_points = pcd
 
-        save_point_cloud(new_points, "our_method.ply")
+        save_point_cloud(new_points, "our_method_ego.ply")
 
         if self.points_only:
             return new_points
