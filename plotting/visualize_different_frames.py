@@ -22,10 +22,10 @@ fig = plt.figure(figsize=(15, 5))
 for i in range(3):
     ax = fig.add_subplot(1, 3, i + 1, projection='3d')
     ax.scatter(point_clouds[i][:, 0], point_clouds[i][:, 1], point_clouds[i][:, 2])
-    ax.set_title(titles[i])
-    # ax.view_init(elev=20, azim=-60)  # Default-ish 3D view
+    ax.set_title(titles[i], fontsize=30)
+    ax.view_init(elev=20, azim=-60)  # Default-ish 3D view
 
-plt.tight_layout()
+plt.tight_layout(pad=2.)
 plt.savefig("frames_comparison.pdf", format="pdf")
 plt.show()
 
