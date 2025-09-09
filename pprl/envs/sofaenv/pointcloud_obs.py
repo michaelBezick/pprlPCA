@@ -254,7 +254,6 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         eig_vecs = torch.stack([v1, v2, v3], dim=0)
 
         return centered_pcd @ eig_vecs.T
-
     def observation(self, observation) -> np.ndarray | dict:
         """Replaces the observation of a step in a sofa_env scene with a point cloud."""
 

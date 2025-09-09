@@ -184,36 +184,36 @@ def _ensure_pylist(cam_cfgs):
     return cam_cfgs
 
 
-def build_train_env(base_env_factory, **env_kwargs):
-    env = base_env_factory(**env_kwargs)     # forward extras
-    env.unwrapped.create_scene_kwargs["camera_configs"] = _ensure_pylist(
-        env.unwrapped.create_scene_kwargs.get("camera_configs")
-    )
-    wrapped = PCObs(
-        env,
-        obs_frame="camera",
-        random_downsample=MAX_PTS-3,
-        post_processing_functions=[hpr_fn],
-        max_expected_num_points=MAX_PTS,
-        voxel_grid_size=5,
-    )
-
-    return wrapped
-
-def build_eval_env(base_env_factory, **env_kwargs):
-    env = base_env_factory(**env_kwargs)     # forward extras
-    env.unwrapped.create_scene_kwargs["camera_configs"] = _ensure_pylist(
-        env.unwrapped.create_scene_kwargs.get("camera_configs")
-    )
-    return PCObs(
-        env,
-        obs_frame="camera",
-        random_downsample=MAX_PTS-3,
-        post_processing_functions=[],        # no HPR
-        max_expected_num_points=MAX_PTS,
-        voxel_grid_size=5,
-    )
-
+# def build_train_env(base_env_factory, **env_kwargs):
+#     env = base_env_factory(**env_kwargs)     # forward extras
+#     env.unwrapped.create_scene_kwargs["camera_configs"] = _ensure_pylist(
+#         env.unwrapped.create_scene_kwargs.get("camera_configs")
+#     )
+#     wrapped = PCObs(
+#         env,
+#         obs_frame="camera",
+#         random_downsample=MAX_PTS-3,
+#         post_processing_functions=[hpr_fn],
+#         max_expected_num_points=MAX_PTS,
+#         voxel_grid_size=5,
+#     )
+#
+#     return wrapped
+#
+# def build_eval_env(base_env_factory, **env_kwargs):
+#     env = base_env_factory(**env_kwargs)     # forward extras
+#     env.unwrapped.create_scene_kwargs["camera_configs"] = _ensure_pylist(
+#         env.unwrapped.create_scene_kwargs.get("camera_configs")
+#     )
+#     return PCObs(
+#         env,
+#         obs_frame="camera",
+#         random_downsample=MAX_PTS-3,
+#         post_processing_functions=[],        # no HPR
+#         max_expected_num_points=MAX_PTS,
+#         voxel_grid_size=5,
+#     )
+#
 
 @contextmanager
 def build(config: DictConfig) -> Iterator[RLRunner]:

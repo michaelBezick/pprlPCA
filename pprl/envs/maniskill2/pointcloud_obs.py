@@ -14,6 +14,7 @@ import torch
 
 import open3d as o3d
 from .. import PointCloudSpace
+from pathlib import Path
 
 STATE_KEY = "state"
 
@@ -73,6 +74,9 @@ def farthest_point_sampling(points, num_samples, init_idx=None):
         np.ndarray: (num_samples,) indices of sampled points
     """
 
+    if points.shape[0] <= num_samples:
+        return points
+
     points = np_to_o3d(points)
     points.farthest_point_down_sample(num_samples)
     points = o3d_to_np(points)
@@ -123,6 +127,19 @@ class PointCloudWrapper(gym.ObservationWrapper):
         self.points_only = points_only
         self.points_key = points_key
 
+                # ---- PLY dump config (tweak as you like) ----
+        self.dump_ply_enable      = True        # turn on/off dumping
+        self.dump_ply_dir         = Path("pcd_dumps")  # output folder
+        self.dump_ply_prefix      = "overhead"  # file name prefix
+        self.dump_ply_max         = 50          # number of frames to save
+        self.dump_ply_exit_on_done = False      # True => raise SystemExit after saving 50
+        self._dump_ply_count      = 0           # internal counter
+
+        self.dump_ply_dir.mkdir(parents=True, exist_ok=True)
+
+        self.pcd_idx = 0
+
+
         wrapped_space = self.env.observation_space
 
         if max_expected_num_points is None:
@@ -152,6 +169,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
         self, *, seed: int | None = None, options: dict[str, Any] | None = None
     ) -> tuple[Any, dict[str, Any]]:
         """Modifies the :attr:`env` after calling :meth:`reset`, returning a modified observation using :meth:`self.observation`."""
+
         obs, info = self.env.reset(seed=seed, options=options)
 
         if self.exclude_handle_points:
@@ -244,12 +262,39 @@ class PointCloudWrapper(gym.ObservationWrapper):
 
         return centered_pcd @ eig_vecs.T
 
+    def _save_ply(self, arr: np.ndarray, path: Path) -> None:
+        """arr: (N,3) or (N,6) xyz[+rgb]. Saves binary .ply via Open3D."""
+        import open3d as o3d
+        pc = o3d.geometry.PointCloud()
+        pc.points = o3d.utility.Vector3dVector(arr[:, :3].astype(np.float64))
+        if arr.shape[1] >= 6:
+            cols = arr[:, 3:6].astype(np.float64)
+            if cols.max() > 1.0:
+                cols = cols / 255.0
+            pc.colors = o3d.utility.Vector3dVector(cols)
+        o3d.io.write_point_cloud(str(path), pc, write_ascii=False, compressed=False)
+
+
     def observation(self, observation: dict) -> np.ndarray | dict:
         """Replaces the observation of a step in a sofa_env scene with a point cloud."""
 
         pcd = self.pointcloud(observation)
 
-        save_point_cloud(pcd, "original_ego.ply")
+        #         # --- dump raw point cloud (from overhead camera) as sequential .ply ---
+        # if self.dump_ply_enable and self._dump_ply_count < self.dump_ply_max:
+        #     out_path = self.dump_ply_dir / f"{self.dump_ply_prefix}_{self._dump_ply_count:04d}.ply"
+        #     self._save_ply(pcd, out_path)
+        #     print(f"[PLY] saved {out_path}")
+        #     self._dump_ply_count += 1
+        #     if self._dump_ply_count >= self.dump_ply_max:
+        #         print(f"[PLY] reached {self.dump_ply_max} frames in {self.dump_ply_dir}")
+        #         if self.dump_ply_exit_on_done:
+        #             raise SystemExit(0)
+
+        breakpoint()
+
+
+        save_point_cloud(pcd, f"./maniskill_pcds/original/{self.pcd_idx}.ply")
 
         our_method = True
 
@@ -270,15 +315,39 @@ class PointCloudWrapper(gym.ObservationWrapper):
         else:
             new_points = pcd
 
-        save_point_cloud(new_points, "our_method_ego.ply")
+        save_point_cloud(new_points, f"./maniskill_pcds/pca/{self.pcd_idx}.ply")
+
+        self.pcd_idx += 1
+
+        MIN_POINTS = 150
+
+        n, d = new_points.shape
+        if n < MIN_POINTS:
+            pad_rows = MIN_POINTS - n
+            pad = np.zeros((pad_rows, d), dtype=new_points.dtype)
+            new_points = np.vstack([new_points, pad])
 
         if self.points_only:
             return new_points
         else:
+            state = spaces.flatten(
+                self.state_space,
+                {"agent": observation["agent"], "extra": observation["extra"]},
+            )
             return {
-                STATE_KEY: observation,
-                self.points_key: new_points,
+                STATE_KEY: state,
+                self.points_key: pcd,
             }
+
+        # save_point_cloud(new_points, "our_method_ego.ply")
+
+        # if self.points_only:
+        #     return new_points
+        # else:
+        #     return {
+        #         STATE_KEY: observation,
+        #         self.points_key: new_points,
+        #     }
 
         # centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
         #

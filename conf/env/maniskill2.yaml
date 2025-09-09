@@ -17,7 +17,6 @@ pcd_kwargs:
     # remove the floor
     min_bound: [-10, -10, 1e-4]
     max_bound: [10, 10, 10]
-  # obs_frame: world  # egocentric pointcloud
   obs_frame: base  # egocentric pointcloud
 continuous_task: True  # never terminate trajectory, only time out
 max_episode_steps: 200
