@@ -13,13 +13,30 @@ random_downsample: 1000
 center: [0.0, 0.0, 175.0]
 scale: 50
 
+mode: "train"
+
 # env args
 settle_steps: 10
-camera_reset_noise: [20.0, 20.0, 20.0, 20.0, 20.0, 20.0]
-num_objects: 5
+# camera_reset_noise: [20.0, 20.0, 20.0, 20.0, 20.0, 20.0]
+camera_reset_noise: [0., 0., 0., 0., 0., 0.,]
+num_objects: 2
 num_deflect_to_win: 2
-min_deflection_distance: 3.0
-single_agent: False
+min_deflection_distance: 1.0
+single_agent: True
+
+# reward_amount_dict:
+#   action_violated_cartesian_workspace: -1.0
+#   action_violated_state_limits: -1.0
+#   tool_collision: -5.0
+#   distance_to_active_sphere: -1.0
+#   delta_distance_to_active_sphere: -10.0
+#   deflection_of_inactive_spheres: -1.0
+#   deflection_of_active_sphere: 5.0
+#   delta_deflection_of_active_sphere: 1.0
+#   done_with_active_sphere: 10.0
+#   successful_task: 50.0
+#   rcm_violation_xyz: -1.0
+#   rcm_violation_rotation: -1.0
 
 reward_amount_dict:
   action_violated_cartesian_workspace: -0.0

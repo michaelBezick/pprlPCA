@@ -11,8 +11,24 @@ from torch import Tensor
 from pprl.envs import PointCloudSpace
 from pprl.models.modules.tokenizer import Tokenizer
 from pprl.models.modules.transformer import SequencePooling, TransformerEncoder
-from pprl.utils.array_dict import dict_to_batched_data, dict_to_batched_data_pca
+from pprl.utils.array_dict import dict_to_batched_data
+import numpy as np
 
+import open3d as o3d
+
+def np_to_o3d(array: np.ndarray):
+    assert (shape := array.shape[-1]) in (3, 6)
+    pos = array[:, :3]
+    pcd = o3d.geometry.PointCloud(points=o3d.utility.Vector3dVector(pos))
+    if shape == 6:
+        color = array[:, 3:]
+        pcd.colors = o3d.utility.Vector3dVector(color)
+    return pcd
+
+def save_point_cloud(pcd, filename):
+    pcd = np_to_o3d(pcd)
+    o3d.io.write_point_cloud(filename, pcd)
+    print(f"pcd saved to {filename}")
 
 class PointPatchTransformer(nn.Module):
     def __init__(
@@ -73,61 +89,63 @@ class PointPatchTransformer(nn.Module):
 
     def forward(self, observation: ArrayTree[Tensor]) -> Tensor:
 
-
         point_cloud: ArrayTree[Tensor] = (
             observation["points"] if self.obs_is_dict else observation
         )
 
-
-        # if not self.obs_is_dict:
-        #     print('ERROR OBS IS NOT DICT IN PPT.PY')
-            # exit()
-
-        points, ptr = point_cloud["pos"], point_cloud["ptr"]
-
-        # preprocessing points to be PCA canonicalized
-
-        PCA = True
-        random_rotation = False
+        pos, batch, color = dict_to_batched_data(point_cloud)
 
 
-        correct_points_list = [
-            points[ptr[i] : ptr[i+1] - 3, :3]
-            for i in range(len(ptr) - 1)
-        ] 
-
-        if PCA:
-            pca_basis_list = [
-                points[ptr[i+1] - 3 : ptr[i+1], :3].T
-                for i in range(len(ptr) - 1)
-            ]
-
-            pca_bases = torch.stack(pca_basis_list, dim = 0)
-            pca_bases *= (torch.randint(0, 2, (len(pca_basis_list), 3), device=pca_bases.device) * 2 - 1).unsqueeze(1)
-
-            """
-            VERY IMPORTANT, PCA COLUMNS ARE THE BASES, AND ORTHOGONALITY HAS BEEN VERIFIED
-            """
-
-            pca_basis_list = list(pca_bases)
-
-            rotated_list = [point_cloud @ pca_basis for point_cloud, pca_basis in zip(correct_points_list, pca_basis_list)]
-        else:
-            rotated_list = correct_points_list
+        # points, ptr = point_cloud["pos"], point_cloud["ptr"]
 
 
-        rotated_flat = torch.cat(rotated_list, dim=0)
-
-        if random_rotation:
-            rotated_flat = self.random_SO3(rotated_flat)
-
-        ptr_shifted = ptr.clone()
-        for i in range(1, len(ptr)):
-            ptr_shifted[i] = ptr[i] - 3 * i
+        # # preprocessing points to be PCA canonicalized
+        #
+        # PCA = False
+        # random_rotation = False
+        #
+        #
+        # correct_points_list = [
+        #     points[ptr[i] : ptr[i+1] - 3, :3]
+        #     for i in range(len(ptr) - 1)
+        # ] 
+        #
+        #
+        # if PCA:
+        #     pca_basis_list = [
+        #         points[ptr[i+1] - 3 : ptr[i+1], :3].T
+        #         for i in range(len(ptr) - 1)
+        #     ]
+        #
+        #     pca_bases = torch.stack(pca_basis_list, dim = 0)
+        #     pca_bases *= (torch.randint(0, 2, (len(pca_basis_list), 3), device=pca_bases.device) * 2 - 1).unsqueeze(1)
+        #
+        #     """
+        #     VERY IMPORTANT, PCA COMPONENTS ARE THE ROWS
+        #     """
+        #
+        #     pca_basis_list = list(pca_bases)
+        #
+        #     rotated_list = [point_cloud @ pca_basis for point_cloud, pca_basis in zip(correct_points_list, pca_basis_list)]
+        # else:
+        #     rotated_list = correct_points_list
+        #
+        #
+        # rotated_flat = torch.cat(rotated_list, dim=0)
+        #
+        # if random_rotation:
+        #     rotated_flat = self.random_SO3(rotated_flat)
+        #
+        # ptr_shifted = ptr.clone()
+        # for i in range(1, len(ptr)):
+        #     ptr_shifted[i] = ptr[i] - 3 * i
 
         # pos, batch, color = dict_to_batched_data(point_cloud)  # type: ignore
-        pos, batch = dict_to_batched_data_pca(rotated_flat, ptr_shifted)
-        color = None
+        # pos, batch = dict_to_batched_data_pca(points, ptr)
+
+        # save_point_cloud(pos.detach().cpu().numpy(), "training.ply")
+
+        # color = None
 
         x, _, center_points = self.tokenizer(pos, batch, color)
 

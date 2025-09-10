@@ -1,0 +1,1877 @@
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: michael-bezick (michael-bezick-purdue-university) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
+wandb: Tracking run with wandb version 0.19.9
+wandb: Run data is saved locally in /home/michaelbezick/Repos/pprlPCA/wandb/run-20250806_080441-r89phjnb
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run desert-galaxy-797
+wandb: ⭐️ View project at https://wandb.ai/michael-bezick-purdue-university/pprl
+wandb: 🚀 View run at https://wandb.ai/michael-bezick-purdue-university/pprl/runs/r89phjnb
+Group name is:  PCA_DS_MORE_PTS_no_aux
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+Instantiating 20 environments...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+Environments instantiated.
+BasicSampler: Resetting all environments.
+BasicSampler: Resetting agent.
+Instantiating 1 environments...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+Environments instantiated.
+Instantiating 1 environments...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+Environments instantiated.
+Instantiating 1 environments...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+Environments instantiated.
+Instantiating 1 environments...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+Environments instantiated.
+Instantiating 1 environments...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+Environments instantiated.
+Instantiating 1 environments...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+Environments instantiated.
+Instantiating 1 environments...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+Environments instantiated.
+Instantiating 1 environments...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+Environments instantiated.
+Instantiating 1 environments...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Grid.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[WARNING] [DirectionalLight(unnamed)] Could not read value for data field color: 1.3 1.3 1.3 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+Environments instantiated.
+SAC: Given sampler batch size 2560, training batch size 512, and replay ratio 32, there will be 160 updates per iteration.
+SAC: Using learnable entropy coefficient with target entropy of -4
+RLRunner: Starting training...
+RLRunner: Saving log files to /home/michaelbezick/Repos/pprlPCA/wandb/run-20250806_080441-r89phjnb/files
+  0%|          | 0/1000000 [00:00<?, ?steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+Saved video of policy to videos/2025-08-06/r89phjnb/nominal/policy_step_0.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+wandb: WARNING Step cannot be set when using tensorboard syncing. Please use `run.define_metric(...)` to define a custom metric to log your step values.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+                                                0%|          | 0/1000000 [02:03<?, ?steps/s]----------------------------------
+| eval/               |          |
+|    Length           | 500      |
+|    Return           | -194     |
+|    NonzeroRewards   | 500      |
+|    DiscountedReturn | -194     |
+|    Success          | 0        |
+| time/               |          |
+|    iterations       | 0        |
+|    fps              | 0        |
+|    elapsed_time     | 123      |
+|    elapsed_steps    | 0        |
+----------------------------------
+For the first 10000 steps, agent will use a fixed std of 0.75 for exploration.
+  0%|          | 2560/1000000 [02:09<14:03:47, 19.70steps/s]  1%|          | 5120/1000000 [02:16<6:11:10, 44.67steps/s]   1%|          | 7680/1000000 [02:22<3:40:04, 75.15steps/s]                                                             1%|          | 7680/1000000 [02:22<3:40:04, 75.15steps/s]-------------------------------
+| time/            |          |
+|    iterations    | 3        |
+|    fps           | 392      |
+|    elapsed_time  | 143      |
+|    elapsed_steps | 7680     |
+-------------------------------
+  1%|          | 7680/1000000 [02:40<3:40:04, 75.15steps/s]  1%|          | 10240/1000000 [04:37<7:56:11, 34.64steps/s]  1%|          | 10240/1000000 [04:50<7:56:11, 34.64steps/s]
+
+########## SIG ########## SIG 
+1515########## SIG  -  - 
+15SIGTERM: a termination request was sent to the programSIGTERM: a termination request was sent to the program########## SIG  -  ########## ##########15SIGTERM: a termination request was sent to the program
+
+ -  ##########SIGTERM: a termination request was sent to the program
+ ##########
+
+########## SIG 15 - SIGTERM: a termination request was sent to the program ##########
+
+########## SIG 15 - SIGTERM: a termination request was sent to the program ##########
+
+########## SIG 
+15
+########## SIG  - ########## SIG 
+15SIGTERM: a termination request was sent to the program15
+########## SIG  -  ########## - 
+########## SIG ########## SIG 15SIGTERM: a termination request was sent to the program
+SIGTERM: a termination request was sent to the program
+1515 -  ########## ##########
+ - ########## SIG  - SIGTERM: a termination request was sent to the program
+
+########## SIG SIGTERM: a termination request was sent to the program15SIGTERM: a termination request was sent to the program ##########15 ########## -  ##########
+ - 
+SIGTERM: a termination request was sent to the program
+SIGTERM: a termination request was sent to the program ########## ##########
+
+
+########## SIG 15 - SIGTERM: a termination request was sent to the program ##########
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+
+  ########## SIG _PyEval_EvalFrameDefault
+15   - _PyFunction_Vectorcall
+SIGTERM: a termination request was sent to the program   ##########_PyEval_EvalFrameDefault
+
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+    sofa::helper::BackTrace::sig(int)_PyEval_EvalFrameDefault
+
+    read_PyFunction_Vectorcall
+
+    _Py_read_PyEval_EvalFrameDefault  
+
+sofa::helper::BackTrace::sig(int)    
+_PyEval_EvalFrameDefault  _PyFunction_Vectorcall  
+sofa::helper::BackTrace::sig(int)
+read  
+  
+_PyFunction_Vectorcall  _PyEval_EvalFrameDefault  
+read
+  _Py_read  
+  sofa::helper::BackTrace::sig(int)
+_PyEval_EvalFrameDefault  _PyFunction_Vectorcall
+  
+_Py_read
+  _PyEval_EvalFrameDefault  
+  read
+_PyFunction_Vectorcall  _PyEval_EvalFrameDefault
+
+  
+_PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall########## SIG   
+  _Py_read
+15_PyEval_EvalFrameDefault  _PyFunction_Vectorcall
+   - 
+_PyFunction_Vectorcall
+  _PyEval_EvalFrameDefaultSIGTERM: a termination request was sent to the program  
+  _PyEval_EvalFrameDefault
+ ##########_PyFunction_Vectorcall  _PyEval_EvalFrameDefault
+  
+
+_PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall  
+  _PyFunction_Vectorcall
+_PyEval_EvalFrameDefault    _PyFunction_Vectorcall
+  
+sofa::helper::BackTrace::sig(int)_PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault  
+
+  _PyEval_EvalFrameDefault
+_PyFunction_Vectorcall    _PyEval_EvalFrameDefault
+  
+read_PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall  
+
+  _PyFunction_Vectorcall
+_PyEval_EvalFrameDefault    _PyFunction_Vectorcall
+  
+_Py_read_PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault  
+
+  _PyEval_EvalFrameDefault
+_PyFunction_Vectorcall    _PyEval_EvalFrameDefault
+  
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall  
+
+  _PyFunction_Vectorcall
+_PyEval_EvalFrameDefault    _PyFunction_Vectorcall
+  
+_PyFunction_Vectorcall_PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault  
+
+  _PyEval_EvalFrameDefault
+_PyFunction_Vectorcall    _PyEval_EvalFrameDefault
+    
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+  _PyFunction_Vectorcallsofa::helper::BackTrace::sig(int)  
+
+  _PyFunction_Vectorcall
+
+    _PyEval_EvalFrameDefault      PyEval_EvalCode
+      sofa::helper::BackTrace::sig(int)sofa::helper::BackTrace::sig(int)
+sofa::helper::BackTrace::sig(int)_PyFunction_Vectorcall_PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault  sofa::helper::BackTrace::sig(int)read
+
+  
+
+
+  _PyEval_EvalFrameDefault
+sofa::helper::BackTrace::sig(int)
+
+    _PyFunction_Vectorcall      PyRun_StringFlags
+  
+    readread
+read_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault  
+  _PyFunction_Vectorcall  read_Py_read
+
+  
+  
+
+sofa::helper::BackTrace::sig(int)  _PyFunction_Vectorcall
+read
+
+########## SIG 
+    _PyEval_EvalFrameDefault  sofa::helper::BackTrace::sig(int)    
+PyRun_SimpleStringFlags
+  
+  15  _Py_read_Py_read
+_Py_read
+_PyFunction_Vectorcall_PyFunction_Vectorcall  
+  _PyEval_EvalFrameDefault  _Py_read - _PyEval_EvalFrameDefault
+
+  
+  
+
+read  _PyEval_EvalFrameDefault
+_Py_read
+SIGTERM: a termination request was sent to the program
+    PyEval_EvalCode  read    
+Py_RunMain
+  
+   ##########  _PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault  
+  _PyFunction_Vectorcall  _PyEval_EvalFrameDefault
+_PyFunction_Vectorcall
+
+  
+  
+
+_Py_read  _PyFunction_Vectorcall
+_PyEval_EvalFrameDefault
+
+    PyRun_StringFlags  _Py_read    
+Py_BytesMain
+  
+    _PyFunction_Vectorcall_PyFunction_Vectorcall
+_PyFunction_Vectorcall
+_PyFunction_Vectorcall_PyFunction_Vectorcall  
+  _PyEval_EvalFrameDefault  _PyFunction_Vectorcall
+
+  
+  
+
+_PyEval_EvalFrameDefault  _PyEval_EvalFrameDefault
+_PyFunction_Vectorcall
+    PyRun_SimpleStringFlags  _PyEval_EvalFrameDefault    
+__libc_start_main
+  
+  _PyEval_EvalFrameDefault_PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault  
+  PyEval_EvalCode
+  _PyEval_EvalFrameDefault
+    
+
+
+_PyFunction_Vectorcall  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+_PyEval_EvalFrameDefault  __libc_start_main
+
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefaultPy_RunMain
+
+    _PyFunction_VectorcallPy_BytesMain
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+########## SIG 15
+ - ########## SIG SIGTERM: a termination request was sent to the program15 ########## - 
+SIGTERM: a termination request was sent to the program
+ #################### SIG 
+15 - SIGTERM: a termination request was sent to the program ##########
+
+########## SIG 15 - SIGTERM: a termination request was sent to the program ##########
+_PyFunction_Vectorcall
+
+_PyEval_EvalFrameDefault    PyRun_StringFlags_PyEval_EvalFrameDefault
+
+
+
+        PyRun_SimpleStringFlags_PyFunction_VectorcallPyEval_EvalCode_PyFunction_Vectorcall
+
+
+
+        Py_RunMain_PyEval_EvalFrameDefaultPyRun_StringFlags_PyEval_EvalFrameDefault
+  
+
+
+  sofa::helper::BackTrace::sig(int)      Py_BytesMain
+_PyFunction_VectorcallPyRun_SimpleStringFlags_PyFunction_Vectorcall
+  
+
+
+  read      __libc_start_main
+_PyEval_EvalFrameDefaultPy_RunMain_PyEval_EvalFrameDefault
+  
+
+_Py_read    
+Py_BytesMain_PyFunction_Vectorcall  
+
+_PyEval_EvalFrameDefault    
+__libc_start_main_PyEval_EvalFrameDefault  
+
+
+_PyFunction_Vectorcall########## SIG   
+15_PyFunction_Vectorcall   - 
+_PyEval_EvalFrameDefaultSIGTERM: a termination request was sent to the program  
+ ##########_PyEval_EvalFrameDefault  
+
+_PyFunction_Vectorcall  
+_PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+    sofa::helper::BackTrace::sig(int)
+  read_PyFunction_Vectorcall
+
+    _Py_read_PyEval_EvalFrameDefault
+
+
+    _PyEval_EvalFrameDefault########## SIG _PyFunction_Vectorcall
+15_PyFunction_Vectorcall
+   -       _PyFunction_Vectorcall
+SIGTERM: a termination request was sent to the programsofa::helper::BackTrace::sig(int)sofa::helper::BackTrace::sig(int)_PyEval_EvalFrameDefault
+   ##########
+
+
+  _PyEval_EvalFrameDefault
+        _PyEval_EvalFrameDefault
+sofa::helper::BackTrace::sig(int)readread_PyFunction_Vectorcall
+  
+
+
+
+  _PyFunction_Vectorcall        _PyFunction_Vectorcall
+read_Py_read_Py_read_PyEval_EvalFrameDefault
+  
+
+
+
+  _PyEval_EvalFrameDefault        _PyEval_EvalFrameDefault
+_Py_read_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault_PyFunction_Vectorcall
+  
+
+
+
+  _PyFunction_Vectorcall        _PyFunction_Vectorcall
+_PyEval_EvalFrameDefault_PyFunction_Vectorcall_PyFunction_Vectorcall  _PyEval_EvalFrameDefault
+  
+
+
+
+  _PyFunction_Vectorcall_PyEval_EvalFrameDefault        _PyEval_EvalFrameDefault
+
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault_PyFunction_Vectorcall
+    
+
+
+
+  _PyEval_EvalFrameDefault_PyFunction_Vectorcall        _PyFunction_Vectorcall
+
+_PyEval_EvalFrameDefault_PyFunction_Vectorcall_PyFunction_Vectorcall_PyEval_EvalFrameDefault
+      
+  
+
+
+
+  _PyFunction_Vectorcall_PyEval_EvalFrameDefault  
+_PyFunction_Vectorcall    
+  _PyFunction_Vectorcall  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall  
+
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault########## SIG _PyFunction_Vectorcall
+  
+  
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault    
+
+15
+  __libc_start_main  _PyEval_EvalFrameDefault  
+
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault     -   _PyEval_EvalFrameDefault
+_PyFunction_Vectorcall
+_PyEval_EvalFrameDefault    
+
+_PyFunction_Vectorcall_PyFunction_VectorcallSIGTERM: a termination request was sent to the program_PyEval_EvalFrameDefault  
+
+  
+_PyFunction_Vectorcall_PyFunction_Vectorcall    
+
+ ##########
+sofa::helper::BackTrace::sig(int)    _PyFunction_Vectorcall  
+
+_PyEval_EvalFrameDefault    
+  
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault
+_PyFunction_Vectorcall    
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefaultPyEval_EvalCode  
+
+  
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault  
+
+read    _PyEval_EvalFrameDefault  
+
+_PyFunction_Vectorcall    
+_PyEval_EvalFrameDefault_PyFunction_Vectorcall
+_PyEval_EvalFrameDefault      
+_PyFunction_Vectorcall_PyFunction_Vectorcall  
+
+  
+_PyFunction_Vectorcallsofa::helper::BackTrace::sig(int)_PyFunction_Vectorcall  
+
+_Py_read    _PyFunction_Vectorcall  
+
+
+_PyEval_EvalFrameDefaultsofa::helper::BackTrace::sig(int)    
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault_PyFunction_Vectorcall      
+
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault  
+
+
+
+read_PyEval_EvalFrameDefault    
+
+_PyEval_EvalFrameDefault        
+
+read    
+PyRun_StringFlags_PyEval_EvalFrameDefault_PyFunction_Vectorcall_PyEval_EvalFrameDefault    
+_PyFunction_Vectorcall_PyFunction_Vectorcall  
+
+
+_Py_read_PyFunction_Vectorcall  
+
+_PyFunction_Vectorcall      
+
+_Py_read    
+PyRun_SimpleStringFlags_PyEval_EvalFrameDefault_PyFunction_Vectorcall    
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault  
+
+
+_PyEval_EvalFrameDefault_PyEval_EvalFrameDefault  
+
+_PyEval_EvalFrameDefault      
+
+_PyEval_EvalFrameDefault    
+Py_RunMainPyEval_EvalCode_PyEval_EvalFrameDefault    
+_PyFunction_Vectorcall_PyFunction_Vectorcall_PyFunction_Vectorcall
+
+  _PyFunction_Vectorcall
+_PyFunction_Vectorcall
+
+  
+_PyEval_EvalFrameDefault  _PyFunction_Vectorcall
+_PyFunction_Vectorcall  
+
+
+  ########## SIG     15_PyFunction_Vectorcall_PyEval_EvalFrameDefaultPy_BytesMain - 
+_PyEval_EvalFrameDefault
+SIGTERM: a termination request was sent to the program  
+
+   ##########_PyEval_EvalFrameDefault  __libc_start_main
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  _PyEval_EvalFrameDefault
+
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+########## SIG 15 - SIGTERM: a termination request was sent to the program ##########
+PyRun_StringFlags  
+_PyFunction_Vectorcall  
+PyRun_SimpleStringFlags  
+  _PyEval_EvalFrameDefault  sofa::helper::BackTrace::sig(int)
+Py_RunMain
+  
+  _PyFunction_Vectorcall  read
+Py_BytesMain
+  
+  _PyEval_EvalFrameDefault  _Py_read
+__libc_start_main
+  
+  _PyFunction_Vectorcall_PyEval_EvalFrameDefault
+
+    _PyEval_EvalFrameDefault_PyFunction_Vectorcall
+
+    _PyFunction_Vectorcall_PyEval_EvalFrameDefault
+
+    _PyEval_EvalFrameDefault_PyFunction_Vectorcall
+
+    _PyFunction_Vectorcall_PyEval_EvalFrameDefault
+
+    _PyEval_EvalFrameDefault_PyFunction_Vectorcall
+
+    _PyFunction_Vectorcall_PyEval_EvalFrameDefault
+
+    _PyEval_EvalFrameDefault_PyFunction_Vectorcall
+
+    PyEval_EvalCode_PyEval_EvalFrameDefault
+
+    PyRun_StringFlags_PyFunction_Vectorcall
+
+    PyRun_SimpleStringFlags_PyEval_EvalFrameDefault
+
+    Py_RunMain_PyFunction_Vectorcall
+
+    Py_BytesMain_PyEval_EvalFrameDefault
+
+    __libc_start_main_PyFunction_Vectorcall
+
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+    _PyFunction_Vectorcall_PyFunction_Vectorcall
+_PyEval_EvalFrameDefault    
+
+
+_PyEval_EvalFrameDefault
+  _PyEval_EvalFrameDefault  
+  _PyFunction_Vectorcall
+_PyEval_EvalFrameDefault    _PyEval_EvalFrameDefault
+  
+_PyEval_EvalFrameDefault_PyFunction_Vectorcall
+  _PyFunction_Vectorcall  
+
+  _PyEval_EvalFrameDefault
+_PyFunction_Vectorcall    _PyFunction_Vectorcall
+  
+_PyFunction_Vectorcall_PyEval_EvalFrameDefault
+  _PyEval_EvalFrameDefault  
+
+  _PyFunction_Vectorcall
+_PyEval_EvalFrameDefault    
+  
+_PyEval_EvalFrameDefault_PyFunction_Vectorcall  _PyFunction_Vectorcall
+  
+_PyEval_EvalFrameDefault
+  PyEval_EvalCode  
+  _PyFunction_Vectorcall
+_PyEval_EvalFrameDefault  _PyEval_EvalFrameDefault
+  
+_PyFunction_Vectorcall  PyRun_StringFlags  
+_PyEval_EvalFrameDefault
+PyEval_EvalCode  
+  
+_PyEval_EvalFrameDefault  PyRun_SimpleStringFlags  
+PyEval_EvalCode
+PyRun_StringFlags  
+  
+_PyFunction_Vectorcall  Py_RunMain  
+
+PyRun_SimpleStringFlags    
+_PyEval_EvalFrameDefaultPy_BytesMain  
+
+Py_RunMain    
+_PyFunction_Vectorcall__libc_start_main  
+
+Py_BytesMain  
+_PyEval_EvalFrameDefault  
+__libc_start_main  
+_PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+_PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+_PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+
+
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  
+sofa::helper::BackTrace::sig(int)
+
+  ########## SIG   read15########## SIG 
+
+ - _PyFunction_Vectorcall15    SIGTERM: a termination request was sent to the program
+ - _Py_readPyEval_EvalCode ##########  SIGTERM: a termination request was sent to the program
+
+
+_PyEval_EvalFrameDefault ##########    
+
+_PyEval_EvalFrameDefaultPyRun_StringFlags  
+
+PyEval_EvalCode    
+_PyFunction_VectorcallPyRun_SimpleStringFlags  
+
+PyRun_StringFlags    
+_PyEval_EvalFrameDefaultPy_RunMain  
+
+PyRun_SimpleStringFlags    
+_PyFunction_VectorcallPy_BytesMain  
+  
+Py_RunMain  sofa::helper::BackTrace::sig(int)  
+_PyEval_EvalFrameDefault
+__libc_start_main  
+  
+Py_BytesMain  read
+_PyFunction_Vectorcall
+  
+    _Py_read_PyEval_EvalFrameDefault
+
+    _PyEval_EvalFrameDefault_PyFunction_Vectorcall
+
+    _PyFunction_Vectorcall_PyEval_EvalFrameDefault
+
+    _PyEval_EvalFrameDefault_PyFunction_Vectorcall
+
+    _PyFunction_Vectorcall_PyEval_EvalFrameDefault
+
+    _PyEval_EvalFrameDefault_PyFunction_Vectorcall
+
+    _PyFunction_Vectorcall_PyEval_EvalFrameDefault
+
+    _PyEval_EvalFrameDefault_PyFunction_Vectorcall
+
+    _PyFunction_Vectorcall_PyEval_EvalFrameDefault
+
+    _PyEval_EvalFrameDefaultPyEval_EvalCode
+
+    _PyFunction_VectorcallPyRun_StringFlags
+
+    _PyEval_EvalFrameDefaultPyRun_SimpleStringFlags
+
+    _PyFunction_VectorcallPy_RunMain
+
+  _PyEval_EvalFrameDefault__libc_start_main  
+
+Py_BytesMain  
+_PyFunction_Vectorcall  __libc_start_main
+
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+  sofa::helper::BackTrace::sig(int)
+  read
+  _Py_read
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+PyRun_StringFlags
+  PyRun_SimpleStringFlags
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
+/home/michaelbezick/.conda/envs/pprl/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 1247 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

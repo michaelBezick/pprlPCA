@@ -1,0 +1,192 @@
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+wandb: Currently logged in as: michael-bezick (michael-bezick-purdue-university) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
+wandb: Tracking run with wandb version 0.20.1
+wandb: Run data is saved locally in /home/exx/Michael/pprlPCA/wandb/run-20250908_141022-2lzteniy
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run splendid-smoke-971
+wandb: ⭐️ View project at https://wandb.ai/michael-bezick-purdue-university/pprl
+wandb: 🚀 View run at https://wandb.ai/michael-bezick-purdue-university/pprl/runs/2lzteniy
+Group name is:  PC_PCA
+Instantiating 8 environments...
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Environments instantiated.
+Instantiating 1 environments...
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Environments instantiated.
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
+  depth = (depth - min_depth) / (max_depth - min_depth)
+Instantiating 1 environments...
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Environments instantiated.
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
+  depth = (depth - min_depth) / (max_depth - min_depth)
+Instantiating 1 environments...
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Environments instantiated.
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
+  depth = (depth - min_depth) / (max_depth - min_depth)
+Instantiating 1 environments...
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Environments instantiated.
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
+  depth = (depth - min_depth) / (max_depth - min_depth)
+Instantiating 1 environments...
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Environments instantiated.
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
+  depth = (depth - min_depth) / (max_depth - min_depth)
+Instantiating 1 environments...
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Environments instantiated.
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
+  depth = (depth - min_depth) / (max_depth - min_depth)
+Instantiating 1 environments...
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Environments instantiated.
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
+  depth = (depth - min_depth) / (max_depth - min_depth)
+Instantiating 1 environments...
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Environments instantiated.
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
+  depth = (depth - min_depth) / (max_depth - min_depth)
+Instantiating 1 environments...
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Environments instantiated.
+/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
+  depth = (depth - min_depth) / (max_depth - min_depth)
+BasicSampler: Resetting all environments.
+BasicSampler: Resetting agent.
+SAC: Given sampler batch size 2560, training batch size 512, and replay ratio 16, there will be 80 updates per iteration.
+SAC: Using learnable entropy coefficient with target entropy of -20
+RLRunner: Starting training...
+RLRunner: Saving log files to /home/exx/Michael/pprlPCA/wandb/run-20250908_141022-2lzteniy/files
+  0%|          | 0/1000000 [00:00<?, ?steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+Saved video of policy to videos/2025-09-08/2lzteniy/nominal/policy_step_0.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+wandb: WARNING Step cannot be set when using tensorboard syncing. Please use `run.define_metric(...)` to define a custom metric to log your step values.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+                                                0%|          | 0/1000000 [05:03<?, ?steps/s]----------------------------------
+| eval/               |          |
+|    Length           | 200      |
+|    Return           | -212     |
+|    NonzeroRewards   | 200      |
+|    DiscountedReturn | -212     |
+|    Success          | 0        |
+|    SuccessLength    | 200      |
+| time/               |          |
+|    iterations       | 0        |
+|    fps              | 0        |
+|    elapsed_time     | 303      |
+|    elapsed_steps    | 0        |
+----------------------------------
+For the first 10000 steps, agent will use a fixed std of 0.75 for exploration.
+  0%|          | 2560/1000000 [05:46<37:27:05,  7.40steps/s]  1%|          | 5120/1000000 [06:38<18:43:31, 14.76steps/s]  1%|          | 5120/1000000 [06:50<18:43:31, 14.76steps/s]  1%|          | 7680/1000000 [07:30<12:43:06, 21.67steps/s]                                                              1%|          | 7680/1000000 [07:30<12:43:06, 21.67steps/s]----------------------------------
+| rollout/            |          |
+|    Length           | 200      |
+|    Return           | -215     |
+|    NonzeroRewards   | 200      |
+|    DiscountedReturn | -215     |
+|    Success          | 0        |
+|    SuccessLength    | 200      |
+| time/               |          |
+|    iterations       | 3        |
+|    fps              | 52.1     |
+|    elapsed_time     | 451      |
+|    elapsed_steps    | 7680     |
+----------------------------------
+  1%|          | 7680/1000000 [07:50<12:43:06, 21.67steps/s]  1%|          | 10240/1000000 [09:02<11:33:56, 23.77steps/s]Process ProcessCage-2:
+Traceback (most recent call last):
+  File "/home/exx/anaconda3/envs/pprl/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/exx/Michael/pprlPCA/dependencies/parllel/parllel/cages/process.py", line 219, in run
+    next_obs, reward, terminated, truncated, env_info = self._step_env(
+  File "/home/exx/Michael/pprlPCA/dependencies/parllel/parllel/cages/cage.py", line 90, in _step_env
+    next_obs, reward, terminated, truncated, env_info = self._env.step(action)
+  File "/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/gymnasium/core.py", line 327, in step
+    return self.env.step(action)
+  File "/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/gymnasium/core.py", line 560, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+  File "/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/gymnasium/wrappers/common.py", line 125, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+  File "/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/gymnasium/wrappers/common.py", line 393, in step
+    return super().step(action)
+  File "/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/gymnasium/core.py", line 327, in step
+    return self.env.step(action)
+  File "/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/gymnasium/core.py", line 560, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+  File "/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/envs/sapien_env.py", line 556, in step
+    obs = self.get_obs()
+  File "/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/envs/sapien_env.py", line 265, in get_obs
+    return self._get_obs_images()
+  File "/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/envs/sapien_env.py", line 320, in _get_obs_images
+    image=self.get_images(),
+  File "/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/envs/sapien_env.py", line 298, in get_images
+    images[name] = cam.get_images()
+  File "/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/sensors/camera.py", line 189, in get_images
+    image = self.camera.get_float_texture(name)
+RuntimeError: vk::Device::createFenceUnique: ErrorOutOfHostMemory
+  1%|          | 10240/1000000 [09:20<11:33:56, 23.77steps/s]/home/exx/anaconda3/envs/pprl/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 998 leaked shared_memory objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

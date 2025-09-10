@@ -1,19 +1,91 @@
 from __future__ import annotations
 
-from typing import Literal, Mapping, Sequence
+from typing import Literal, Mapping, Sequence, Callable, List, Optional
 
 import gymnasium as gym
 import numpy as np
 import open3d as o3d
 from sofa_env.base import RenderMode, SofaEnv
 from sofa_env.utils.camera import get_focal_length
+import torch
 
-from pprl.utils.o3d import o3d_to_np
+from pprl.utils.o3d import np_to_o3d, o3d_to_np
 
 from .. import PointCloudSpace
 
 STATE_KEY = "state"
 
+import numpy as np
+
+
+
+# def np_to_o3d(array: np.ndarray):
+#     assert (shape := array.shape[-1]) in (3, 6)
+#     pos = array[:, :3]
+#     pcd = o3d.geometry.PointCloud(points=o3d.utility.Vector3dVector(pos))
+#     if shape == 6:
+#         color = array[:, 3:]
+#         pcd.colors = o3d.utility.Vector3dVector(color)
+#     return pcd
+#
+# def o3d_to_np(pcd) -> np.ndarray:
+#     if pcd.has_colors():
+#         return np.hstack(
+#             (
+#                 np.asarray(pcd.points, dtype=np.float32),
+#                 np.asarray(pcd.colors, dtype=np.float32),
+#             )
+#         )
+#     else:
+#         return np.asarray(pcd.points, dtype=np.float32)
+
+def visualize(pos):
+    try:
+        o3d.visualization.draw_geometries([np_to_o3d(pos)])
+    except:
+        o3d.visualization.draw_geometries([pos])
+
+def save_point_cloud(pcd, filename):
+    pcd = np_to_o3d(pcd)
+    o3d.io.write_point_cloud(filename, pcd)
+    print(f"pcd saved to {filename}")
+
+def farthest_point_sampling(points, num_samples, init_idx=None):
+    """
+    Fast Farthest Point Sampling (FPS) from a point cloud.
+
+    Parameters:
+        points (np.ndarray): (N, 3) array of points
+        num_samples (int): Number of points to sample
+        init_idx (int or None): Optional starting index
+
+    Returns:
+        np.ndarray: (num_samples,) indices of sampled points
+    """
+
+    points = np_to_o3d(points)
+    points.farthest_point_down_sample(num_samples)
+    points = o3d_to_np(points)
+    return points
+
+
+    # N = points.shape[0]
+    # sampled_idxs = np.zeros(num_samples, dtype=np.int64)
+    # distances = np.full(N, np.inf)
+    #
+    # if init_idx is None:
+    #     init_idx = np.random.randint(N)
+    # sampled_idxs[0] = init_idx
+    # current_point = points[init_idx]
+    #
+    # for i in range(1, num_samples):
+    #     dist = np.sum((points - current_point) ** 2, axis=1)
+    #     distances = np.minimum(distances, dist)
+    #     idx = np.argmax(distances)
+    #     sampled_idxs[i] = idx
+    #     current_point = points[idx]
+    #
+    # return sampled_idxs
 
 class SofaEnvPointCloudObservations(gym.ObservationWrapper):
     def __init__(
@@ -33,10 +105,13 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         normalize: bool = False,
         points_only: bool = True,
         points_key: str = "points",
+        post_processing_functions: Optional[List[Callable[[np.ndarray], np.ndarray]]] = None,
+        mode=None,
     ) -> None:
         super().__init__(env)
         self.depth_cutoff = depth_cutoff
         self.color = color
+        self.post_processing_functions = post_processing_functions
 
         if crop is not None:
             self.crop_min = np.asarray(crop["min_bound"])
@@ -57,6 +132,8 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         self.points_only = points_only
         self.points_key = points_key
 
+        self.mode = mode
+
         self._initialized = False
 
         if self.env.render_mode == RenderMode.NONE:
@@ -74,11 +151,18 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
             feature_shape=(6,) if self.color else (3,),
         )
 
+        self.max_expected_num_points = max_expected_num_points
+
     def reset(self, **kwargs):
         """Reads the data for the point clouds from the sofa_env after it is resetted."""
 
         # First reset calls _init_sim to setup the scene
         observation, reset_info = self.env.reset(**kwargs)
+
+        if self.post_processing_functions:
+            for fn in self.post_processing_functions:
+                if hasattr(fn, "new_episode"):
+                    fn.new_episode()
 
         if not self._initialized:
             env = self.env.unwrapped
@@ -120,27 +204,142 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
         return self.observation(observation), reset_info
 
+    def line_distance_sums(self, centered_points: torch.Tensor,
+                           direction: torch.Tensor):
+        """
+        points      : (N,3) centered cloud (float32/64, CPU or CUDA)
+        direction   : (3,)  line direction (need not be unit length)
+
+        Returns
+        -------
+        pos_sum, neg_sum  (each scalar tensor)
+        """
+
+        v_hat = direction / direction.norm()          # (3,)
+        dots  = centered_points @ v_hat                        # (N,)  u·v  (torch.mv is fine too)
+
+        # squared distance ‖u‖² - (u·v̂)²
+        r2 = centered_points.pow(2).sum(dim=1) - dots.pow(2)   # (N,)
+
+        dists = r2.clamp_min_(0.)                 # avoid tiny neg. due to FP error
+
+        # masks for the two half‑spaces
+        pos_mask = dots > 0
+        neg_mask = dots < 0
+
+        pos_sum = dists[pos_mask].sum()
+        neg_sum = dists[neg_mask].sum()
+        return pos_sum, neg_sum
+
+    def disambiguate(self, centered_pcd, eig_vecs):
+        """
+        Function takes in centered_pcd and returns PCA normalized cloud
+        eig_vecs are row vecs
+        """
+
+        #if cos(theta) is +, then point is on one side of centroid, and vice versa
+        for i in range(2):
+            pos_sum, neg_sum = self.line_distance_sums(centered_pcd, eig_vecs[i])
+
+            if neg_sum > pos_sum:
+            # invert direction
+                eig_vecs[i] *= -1
+
+        v1 = eig_vecs[0]
+        v2 = eig_vecs[1]
+
+        v3 = torch.cross(v1, v2)
+        v3 /= v3.norm()
+
+        eig_vecs = torch.stack([v1, v2, v3], dim=0)
+
+        return centered_pcd @ eig_vecs.T
     def observation(self, observation) -> np.ndarray | dict:
         """Replaces the observation of a step in a sofa_env scene with a point cloud."""
 
+
         pcd = self.pointcloud(observation)
 
-        centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
+        # save_point_cloud(pcd, "original.ply")
 
-        _, _, vh = np.linalg.svd(centered, full_matrices=False)
-        components = vh.astype(np.float32)  # shape (3, 3)
+        our_method = True
 
-        pcd = np.concatenate([centered, components], axis=0)
+        if (our_method):
+            # FPS
+            pcd = farthest_point_sampling(pcd[:, :3], 200)
+            # pcd = pcd[idx]
+
+            # PCA
+            centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
+            _, _, vh = np.linalg.svd(centered, full_matrices=False)
+            components = vh.astype(np.float32)  # shape (3, 3)
+
+            new_points = self.disambiguate(torch.tensor(centered, dtype=torch.float32), torch.tensor(components, dtype=torch.float32)).numpy()
+
+            if (self.color):
+                new_points = np.concatenate([new_points, pcd[:, 3:]], axis=1)
+        else:
+            new_points = pcd
+
+
+        # visualize(new_points)
+        # save_point_cloud(new_points, "our_method.ply")
+
 
         if self.points_only:
-            return pcd
+            return new_points
         else:
             return {
                 STATE_KEY: observation,
-                self.points_key: pcd,
+                self.points_key: new_points,
             }
 
     def pointcloud(self, observation) -> np.ndarray:
+        pcs = []
+        cam_list = getattr(self.env.unwrapped, "cameras", [self.env.unwrapped.camera])
+
+        for cam in cam_list:
+
+            self.env.unwrapped._camera_object = (
+                cam.sofa_object if hasattr(cam, "sofa_object") else cam
+            )
+
+            self.camera_object = self.env.unwrapped._camera_object
+
+            self.env.unwrapped._update_sofa_visuals()
+
+            # (re‑compute intrinsics if resolutions can differ)
+            w = int(self.camera_object.widthViewport.array())
+            h = int(self.camera_object.heightViewport.array())
+            fx, fy = get_focal_length(self.camera_object, w, h)
+            self.intrinsic.set_intrinsics(w, h, fx, fy, w / 2, h / 2)
+
+            pc = self.pointcloud_old(observation)
+
+            pcs.append(pc)
+
+
+        merged = np.vstack(pcs)
+
+        if self.post_processing_functions is not None:
+            for fn in self.post_processing_functions:
+                merged = fn(merged)
+
+        if self.random_downsample is None:
+            self.random_downsample = 900
+
+        if (
+            self.random_downsample is not None
+            and (num_points := len(merged)) > self.random_downsample
+        ):
+            choice = self.np_random.choice(
+                num_points, self.random_downsample, replace=False
+            )
+            merged = merged[choice]
+
+        return merged.astype(np.float32)
+
+    def pointcloud_old(self, observation) -> np.ndarray:
         """Returns a point cloud calculated from the depth image of the sofa scene"""
         # Get the depth image from the SOFA scene
         depth = self.env.unwrapped.get_depth_from_open_gl()

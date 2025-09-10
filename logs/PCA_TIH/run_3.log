@@ -1,0 +1,700 @@
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: michael-bezick (michael-bezick-purdue-university) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
+wandb: Tracking run with wandb version 0.19.9
+wandb: Run data is saved locally in /home/michaelbezick/Repos/pprlPCA/wandb/run-20250724_194834-0qp0ff1m
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run golden-disco-677
+wandb: ⭐️ View project at https://wandb.ai/michael-bezick-purdue-university/pprl
+wandb: 🚀 View run at https://wandb.ai/michael-bezick-purdue-university/pprl/runs/0qp0ff1m
+Group name is:  PCA_TIH
+Instantiating 20 environments...
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Mapping.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.MechanicalLoad.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.FEM.Elastic.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
+[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+BasicSampler: Resetting all environments.
+BasicSampler: Resetting agent.
+Instantiating 1 environments...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+Instantiating 1 environments...
+[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
+[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
+[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
+[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
+Environments instantiated.
+AuxPcSAC: Given sampler batch size 2560, training batch size 128, and replay ratio 32, there will be 640 updates per iteration.
+AuxPcSAC: Using learnable entropy coefficient with target entropy of -4
+RLRunner: Starting training...
+RLRunner: Saving log files to /home/michaelbezick/Repos/pprlPCA/wandb/run-20250724_194834-0qp0ff1m/files
+  0%|          | 0/450000 [00:00<?, ?steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+Saved video of policy to videos/2025-07-24/0qp0ff1m/nominal/policy_step_0.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+wandb: WARNING Step cannot be set when using tensorboard syncing. Please use `run.define_metric(...)` to define a custom metric to log your step values.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+                                               0%|          | 0/450000 [05:36<?, ?steps/s]----------------------------------
+| eval/               |          |
+|    Length           | 285      |
+|    Return           | -26.5    |
+|    NonzeroRewards   | 285      |
+|    DiscountedReturn | -5.96    |
+|    Success          | 0.0667   |
+| time/               |          |
+|    iterations       | 0        |
+|    fps              | 0        |
+|    elapsed_time     | 337      |
+|    elapsed_steps    | 0        |
+----------------------------------
+For the first 10000 steps, agent will use a fixed std of 0.75 for exploration.
+  1%|          | 2560/450000 [08:20<24:17:10,  5.12steps/s]  1%|          | 5120/450000 [11:03<14:34:34,  8.48steps/s]  1%|          | 5120/450000 [11:20<14:34:34,  8.48steps/s]  2%|▏         | 7680/450000 [13:53<11:36:07, 10.59steps/s]                                                             2%|▏         | 7680/450000 [13:53<11:36:07, 10.59steps/s][WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+----------------------------------
+| rollout/            |          |
+|    Length           | 300      |
+|    Return           | -122     |
+|    NonzeroRewards   | 300      |
+|    DiscountedReturn | -39.5    |
+|    Success          | 0        |
+| time/               |          |
+|    iterations       | 3        |
+|    fps              | 15.5     |
+|    elapsed_time     | 833      |
+|    elapsed_steps    | 7680     |
+----------------------------------
+  2%|▏         | 7680/450000 [14:10<11:36:07, 10.59steps/s]  2%|▏         | 10240/450000 [18:49<12:33:43,  9.72steps/s]  3%|▎         | 12800/450000 [23:57<13:14:48,  9.17steps/s]  3%|▎         | 15360/450000 [28:50<13:23:48,  9.01steps/s]                                                              3%|▎         | 15360/450000 [28:50<13:23:48,  9.01steps/s][WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+[WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+-----------------------------------
+| algo/                |          |
+|    critic_loss       | 0.297    |
+|    mean_entropy      | 2.72     |
+|    mean_ent_bonus    | 0.247    |
+|    max_target_q      | -1.41    |
+|    min_target_q      | -1.72    |
+|    max_reward        | 1.44     |
+|    min_reward        | -2.67    |
+|    chamfer_loss      | 1.19e+03 |
+|    encoder_grad_norm | 239      |
+|    q1_grad_norm      | 0.441    |
+|    q2_grad_norm      | 0.424    |
+|    actor_loss        | 1.47     |
+|    ent_coeff         | 0.091    |
+|    ent_coeff_loss    | -16.1    |
+|    pi_grad_norm      | 0.0817   |
+|    n_updates         | 1920     |
+| rollout/             |          |
+|    Length            | 300      |
+|    Return            | -120     |
+|    NonzeroRewards    | 300      |
+|    DiscountedReturn  | -38.1    |
+|    Success           | 0        |
+| time/                |          |
+|    iterations        | 6        |
+|    fps               | 8.56     |
+|    elapsed_time      | 1.73e+03 |
+|    elapsed_steps     | 15360    |
+-----------------------------------
+  4%|▍         | 17920/450000 [33:44<13:28:15,  8.91steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+Saved video of policy to videos/2025-07-24/0qp0ff1m/nominal/policy_step_17920.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+  5%|▍         | 20480/450000 [44:08<18:23:01,  6.49steps/s]  5%|▌         | 23040/450000 [49:01<16:48:28,  7.06steps/s]                                                              5%|▌         | 23040/450000 [49:01<16:48:28,  7.06steps/s]-----------------------------------
+| algo/                |          |
+|    critic_loss       | 0.344    |
+|    mean_entropy      | 2.72     |
+|    mean_ent_bonus    | 0.204    |
+|    max_target_q      | -4.3     |
+|    min_target_q      | -4.94    |
+|    max_reward        | 1.73     |
+|    min_reward        | -2.75    |
+|    chamfer_loss      | 469      |
+|    encoder_grad_norm | 202      |
+|    q1_grad_norm      | 0.831    |
+|    q2_grad_norm      | 0.773    |
+|    actor_loss        | 4.59     |
+|    ent_coeff         | 0.0751   |
+|    ent_coeff_loss    | -17.4    |
+|    pi_grad_norm      | 0.0474   |
+|    n_updates         | 3840     |
+| eval/                |          |
+|    Length            | 300      |
+|    Return            | -60      |
+|    NonzeroRewards    | 300      |
+|    DiscountedReturn  | -13.5    |
+|    Success           | 0        |
+| rollout/             |          |
+|    Length            | 300      |
+|    Return            | -126     |
+|    NonzeroRewards    | 300      |
+|    DiscountedReturn  | -40      |
+|    Success           | 0        |
+| time/                |          |
+|    iterations        | 9        |
+|    fps               | 6.34     |
+|    elapsed_time      | 2.94e+03 |
+|    elapsed_steps     | 23040    |
+-----------------------------------
+  6%|▌         | 25600/450000 [54:08<15:54:25,  7.41steps/s]  6%|▋         | 28160/450000 [59:01<15:04:45,  7.77steps/s]  7%|▋         | 30720/450000 [1:03:59<14:33:00,  8.00steps/s]                                                                7%|▋         | 30720/450000 [1:03:59<14:33:00,  8.00steps/s][WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+-----------------------------------
+| rollout/             |          |
+|    Length            | 300      |
+|    Return            | -209     |
+|    NonzeroRewards    | 300      |
+|    DiscountedReturn  | -56.2    |
+|    Success           | 0        |
+| algo/                |          |
+|    critic_loss       | 0.469    |
+|    mean_entropy      | 2.71     |
+|    mean_ent_bonus    | 0.168    |
+|    max_target_q      | -7.62    |
+|    min_target_q      | -8.73    |
+|    max_reward        | 1.88     |
+|    min_reward        | -2.94    |
+|    chamfer_loss      | 252      |
+|    encoder_grad_norm | 205      |
+|    q1_grad_norm      | 1.75     |
+|    q2_grad_norm      | 1.64     |
+|    actor_loss        | 8.36     |
+|    ent_coeff         | 0.062    |
+|    ent_coeff_loss    | -18.7    |
+|    pi_grad_norm      | 0.0374   |
+|    n_updates         | 5760     |
+| time/                |          |
+|    iterations        | 12       |
+|    fps               | 8.56     |
+|    elapsed_time      | 3.84e+03 |
+|    elapsed_steps     | 30720    |
+-----------------------------------
+  7%|▋         | 33280/450000 [1:08:47<14:01:54,  8.25steps/s]  8%|▊         | 35840/450000 [1:13:37<13:39:49,  8.42steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+Saved video of policy to videos/2025-07-24/0qp0ff1m/nominal/policy_step_35840.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+  9%|▊         | 38400/450000 [1:24:02<17:54:15,  6.39steps/s]                                                                9%|▊         | 38400/450000 [1:24:02<17:54:15,  6.39steps/s]-----------------------------------
+| algo/                |          |
+|    critic_loss       | 0.668    |
+|    mean_entropy      | 2.57     |
+|    mean_ent_bonus    | 0.132    |
+|    max_target_q      | -12      |
+|    min_target_q      | -15.1    |
+|    max_reward        | 1.93     |
+|    min_reward        | -2.83    |
+|    chamfer_loss      | 184      |
+|    encoder_grad_norm | 203      |
+|    q1_grad_norm      | 3.14     |
+|    q2_grad_norm      | 2.85     |
+|    actor_loss        | 13.2     |
+|    ent_coeff         | 0.0512   |
+|    ent_coeff_loss    | -19.5    |
+|    pi_grad_norm      | 0.0488   |
+|    n_updates         | 7680     |
+| eval/                |          |
+|    Length            | 300      |
+|    Return            | -47      |
+|    NonzeroRewards    | 300      |
+|    DiscountedReturn  | -10.6    |
+|    Success           | 0        |
+| rollout/             |          |
+|    Length            | 300      |
+|    Return            | -100     |
+|    NonzeroRewards    | 300      |
+|    DiscountedReturn  | -33.7    |
+|    Success           | 0        |
+| time/                |          |
+|    iterations        | 15       |
+|    fps               | 6.38     |
+|    elapsed_time      | 5.04e+03 |
+|    elapsed_steps     | 38400    |
+-----------------------------------
+  9%|▉         | 40960/450000 [1:28:53<16:19:10,  6.96steps/s] 10%|▉         | 43520/450000 [1:33:53<15:19:38,  7.37steps/s] 10%|█         | 46080/450000 [1:38:45<14:29:32,  7.74steps/s]                                                               10%|█         | 46080/450000 [1:38:45<14:29:32,  7.74steps/s][WARNING]: Peg started inside cylinder on reset after 50 steps of letting the simulation settle. Will reset again.
+-----------------------------------
+| algo/                |          |
+|    critic_loss       | 0.783    |
+|    mean_entropy      | 2.5      |
+|    mean_ent_bonus    | 0.106    |
+|    max_target_q      | -15.8    |
+|    min_target_q      | -21      |
+|    max_reward        | 1.87     |
+|    min_reward        | -2.83    |
+|    chamfer_loss      | 150      |
+|    encoder_grad_norm | 193      |
+|    q1_grad_norm      | 4.08     |
+|    q2_grad_norm      | 3.71     |
+|    actor_loss        | 17.2     |
+|    ent_coeff         | 0.0423   |
+|    ent_coeff_loss    | -20.6    |
+|    pi_grad_norm      | 0.0446   |
+|    n_updates         | 9600     |
+| rollout/             |          |
+|    Length            | 300      |
+|    Return            | -101     |
+|    NonzeroRewards    | 300      |
+|    DiscountedReturn  | -35.2    |
+|    Success           | 0        |
+| time/                |          |
+|    iterations        | 18       |
+|    fps               | 8.7      |
+|    elapsed_time      | 5.93e+03 |
+|    elapsed_steps     | 46080    |
+-----------------------------------
+ 11%|█         | 48640/450000 [1:43:42<13:57:57,  7.98steps/s] 11%|█▏        | 51200/450000 [1:48:31<13:27:58,  8.23steps/s] 12%|█▏        | 53760/450000 [1:53:23<13:07:19,  8.39steps/s]RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+Saved video of policy to videos/2025-07-24/0qp0ff1m/nominal/policy_step_53760.mp4.
+wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+
+########## SIG 15 - SIGTERM: a termination request was sent to the program ##########
+  sofa::helper::BackTrace::sig(int)
+  sofa::component::linearsolver::direct::SparseLDLSolver<sofa::linearalgebra::CompressedRowSparseMatrix<double, sofa::type::vector<double, sofa::type::CPUMemoryManager<double> >, sofa::type::vector<unsigned int, sofa::type::CPUMemoryManager<unsigned int> > >, sofa::linearalgebra::FullVector<double>, sofa::component::linearsolver::NoThreadManager>::factorize(sofa::linearalgebra::CompressedRowSparseMatrix<double, sofa::type::vector<double, sofa::type::CPUMemoryManager<double> >, sofa::type::vector<unsigned int, sofa::type::CPUMemoryManager<unsigned int> > >&, sofa::component::linearsolver::direct::SparseLDLImplInvertData<sofa::type::vector<int, sofa::type::CPUMemoryManager<int> >, sofa::type::vector<double, sofa::type::CPUMemoryManager<double> > >*)
+  sofa::component::linearsolver::MatrixLinearSolver<sofa::linearalgebra::CompressedRowSparseMatrix<double, sofa::type::vector<double, sofa::type::CPUMemoryManager<double> >, sofa::type::vector<unsigned int, sofa::type::CPUMemoryManager<unsigned int> > >, sofa::linearalgebra::FullVector<double>, sofa::component::linearsolver::NoThreadManager>::solveSystem()
+  sofa::component::odesolver::backward::EulerImplicitSolver::solve(sofa::core::ExecParams const*, double, sofa::core::TMultiVecId<(sofa::core::VecType)1, (sofa::core::VecAccess)1>, sofa::core::TMultiVecId<(sofa::core::VecType)2, (sofa::core::VecAccess)1>)
+  sofa::simulation::SolveVisitor::processSolver(sofa::simulation::Node*, sofa::core::behavior::OdeSolver*)
+  sofa::simulation::SolveVisitor::sequentialSolve(sofa::simulation::Node*)
+  sofa::simulation::SolveVisitor::processNodeTopDown(sofa::simulation::Node*)
+  sofa::simulation::graph::DAGNode::executeVisitorTopDown(sofa::simulation::Visitor*, std::__cxx11::list<sofa::simulation::graph::DAGNode*, std::allocator<sofa::simulation::graph::DAGNode*> >&, std::map<sofa::simulation::graph::DAGNode*, sofa::simulation::graph::DAGNode::StatusStruct, std::less<sofa::simulation::graph::DAGNode*>, std::allocator<std::pair<sofa::simulation::graph::DAGNode* const, sofa::simulation::graph::DAGNode::StatusStruct> > >&, sofa::simulation::graph::DAGNode*)
+  sofa::simulation::graph::DAGNode::executeVisitorTopDown(sofa::simulation::Visitor*, std::__cxx11::list<sofa::simulation::graph::DAGNode*, std::allocator<sofa::simulation::graph::DAGNode*> >&, std::map<sofa::simulation::graph::DAGNode*, sofa::simulation::graph::DAGNode::StatusStruct, std::less<sofa::simulation::graph::DAGNode*>, std::allocator<std::pair<sofa::simulation::graph::DAGNode* const, sofa::simulation::graph::DAGNode::StatusStruct> > >&, sofa::simulation::graph::DAGNode*)
+  sofa::simulation::graph::DAGNode::executeVisitorTopDown(sofa::simulation::Visitor*, std::__cxx11::list<sofa::simulation::graph::DAGNode*, std::allocator<sofa::simulation::graph::DAGNode*> >&, std::map<sofa::simulation::graph::DAGNode*, sofa::simulation::graph::DAGNode::StatusStruct, std::less<sofa::simulation::graph::DAGNode*>, std::allocator<std::pair<sofa::simulation::graph::DAGNode* const, sofa::simulation::graph::DAGNode::StatusStruct> > >&, sofa::simulation::graph::DAGNode*)
+  sofa::simulation::graph::DAGNode::doExecuteVisitor(sofa::simulation::Visitor*, bool)
+  sofa::component::animationloop::FreeMotionAnimationLoop::computeFreeMotion(sofa::core::ExecParams const*, sofa::core::ConstraintParams const&, double, sofa::core::TMultiVecId<(sofa::core::VecType)0, (sofa::core::VecAccess)1>, sofa::core::TMultiVecId<(sofa::core::VecType)0, (sofa::core::VecAccess)1>, sofa::core::TMultiVecId<(sofa::core::VecType)2, (sofa::core::VecAccess)1>, sofa::simulation::common::MechanicalOperations*)
+  sofa::component::animationloop::FreeMotionAnimationLoop::FreeMotionAndCollisionDetection(sofa::core::ExecParams const*, sofa::core::ConstraintParams const&, double, sofa::core::TMultiVecId<(sofa::core::VecType)0, (sofa::core::VecAccess)1>, sofa::core::TMultiVecId<(sofa::core::VecType)0, (sofa::core::VecAccess)1>, sofa::core::TMultiVecId<(sofa::core::VecType)2, (sofa::core::VecAccess)1>, sofa::simulation::common::MechanicalOperations*)
+  sofa::component::animationloop::FreeMotionAnimationLoop::step(sofa::core::ExecParams const*, double)
+  sofa::simulation::Simulation::animate(sofa::simulation::Node*, double)
+  _PyObject_MakeTpCall
+  _PyEval_EvalFrameDefault
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  _PyFunction_Vectorcall
+  _PyEval_EvalFrameDefault
+  PyEval_EvalCode
+  _PyRun_SimpleFileObject
+  _PyRun_AnyFileObject
+  Py_RunMain
+  Py_BytesMain
+  __libc_start_main
