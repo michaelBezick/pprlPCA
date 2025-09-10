@@ -60,7 +60,8 @@ def merge_dicts(ds, asarray=False):
         ret = {k: np.concatenate(v) for k, v in ret.items()}
     return ret
 
-def farthest_point_sampling(points, num_samples, init_idx=None):
+def farthest_point_sampling(points, num_samples):
+
     """
     Fast Farthest Point Sampling (FPS) from a point cloud.
 
@@ -72,12 +73,13 @@ def farthest_point_sampling(points, num_samples, init_idx=None):
     Returns:
         np.ndarray: (num_samples,) indices of sampled points
     """
+    if points.shape[0] < num_samples:
+        return points
 
     points = np_to_o3d(points)
     points.farthest_point_down_sample(num_samples)
     points = o3d_to_np(points)
     return points
-
 
 class PointCloudWrapper(gym.ObservationWrapper):
     def __init__(
@@ -96,9 +98,16 @@ class PointCloudWrapper(gym.ObservationWrapper):
         normalize: bool = False,
         points_only: bool = True,
         points_key: str = "points",
+        rotate_frame=None,
+        rotate_axis=None,
+        rotate_deg=None,
     ) -> None:
         super().__init__(env)
         self.color = color
+
+        self.rotate_frame = rotate_frame
+        self.rotate_axis = rotate_axis
+        self.rotate_deg = rotate_deg
 
         if crop is not None:
             self.crop_min = np.asarray(crop["min_bound"])
@@ -192,33 +201,42 @@ class PointCloudWrapper(gym.ObservationWrapper):
             neg_sum = dists[neg_mask].sum()
             return pos_sum, neg_sum
 
-    def score_r4(self, centered_points: torch.Tensor,
-                               direction: torch.Tensor):
-            """
-            points      : (N,3) centered cloud (float32/64, CPU or CUDA)
-            direction   : (3,)  line direction (need not be unit length)
+    # def score_r4(self, centered_points: torch.Tensor,
+    #                            direction: torch.Tensor):
+    #         """
+    #         points      : (N,3) centered cloud (float32/64, CPU or CUDA)
+    #         direction   : (3,)  line direction (need not be unit length)
+    #
+    #         Returns
+    #         -------
+    #         pos_sum, neg_sum  (each scalar tensor)
+    #         """
+    #
+    #         v_hat = direction / direction.norm()          # (3,)
+    #         dots  = centered_points @ v_hat                        # (N,)  u·v  (torch.mv is fine too)
+    #
+    #         r2 = centered_points.pow(2).sum(dim=1)
+    #
+    #         r4 = r2 * r2
+    #
+    #         r4 = r4.clamp_min_(0.)                 # avoid tiny neg. due to FP error
+    #
+    #         # masks for the two half‑spaces
+    #         pos_mask = dots > 0
+    #         neg_mask = dots < 0
+    #
+    #         pos_sum = r4[pos_mask].sum()
+    #         neg_sum = r4[neg_mask].sum()
+    #         return pos_sum, neg_sum
 
-            Returns
-            -------
-            pos_sum, neg_sum  (each scalar tensor)
-            """
 
-            v_hat = direction / direction.norm()          # (3,)
-            dots  = centered_points @ v_hat                        # (N,)  u·v  (torch.mv is fine too)
+    def score_r4(self, centered_points, direction):
+        r2 = torch.sum(centered_points * centered_points, dim=1)
+        r4 = r2 * r2
 
-            r2 = centered_points.pow(2).sum(dim=1)
-            
-            r4 = r2 * r2
+        proj = centered_points @ direction
 
-            r4 = r4.clamp_min_(0.)                 # avoid tiny neg. due to FP error
-
-            # masks for the two half‑spaces
-            pos_mask = dots > 0
-            neg_mask = dots < 0
-
-            pos_sum = r4[pos_mask].sum()
-            neg_sum = r4[neg_mask].sum()
-            return pos_sum, neg_sum
+        return r4[proj >= 0].sum(), r4[proj < 0].sum()
 
     def disambiguate(self, centered_pcd, eig_vecs):
         """
@@ -249,7 +267,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
 
         pcd = self.pointcloud(observation)
 
-        save_point_cloud(pcd, "original_ego.ply")
+        # save_point_cloud(pcd, "original_ego.ply")
 
         our_method = True
 
@@ -270,15 +288,23 @@ class PointCloudWrapper(gym.ObservationWrapper):
         else:
             new_points = pcd
 
-        save_point_cloud(new_points, "our_method_ego.ply")
+        # save_point_cloud(new_points, "our_method_ego.ply")
 
         if self.points_only:
             return new_points
         else:
+            state = spaces.flatten(
+                self.state_space,
+                {"agent": observation["agent"], "extra": observation["extra"]},
+            )
             return {
-                STATE_KEY: observation,
-                self.points_key: new_points,
+                STATE_KEY: state,
+                self.points_key: pcd,
             }
+            # return {
+            #     STATE_KEY: observation,
+            #     self.points_key: new_points,
+            # }
 
         # centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
         #
@@ -395,6 +421,47 @@ class PointCloudWrapper(gym.ObservationWrapper):
             )
             point_cloud = point_cloud[choice]
 
+        '''NEW CODE'''
+        if self.rotate_frame is not None and self.rotate_deg != 0.0 and len(point_cloud) > 0:
+            def _axis_vec_from_pose(pose: Pose, axis_name: str) -> np.ndarray:
+                # Convert a Pose to its world-frame axis unit vector
+                T = pose.to_transformation_matrix()  # (4,4)
+                R = T[:3, :3]
+                if axis_name == "x": e = np.array([1.0, 0.0, 0.0])
+                elif axis_name == "y": e = np.array([0.0, 1.0, 0.0])
+                else: e = np.array([0.0, 0.0, 1.0])
+                return (R @ e).astype(np.float64)
+
+            def _rotate_about_line(points_xyz: np.ndarray, u_world: np.ndarray, origin_world: np.ndarray, deg: float) -> np.ndarray:
+                # Rodrigues around axis (unit) passing through 'origin_world'
+                u = u_world / (np.linalg.norm(u_world) + 1e-12)
+                th = np.deg2rad(deg)
+                K = np.array([[0, -u[2], u[1]],
+                              [u[2], 0, -u[0]],
+                              [-u[1], u[0], 0]], dtype=np.float64)
+                R = np.eye(3) + np.sin(th) * K + (1 - np.cos(th)) * (K @ K)
+                return (points_xyz - origin_world[None, :]) @ R.T + origin_world[None, :]
+
+            if self.rotate_frame == "world":
+                # rotate about world axis through world origin
+                axis_world = {"x": np.array([1,0,0], float),
+                              "y": np.array([0,1,0], float),
+                              "z": np.array([0,0,1], float)}[self.rotate_axis]
+                point_cloud[..., :3] = _rotate_about_line(point_cloud[..., :3], axis_world, np.zeros(3), self.rotate_deg)
+
+            else:
+                # Build a Pose for the requested frame from observation
+                if self.rotate_frame == "base":
+                    p, q = observation["agent"]["base_pose"][:3], observation["agent"]["base_pose"][3:]
+                elif self.rotate_frame == "left_tcp":
+                    p, q = observation["extra"]["left_tcp_pose"][:3], observation["extra"]["left_tcp_pose"][3:]
+                else:  # "right_tcp"
+                    p, q = observation["extra"]["right_tcp_pose"][:3], observation["extra"]["right_tcp_pose"][3:]
+                frame_pose = Pose(p=p, q=q)
+                axis_world = _axis_vec_from_pose(frame_pose, self.rotate_axis)
+                origin_world = frame_pose.p  # rotate about the frame origin in world coords
+                point_cloud[..., :3] = _rotate_about_line(point_cloud[..., :3], axis_world, origin_world, self.rotate_deg)
+
         if self.obs_frame == "base":
             # TODO: not sure if this is always valid
             base_pose = observation["agent"]["base_pose"]
@@ -415,20 +482,20 @@ class PointCloudWrapper(gym.ObservationWrapper):
             scale = 0.999999 / np.abs(pos).max()
             pos[...] *= scale
 
-        pca = False
-        # print(point_cloud)
-        # exit()
-        if pca:
-            # Append PCA components as fake points
-            centered = point_cloud[:, :3] - point_cloud[:, :3].mean(axis=0, keepdims=True)
-            _, _, vh = np.linalg.svd(centered, full_matrices=False)
-            components = vh.astype(np.float32)  # shape (3, 3)
-
-
-            # Concatenate to point cloud
-            point_cloud = np.concatenate([point_cloud, components], axis=0)
-            dummy = np.array([[-100, -100, -100]])
-            point_cloud = np.concatenate(([point_cloud, dummy]), axis=0)
+        # pca = False
+        # # print(point_cloud)
+        # # exit()
+        # if pca:
+        #     # Append PCA components as fake points
+        #     centered = point_cloud[:, :3] - point_cloud[:, :3].mean(axis=0, keepdims=True)
+        #     _, _, vh = np.linalg.svd(centered, full_matrices=False)
+        #     components = vh.astype(np.float32)  # shape (3, 3)
+        #
+        #
+        #     # Concatenate to point cloud
+        #     point_cloud = np.concatenate([point_cloud, components], axis=0)
+        #     dummy = np.array([[-100, -100, -100]])
+        #     point_cloud = np.concatenate(([point_cloud, dummy]), axis=0)
 
         return point_cloud
 

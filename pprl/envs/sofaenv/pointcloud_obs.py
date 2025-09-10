@@ -8,6 +8,7 @@ import open3d as o3d
 from sofa_env.base import RenderMode, SofaEnv
 from sofa_env.utils.camera import get_focal_length
 import torch
+from typing import Callable, Union, Tuple, Optional, List, Any, Dict
 
 from pprl.utils.o3d import np_to_o3d, o3d_to_np
 
@@ -50,7 +51,8 @@ def save_point_cloud(pcd, filename):
     o3d.io.write_point_cloud(filename, pcd)
     print(f"pcd saved to {filename}")
 
-def farthest_point_sampling(points, num_samples, init_idx=None):
+def farthest_point_sampling(points, num_samples):
+
     """
     Fast Farthest Point Sampling (FPS) from a point cloud.
 
@@ -62,6 +64,8 @@ def farthest_point_sampling(points, num_samples, init_idx=None):
     Returns:
         np.ndarray: (num_samples,) indices of sampled points
     """
+    if points.shape[0] < num_samples:
+        return points
 
     points = np_to_o3d(points)
     points.farthest_point_down_sample(num_samples)
@@ -231,6 +235,14 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
         neg_sum = dists[neg_mask].sum()
         return pos_sum, neg_sum
 
+    def score_r4(self, centered_points, direction):
+        r2 = torch.sum(centered_points * centered_points, dim=1)
+        r4 = r2 * r2
+
+        proj = centered_points @ direction
+
+        return r4[proj >= 0].sum(), r4[proj < 0].sum()
+
     def disambiguate(self, centered_pcd, eig_vecs):
         """
         Function takes in centered_pcd and returns PCA normalized cloud
@@ -239,7 +251,7 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
         #if cos(theta) is +, then point is on one side of centroid, and vice versa
         for i in range(2):
-            pos_sum, neg_sum = self.line_distance_sums(centered_pcd, eig_vecs[i])
+            pos_sum, neg_sum = self.score_r4(centered_pcd, eig_vecs[i])
 
             if neg_sum > pos_sum:
             # invert direction
@@ -258,16 +270,14 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
     def observation(self, observation) -> np.ndarray | dict:
         """Replaces the observation of a step in a sofa_env scene with a point cloud."""
 
-
         pcd = self.pointcloud(observation)
 
         # save_point_cloud(pcd, "original.ply")
-
-        our_method = True
+        our_method = False
 
         if (our_method):
             # FPS
-            pcd = farthest_point_sampling(pcd[:, :3], 200)
+            pcd = farthest_point_sampling(pcd, 450)
             # pcd = pcd[idx]
 
             # PCA
@@ -285,6 +295,14 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
         # visualize(new_points)
         # save_point_cloud(new_points, "our_method.ply")
+
+        MIN_POINTS = 150
+
+        n, d = new_points.shape
+        if n < MIN_POINTS:
+            pad_rows = MIN_POINTS - n
+            pad = np.zeros((pad_rows, d), dtype=new_points.dtype)
+            new_points = np.vstack([new_points, pad])
 
 
         if self.points_only:

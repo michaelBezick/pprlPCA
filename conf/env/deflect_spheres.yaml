@@ -18,7 +18,9 @@ mode: "train"
 # env args
 settle_steps: 10
 # camera_reset_noise: [20.0, 20.0, 20.0, 20.0, 20.0, 20.0]
-camera_reset_noise: [0., 0., 0., 0., 0., 0.,]
+# camera_reset_noise: [0., 0., 0., 0., 0., 0.,]
+camera_rotation_reset_noise_deg: [36., 36., 36.]
+camera_reset_noise: [60.0, 60.0, 60.0, 60.0, 60.0, 60.0]
 num_objects: 2
 num_deflect_to_win: 2
 min_deflection_distance: 1.0

@@ -1,0 +1,38 @@
+wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+wandb: Currently logged in as: michael-bezick (michael-bezick-purdue-university) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
+wandb: Tracking run with wandb version 0.19.9
+wandb: Run data is saved locally in /home/michaelbezick/Repos/pprlPCA/wandb/run-20250908_154425-ridqd6ca
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run polar-wildflower-995
+wandb: ⭐️ View project at https://wandb.ai/michael-bezick-purdue-university/pprl
+wandb: 🚀 View run at https://wandb.ai/michael-bezick-purdue-university/pprl/runs/ridqd6ca
+Group name is:  DS_DR_2
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+Instantiating 20 environments...
+---------------------------------------
+Checking SOFA_ROOT and SOFAPYTHON3_ROOT
+Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
+---------------------------------------
+Process ProcessCage-1:
+Traceback (most recent call last):
+  File "/home/michaelbezick/.conda/envs/pprl/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/michaelbezick/Repos/pprlPCA/dependencies/parllel/parllel/cages/process.py", line 192, in run
+    self._create_env()  # create env, traj info, etc.
+  File "/home/michaelbezick/Repos/pprlPCA/dependencies/parllel/parllel/cages/cage.py", line 48, in _create_env
+    self._env: gym.Env = self.EnvClass(**self.env_kwargs)
+  File "/home/michaelbezick/Repos/pprlPCA/pprl/envs/sofaenv/deflect_spheres.py", line 69, in build
+    env = add_env_wrappers(
+  File "/home/michaelbezick/Repos/pprlPCA/pprl/envs/sofaenv/__init__.py", line 38, in add_env_wrappers
+    env = SofaEnvPointCloudObservations(
+TypeError: SofaEnvPointCloudObservations.__init__() got an unexpected keyword argument 'camera_rotation_reset_noise_deg'
+[WARNING] [Sofa.Simulation.Graph] the library has not been cleaned up (sofa::simulation::graph::cleanup() has never been called, see sofa/helper/init.h)
+[WARNING] [SofaSimulationCommon] the library has not been cleaned up (sofa::simulation::common::cleanup() has never been called, see sofa/helper/init.h)
+[WARNING] [SofaSimulationCore] the library has not been cleaned up (sofa::simulation::core::cleanup() has never been called, see sofa/helper/init.h)
+[WARNING] [SofaCore] the library has not been cleaned up (sofa::core::cleanup() has never been called, see sofa/helper/init.h)
+[WARNING] [SofaDefaultType] the library has not been cleaned up (sofa::defaulttype::cleanup() has never been called, see sofa/helper/init.h)
+[WARNING] [SofaHelper] the library has not been cleaned up (sofa::helper::cleanup() has never been called, see sofa/helper/init.h)

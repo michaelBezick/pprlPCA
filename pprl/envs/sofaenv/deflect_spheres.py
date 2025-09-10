@@ -30,6 +30,7 @@ def build(
     min_deflection_distance: float,
     create_scene_kwargs: dict | None = None,
     camera_reset_noise: list | None = None,
+    camera_rotation_reset_noise_deg: list | None = None,
     add_rendering_to_info: bool = False,
     **kwargs,
 ) -> gym.Env:
@@ -65,6 +66,7 @@ def build(
         create_scene_kwargs=create_scene_kwargs,
         reward_amount_dict=reward_amount_dict,
         camera_reset_noise=camera_reset_noise,
+        camera_rotation_reset_noise_deg=camera_rotation_reset_noise_deg,
     )
     env = add_env_wrappers(
         env,

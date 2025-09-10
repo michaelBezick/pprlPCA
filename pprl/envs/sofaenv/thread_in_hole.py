@@ -26,6 +26,7 @@ def build(
     settle_steps: int,
     simple_success_check: bool,
     camera_reset_noise: list | None,
+    camera_rotation_reset_noise_deg: list | None,
     hole_rotation_reset_noise: list | None,
     hole_position_reset_noise: list | None,
     reward_amount_dict: dict,
@@ -39,6 +40,8 @@ def build(
 
     if camera_reset_noise is not None:
         camera_reset_noise = np.asarray(camera_reset_noise)
+    if camera_rotation_reset_noise_deg is not None:
+        camera_rotation_reset_noise_deg = np.asarray(camera_rotation_reset_noise_deg)
     if hole_rotation_reset_noise is not None:
         hole_rotation_reset_noise = np.asarray(hole_rotation_reset_noise)
     if hole_position_reset_noise is not None:
@@ -65,6 +68,7 @@ def build(
         create_scene_kwargs=create_scene_kwargs,
         reward_amount_dict=reward_amount_dict,
         camera_reset_noise=camera_reset_noise,
+        camera_rotation_reset_noise_deg=camera_rotation_reset_noise_deg,
         hole_rotation_reset_noise=hole_rotation_reset_noise,
         hole_position_reset_noise=hole_position_reset_noise,
         insertion_ratio_threshold=insertion_ratio_threshold,
