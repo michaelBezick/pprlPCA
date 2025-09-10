@@ -1,0 +1,115 @@
+Job 9537457 / array task  on gilbreth-e007.rcac.purdue.edu
+CUDA_VISIBLE_DEVICES=0
+Group name is:  baseline_TF
+Instantiating 8 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+BasicSampler: Resetting all environments.
+BasicSampler: Resetting agent.
+SAC: Given sampler batch size 5120, training batch size 512, and replay ratio 64, there will be 640 updates per iteration.
+SAC: Using learnable entropy coefficient with target entropy of -8
+RLRunner: Starting training...
+RLRunner: Saving log files to /home/mbezick/Repos/pprlPCA/wandb/run-20250910_180833-nq29vqr0/files
+RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+Saved video of policy to videos/2025-09-10/nq29vqr0/nominal/policy_step_0.mp4.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+----------------------------------
+| eval/               |          |
+|    Length           | 200      |
+|    Return           | 1.56     |
+|    NonzeroRewards   | 200      |
+|    DiscountedReturn | 1.56     |
+|    Success          | 0        |
+|    SuccessLength    | 200      |
+| time/               |          |
+|    iterations       | 0        |
+|    fps              | 0        |
+|    elapsed_time     | 212      |
+|    elapsed_steps    | 0        |
+----------------------------------
+For the first 10000 steps, agent will use a fixed std of 0.75 for exploration.
+----------------------------------
+| rollout/            |          |
+|    Length           | 200      |
+|    Return           | 2.08     |
+|    NonzeroRewards   | 200      |
+|    DiscountedReturn | 2.08     |
+|    Success          | 0        |
+|    SuccessLength    | 200      |
+| time/               |          |
+|    iterations       | 1        |
+|    fps              | 112      |
+|    elapsed_time     | 257      |
+|    elapsed_steps    | 5120     |
+----------------------------------
