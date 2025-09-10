@@ -8,20 +8,23 @@ _target_: pprl.envs.sofaenv.thread_in_hole.build
 # pointcloud wrapper args
 max_expected_num_points: 1000
 voxel_grid_size: 5.0
-# random_downsample: 600
+random_downsample: 600
 # center: [0.0, 0.0, 175.0]
 # scale: 75
-normalize: True  # agent doesn't learn without this!
+normalize: False  # agent doesn't learn without this!
+mode: "train"
 
 # env args
 time_step: 0.01
 frame_skip: 10
 max_episode_steps: 300
 
-camera_reset_noise: [20.0, 20.0, 20.0, 20.0, 20.0, 20.0]
+  #camera_reset_noise: [20.0, 20.0, 20.0, 20.0, 20.0, 20.0]
+camera_reset_noise: null
 settle_steps: 50
 hole_rotation_reset_noise: [0.0, 0.0, 0.0]
-hole_position_reset_noise: [20., 20., 20.]
+  #hole_position_reset_noise: [20., 20., 20.]
+hole_position_reset_noise: [0., 0., 0.]
 insertion_ratio_threshold: 0.3
 simple_success_check: false
 
