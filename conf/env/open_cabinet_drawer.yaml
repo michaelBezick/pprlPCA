@@ -8,6 +8,8 @@ env_kwargs:
   control_mode: base_pd_joint_vel_arm_pd_joint_delta_pos
   camera_cfgs:
     fov: 1.5
+
+  render_mode: rgb_array
 pcd_kwargs:
   max_expected_num_points: 800
   color: True

@@ -6,8 +6,11 @@ name: TurnFaucet
 env_id: TurnFaucet-v1
 env_kwargs:
   control_mode: pd_joint_delta_pos
+  observe_render_cam: true
   n_models: 10
+  render_mode: rgb_array
 pcd_kwargs:
   max_expected_num_points: 800
   random_downsample: 800
 min_num_points: 32
+camera_name: render_camera

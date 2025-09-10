@@ -291,16 +291,14 @@ class PointCloudWrapper(gym.ObservationWrapper):
         #         if self.dump_ply_exit_on_done:
         #             raise SystemExit(0)
 
-        breakpoint()
 
-
-        save_point_cloud(pcd, f"./maniskill_pcds/original/{self.pcd_idx}.ply")
+        # save_point_cloud(pcd, f"./turnfaucet_pcds/original/{self.pcd_idx}.ply")
 
         our_method = True
 
         if (our_method):
             # FPS
-            pcd = farthest_point_sampling(pcd[:, :3], 200)
+            pcd = farthest_point_sampling(pcd[:, :3], 640)
             # pcd = pcd[idx]
 
             # PCA
@@ -315,9 +313,10 @@ class PointCloudWrapper(gym.ObservationWrapper):
         else:
             new_points = pcd
 
-        save_point_cloud(new_points, f"./maniskill_pcds/pca/{self.pcd_idx}.ply")
+        # save_point_cloud(new_points, f"./turnfaucet_pcds/pca/{self.pcd_idx}.ply")
 
-        self.pcd_idx += 1
+
+        # self.pcd_idx += 1
 
         MIN_POINTS = 150
 
