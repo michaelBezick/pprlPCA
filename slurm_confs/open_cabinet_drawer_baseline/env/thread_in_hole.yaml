@@ -1,0 +1,77 @@
+defaults:
+  - sofaenv
+  - _self_
+
+name: ThreadInHole
+_target_: pprl.envs.sofaenv.thread_in_hole.build
+
+
+# pointcloud wrapper args
+max_expected_num_points: 1000
+voxel_grid_size: 5.0
+random_downsample: 600
+# center: [0.0, 0.0, 175.0]
+# scale: 75
+normalize: False 
+mode: "train"
+
+# env args
+time_step: 0.01
+frame_skip: 10
+max_episode_steps: 300
+
+camera_reset_noise: null
+# camera_reset_noise: [20.0, 20.0, 20.0, 20.0, 20.0, 20.0]
+settle_steps: 50
+hole_rotation_reset_noise: [0.0, 0.0, 0.0]
+# hole_position_reset_noise: [20., 20., 20.]
+hole_position_reset_noise: [0.0, 0.0, 0.0]
+insertion_ratio_threshold: 0.3
+simple_success_check: false
+
+reward_amount_dict:
+  thread_tip_distance_to_hole: -1.0
+  delta_thread_tip_distance_to_hole: -10.0
+  thread_center_distance_to_hole: -0.0
+  delta_thread_center_distance_to_hole: -0.0
+  thread_points_distance_to_hole: -0.0
+  delta_thread_points_distance_to_hole: -0.0
+  unstable_deformation: -0.0
+  thread_velocity: -0.0
+  gripper_velocity: -0.0
+  successful_task: 100.0
+  action_violated_cartesian_workspace: -0.0
+  action_violated_state_limits: -0.0
+  ratio_rope_in_hole: 1.0
+  delta_ratio_rope_in_hole: 50.0
+  gripper_collisions: -0.1
+
+create_scene_kwargs:
+  hole_config:
+    inner_radius: 8.0
+    outer_radius: 25.0
+    height: 30.0
+    young_modulus: 5000.0
+    poisson_ratio: 0.3
+    total_mass: 10.0
+  thread_config:
+    length: 70.0
+    radius: 2.0
+    total_mass: 1.0
+    young_modulus: 1000.0
+    poisson_ratio: 0.3
+    beam_radius: 3.0
+    mechanical_damping: 0.2
+  gripper_config:
+    cartesian_workspace:
+      low: [-100.0, -100.0, 0.0]
+      high: [100.0, 100.0, 200.0]
+    state_reset_noise: [15.0, 15.0, 0.0, 20.0]
+    rcm_reset_noise: null
+    gripper_ptsd_state: [60.0, 0.0, 180.0, 90.0]
+    gripper_rcm_pose: [100.0, 0.0, 150.0, 0.0, 180.0, 0.0]
+  camera_config:
+    placement_kwargs:
+      position: [0.0, -175.0, 120.0]
+      lookAt: [10.0, 0.0, 55.0]
+    vertical_field_of_view: 62.0

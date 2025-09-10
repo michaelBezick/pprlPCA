@@ -1,0 +1,10 @@
+# env args
+action_type: continuous
+observation_type: pointcloud
+render_mode: headless
+image_shape: [128, 128]
+time_step: 0.1
+frame_skip: 1
+max_episode_steps: 500
+
+traj_info: pprl.traj_info.SofaTrajInfo

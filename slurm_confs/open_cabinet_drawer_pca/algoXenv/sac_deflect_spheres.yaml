@@ -1,0 +1,9 @@
+# @package _global_
+
+defaults:
+  - sac_sofaenv
+  - _self_
+
+algo:
+  ent_coeff: 0.2
+

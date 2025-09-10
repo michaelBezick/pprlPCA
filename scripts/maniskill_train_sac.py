@@ -35,7 +35,39 @@ from pprl.utils.array_dict import build_obs_array
 # Camera math
 # ------------------------
 
-def _lookat_quat(position, look_at, world_up=(0.0, 0.0, 1.0), roll_deg=0.0):
+#WORLD_UP = (0.0, 1.0, 0.0)
+
+'''
+def _lookat_quat_zero_roll(position, look_at, world_up=(0.0, 1.0, 0.0)):
+    pos = np.asarray(position, dtype=float)
+    tgt = np.asarray(look_at, dtype=float)
+    upw = np.asarray(world_up, dtype=float)
+
+    fwd = tgt - pos
+    fwd /= np.linalg.norm(fwd)
+
+    # project world_up into plane orthogonal to forward (kills roll)
+    up_proj = upw - fwd * np.dot(upw, fwd)
+    up_proj /= np.linalg.norm(up_proj)
+
+    right = np.cross(fwd, up_proj)
+    right /= np.linalg.norm(right)
+
+    # OpenGL camera: +x right, +y up, -z forward
+    Rm = np.column_stack((right, up_proj, -fwd))
+
+    q_xyzw = R.from_matrix(Rm).as_quat()      # (x,y,z,w)
+    q_wxyz = np.array([q_xyzw[3], q_xyzw[0], q_xyzw[1], q_xyzw[2]], dtype=float)
+
+    
+    #return Pose(p=pos.tolist(), q=q_wxyz.tolist())
+    #return Pose(p=pos.tolist(), q=[0.364705, 0.279848, 0.115917, -0.880476])
+    #return Pose(p=pos.tolist(), q=[0.702640218095606, 0.204639780540436, 0.223325355061539, -0.64385126195074])
+    return Pose(p=pos.tolist(), q=[0.717801992001589, 0.142621934300541, 0.166360199707428, -0.660865300709779])
+
+    #return Pose(p=pos.tolist(), q=[0.364705,0.279848,0.115917,-0.880476])
+
+def _lookat_quat(position, look_at, world_up=(0.0, 1.0, 0.0), roll_deg=0.0):
     pos = np.asarray(position, dtype=float)
     target = np.asarray(look_at, dtype=float)
     up_world = np.asarray(world_up, dtype=float)
@@ -53,83 +85,105 @@ def _lookat_quat(position, look_at, world_up=(0.0, 0.0, 1.0), roll_deg=0.0):
 
     rot_mtx = np.column_stack((right_rot, up_rot, -forward))
     q_xyzw = R.from_matrix(rot_mtx).as_quat()   # (x, y, z, w)
-    # q_wxyz = np.array([q_xyzw[3], q_xyzw[0], q_xyzw[1], q_xyzw[2]], dtype=float)
-    return Pose(p=pos.tolist(), q=q_xyzw.tolist())
+    q_wxyz = np.array([q_xyzw[3], q_xyzw[0], q_xyzw[1], q_xyzw[2]], dtype=float)
+    return Pose(p=pos.tolist(), q=q_wxyz.tolist())
+'''
+
+def get_pointcloud_camera(env):
+    u = env.unwrapped
+    if hasattr(u, "_pc_cam_wrap") and u._pc_cam_wrap is not None:
+        return u._pc_cam_wrap
+    # fallback to your old heuristic
+    return _get_named_camera(env, getattr(u, "_pc_cam_uid", None) or "render_camera")
+def _hwc_u8(img):
+    img = np.asarray(img)
+    if img.ndim == 3 and img.shape[0] in (3, 4) and img.shape[-1] not in (3, 4):
+        img = np.moveaxis(img, 0, -1)   # CHW -> HWC
+    if img.dtype != np.uint8:
+        mx = np.nanmax(img)
+        if not np.isfinite(mx) or mx == 0: 
+            return None
+        if mx <= 1.0 + 1e-6:
+            img = np.clip(img, 0, 1) * 255.0
+        img = img.astype(np.uint8)
+    return img
+
+import os, math
+import numpy as np
+
+'''
+def spherical_forward(yaw_deg: float, pitch_deg: float):
+    # yaw: rotate around +Z; pitch: tilt up(+)/down(-)
+    y = np.deg2rad(yaw_deg)
+    p = np.deg2rad(pitch_deg)
+    cp, sp = np.cos(p), np.sin(p)
+    cy, sy = np.cos(y), np.sin(y)
+    # OpenGL-style: +x right, +y forward? We want +z up world.
+    # Forward vector pointing FROM camera TO target:
+    fwd = np.array([cp*cy, cp*sy, sp], dtype=float)  # z-up convention
+    fwd /= np.linalg.norm(fwd)
+    return fwd
+
+def pose_from_spherical(center, radius, yaw_deg, pitch_deg):
+    center = np.asarray(center, dtype=float)
+    fwd = spherical_forward(yaw_deg, pitch_deg)
+    cam_pos = center - radius * fwd          # place camera behind along forward
+    #pose = _lookat_quat(cam_pos, center, world_up=(0,0,1), roll_deg=0.0)  # uses wxyz
+    pose = _lookat_quat_zero_roll(cam_pos, center, world_up=(0,1,0))  # uses wxyz
+    return cam_pos, pose
+'''
 
 # ===== Training camera (fixed) =====
-MM = 1e-3
 
+BASE_VFOV_DEG = 90.0
 
-# Base (meters). Start from your eval "nominal" that looked good.
-BASE_POS  = np.array([0.0, 175.0, 120.0]) * MM
-BASE_LOOK = np.array([10.0, 0.0, 55.0]) * MM
-BASE_ROLL_DEG = 0.0
-BASE_VFOV_DEG = 62.0
-
-def yaw_about(point, center, yaw_deg, world_up=np.array([0,0,1.0])):
-    """Rotate point around 'center' by yaw_deg about world_up (right-handed)."""
-    v = np.asarray(point) - np.asarray(center)
-    up = np.asarray(world_up, dtype=float)
-    up = up / np.linalg.norm(up)
-    th = np.deg2rad(yaw_deg)
-    c, s = np.cos(th), np.sin(th)
-    # Rodrigues’ rotation around 'up'
-    K = np.array([[    0, -up[2],  up[1]],
-                  [ up[2],     0, -up[0]],
-                  [-up[1],  up[0],    0]])
-    Rm = c*np.eye(3) + s*K + (1-c)*np.outer(up, up)
-    return (Rm @ v) + np.asarray(center)
-
-# Rotate ~20° to the right. If "right" goes the wrong way, flip the sign.
-YAW_DEG = +0.0
-POS_YAW20  = yaw_about(BASE_POS,  BASE_LOOK, YAW_DEG)
-LOOK_YAW20 = BASE_LOOK.copy()   # keep the same target
-
-# Single source of truth for BOTH train and eval
 CAM_CANON = {
-    "position": POS_YAW20.tolist(),
-    "lookAt":   LOOK_YAW20.tolist(),
-    "roll_deg": BASE_ROLL_DEG,
-    "vertical_field_of_view": BASE_VFOV_DEG,
+    "position": [-0.433352, 0.948292, 0.885752],
+    "orientation": [0.717801992001589, 0.142621934300541, 0.166360199707428, -0.660865300709779],
+    "roll_deg": 0.0,
+    "vertical_field_of_view": BASE_VFOV_DEG,  # keep your 62.0 unless you want to change it
 }
 
 # Train reads from CAM_CANON:
 TRAIN_POS  = np.array(CAM_CANON["position"])
 TRAIN_LOOK = np.array(CAM_CANON["lookAt"])
 
+'''
 # Eval dictionary only contains "nominal" and matches train exactly
 EVAL_CAMERAS = {"nominal": {k: (v.tolist() if isinstance(v, np.ndarray) else v)
                             for k, v in CAM_CANON.items()}}
+'''
 
-# # ===== Eval perturbations (SOFA-style) =====
-# BASE_POS  = TRAIN_POS.copy()
-# BASE_LOOK = TRAIN_LOOK.copy()
-# FORWARD   = (BASE_LOOK - BASE_POS) / np.linalg.norm(BASE_LOOK - BASE_POS)
-# delta_mm  = 50.0
-#
-# translations = {
-#     "shift+x+50": {"position": (BASE_POS + np.array([+delta_mm, 0, 0])).tolist(), "lookAt": BASE_LOOK.tolist()},
-#     "shift+y+50": {"position": (BASE_POS + np.array([0, +delta_mm, 0])).tolist(), "lookAt": BASE_LOOK.tolist()},
-#     "shift+z+50": {"position": (BASE_POS + np.array([0, 0, +delta_mm])).tolist(), "lookAt": (BASE_LOOK + np.array([0, 0, +delta_mm])).tolist()},
-# }
-# fwd_back = {
-#     "along_view+50": {
-#         "position": (BASE_POS + delta_mm * FORWARD).tolist(),
-#         "lookAt":   (BASE_LOOK + delta_mm * FORWARD).tolist(),
-#     }
-# }
-# rolls = {
-#     "roll+15deg": {"position": BASE_POS.tolist(), "lookAt": BASE_LOOK.tolist(), "roll_deg": +15.0},
-#     "roll+30deg": {"position": BASE_POS.tolist(), "lookAt": BASE_LOOK.tolist(), "roll_deg": +30.0},
-# }
-# handcrafted = {"nominal": {"position": BASE_POS.tolist(), "lookAt": BASE_LOOK.tolist()}}
-# fovs = {
-#     "fov30": {"position": BASE_POS.tolist(), "lookAt": BASE_LOOK.tolist(), "vertical_field_of_view": 30.0},
-#     "fov70": {"position": BASE_POS.tolist(), "lookAt": BASE_LOOK.tolist(), "vertical_field_of_view": 70.0},
-# }
-# # EVAL_CAMERAS: dict[str, dict] = {**handcrafted, **translations, **fwd_back, **rolls, **fovs}
-# EVAL_CAMERAS: dict[str, dict] = {**handcrafted}
-# --- Force the env to register only a single tripod camera BEFORE sensors/obs are built
+# ===== Eval perturbations (SOFA-style) =====
+BASE_POS  = TRAIN_POS.copy()
+BASE_LOOK = TRAIN_LOOK.copy()
+FORWARD   = (BASE_LOOK - BASE_POS) / np.linalg.norm(BASE_LOOK - BASE_POS)
+delta_m  = 50.0 * 1e-3
+
+
+translations = {
+ "shift+x+50": {"position": (BASE_POS + np.array([+delta_m, 0, 0])).tolist(), "lookAt": BASE_LOOK.tolist()},
+ "shift+y+50": {"position": (BASE_POS + np.array([0, +delta_m, 0])).tolist(), "lookAt": BASE_LOOK.tolist()},
+ "shift+z+50": {"position": (BASE_POS + np.array([0, 0, +delta_m])).tolist(), "lookAt": (BASE_LOOK + np.array([0, 0, +delta_mm])).tolist()},
+}
+fwd_back = {
+ "along_view+50": {
+     "position": (BASE_POS + delta_mm * FORWARD).tolist(),
+     "lookAt":   (BASE_LOOK + delta_mm * FORWARD).tolist(),
+ }
+}
+rolls = {
+ "roll+15deg": {"position": BASE_POS.tolist(), "lookAt": BASE_LOOK.tolist(), "roll_deg": +15.0},
+ "roll+30deg": {"position": BASE_POS.tolist(), "lookAt": BASE_LOOK.tolist(), "roll_deg": +30.0},
+}
+handcrafted = {"nominal": {"position": BASE_POS.tolist(), "lookAt": BASE_LOOK.tolist()}}
+fovs = {
+ "fov30": {"position": BASE_POS.tolist(), "lookAt": BASE_LOOK.tolist(), "vertical_field_of_view": 30.0},
+ "fov70": {"position": BASE_POS.tolist(), "lookAt": BASE_LOOK.tolist(), "vertical_field_of_view": 70.0},
+}
+EVAL_CAMERAS: dict[str, dict] = {**handcrafted, **translations, **fwd_back, **rolls, **fovs}
+
+#--- Force the env to register only a single tripod camera BEFORE sensors/obs are built
 def _force_single_camera_registration(env, keep_uid_candidates: tuple[str, ...]) -> None:
     u = env.unwrapped
     orig = getattr(u, "_register_cameras", None)
@@ -183,8 +237,8 @@ class TrainCamWrapperFactory:
         horizon = self.max_episode_steps or getattr(getattr(env, "spec", None), "max_episode_steps", 200)
         env = TimeLimit(env, max_episode_steps=int(horizon))
         # 3) pose the tripod
-        pose = _lookat_quat(self.train_pos, self.train_look, roll_deg=self.roll_deg)
-        # pose = _lookat_quat_zero_roll(self.train_pos, self.train_look)
+        #pose = _lookat_quat(self.train_pos, self.train_look, roll_deg=self.roll_deg)
+        pose = _lookat_quat_zero_roll(self.train_pos, self.train_look)
         return FixedOrConfiguredCamera(env, camera_name=self.camera_name, mode="train", train_pose=pose, eval_cam_cfg=None)
 
 
@@ -275,35 +329,60 @@ class FixedOrConfiguredCamera(gym.Wrapper):
                         getattr(t, name)(*args)
                     except Exception:
                         pass
-
     def _apply_pose(self, cam, pose: Pose):
-        M = pose.to_transformation_matrix()
-        def try_set(obj) -> bool:
-            for name, arg in (("set_local_pose", pose), ("set_pose", pose)):
-                if hasattr(obj, name):
-                    try:
-                        getattr(obj, name)(arg); return True
-                    except Exception:
-                        pass
-            for name in ("set_extrinsic", "set_cam2world", "set_extrinsic_cv", "set_world_pose", "set_model_matrix"):
-                if hasattr(obj, name):
-                    try:
-                        getattr(obj, name)(M); return True
-                    except Exception:
-                        pass
-            if hasattr(obj, "pose"):
+        # 1) prefer SAPIEN entity
+        ent = getattr(cam, "camera", None) or getattr(cam, "_camera", None)
+
+        # (a) detach from parent so nothing re-tilts the camera
+        for obj in (ent, cam):
+            if obj is not None and hasattr(obj, "set_parent"):
                 try:
-                    setattr(obj, "pose", pose); return True
+                    obj.set_parent(None)
                 except Exception:
                     pass
+
+        # (b) set WORLD pose first (avoid local pose unless last resort)
+        def try_world(obj) -> bool:
+            if obj is None:
+                return False
+            for name in ("set_pose", "set_world_pose", "set_model_matrix"):
+                if hasattr(obj, name):
+                    try:
+                        getattr(obj, name)(pose)
+                        return True
+                    except Exception:
+                        pass
             return False
-        if try_set(cam):
+
+        if try_world(ent) or try_world(cam):
             return
-        for subname in ("camera", "_camera", "sensor", "entity", "cam", "component"):
-            sub = getattr(cam, subname, None)
-            if sub is not None and try_set(sub):
-                return
-        raise RuntimeError("Camera object lacks usable pose setters (tried pose/extrinsic APIs on cam and sub-objects).")
+
+        # (c) fallbacks: matrices or local pose
+        M = pose.to_transformation_matrix()
+        def try_matrix(obj) -> bool:
+            if obj is None:
+                return False
+            for name in ("set_extrinsic_cv", "set_extrinsic", "set_cam2world"):
+                if hasattr(obj, name):
+                    try:
+                        getattr(obj, name)(M)
+                        return True
+                    except Exception:
+                        pass
+            return False
+
+        if try_matrix(ent) or try_matrix(cam):
+            return
+
+        for obj in (ent, cam):
+            if obj is not None and hasattr(obj, "set_local_pose"):
+                try:
+                    obj.set_local_pose(pose)
+                    return
+                except Exception:
+                    pass
+
+        raise RuntimeError("Camera object lacks usable pose setters.")
 
     def _apply_vfov_if_supported(self, cam, vfov_deg: float):
         for key in ("set_fov_y", "set_fov", "set_vertical_field_of_view", "set_vertical_fov", "set_parameters"):
@@ -325,6 +404,20 @@ class FixedOrConfiguredCamera(gym.Wrapper):
         obs, info = self.env.reset(seed=seed, options=options)
         cam = _get_named_camera(self.env, self.camera_name)
 
+
+        u = self.env.unwrapped
+        # keep references so *everyone* can find the same camera
+        u._pc_cam_wrap  = cam
+        u._pc_cam_uid   = getattr(cam, "uid", None) or (self.camera_name or "render_camera")
+        u._pc_cam_entity = getattr(cam, "camera", None) or getattr(cam, "_camera", None)
+
+        # prune camera dicts to just this one (prevents “viewer” camera confusion)
+        for dict_name in ("_cameras", "cameras", "_sensors", "sensors"):
+            d = getattr(u, dict_name, None)
+            if isinstance(d, dict):
+                d.clear()
+                d[u._pc_cam_uid] = cam
+
         self._ensure_depth_range(cam, near=0.02, far=3.0)
 
         if self.mode == "train":
@@ -338,8 +431,8 @@ class FixedOrConfiguredCamera(gym.Wrapper):
             pos  = self.eval_cam_cfg["position"]
             look = self.eval_cam_cfg["lookAt"]
             roll = float(self.eval_cam_cfg.get("roll_deg", 0.0))
-            pose = _lookat_quat(pos, look, roll_deg=roll)
-            # pose = _lookat_quat_zero_roll(pos, look)
+            #pose = _lookat_quat(pos, look, roll_deg=roll)
+            pose = _lookat_quat_zero_roll(pos, look)
             self._apply_pose(cam, pose)
             self._ensure_depth_fov(
                 cam,
@@ -350,20 +443,38 @@ class FixedOrConfiguredCamera(gym.Wrapper):
             if vfov is not None:
                 self._apply_vfov_if_supported(cam, float(vfov))
 
+                # force a render/update once after pose change
+        for obj in (cam, getattr(cam, "camera", None), getattr(cam, "_camera", None)):
+            if obj is not None and hasattr(obj, "take_picture"):
+                try:
+                    obj.take_picture()
+                    break
+                except Exception:
+                    pass
+        scene = getattr(self.env.unwrapped, "scene", None) or getattr(self.env.unwrapped, "_scene", None)
+        if scene is not None and hasattr(scene, "update_render"):
+            try:
+                scene.update_render()
+            except Exception:
+                pass
+
+
                 # Quick sanity: count valid depth
         for attr in ("get_images", "get_image", "get_obs", "get_observation"):
             if hasattr(cam, attr):
                 try:
                     imgs = getattr(cam, attr)()
-                    depth = imgs.get("Depth") or imgs.get("depth") or imgs.get("DEPTH")
+                    depth = pick_img(imgs, ("Depth", "depth", "DEPTH"))
                     if depth is not None:
-                        import numpy as np
+                        depth = np.asarray(depth)
                         valid = np.isfinite(depth) & (depth > 0)
-                        print("Depth stats:", valid.sum(), depth.min(), depth.max())
+                        print("Depth stats:", int(valid.sum()), float(np.nanmin(depth)), float(np.nanmax(depth)))
+
                 except Exception:
                     pass
                 break
 
+        print(self.env.unwrapped._cameras['render_camera'].camera.get_pose())
         return obs, info
 
 # =========================
@@ -396,6 +507,7 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         roll_deg=0.0,
         max_episode_steps=config.env.max_episode_steps
     )
+
     cages, metadata = build_cages(
         EnvClass=train_factory,
         n_envs=batch_spec.B,
@@ -465,17 +577,17 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         )
 
         step_transforms = []
-        if name == "nominal":  # record only one
-            recorder = RecordVectorizedVideo(
-                sample_tree=eval_sample_tree,
-                buffer_key_to_record="env_info.rendering",
-                env_fps=50,
-                output_dir=Path(config.video_path) / name,
-                video_length=config.env.max_episode_steps,
-                use_wandb=True,
-            )
-            step_transforms.append(recorder)
-            callbacks.append(RecordingSchedule(recorder, trigger="on_eval"))
+        #if name == "nominal":  # record only one
+        recorder = RecordVectorizedVideo(
+            sample_tree=eval_sample_tree,
+            buffer_key_to_record="env_info.rendering",
+            env_fps=50,
+            output_dir=Path(config.video_path) / name,
+            video_length=config.env.max_episode_steps,
+            use_wandb=True,
+        )
+        step_transforms.append(recorder)
+        callbacks.append(RecordingSchedule(recorder, trigger="on_eval"))
 
         eval_samplers[name] = EvalSampler(
             max_traj_length   = config.env.max_episode_steps,

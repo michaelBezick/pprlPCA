@@ -1,0 +1,7 @@
+_target_: torch.optim.AdamW
+lr: 1e-4
+weight_decay: 0.0
+
+encoder:
+  lr: ${..lr}  # tie to overall lr
+  weight_decay: 1e-2  # default value from Pytorch

@@ -1,0 +1,5 @@
+# @package _global_
+
+algo:
+  batch_size: 128
+  replay_length: 250000

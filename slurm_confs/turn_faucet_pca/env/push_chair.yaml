@@ -1,0 +1,23 @@
+defaults:
+  - maniskill2
+  - _self_
+
+name: PushChair
+env_id: PushChair-v2
+
+camera_name: overhead_camera_0
+
+env_kwargs:
+  control_mode: base_pd_joint_vel_arm_pd_joint_delta_pos
+  camera_cfgs:  # no need to render at such high resolution
+    width: 64
+    height: 64
+    fov: 3.5
+    far: 30.0
+pcd_kwargs:
+  n_target_points: 50
+  target_points_scale: 0.14
+  voxel_grid_size: 0.05
+  # random_downsample: 500
+  max_expected_num_points: 1000
+continuous_task: False  # performance significantly worse without this!

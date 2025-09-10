@@ -1,0 +1,4 @@
+# @package _global_
+
+defaults:
+  - sac_thread_in_hole

@@ -1,0 +1,4 @@
+name: PointNet
+_target_: pprl.models.pointnet.PointNet
+embed_dim: 384
+state_embed_dim: ${.embed_dim}  # Philipp says these should be the same

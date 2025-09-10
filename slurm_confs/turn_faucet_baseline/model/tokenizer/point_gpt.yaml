@@ -1,0 +1,5 @@
+defaults:
+  - default
+  - _self_
+
+_target_: pprl.models.modules.gpt_tokenizer.GPTTokenizer

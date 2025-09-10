@@ -1,0 +1,9 @@
+# @package _global_
+
+defaults:
+  - sac_push_chair
+  - _self_
+
+algo:
+  chamfer_loss_coeff: 1.0
+  color_loss_coeff: 1.0

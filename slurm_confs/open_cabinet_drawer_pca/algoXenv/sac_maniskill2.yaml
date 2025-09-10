@@ -1,0 +1,16 @@
+# @package _global_
+
+algo:
+  discount: 0.85
+
+# since maniskill envs use up GPU memory, we cannot have 20
+# parallel environments like usual
+batch_B: 8
+# need to increase the batch_T to prevent "too many open files" error since
+# batch_B is decreased >2X
+batch_T: 640
+
+# rendering is strange for maniskill envs, so we only use one
+# environment for video recording
+eval:
+  n_eval_envs: 1

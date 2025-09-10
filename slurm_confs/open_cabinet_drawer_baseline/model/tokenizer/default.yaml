@@ -1,0 +1,15 @@
+_target_: pprl.models.modules.tokenizer.Tokenizer
+_partial_: True  # requires `point_dim` and `embed_dim`
+mlp_1:
+  _target_: pprl.models.modules.mlp.TokenizerMLP
+  _partial_: True  # requires `input_size`
+  hidden_layers: [128, 256]
+  act: relu
+mlp_2:
+  _target_: pprl.models.modules.mlp.TokenizerMLP
+  _partial_: True  # requires `output_size`
+  hidden_layers: [512, 512]
+  act: relu
+group_size: 32
+sampling_ratio: 0.0625
+random_start: True

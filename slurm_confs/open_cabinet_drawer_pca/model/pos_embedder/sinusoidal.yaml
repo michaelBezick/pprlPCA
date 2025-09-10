@@ -1,0 +1,5 @@
+_target_: pprl.models.modules.sin_pos_embedder.SinusoidalPosEmbedder
+_partial_: True  # requires `token_dim`
+n_dim: 3
+temperature: 10000.0
+scale: 1.0

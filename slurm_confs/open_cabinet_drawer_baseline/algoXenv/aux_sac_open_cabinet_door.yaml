@@ -1,0 +1,4 @@
+# @package _global_
+
+defaults:
+  - sac_open_cabinet_door

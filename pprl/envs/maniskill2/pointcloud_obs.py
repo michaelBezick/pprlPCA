@@ -78,7 +78,7 @@ def farthest_point_sampling(points, num_samples, init_idx=None):
         return points
 
     points = np_to_o3d(points)
-    points.farthest_point_down_sample(num_samples)
+    points = points.farthest_point_down_sample(num_samples)
     points = o3d_to_np(points)
     return points
 
@@ -100,9 +100,16 @@ class PointCloudWrapper(gym.ObservationWrapper):
         normalize: bool = False,
         points_only: bool = True,
         points_key: str = "points",
+        our_method: bool = True,
+        use_fps: bool = True,
+        fps_n: int = 0,
     ) -> None:
         super().__init__(env)
         self.color = color
+
+        self.our_method = our_method
+        self.use_fps = use_fps
+        self.fps_n = fps_n
 
         if crop is not None:
             self.crop_min = np.asarray(crop["min_bound"])
@@ -280,26 +287,17 @@ class PointCloudWrapper(gym.ObservationWrapper):
 
         pcd = self.pointcloud(observation)
 
-        #         # --- dump raw point cloud (from overhead camera) as sequential .ply ---
-        # if self.dump_ply_enable and self._dump_ply_count < self.dump_ply_max:
-        #     out_path = self.dump_ply_dir / f"{self.dump_ply_prefix}_{self._dump_ply_count:04d}.ply"
-        #     self._save_ply(pcd, out_path)
-        #     print(f"[PLY] saved {out_path}")
-        #     self._dump_ply_count += 1
-        #     if self._dump_ply_count >= self.dump_ply_max:
-        #         print(f"[PLY] reached {self.dump_ply_max} frames in {self.dump_ply_dir}")
-        #         if self.dump_ply_exit_on_done:
-        #             raise SystemExit(0)
+        #save_point_cloud(pcd, f"./turnfaucet_pcds/original/{self.pcd_idx}.ply")
 
+        #our_method = True
 
-        # save_point_cloud(pcd, f"./turnfaucet_pcds/original/{self.pcd_idx}.ply")
+        #print(self.env.unwrapped._cameras['render_camera'].camera.get_pose())
 
-        our_method = True
+        if (self.our_method):
 
-        if (our_method):
+            if (self.use_fps):
             # FPS
-            pcd = farthest_point_sampling(pcd[:, :3], 640)
-            # pcd = pcd[idx]
+                pcd = farthest_point_sampling(pcd, self.fps_n)
 
             # PCA
             centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
@@ -313,10 +311,9 @@ class PointCloudWrapper(gym.ObservationWrapper):
         else:
             new_points = pcd
 
-        # save_point_cloud(new_points, f"./turnfaucet_pcds/pca/{self.pcd_idx}.ply")
+        #save_point_cloud(new_points, f"./turnfaucet_pcds/pca/{self.pcd_idx}.ply")
 
-
-        # self.pcd_idx += 1
+        #self.pcd_idx += 1
 
         MIN_POINTS = 150
 

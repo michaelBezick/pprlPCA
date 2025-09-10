@@ -1,0 +1,12 @@
+name: SAC
+_target_: parllel.torch.algos.sac.SAC
+discount: 0.99
+replay_length: 500_000
+learning_starts: 10_000
+replay_ratio: 64
+batch_size: 1024
+target_update_tau: 0.01
+target_update_interval: 1
+ent_coeff: 0.1
+ent_coeff_lr: 1e-4
+clip_grad_norm: 1e8

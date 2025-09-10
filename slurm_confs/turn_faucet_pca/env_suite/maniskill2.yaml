@@ -1,0 +1,10 @@
+# @package _global_
+
+defaults:
+  - override /env: null  # must override env with something
+
+hydra:
+  mode: MULTIRUN
+  sweeper:
+    params:
+      env: push_chair, open_cabinet_drawer, open_cabinet_door, turn_faucet

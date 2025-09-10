@@ -1,0 +1,10 @@
+# @package _global_
+
+defaults:
+  - override /env: null  # must override env with something
+
+hydra:
+  mode: MULTIRUN
+  sweeper:
+    params:
+      env: deflect_spheres, thread_in_hole

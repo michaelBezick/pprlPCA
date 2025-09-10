@@ -1,0 +1,25 @@
+defaults:
+  - maniskill2
+  - _self_
+
+name: OpenCabinetDrawer
+env_id: OpenCabinetDrawer-v2
+env_kwargs:
+  control_mode: base_pd_joint_vel_arm_pd_joint_delta_pos
+  camera_cfgs:
+    fov: 1.5
+
+  render_mode: rgb_array
+pcd_kwargs:
+  max_expected_num_points: 800
+  color: True
+  crop:
+    # remove the floor and points more than 0.5m in front of cabinet
+    min_bound: [-0.5, -10, 1e-4]
+    max_bound: [10, 10, 10]
+  n_target_points: 50
+  target_points_scale: 0.07
+  # voxel_grid_size: 0.04
+  random_downsample: 800
+# min_num_points: 32
+traj_info: pprl.traj_info.OpenCabinetDrawerTrajInfo
