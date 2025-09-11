@@ -41,6 +41,7 @@ class ConfigurableCabinetMixin(OpenCabinetEnv):
         cameras = super()._register_cameras()
         assert isinstance(cameras, list)
 
+
         if self.observe_render_cam:
             # get the config also used for the render camera
             render_cam = self._register_render_cameras()

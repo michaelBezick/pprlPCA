@@ -262,6 +262,8 @@ class SofaEnvPointCloudObservations(gym.ObservationWrapper):
 
         # save_point_cloud(pcd, "original.ply")
 
+        print(self.env.unwrapped._cameras)
+
         our_method = True
 
         if (our_method):

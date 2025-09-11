@@ -1,14 +1,18 @@
 defaults:
   - maniskill2
   - _self_
-
 name: OpenCabinetDrawer
 env_id: OpenCabinetDrawer-v2
 env_kwargs:
+  n_models: 1
+  robot_cameras: ["render_camera"]
+  observe_render_cam: true
   control_mode: base_pd_joint_vel_arm_pd_joint_delta_pos
   camera_cfgs:
-    fov: 1.5
-
+    fov: 2
+    far: 30.0
+    p: [-5, 0, 1.5]
+    q: [0.92388, 0, 0.382683, 0]
   render_mode: rgb_array
 pcd_kwargs:
   max_expected_num_points: 800
@@ -21,5 +25,12 @@ pcd_kwargs:
   target_points_scale: 0.07
   # voxel_grid_size: 0.04
   random_downsample: 800
+  our_method: false
+  use_fps: false
+  fps_n: 0
 # min_num_points: 32
 traj_info: pprl.traj_info.OpenCabinetDrawerTrajInfo
+domain_randomization: true
+pos_jitter_max: [0.625, 0.625, 0.625]
+rot_jitter_max_deg: [37.5, 37.5, 37.5]
+camera_name: render_camera

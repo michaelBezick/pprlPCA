@@ -291,7 +291,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
 
         #our_method = True
 
-        #print(self.env.unwrapped._cameras['render_camera'].camera.get_pose())
+        # print(self.env.unwrapped._cameras['render_camera'].camera.get_pose())
 
         if (self.our_method):
 
@@ -315,7 +315,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
 
         #self.pcd_idx += 1
 
-        MIN_POINTS = 150
+        MIN_POINTS = 800
 
         n, d = new_points.shape
         if n < MIN_POINTS:

@@ -1,21 +1,18 @@
+import copy
 from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
-from typing import Iterator, Dict
+from typing import Dict, Iterator
 
-import copy
-import numpy as np
 import gymnasium as gym
 import gymnasium.spaces as spaces
 import hydra
+import numpy as np
+import parllel.logger as logger
 import torch
 import wandb
 from hydra.utils import get_class, instantiate
 from omegaconf import DictConfig, OmegaConf, open_dict
-from scipy.spatial.transform import Rotation as R
-from sapien.core import Pose
-
-import parllel.logger as logger
 from parllel import Array, ArrayDict, dict_map
 from parllel.callbacks.recording_schedule import RecordingSchedule
 from parllel.patterns import build_cages, build_sample_tree
@@ -28,10 +25,10 @@ from parllel.torch.algos.sac import build_replay_buffer_tree
 from parllel.torch.distributions.squashed_gaussian import SquashedGaussian
 from parllel.transforms.vectorized_video import RecordVectorizedVideo
 from parllel.types import BatchSpec
+from sapien.core import Pose
+from scipy.spatial.transform import Rotation as R
 
 from pprl.utils.array_dict import build_obs_array
-
-import quaternion
 
 # =========================
 # Base camera constants (Z-up world; eval uses direct quaternion)
@@ -39,9 +36,17 @@ import quaternion
 WORLD_UP = (0.0, 0.0, 1.0)
 
 BASE_POS = np.array([-0.433352, 0.948292, 0.885752], dtype=float)
-BASE_QUAT_WXYZ = np.array([0.717801992001589, 0.142621934300541, 0.166360199707428, -0.660865300709779], dtype=float)
+
+BASE_POS += np.array([-1, 1, 0.3])
+
+BASE_QUAT_WXYZ = np.array(
+    [0.821655022002333, 0.111567041133269, 0.188598853451156, -0.526180263998966],
+    dtype=float,
+)
+
 
 BASE_VFOV_DEG = 60.0
+
 
 # =========================
 # Quaternion / axes helpers (SAPIEN wxyz)
@@ -49,15 +54,33 @@ BASE_VFOV_DEG = 60.0
 def _wxyz_to_xyzw(q_wxyz: np.ndarray) -> np.ndarray:
     return np.array([q_wxyz[1], q_wxyz[2], q_wxyz[3], q_wxyz[0]], dtype=float)
 
+
 def _xyzw_to_wxyz(q_xyzw: np.ndarray) -> np.ndarray:
     return np.array([q_xyzw[3], q_xyzw[0], q_xyzw[1], q_xyzw[2]], dtype=float)
+
 
 def apply_world_yaw_z_wxyz(q_wxyz: np.ndarray, deg: float) -> np.ndarray:
     """World yaw about +Z by 'deg' degrees: q_new = Rz(deg) * q."""
     r_base = R.from_quat(_wxyz_to_xyzw(q_wxyz))
-    r_z    = R.from_rotvec(np.deg2rad(deg) * np.array([0.0, 0.0, 1.0], dtype=float))
-    q_new  = (r_z * r_base).as_quat()
+    r_z = R.from_rotvec(np.deg2rad(deg) * np.array([0.0, 0.0, 1.0], dtype=float))
+    q_new = (r_z * r_base).as_quat()
     return _xyzw_to_wxyz(q_new)
+
+
+def apply_world_euler_wxyz(
+    q_wxyz: np.ndarray, yaw_deg: float, pitch_deg: float, roll_deg: float
+) -> np.ndarray:
+    """
+    Apply EXTRINSIC world rotations Rz(yaw)*Ry(pitch)*Rx(roll) to base orientation q_wxyz.
+    Returns a new wxyz quaternion.
+    """
+    r_base = R.from_quat(_wxyz_to_xyzw(q_wxyz))
+    r_deltaW = R.from_euler(
+        "ZYX", [yaw_deg, pitch_deg, roll_deg], degrees=True
+    )  # extrinsic
+    q_new = (r_deltaW * r_base).as_quat()
+    return _xyzw_to_wxyz(q_new)
+
 
 def _apply_local_roll_wxyz(q_base_wxyz, deg):
     # camera->world rotation
@@ -69,7 +92,10 @@ def _apply_local_roll_wxyz(q_base_wxyz, deg):
     q_new_xyzw = (r_deltaW * R.from_quat(_wxyz_to_xyzw(q_base_wxyz))).as_quat()
     return _xyzw_to_wxyz(q_new_xyzw)
 
-def roll_local_with_comp_wxyz(q_base_wxyz: np.ndarray, roll_deg: float, comp_deg: float = 20.0) -> np.ndarray:
+
+def roll_local_with_comp_wxyz(
+    q_base_wxyz: np.ndarray, roll_deg: float, comp_deg: float = 20.0
+) -> np.ndarray:
     """
     Roll locally about camera +Z by roll_deg, then compensate drift by yawing about WORLD +Z
     in the opposite direction by |comp_deg|.
@@ -79,8 +105,9 @@ def roll_local_with_comp_wxyz(q_base_wxyz: np.ndarray, roll_deg: float, comp_deg
     if abs(roll_deg) < 1e-9:
         return q_base_wxyz.copy()
     q_roll = _apply_local_roll_wxyz(q_base_wxyz, roll_deg)
-    comp   = np.sign(roll_deg) * abs(comp_deg)  # opposite direction
+    comp = np.sign(roll_deg) * abs(comp_deg)  # opposite direction
     return apply_world_yaw_z_wxyz(q_roll, comp)
+
 
 def _basis_from_quat_wxyz(q_wxyz: np.ndarray):
     """
@@ -97,10 +124,11 @@ def _basis_from_quat_wxyz(q_wxyz: np.ndarray):
     up = R_cam_world[:, 1]
     view_dir = -R_cam_world[:, 2]  # looking direction
     # Normalize just in case of tiny numeric drift
-    right /= (np.linalg.norm(right) + 1e-12)
-    up /= (np.linalg.norm(up) + 1e-12)
-    view_dir /= (np.linalg.norm(view_dir) + 1e-12)
+    right /= np.linalg.norm(right) + 1e-12
+    up /= np.linalg.norm(up) + 1e-12
+    view_dir /= np.linalg.norm(view_dir) + 1e-12
     return right, up, view_dir
+
 
 # Tiny util used in reset() debug print
 def pick_img(d, keys):
@@ -108,6 +136,7 @@ def pick_img(d, keys):
         if isinstance(d, dict) and k in d and d[k] is not None:
             return d[k]
     return None
+
 
 # =========================
 # Eval camera set (built from BASE_POS / BASE_QUAT_WXYZ)
@@ -134,82 +163,100 @@ def _build_eval_cameras() -> Dict[str, dict]:
     dv = 0.05  # along viewing axis
 
     cams = {
-        # FOV sweeps
-        "fov70": {
-            "position": pos0.tolist(),
-            "quat_wxyz": q0.tolist(),
-            "vertical_field_of_view": 70.0,
-        },
-        "fov50": {
-            "position": pos0.tolist(),
-            "quat_wxyz": q0.tolist(),
-            "vertical_field_of_view": 50.0,
-        },
-
-        # Rolls (local +Z axis), composed by multiplying with the base quaternion
-        "roll+15deg": {
-            "position": pos0.tolist(),
-            "quat_wxyz": roll_local_with_comp_wxyz(q0, +15.0, 20).tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        "roll-15deg": {
-            "position": pos0.tolist(),
-            "quat_wxyz": roll_local_with_comp_wxyz(q0, -15.0, 20).tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        "roll+30deg": {
-            "position": pos0.tolist(),
-            "quat_wxyz": roll_local_with_comp_wxyz(q0, +30.0, 30).tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        "roll-30deg": {
-            "position": pos0.tolist(),
-            "quat_wxyz": roll_local_with_comp_wxyz(q0, -30.0, 30).tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-
         "nominal": {
             "position": pos0.tolist(),
             "quat_wxyz": q0.tolist(),
             "vertical_field_of_view": vfov0,
         },
-        # World-axis translations
-        "shift+x+5cm": {
-            "position": (pos0 + np.array([+dx, 0.0, 0.0])).tolist(),
-            "quat_wxyz": q0.tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        "shift+y+5cm": {
-            "position": (pos0 + np.array([0.0, +dy, 0.0])).tolist(),
-            "quat_wxyz": q0.tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        "shift+z+5cm": {
-            "position": (pos0 + np.array([0.0, 0.0, +dz])).tolist(),
-            "quat_wxyz": q0.tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        # Along viewing direction (forward/back)
-        "along_view+5cm": {
-            "position": (pos0 + dv * view).tolist(),
-            "quat_wxyz": q0.tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        "along_view-5cm": {
-            "position": (pos0 - dv * view).tolist(),
-            "quat_wxyz": q0.tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-
+        # # FOV sweeps
+        # "fov70": {
+        #     "position": pos0.tolist(),
+        #     "quat_wxyz": q0.tolist(),
+        #     "vertical_field_of_view": 70.0,
+        # },
+        # "fov50": {
+        #     "position": pos0.tolist(),
+        #     "quat_wxyz": q0.tolist(),
+        #     "vertical_field_of_view": 50.0,
+        # },
+        #
+        # # Rolls (local +Z axis), composed by multiplying with the base quaternion
+        # "roll+15deg": {
+        #     "position": pos0.tolist(),
+        #     "quat_wxyz": roll_local_with_comp_wxyz(q0, +15.0, 20).tolist(),
+        #     "vertical_field_of_view": vfov0,
+        # },
+        # "roll-15deg": {
+        #     "position": pos0.tolist(),
+        #     "quat_wxyz": roll_local_with_comp_wxyz(q0, -15.0, 20).tolist(),
+        #     "vertical_field_of_view": vfov0,
+        # },
+        # "roll+30deg": {
+        #     "position": pos0.tolist(),
+        #     "quat_wxyz": roll_local_with_comp_wxyz(q0, +30.0, 30).tolist(),
+        #     "vertical_field_of_view": vfov0,
+        # },
+        # "roll-30deg": {
+        #     "position": pos0.tolist(),
+        #     "quat_wxyz": roll_local_with_comp_wxyz(q0, -30.0, 30).tolist(),
+        #     "vertical_field_of_view": vfov0,
+        # },
+        #
+        # # World-axis translations
+        # "shift+x+5cm": {
+        #     "position": (pos0 + np.array([+dx, 0.0, 0.0])).tolist(),
+        #     "quat_wxyz": q0.tolist(),
+        #     "vertical_field_of_view": vfov0,
+        # },
+        # "shift+y+5cm": {
+        #     "position": (pos0 + np.array([0.0, +dy, 0.0])).tolist(),
+        #     "quat_wxyz": q0.tolist(),
+        #     "vertical_field_of_view": vfov0,
+        # },
+        # "shift+z+5cm": {
+        #     "position": (pos0 + np.array([0.0, 0.0, +dz])).tolist(),
+        #     "quat_wxyz": q0.tolist(),
+        #     "vertical_field_of_view": vfov0,
+        # },
+        # # Along viewing direction (forward/back)
+        # "along_view+5cm": {
+        #     "position": (pos0 + dv * view).tolist(),
+        #     "quat_wxyz": q0.tolist(),
+        #     "vertical_field_of_view": vfov0,
+        # },
+        # "along_view-5cm": {
+        #     "position": (pos0 - dv * view).tolist(),
+        #     "quat_wxyz": q0.tolist(),
+        #     "vertical_field_of_view": vfov0,
+        # },
+        #
     }
     return cams
 
+
 EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras()
+
+
+def _clear_pointcloud_buffers(env):
+    """Walk the wrapper chain and clear any MS2 pointcloud _buffer dicts."""
+    seen = set()
+    cur = env
+    while cur is not None and id(cur) not in seen:
+        seen.add(id(cur))
+        if hasattr(cur, "_buffer") and isinstance(cur._buffer, dict):
+            cur._buffer.clear()
+        cur = getattr(cur, "env", None)
+    u = getattr(env, "unwrapped", None)
+    if hasattr(u, "_buffer") and isinstance(u._buffer, dict):
+        u._buffer.clear()
+
 
 # =========================
 # Keep only one named camera registered in env (same as before)
 # =========================
-def _force_single_camera_registration(env, keep_uid_candidates: tuple[str, ...]) -> None:
+def _force_single_camera_registration(
+    env, keep_uid_candidates: tuple[str, ...]
+) -> None:
     u = env.unwrapped
     orig = getattr(u, "_register_cameras", None)
     if orig is None or getattr(u, "_register_cameras_wrapped", False):
@@ -236,49 +283,104 @@ def _force_single_camera_registration(env, keep_uid_candidates: tuple[str, ...])
         return choose_one(cams)
 
     import types
+
     u._register_cameras = types.MethodType(wrapped, u)
     u._register_cameras_wrapped = True
 
+
 from gymnasium.wrappers import TimeLimit
+
 
 # =========================
 # Camera wrapper factories
 # =========================
 class TrainCamWrapperFactory:
-    def __init__(self, base_factory, camera_name, train_pos, train_quat_wxyz, max_episode_steps: int | None = None):
+    def __init__(
+        self,
+        base_factory,
+        camera_name,
+        train_pos,
+        train_quat_wxyz,
+        max_episode_steps: int | None = None,
+        domain_randomization: bool = False,
+        pos_jitter_max=(0.0, 0.0, 0.0),
+        rot_jitter_max_deg=(0.0, 0.0, 0.0),
+    ):
         import numpy as _np
+
         self.base_factory = base_factory
-        self.camera_name  = camera_name
-        self.train_pos    = list(_np.asarray(train_pos, dtype=float))
-        self.train_quat   = list(_np.asarray(train_quat_wxyz, dtype=float))
+        self.camera_name = camera_name
+        self.train_pos = list(_np.asarray(train_pos, dtype=float))
+        self.train_quat = list(_np.asarray(train_quat_wxyz, dtype=float))
         self.max_episode_steps = max_episode_steps
 
+        self.domain_randomization = bool(domain_randomization)
+        self.pos_jitter_max = _np.asarray(pos_jitter_max, dtype=float)
+        self.rot_jitter_max_deg = _np.asarray(rot_jitter_max_deg, dtype=float)
+
     def __call__(self, *args, **kwargs):
-        env  = self.base_factory(*args, **kwargs)
-        keep = tuple(x for x in (self.camera_name, "render_camera", "render", "tripod", "scene") if x)
+        env = self.base_factory(*args, **kwargs)
+        keep = tuple(
+            x
+            for x in (self.camera_name, "render_camera", "render", "tripod", "scene")
+            if x
+        )
         _force_single_camera_registration(env, keep_uid_candidates=keep)
-        horizon = self.max_episode_steps or getattr(getattr(env, "spec", None), "max_episode_steps", 200)
+        horizon = self.max_episode_steps or getattr(
+            getattr(env, "spec", None), "max_episode_steps", 200
+        )
         env = TimeLimit(env, max_episode_steps=int(horizon))
 
         pose = Pose(p=self.train_pos, q=self.train_quat)
-        return FixedOrConfiguredCamera(env, camera_name=self.camera_name, mode="train", train_pose=pose, eval_cam_cfg=None)
+        return FixedOrConfiguredCamera(
+            env,
+            camera_name=self.camera_name,
+            mode="train",
+            train_pose=pose,
+            eval_cam_cfg=None,
+            domain_randomization=self.domain_randomization,
+            pos_jitter_max=self.pos_jitter_max,
+            rot_jitter_max_deg=self.rot_jitter_max_deg,
+        )
+
 
 class EvalCamWrapperFactory:
-    def __init__(self, base_factory, camera_name, cam_cfg: dict, max_episode_steps: int | None = None):
+    def __init__(
+        self,
+        base_factory,
+        camera_name,
+        cam_cfg: dict,
+        max_episode_steps: int | None = None,
+    ):
         import copy as _copy
+
         self.base_factory = base_factory
-        self.camera_name  = camera_name
-        self.cam_cfg      = _copy.deepcopy(cam_cfg)
+        self.camera_name = camera_name
+        self.cam_cfg = _copy.deepcopy(cam_cfg)
         self.max_episode_steps = max_episode_steps
 
     def __call__(self, *args, **kwargs):
         import copy as _copy
+
         env = self.base_factory(*args, **kwargs)
-        keep = tuple(x for x in (self.camera_name, "render_camera", "render", "tripod", "scene") if x)
+        keep = tuple(
+            x
+            for x in (self.camera_name, "render_camera", "render", "tripod", "scene")
+            if x
+        )
         _force_single_camera_registration(env, keep_uid_candidates=keep)
-        horizon = self.max_episode_steps or getattr(getattr(env, "spec", None), "max_episode_steps", 200)
+        horizon = self.max_episode_steps or getattr(
+            getattr(env, "spec", None), "max_episode_steps", 200
+        )
         env = TimeLimit(env, max_episode_steps=int(horizon))
-        return FixedOrConfiguredCamera(env, camera_name=self.camera_name, mode="eval", train_pose=None, eval_cam_cfg=_copy.deepcopy(self.cam_cfg))
+        return FixedOrConfiguredCamera(
+            env,
+            camera_name=self.camera_name,
+            mode="eval",
+            train_pose=None,
+            eval_cam_cfg=_copy.deepcopy(self.cam_cfg),
+        )
+
 
 # =========================
 # Camera object wrapper
@@ -297,21 +399,40 @@ def _get_named_camera(env, name: str | None):
     if len(found_maps) == 1 and len(found_maps[0][1]) == 1:
         _, keys, d = found_maps[0]
         return d[keys[0]]
-    details = " ; ".join([f"{attr}={keys}" for attr, keys, _ in found_maps]) or "no camera dicts found"
+    details = (
+        " ; ".join([f"{attr}={keys}" for attr, keys, _ in found_maps])
+        or "no camera dicts found"
+    )
     raise RuntimeError(f"Camera '{name}' not found. Available: {details}")
+
 
 class FixedOrConfiguredCamera(gym.Wrapper):
     """
     Train: use a fixed Pose.
     Eval:  apply the given cam cfg (pose + vfov if supported).
     """
-    def __init__(self, env, camera_name: str | None = None, mode: str = "train",
-                 train_pose: Pose | None = None, eval_cam_cfg: dict | None = None):
+
+    def __init__(
+        self,
+        env,
+        camera_name: str | None = None,
+        mode: str = "train",
+        train_pose: Pose | None = None,
+        eval_cam_cfg: dict | None = None,
+        domain_randomization: bool = False,
+        pos_jitter_max: np.ndarray | tuple = (0.0, 0.0, 0.0),
+        rot_jitter_max_deg: np.ndarray | tuple = (0.0, 0.0, 0.0),
+    ):
         super().__init__(env)
         self.camera_name = camera_name
         self.mode = mode
         self.train_pose = train_pose
         self.eval_cam_cfg = copy.deepcopy(eval_cam_cfg) if eval_cam_cfg else None
+
+        self.domain_randomization = bool(domain_randomization)
+        self.pos_jitter_max = np.asarray(pos_jitter_max, dtype=float)
+        self.rot_jitter_max_deg = np.asarray(rot_jitter_max_deg, dtype=float)
+        self._rng = np.random.default_rng()
 
     def _ensure_fov(self, cam, vfov_deg=None):
         if vfov_deg is not None:
@@ -363,6 +484,7 @@ class FixedOrConfiguredCamera(gym.Wrapper):
             return
 
         M = pose.to_transformation_matrix()
+
         def try_matrix(obj) -> bool:
             if obj is None:
                 return False
@@ -389,12 +511,18 @@ class FixedOrConfiguredCamera(gym.Wrapper):
         raise RuntimeError("Camera object lacks usable pose setters.")
 
     def reset(self, *, seed=None, options=None):
+
+        if seed is not None:
+            self._rng = np.random.default_rng(seed)
+
         obs, info = self.env.reset(seed=seed, options=options)
         cam = _get_named_camera(self.env, self.camera_name)
 
         u = self.env.unwrapped
-        u._pc_cam_wrap   = cam
-        u._pc_cam_uid    = getattr(cam, "uid", None) or (self.camera_name or "render_camera")
+        u._pc_cam_wrap = cam
+        u._pc_cam_uid = getattr(cam, "uid", None) or (
+            self.camera_name or "render_camera"
+        )
         u._pc_cam_entity = getattr(cam, "camera", None) or getattr(cam, "_camera", None)
 
         for dict_name in ("_cameras", "cameras", "_sensors", "sensors"):
@@ -403,16 +531,33 @@ class FixedOrConfiguredCamera(gym.Wrapper):
                 d.clear()
                 d[u._pc_cam_uid] = cam
 
-        #self._ensure_depth_fov(cam, vfov_deg=BASE_VFOV_DEG, near=0.02, far=3.0)
+        # self._ensure_depth_fov(cam, vfov_deg=BASE_VFOV_DEG, near=0.02, far=3.0)
         self._ensure_fov(cam, vfov_deg=BASE_VFOV_DEG)
 
         if self.mode == "train":
             if self.train_pose is not None:
-                self._apply_pose(cam, self.train_pose)
+                if self.domain_randomization:
+                    # ---- position jitter (world frame) ----
+                    shift = self._rng.uniform(low=-self.pos_jitter_max, high=self.pos_jitter_max, size=3)
+                    new_pos = (np.asarray(self.train_pose.p, dtype=float) + shift).tolist()
+
+                    # ---- orientation jitter (extrinsic world Z/Y/X) ----
+                    yaw_max, pitch_max, roll_max = self.rot_jitter_max_deg.tolist()
+                    yaw   = float(self._rng.uniform(-yaw_max,   yaw_max))
+                    pitch = float(self._rng.uniform(-pitch_max, pitch_max))
+                    roll  = float(self._rng.uniform(-roll_max,  roll_max))
+
+                    base_q = np.asarray(self.train_pose.q, dtype=float)
+                    new_q  = apply_world_euler_wxyz(base_q, yaw, pitch, roll).tolist()
+
+                    pose = Pose(p=new_pos, q=new_q)
+                    self._apply_pose(cam, pose)
+                else:
+                    self._apply_pose(cam, self.train_pose)
         else:
             if self.eval_cam_cfg is None:
                 raise ValueError("eval_cam_cfg must be provided in eval mode.")
-            pos  = self.eval_cam_cfg["position"]
+            pos = self.eval_cam_cfg["position"]
             vfov = float(self.eval_cam_cfg.get("vertical_field_of_view", BASE_VFOV_DEG))
 
             if "quat_wxyz" in self.eval_cam_cfg:
@@ -423,7 +568,7 @@ class FixedOrConfiguredCamera(gym.Wrapper):
                 pose = Pose(p=pos, q=BASE_QUAT_WXYZ.tolist())
 
             self._apply_pose(cam, pose)
-            #self._ensure_depth_fov(cam, vfov_deg=vfov, near=0.02, far=3.0)
+            # self._ensure_depth_fov(cam, vfov_deg=vfov, near=0.02, far=3.0)
             self._ensure_fov(cam, vfov_deg=vfov)
 
         # Force a render/update once after pose change
@@ -434,7 +579,9 @@ class FixedOrConfiguredCamera(gym.Wrapper):
                     break
                 except Exception:
                     pass
-        scene = getattr(self.env.unwrapped, "scene", None) or getattr(self.env.unwrapped, "_scene", None)
+        scene = getattr(self.env.unwrapped, "scene", None) or getattr(
+            self.env.unwrapped, "_scene", None
+        )
         if scene is not None and hasattr(scene, "update_render"):
             try:
                 scene.update_render()
@@ -450,27 +597,38 @@ class FixedOrConfiguredCamera(gym.Wrapper):
                     if depth is not None:
                         depth = np.asarray(depth)
                         valid = np.isfinite(depth) & (depth > 0)
-                        print("Depth stats:", int(valid.sum()), float(np.nanmin(depth)), float(np.nanmax(depth)))
+                        print(
+                            "Depth stats:",
+                            int(valid.sum()),
+                            float(np.nanmin(depth)),
+                            float(np.nanmax(depth)),
+                        )
                 except Exception:
                     pass
                 break
 
+        _clear_pointcloud_buffers(self.env)
+
         return obs, info
+
 
 # =========================
 # RL Build
 # =========================
 @contextmanager
 def build(config: DictConfig) -> Iterator[RLRunner]:
-    parallel   = config.parallel
-    discount   = config.algo.discount
+    parallel = config.parallel
+    discount = config.algo.discount
     batch_spec = BatchSpec(config.batch_T, config.batch_B)
-    storage    = "shared" if parallel else "local"
+    storage = "shared" if parallel else "local"
 
     with open_dict(config.env):
         config.env.pop("name")
         traj_info = config.env.pop("traj_info")
-        cam_name  = config.env.pop("camera_name", None)
+        cam_name = config.env.pop("camera_name", None)
+        dr_enabled = bool(config.env.pop("domain_randomization", False))
+        pos_jit    = tuple(config.env.pop("pos_jitter_max", (0.0, 0.0, 0.0)))
+        rot_jit    = tuple(config.env.pop("rot_jitter_max_deg", (0.0, 0.0, 0.0)))
 
     TrajInfoClass = get_class(traj_info)
     TrajInfoClass.set_discount(discount)
@@ -484,7 +642,10 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         camera_name=cam_name,
         train_pos=BASE_POS,
         train_quat_wxyz=BASE_QUAT_WXYZ,
-        max_episode_steps=config.env.max_episode_steps
+        max_episode_steps=config.env.max_episode_steps,
+        domain_randomization=dr_enabled,
+        pos_jitter_max=pos_jit,
+        rot_jitter_max_deg=rot_jit,
     )
 
     cages, metadata = build_cages(
@@ -507,18 +668,24 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
     )
     obs_space, action_space = metadata.obs_space, metadata.action_space
     sample_tree["observation"] = build_obs_array(
-        metadata.example_obs, obs_space,
-        batch_shape=tuple(batch_spec), storage=storage, padding=1, full_size=replay_length,
+        metadata.example_obs,
+        obs_space,
+        batch_shape=tuple(batch_spec),
+        storage=storage,
+        padding=1,
+        full_size=replay_length,
     )
-    sample_tree["next_observation"] = sample_tree["observation"].new_array(padding=0, inherit_full_size=True)
+    sample_tree["next_observation"] = sample_tree["observation"].new_array(
+        padding=0, inherit_full_size=True
+    )
 
-    example_info = dict(metadata.example_info)
-    import numpy as np
-    example_info.setdefault("success", np.array(False, dtype=np.bool_))
-    sample_tree["env_info"] = dict_map(
-        Array.from_numpy, example_info,
-        batch_shape=tuple(batch_spec), storage=storage,
-    )
+    # example_info = dict(metadata.example_info)
+    # import numpy as np
+    # example_info.setdefault("success", np.array(False, dtype=np.bool_))
+    # sample_tree["env_info"] = dict_map(
+    #     Array.from_numpy, example_info,
+    #     batch_shape=tuple(batch_spec), storage=storage,
+    # )
 
     assert isinstance(action_space, spaces.Box)
     n_actions = action_space.shape[0]
@@ -527,7 +694,15 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
     callbacks = []
     eval_samplers: dict[str, EvalSampler] = {}
 
-    eval_tree_keys = ["action","agent_info","observation","reward","terminated","truncated","done"]
+    eval_tree_keys = [
+        "action",
+        "agent_info",
+        "observation",
+        "reward",
+        "terminated",
+        "truncated",
+        "done",
+    ]
     eval_tree_example = ArrayDict({k: sample_tree[k] for k in eval_tree_keys})
 
     for name, cam_cfg in EVAL_CAMERAS.items():
@@ -544,10 +719,14 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
             TrajInfoClass=TrajInfoClass,
             parallel=parallel,
         )
-        eval_sample_tree = eval_tree_example.new_array(batch_shape=(1, config.eval.n_eval_envs))
+        eval_sample_tree = eval_tree_example.new_array(
+            batch_shape=(1, config.eval.n_eval_envs)
+        )
         eval_sample_tree["env_info"] = dict_map(
-            Array.from_numpy, meta_i.example_info,
-            batch_shape=(1, config.eval.n_eval_envs), storage=storage,
+            Array.from_numpy,
+            meta_i.example_info,
+            batch_shape=(1, config.eval.n_eval_envs),
+            storage=storage,
         )
 
         step_transforms = []
@@ -565,12 +744,12 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
             callbacks.append(RecordingSchedule(recorder, trigger="on_eval"))
 
         eval_samplers[name] = EvalSampler(
-            max_traj_length   = config.env.max_episode_steps,
-            max_trajectories  = config.eval.max_trajectories,
-            envs              = cages_i,
-            agent             = None,  # set after agent exists
-            sample_tree       = eval_sample_tree,
-            step_transforms   = step_transforms,
+            max_traj_length=config.env.max_episode_steps,
+            max_trajectories=config.eval.max_trajectories,
+            envs=cages_i,
+            agent=None,  # set after agent exists
+            sample_tree=eval_sample_tree,
+            step_transforms=step_transforms,
         )
     multi_eval_sampler = MultiEvalSampler(eval_samplers)
 
@@ -588,29 +767,54 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
     else:
         embedding_size = spaces.flatdim(obs_space)
 
-    model["pi"] = instantiate(config.pi_mlp_head, input_size=embedding_size, action_size=n_actions, action_space=action_space, _convert_="partial")
-    model["q1"] = instantiate(config.q_mlp_head,  input_size=embedding_size, action_size=n_actions, _convert_="partial")
-    model["q2"] = instantiate(config.q_mlp_head,  input_size=embedding_size, action_size=n_actions, _convert_="partial")
+    model["pi"] = instantiate(
+        config.pi_mlp_head,
+        input_size=embedding_size,
+        action_size=n_actions,
+        action_space=action_space,
+        _convert_="partial",
+    )
+    model["q1"] = instantiate(
+        config.q_mlp_head,
+        input_size=embedding_size,
+        action_size=n_actions,
+        _convert_="partial",
+    )
+    model["q2"] = instantiate(
+        config.q_mlp_head,
+        input_size=embedding_size,
+        action_size=n_actions,
+        _convert_="partial",
+    )
 
     distribution = SquashedGaussian(dim=n_actions, scale=action_space.high[0])
     device_str = config.device or ("cuda:0" if torch.cuda.is_available() else "cpu")
     wandb.config.update({"device": device_str}, allow_val_change=True)
     device = torch.device(device_str)
 
-    agent = SacAgent(model=model, distribution=distribution, device=device, learning_starts=config.algo.learning_starts)
+    agent = SacAgent(
+        model=model,
+        distribution=distribution,
+        device=device,
+        learning_starts=config.algo.learning_starts,
+    )
 
     # attach agent to each eval sampler
     for s in eval_samplers.values():
         s.agent = agent  # type: ignore[attr-defined]
 
-    sampler = BasicSampler(batch_spec=batch_spec, envs=cages, agent=agent, sample_tree=sample_tree)
+    sampler = BasicSampler(
+        batch_spec=batch_spec, envs=cages, agent=agent, sample_tree=sample_tree
+    )
 
     # Replay buffer
     replay_buffer_tree = build_replay_buffer_tree(sample_tree)
+
     def batch_transform(tree: ArrayDict[Array]) -> ArrayDict[torch.Tensor]:
         tree = tree.to_ndarray()  # type: ignore
         tree = tree.apply(torch.from_numpy)
         return tree.to(device=device)
+
     replay_buffer = ReplayBuffer(
         tree=replay_buffer_tree,
         sampler_batch_spec=batch_spec,
@@ -626,8 +830,10 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         q_optim_conf = config.optimizer.pop("q", {}) or {}
         pi_optim_conf = config.optimizer.pop("pi", {}) or {}
         encoder_optim_conf = config.optimizer.pop("encoder", {}) or {}
-    pi_optimizer = instantiate(config.optimizer, [{"params": agent.model["pi"].parameters(), **pi_optim_conf}])
-    q_optimizer  = instantiate(
+    pi_optimizer = instantiate(
+        config.optimizer, [{"params": agent.model["pi"].parameters(), **pi_optim_conf}]
+    )
+    q_optimizer = instantiate(
         config.optimizer,
         [
             {"params": agent.model["q1"].parameters(), **q_optim_conf},
@@ -635,12 +841,14 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         ],
     )
     if "encoder" in agent.model:
-        q_optimizer.add_param_group({"params": agent.model["encoder"].parameters(), **encoder_optim_conf})
+        q_optimizer.add_param_group(
+            {"params": agent.model["encoder"].parameters(), **encoder_optim_conf}
+        )
 
     gamma = config.get("lr_scheduler_gamma")
     if gamma is not None:
         pi_scheduler = torch.optim.lr_scheduler.ExponentialLR(pi_optimizer, gamma=gamma)
-        q_scheduler  = torch.optim.lr_scheduler.ExponentialLR(q_optimizer,  gamma=gamma)
+        q_scheduler = torch.optim.lr_scheduler.ExponentialLR(q_optimizer, gamma=gamma)
         lr_schedulers = [pi_scheduler, q_scheduler]
     else:
         lr_schedulers = None
@@ -691,11 +899,19 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         for cage in cages:
             cage.close()
 
-import sys, argparse
+
+import argparse
+import sys
+
+
 def _preparse_conf_dir():
     p = argparse.ArgumentParser(add_help=False)
-    p.add_argument("--conf-dir", type=str, default=None,
-                   help="Directory that contains train_sac.yaml etc.")
+    p.add_argument(
+        "--conf-dir",
+        type=str,
+        default=None,
+        help="Directory that contains train_sac.yaml etc.",
+    )
     p.add_argument("--config-name", "-cn", type=str, default="train_sac")
     args, rest = p.parse_known_args()
     injected = []
@@ -705,7 +921,9 @@ def _preparse_conf_dir():
         injected.append(f"-cn={args.config_name}")
     sys.argv = [sys.argv[0], *injected, *rest]
 
+
 _preparse_conf_dir()
+
 
 @hydra.main(version_base=None, config_path="../conf", config_name="train_sac")
 def main(config: DictConfig) -> None:
@@ -745,6 +963,6 @@ def main(config: DictConfig) -> None:
     logger.close()
     run.finish()  # type: ignore
 
+
 if __name__ == "__main__":
     main()
-

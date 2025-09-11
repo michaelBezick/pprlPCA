@@ -1,15 +1,15 @@
 defaults:
   - maniskill2
   - _self_
-
 name: TurnFaucet
 env_id: TurnFaucet-v1
 env_kwargs:
+  n_models: 1
+  robot_cameras: ["render_camera"]
   control_mode: pd_joint_delta_pos
   observe_render_cam: true
-  n_models: 10
   render_mode: rgb_array
-  camera_cfgs:  # no need to render at such high resolution
+  camera_cfgs: # no need to render at such high resolution
     width: 128
     height: 128
     fov: 1 #I assume this is radians
@@ -23,4 +23,5 @@ pcd_kwargs:
   use_fps: false
   fps_n: 0
 min_num_points: 32
+domain_randomization: false
 camera_name: render_camera
