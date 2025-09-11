@@ -35,18 +35,7 @@ from pprl.utils.array_dict import build_obs_array
 # =========================
 WORLD_UP = (0.0, 0.0, 1.0)
 
-BASE_POS = np.array([-0.433352, 0.948292, 0.885752], dtype=float)
-
-BASE_POS += np.array([-1, 1, 0.3])
-
-BASE_QUAT_WXYZ = np.array(
-    [0.821655022002333, 0.111567041133269, 0.188598853451156, -0.526180263998966],
-    dtype=float,
-)
-
-
 BASE_VFOV_DEG = 60.0
-
 
 # =========================
 # Quaternion / axes helpers (SAPIEN wxyz)
@@ -141,7 +130,7 @@ def pick_img(d, keys):
 # =========================
 # Eval camera set (built from BASE_POS / BASE_QUAT_WXYZ)
 # =========================
-def _build_eval_cameras() -> Dict[str, dict]:
+def _build_eval_cameras(base_pos, base_quat_wxyz) -> Dict[str, dict]:
     """
     Build eval configs keyed by name.
     Each item contains:
@@ -149,8 +138,8 @@ def _build_eval_cameras() -> Dict[str, dict]:
       - quat_wxyz: [w,x,y,z]
       - vertical_field_of_view: float
     """
-    pos0 = BASE_POS.copy()
-    q0 = BASE_QUAT_WXYZ.copy()
+    pos0 = base_pos.copy()
+    q0 = base_quat_wxyz.copy()
     vfov0 = BASE_VFOV_DEG
 
     # Axes for along-view motion
@@ -163,7 +152,6 @@ def _build_eval_cameras() -> Dict[str, dict]:
     dv = 0.05  # along viewing axis
 
     cams = {
-
         "along_view-5cm": {
             "position": (pos0 - dv * view).tolist(),
             "quat_wxyz": q0.tolist(),
@@ -196,8 +184,6 @@ def _build_eval_cameras() -> Dict[str, dict]:
             "quat_wxyz": q0.tolist(),
             "vertical_field_of_view": 50.0,
         },
-
-
         # World-axis translations
         "shift+x+5cm": {
             "position": (pos0 + np.array([+dx, 0.0, 0.0])).tolist(),
@@ -216,9 +202,6 @@ def _build_eval_cameras() -> Dict[str, dict]:
         },
     }
     return cams
-
-
-EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras()
 
 
 def _clear_pointcloud_buffers(env):
@@ -522,17 +505,21 @@ class FixedOrConfiguredCamera(gym.Wrapper):
             if self.train_pose is not None:
                 if self.domain_randomization:
                     # ---- position jitter (world frame) ----
-                    shift = self._rng.uniform(low=-self.pos_jitter_max, high=self.pos_jitter_max, size=3)
-                    new_pos = (np.asarray(self.train_pose.p, dtype=float) + shift).tolist()
+                    shift = self._rng.uniform(
+                        low=-self.pos_jitter_max, high=self.pos_jitter_max, size=3
+                    )
+                    new_pos = (
+                        np.asarray(self.train_pose.p, dtype=float) + shift
+                    ).tolist()
 
                     # ---- orientation jitter (extrinsic world Z/Y/X) ----
                     yaw_max, pitch_max, roll_max = self.rot_jitter_max_deg.tolist()
-                    yaw   = float(self._rng.uniform(-yaw_max,   yaw_max))
+                    yaw = float(self._rng.uniform(-yaw_max, yaw_max))
                     pitch = float(self._rng.uniform(-pitch_max, pitch_max))
-                    roll  = float(self._rng.uniform(-roll_max,  roll_max))
+                    roll = float(self._rng.uniform(-roll_max, roll_max))
 
                     base_q = np.asarray(self.train_pose.q, dtype=float)
-                    new_q  = apply_world_euler_wxyz(base_q, yaw, pitch, roll).tolist()
+                    new_q = apply_world_euler_wxyz(base_q, yaw, pitch, roll).tolist()
 
                     pose = Pose(p=new_pos, q=new_q)
                     self._apply_pose(cam, pose)
@@ -549,7 +536,8 @@ class FixedOrConfiguredCamera(gym.Wrapper):
                 pose = Pose(p=pos, q=quat)
             else:
                 # Fallback (shouldn’t happen in this config)
-                pose = Pose(p=pos, q=BASE_QUAT_WXYZ.tolist())
+                raise ValueError("no quat_wxyz in config")
+                # pose = Pose(p=pos, q=BASE_QUAT_WXYZ.tolist())
 
             self._apply_pose(cam, pose)
             # self._ensure_depth_fov(cam, vfov_deg=vfov, near=0.02, far=3.0)
@@ -607,12 +595,48 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
     storage = "shared" if parallel else "local"
 
     with open_dict(config.env):
-        config.env.pop("name")
+        env_name = config.env.pop("name")
         traj_info = config.env.pop("traj_info")
         cam_name = config.env.pop("camera_name", None)
         dr_enabled = bool(config.env.pop("domain_randomization", False))
-        pos_jit    = tuple(config.env.pop("pos_jitter_max", (0.0, 0.0, 0.0)))
-        rot_jit    = tuple(config.env.pop("rot_jitter_max_deg", (0.0, 0.0, 0.0)))
+        pos_jit = tuple(config.env.pop("pos_jitter_max", (0.0, 0.0, 0.0)))
+        rot_jit = tuple(config.env.pop("rot_jitter_max_deg", (0.0, 0.0, 0.0)))
+
+    if env_name == "OpenCabinetDrawer":
+
+        base_pos = np.array([-0.433352, 0.948292, 0.885752], dtype=float)
+
+        base_pos += np.array([-1, 1, 0.3])
+
+        base_quat_wxyz = np.array(
+            [
+                0.821655022002333,
+                0.111567041133269,
+                0.188598853451156,
+                -0.526180263998966,
+            ],
+            dtype=float,
+        )
+
+    elif env_name == "TurnFaucet":
+        base_pos = np.array([-0.433352, 0.948292, 0.885752], dtype=float)
+
+        base_quat_wxyz = np.array(
+            [
+                0.717801992001589,
+                0.142621934300541,
+                0.166360199707428,
+                -0.660865300709779,
+            ],
+            dtype=float,
+        )
+    else:
+        raise ValueError("Invalid Env Name")
+
+
+    EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras(
+        base_pos, base_quat_wxyz
+    )
 
     TrajInfoClass = get_class(traj_info)
     TrajInfoClass.set_discount(discount)
@@ -624,8 +648,8 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
     train_factory = TrainCamWrapperFactory(
         base_factory=env_factory,
         camera_name=cam_name,
-        train_pos=BASE_POS,
-        train_quat_wxyz=BASE_QUAT_WXYZ,
+        train_pos=base_pos,
+        train_quat_wxyz=base_quat_wxyz,
         max_episode_steps=config.env.max_episode_steps,
         domain_randomization=dr_enabled,
         pos_jitter_max=pos_jit,
