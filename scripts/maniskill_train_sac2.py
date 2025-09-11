@@ -163,6 +163,23 @@ def _build_eval_cameras() -> Dict[str, dict]:
     dv = 0.05  # along viewing axis
 
     cams = {
+
+        "along_view-5cm": {
+            "position": (pos0 - dv * view).tolist(),
+            "quat_wxyz": q0.tolist(),
+            "vertical_field_of_view": vfov0,
+        },
+        # Rolls (local +Z axis), composed by multiplying with the base quaternion
+        "roll+15deg": {
+            "position": pos0.tolist(),
+            "quat_wxyz": roll_local_with_comp_wxyz(q0, +15.0, 20).tolist(),
+            "vertical_field_of_view": vfov0,
+        },
+        "roll+30deg": {
+            "position": pos0.tolist(),
+            "quat_wxyz": roll_local_with_comp_wxyz(q0, +30.0, 30).tolist(),
+            "vertical_field_of_view": vfov0,
+        },
         "nominal": {
             "position": pos0.tolist(),
             "quat_wxyz": q0.tolist(),
@@ -180,27 +197,6 @@ def _build_eval_cameras() -> Dict[str, dict]:
             "vertical_field_of_view": 50.0,
         },
 
-        # Rolls (local +Z axis), composed by multiplying with the base quaternion
-        "roll+15deg": {
-            "position": pos0.tolist(),
-            "quat_wxyz": roll_local_with_comp_wxyz(q0, +15.0, 20).tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        "roll-15deg": {
-            "position": pos0.tolist(),
-            "quat_wxyz": roll_local_with_comp_wxyz(q0, -15.0, 20).tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        "roll+30deg": {
-            "position": pos0.tolist(),
-            "quat_wxyz": roll_local_with_comp_wxyz(q0, +30.0, 30).tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        "roll-30deg": {
-            "position": pos0.tolist(),
-            "quat_wxyz": roll_local_with_comp_wxyz(q0, -30.0, 30).tolist(),
-            "vertical_field_of_view": vfov0,
-        },
 
         # World-axis translations
         "shift+x+5cm": {
@@ -218,18 +214,6 @@ def _build_eval_cameras() -> Dict[str, dict]:
             "quat_wxyz": q0.tolist(),
             "vertical_field_of_view": vfov0,
         },
-        # Along viewing direction (forward/back)
-        "along_view+5cm": {
-            "position": (pos0 + dv * view).tolist(),
-            "quat_wxyz": q0.tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        "along_view-5cm": {
-            "position": (pos0 - dv * view).tolist(),
-            "quat_wxyz": q0.tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-
     }
     return cams
 
@@ -679,14 +663,6 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         padding=0, inherit_full_size=True
     )
 
-    # example_info = dict(metadata.example_info)
-    # import numpy as np
-    # example_info.setdefault("success", np.array(False, dtype=np.bool_))
-    # sample_tree["env_info"] = dict_map(
-    #     Array.from_numpy, example_info,
-    #     batch_shape=tuple(batch_spec), storage=storage,
-    # )
-
     assert isinstance(action_space, spaces.Box)
     n_actions = action_space.shape[0]
 
@@ -731,6 +707,7 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
 
         step_transforms = []
         # Record EVERY eval mismatch
+
         if name == "nominal":
             recorder = RecordVectorizedVideo(
                 sample_tree=eval_sample_tree,
