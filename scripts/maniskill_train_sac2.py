@@ -168,68 +168,68 @@ def _build_eval_cameras() -> Dict[str, dict]:
             "quat_wxyz": q0.tolist(),
             "vertical_field_of_view": vfov0,
         },
-        # # FOV sweeps
-        # "fov70": {
-        #     "position": pos0.tolist(),
-        #     "quat_wxyz": q0.tolist(),
-        #     "vertical_field_of_view": 70.0,
-        # },
-        # "fov50": {
-        #     "position": pos0.tolist(),
-        #     "quat_wxyz": q0.tolist(),
-        #     "vertical_field_of_view": 50.0,
-        # },
-        #
-        # # Rolls (local +Z axis), composed by multiplying with the base quaternion
-        # "roll+15deg": {
-        #     "position": pos0.tolist(),
-        #     "quat_wxyz": roll_local_with_comp_wxyz(q0, +15.0, 20).tolist(),
-        #     "vertical_field_of_view": vfov0,
-        # },
-        # "roll-15deg": {
-        #     "position": pos0.tolist(),
-        #     "quat_wxyz": roll_local_with_comp_wxyz(q0, -15.0, 20).tolist(),
-        #     "vertical_field_of_view": vfov0,
-        # },
-        # "roll+30deg": {
-        #     "position": pos0.tolist(),
-        #     "quat_wxyz": roll_local_with_comp_wxyz(q0, +30.0, 30).tolist(),
-        #     "vertical_field_of_view": vfov0,
-        # },
-        # "roll-30deg": {
-        #     "position": pos0.tolist(),
-        #     "quat_wxyz": roll_local_with_comp_wxyz(q0, -30.0, 30).tolist(),
-        #     "vertical_field_of_view": vfov0,
-        # },
-        #
-        # # World-axis translations
-        # "shift+x+5cm": {
-        #     "position": (pos0 + np.array([+dx, 0.0, 0.0])).tolist(),
-        #     "quat_wxyz": q0.tolist(),
-        #     "vertical_field_of_view": vfov0,
-        # },
-        # "shift+y+5cm": {
-        #     "position": (pos0 + np.array([0.0, +dy, 0.0])).tolist(),
-        #     "quat_wxyz": q0.tolist(),
-        #     "vertical_field_of_view": vfov0,
-        # },
-        # "shift+z+5cm": {
-        #     "position": (pos0 + np.array([0.0, 0.0, +dz])).tolist(),
-        #     "quat_wxyz": q0.tolist(),
-        #     "vertical_field_of_view": vfov0,
-        # },
-        # # Along viewing direction (forward/back)
-        # "along_view+5cm": {
-        #     "position": (pos0 + dv * view).tolist(),
-        #     "quat_wxyz": q0.tolist(),
-        #     "vertical_field_of_view": vfov0,
-        # },
-        # "along_view-5cm": {
-        #     "position": (pos0 - dv * view).tolist(),
-        #     "quat_wxyz": q0.tolist(),
-        #     "vertical_field_of_view": vfov0,
-        # },
-        #
+        # FOV sweeps
+        "fov70": {
+            "position": pos0.tolist(),
+            "quat_wxyz": q0.tolist(),
+            "vertical_field_of_view": 70.0,
+        },
+        "fov50": {
+            "position": pos0.tolist(),
+            "quat_wxyz": q0.tolist(),
+            "vertical_field_of_view": 50.0,
+        },
+
+        # Rolls (local +Z axis), composed by multiplying with the base quaternion
+        "roll+15deg": {
+            "position": pos0.tolist(),
+            "quat_wxyz": roll_local_with_comp_wxyz(q0, +15.0, 20).tolist(),
+            "vertical_field_of_view": vfov0,
+        },
+        "roll-15deg": {
+            "position": pos0.tolist(),
+            "quat_wxyz": roll_local_with_comp_wxyz(q0, -15.0, 20).tolist(),
+            "vertical_field_of_view": vfov0,
+        },
+        "roll+30deg": {
+            "position": pos0.tolist(),
+            "quat_wxyz": roll_local_with_comp_wxyz(q0, +30.0, 30).tolist(),
+            "vertical_field_of_view": vfov0,
+        },
+        "roll-30deg": {
+            "position": pos0.tolist(),
+            "quat_wxyz": roll_local_with_comp_wxyz(q0, -30.0, 30).tolist(),
+            "vertical_field_of_view": vfov0,
+        },
+
+        # World-axis translations
+        "shift+x+5cm": {
+            "position": (pos0 + np.array([+dx, 0.0, 0.0])).tolist(),
+            "quat_wxyz": q0.tolist(),
+            "vertical_field_of_view": vfov0,
+        },
+        "shift+y+5cm": {
+            "position": (pos0 + np.array([0.0, +dy, 0.0])).tolist(),
+            "quat_wxyz": q0.tolist(),
+            "vertical_field_of_view": vfov0,
+        },
+        "shift+z+5cm": {
+            "position": (pos0 + np.array([0.0, 0.0, +dz])).tolist(),
+            "quat_wxyz": q0.tolist(),
+            "vertical_field_of_view": vfov0,
+        },
+        # Along viewing direction (forward/back)
+        "along_view+5cm": {
+            "position": (pos0 + dv * view).tolist(),
+            "quat_wxyz": q0.tolist(),
+            "vertical_field_of_view": vfov0,
+        },
+        "along_view-5cm": {
+            "position": (pos0 - dv * view).tolist(),
+            "quat_wxyz": q0.tolist(),
+            "vertical_field_of_view": vfov0,
+        },
+
     }
     return cams
 

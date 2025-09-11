@@ -287,7 +287,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
 
         pcd = self.pointcloud(observation)
 
-        #save_point_cloud(pcd, f"./turnfaucet_pcds/original/{self.pcd_idx}.ply")
+        save_point_cloud(pcd, f"./turnfaucet_pcds/original/{self.pcd_idx}.ply")
 
         #our_method = True
 
@@ -311,9 +311,9 @@ class PointCloudWrapper(gym.ObservationWrapper):
         else:
             new_points = pcd
 
-        #save_point_cloud(new_points, f"./turnfaucet_pcds/pca/{self.pcd_idx}.ply")
+        save_point_cloud(new_points, f"./turnfaucet_pcds/pca/{self.pcd_idx}.ply")
 
-        #self.pcd_idx += 1
+        self.pcd_idx += 1
 
         MIN_POINTS = 800
 
