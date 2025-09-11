@@ -293,7 +293,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
 
         # print(self.env.unwrapped._cameras['render_camera'].camera.get_pose())
 
-        if (self.our_method):
+        if (self.our_method and pcd.shape[0] != 0):
 
             if (self.use_fps):
             # FPS

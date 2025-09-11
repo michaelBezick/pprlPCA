@@ -25,6 +25,8 @@ cd /home/mbezick/Repos/pprlPCA
 module load conda/2025.09
 conda activate pprl_quat
 
+cd /scratch/gilbreth/mbezick/pprlPCA2
+
 export LD_LIBRARY_PATH="${CONDA_PREFIX:-}/lib:${LD_LIBRARY_PATH:-}"
 
 # ---------------- parameters ----------------
@@ -41,4 +43,4 @@ srun --unbuffered --export=ALL python scripts/maniskill_train_sac2.py \
   -cp "$CONF_DIR" \
   wandb.group_name="${GROUP_NAME}" \
   env="${PPRL_ENV}" \
-  model=ppt
+  model=pointgpt_rl algo=aux_sac

@@ -1,0 +1,483 @@
+Job 9541097 / array task  on gilbreth-f004.rcac.purdue.edu
+CUDA_VISIBLE_DEVICES=0
+Group name is:  baseline_TF
+Instantiating 8 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+Instantiating 1 environments...
+Environments instantiated.
+BasicSampler: Resetting all environments.
+BasicSampler: Resetting agent.
+AuxPcSAC: Given sampler batch size 5120, training batch size 128, and replay ratio 64, there will be 2560 updates per iteration.
+AuxPcSAC: Using learnable entropy coefficient with target entropy of -8
+RLRunner: Starting training...
+RLRunner: Saving log files to /scratch/gilbreth/mbezick/pprlPCA2/wandb/run-20250911_141751-dl983vrk/files
+RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+Saved video of policy to videos/2025-09-11/dl983vrk/nominal/policy_step_0.mp4.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+----------------------------------
+| eval/               |          |
+|    Length           | 200      |
+|    Return           | 0.751    |
+|    NonzeroRewards   | 200      |
+|    DiscountedReturn | 0.751    |
+|    Success          | 0        |
+|    SuccessLength    | 200      |
+| time/               |          |
+|    iterations       | 0        |
+|    fps              | 0        |
+|    elapsed_time     | 138      |
+|    elapsed_steps    | 0        |
+----------------------------------
+For the first 10000 steps, agent will use a fixed std of 0.75 for exploration.
+----------------------------------
+| rollout/            |          |
+|    Length           | 200      |
+|    Return           | 0.691    |
+|    NonzeroRewards   | 200      |
+|    DiscountedReturn | 0.691    |
+|    Success          | 0        |
+|    SuccessLength    | 200      |
+| time/               |          |
+|    iterations       | 1        |
+|    fps              | 120      |
+|    elapsed_time     | 181      |
+|    elapsed_steps    | 5120     |
+----------------------------------
+-----------------------------------
+| rollout/             |          |
+|    Length            | 200      |
+|    Return            | 0.774    |
+|    NonzeroRewards    | 200      |
+|    DiscountedReturn  | 0.774    |
+|    Success           | 0        |
+|    SuccessLength     | 200      |
+| algo/                |          |
+|    critic_loss       | 0.00125  |
+|    mean_entropy      | 5.46     |
+|    mean_ent_bonus    | 0.482    |
+|    max_target_q      | 2.14     |
+|    min_target_q      | 2.09     |
+|    max_reward        | 0.0147   |
+|    min_reward        | 0.0012   |
+|    chamfer_loss      | 0.00162  |
+|    encoder_grad_norm | 0.0583   |
+|    q1_grad_norm      | 0.11     |
+|    q2_grad_norm      | 0.106    |
+|    actor_loss        | -2.69    |
+|    ent_coeff         | 0.0882   |
+|    ent_coeff_loss    | -32.7    |
+|    pi_grad_norm      | 0.091    |
+|    n_updates         | 2560     |
+| time/                |          |
+|    iterations        | 2        |
+|    fps               | 6.25     |
+|    elapsed_time      | 999      |
+|    elapsed_steps     | 10240    |
+-----------------------------------
+RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+Saved video of policy to videos/2025-09-11/dl983vrk/nominal/policy_step_15360.mp4.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+-----------------------------------
+| rollout/             |          |
+|    Length            | 200      |
+|    Return            | 0.63     |
+|    NonzeroRewards    | 200      |
+|    DiscountedReturn  | 0.63     |
+|    Success           | 0        |
+|    SuccessLength     | 200      |
+| algo/                |          |
+|    critic_loss       | 0.000531 |
+|    mean_entropy      | 5.46     |
+|    mean_ent_bonus    | 0.373    |
+|    max_target_q      | 2.3      |
+|    min_target_q      | 2.23     |
+|    max_reward        | 0.0138   |
+|    min_reward        | 0.00117  |
+|    chamfer_loss      | 0.000751 |
+|    encoder_grad_norm | 0.0171   |
+|    q1_grad_norm      | 0.0653   |
+|    q2_grad_norm      | 0.0649   |
+|    actor_loss        | -2.62    |
+|    ent_coeff         | 0.0683   |
+|    ent_coeff_loss    | -36.2    |
+|    pi_grad_norm      | 0.0513   |
+|    n_updates         | 5120     |
+| eval/                |          |
+|    Length            | 200      |
+|    Return            | 0.626    |
+|    NonzeroRewards    | 200      |
+|    DiscountedReturn  | 0.626    |
+|    Success           | 0        |
+|    SuccessLength     | 200      |
+| time/                |          |
+|    iterations        | 3        |
+|    fps               | 5.4      |
+|    elapsed_time      | 1.95e+03 |
+|    elapsed_steps     | 15360    |
+-----------------------------------
+-----------------------------------
+| rollout/             |          |
+|    Length            | 200      |
+|    Return            | 0.605    |
+|    NonzeroRewards    | 200      |
+|    DiscountedReturn  | 0.605    |
+|    Success           | 0        |
+|    SuccessLength     | 200      |
+| algo/                |          |
+|    critic_loss       | 0.000301 |
+|    mean_entropy      | 5.46     |
+|    mean_ent_bonus    | 0.289    |
+|    max_target_q      | 1.8      |
+|    min_target_q      | 1.75     |
+|    max_reward        | 0.015    |
+|    min_reward        | 0.00115  |
+|    chamfer_loss      | 0.000574 |
+|    encoder_grad_norm | 0.0164   |
+|    q1_grad_norm      | 0.0379   |
+|    q2_grad_norm      | 0.0368   |
+|    actor_loss        | -2.04    |
+|    ent_coeff         | 0.0529   |
+|    ent_coeff_loss    | -39.6    |
+|    pi_grad_norm      | 0.0353   |
+|    n_updates         | 7680     |
+| time/                |          |
+|    iterations        | 4        |
+|    fps               | 6.22     |
+|    elapsed_time      | 2.77e+03 |
+|    elapsed_steps     | 20480    |
+-----------------------------------
+-----------------------------------
+| rollout/             |          |
+|    Length            | 200      |
+|    Return            | 0.649    |
+|    NonzeroRewards    | 200      |
+|    DiscountedReturn  | 0.649    |
+|    Success           | 0        |
+|    SuccessLength     | 200      |
+| algo/                |          |
+|    critic_loss       | 0.00018  |
+|    mean_entropy      | 5.47     |
+|    mean_ent_bonus    | 0.224    |
+|    max_target_q      | 1.41     |
+|    min_target_q      | 1.35     |
+|    max_reward        | 0.0143   |
+|    min_reward        | 0.00114  |
+|    chamfer_loss      | 0.000474 |
+|    encoder_grad_norm | 0.0146   |
+|    q1_grad_norm      | 0.0252   |
+|    q2_grad_norm      | 0.024    |
+|    actor_loss        | -1.59    |
+|    ent_coeff         | 0.0409   |
+|    ent_coeff_loss    | -43.1    |
+|    pi_grad_norm      | 0.0256   |
+|    n_updates         | 10240    |
+| time/                |          |
+|    iterations        | 5        |
+|    fps               | 6.13     |
+|    elapsed_time      | 3.6e+03  |
+|    elapsed_steps     | 25600    |
+-----------------------------------
+RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+Saved video of policy to videos/2025-09-11/dl983vrk/nominal/policy_step_30720.mp4.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+-----------------------------------
+| rollout/             |          |
+|    Length            | 200      |
+|    Return            | 0.64     |
+|    NonzeroRewards    | 200      |
+|    DiscountedReturn  | 0.64     |
+|    Success           | 0        |
+|    SuccessLength     | 200      |
+| algo/                |          |
+|    critic_loss       | 0.00011  |
+|    mean_entropy      | 5.47     |
+|    mean_ent_bonus    | 0.173    |
+|    max_target_q      | 1.11     |
+|    min_target_q      | 1.05     |
+|    max_reward        | 0.0139   |
+|    min_reward        | 0.00114  |
+|    chamfer_loss      | 0.000411 |
+|    encoder_grad_norm | 0.0134   |
+|    q1_grad_norm      | 0.0163   |
+|    q2_grad_norm      | 0.016    |
+|    actor_loss        | -1.24    |
+|    ent_coeff         | 0.0317   |
+|    ent_coeff_loss    | -46.5    |
+|    pi_grad_norm      | 0.0187   |
+|    n_updates         | 12800    |
+| eval/                |          |
+|    Length            | 200      |
+|    Return            | 0.83     |
+|    NonzeroRewards    | 200      |
+|    DiscountedReturn  | 0.83     |
+|    Success           | 0        |
+|    SuccessLength     | 200      |
+| time/                |          |
+|    iterations        | 6        |
+|    fps               | 5.44     |
+|    elapsed_time      | 4.55e+03 |
+|    elapsed_steps     | 30720    |
+-----------------------------------
+-----------------------------------
+| rollout/             |          |
+|    Length            | 200      |
+|    Return            | 0.779    |
+|    NonzeroRewards    | 200      |
+|    DiscountedReturn  | 0.779    |
+|    Success           | 0        |
+|    SuccessLength     | 200      |
+| algo/                |          |
+|    critic_loss       | 0.000384 |
+|    mean_entropy      | 5.47     |
+|    mean_ent_bonus    | 0.134    |
+|    max_target_q      | 0.878    |
+|    min_target_q      | 0.817    |
+|    max_reward        | 0.0146   |
+|    min_reward        | 0.00115  |
+|    chamfer_loss      | 0.000386 |
+|    encoder_grad_norm | 0.0132   |
+|    q1_grad_norm      | 0.0154   |
+|    q2_grad_norm      | 0.0176   |
+|    actor_loss        | -0.962   |
+|    ent_coeff         | 0.0245   |
+|    ent_coeff_loss    | -50      |
+|    pi_grad_norm      | 0.0139   |
+|    n_updates         | 15360    |
+| time/                |          |
+|    iterations        | 7        |
+|    fps               | 6.31     |
+|    elapsed_time      | 5.36e+03 |
+|    elapsed_steps     | 35840    |
+-----------------------------------
+-----------------------------------
+| rollout/             |          |
+|    Length            | 200      |
+|    Return            | 0.664    |
+|    NonzeroRewards    | 200      |
+|    DiscountedReturn  | 0.664    |
+|    Success           | 0        |
+|    SuccessLength     | 200      |
+| algo/                |          |
+|    critic_loss       | 3.38e-05 |
+|    mean_entropy      | 5.47     |
+|    mean_ent_bonus    | 0.104    |
+|    max_target_q      | 0.699    |
+|    min_target_q      | 0.632    |
+|    max_reward        | 0.0157   |
+|    min_reward        | 0.00115  |
+|    chamfer_loss      | 0.000358 |
+|    encoder_grad_norm | 0.0116   |
+|    q1_grad_norm      | 0.00386  |
+|    q2_grad_norm      | 0.00279  |
+|    actor_loss        | -0.75    |
+|    ent_coeff         | 0.019    |
+|    ent_coeff_loss    | -53.4    |
+|    pi_grad_norm      | 0.0104   |
+|    n_updates         | 17920    |
+| time/                |          |
+|    iterations        | 8        |
+|    fps               | 6.34     |
+|    elapsed_time      | 6.17e+03 |
+|    elapsed_steps     | 40960    |
+-----------------------------------
+RLRunner: Evaluating agent...
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+Saved video of policy to videos/2025-09-11/dl983vrk/nominal/policy_step_46080.mp4.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+EvalSampler: Resetting all environments.
+EvalSampler: Resetting agent.
+RLRunner: Finished evaluating agent.
+-----------------------------------
+| rollout/             |          |
+|    Length            | 200      |
+|    Return            | 0.84     |
+|    NonzeroRewards    | 200      |
+|    DiscountedReturn  | 0.84     |
+|    Success           | 0        |
+|    SuccessLength     | 200      |
+| algo/                |          |
+|    critic_loss       | 2.53e-05 |
+|    mean_entropy      | 5.47     |
+|    mean_ent_bonus    | 0.0803   |
+|    max_target_q      | 0.587    |
+|    min_target_q      | 0.491    |
+|    max_reward        | 0.0175   |
+|    min_reward        | 0.00115  |
+|    chamfer_loss      | 0.000346 |
+|    encoder_grad_norm | 0.0115   |
+|    q1_grad_norm      | 0.00418  |
+|    q2_grad_norm      | 0.00433  |
+|    actor_loss        | -0.586   |
+|    ent_coeff         | 0.0147   |
+|    ent_coeff_loss    | -56.9    |
+|    pi_grad_norm      | 0.00827  |
+|    n_updates         | 20480    |
+| eval/                |          |
+|    Length            | 200      |
+|    Return            | 1        |
+|    NonzeroRewards    | 200      |
+|    DiscountedReturn  | 1        |
+|    Success           | 0        |
+|    SuccessLength     | 200      |
+| time/                |          |
+|    iterations        | 9        |
+|    fps               | 5.48     |
+|    elapsed_time      | 7.1e+03  |
+|    elapsed_steps     | 46080    |
+-----------------------------------
