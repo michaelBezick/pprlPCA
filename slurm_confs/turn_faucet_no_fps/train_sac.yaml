@@ -8,7 +8,7 @@ defaults:
   - platform: workstation
   - optional algoXplatform: ${algo}_${platform}
 
-parallel: true
+parallel: True
 batch_T: 128
 batch_B: 20
 pi_mlp_head:

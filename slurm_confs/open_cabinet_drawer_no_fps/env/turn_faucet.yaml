@@ -1,0 +1,23 @@
+defaults:
+  - maniskill2
+  - _self_
+
+name: TurnFaucet
+env_id: TurnFaucet-v1
+env_kwargs:
+  control_mode: pd_joint_delta_pos
+  observe_render_cam: true
+  n_models: 10
+  render_mode: rgb_array
+  camera_cfgs:  # no need to render at such high resolution
+    width: 128
+    height: 128
+    fov: 1 #I assume this is radians
+    far: 30.0
+    p: [-0.433352, 0.948292, 0.885752]
+    q: [0.717801992001589, 0.142621934300541, 0.166360199707428, -0.660865300709779]
+pcd_kwargs:
+  max_expected_num_points: 800
+  random_downsample: 800
+min_num_points: 32
+camera_name: render_camera

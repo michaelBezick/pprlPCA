@@ -1,0 +1,13 @@
+# @package _global_
+
+algo:
+  discount: 0.99
+  replay_ratio: 16
+
+optimizer:
+  lr: 5e-5
+  encoder:
+    lr: ${..lr}  # tie to overall lr
+
+runner:
+  n_steps: 2e6

@@ -1,0 +1,23 @@
+# @package _global_
+
+defaults:
+  - sac_maniskill2
+  - _self_
+
+
+# mostly Nikolai's parameters except:
+# - observation contains pointcloud and state
+# - larger model
+# - normalization off
+
+algo:
+  discount: 0.99
+  ent_coeff: 0.05
+  ent_coeff_lr: 2e-5
+  replay_ratio: 16  # 32 is slightly worse
+
+batch_T: 320
+
+# learning rate of 1e-4 is much worse
+optimizer:
+  lr: 5e-5

@@ -1,0 +1,6 @@
+# @package _global_
+
+algo:
+  discount: 0.9
+  # since these tasks are easier, we generally don't need such a high replay ratio
+  replay_ratio: 32  # Nikolai used 8

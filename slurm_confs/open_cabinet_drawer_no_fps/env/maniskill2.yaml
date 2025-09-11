@@ -1,0 +1,23 @@
+_target_: pprl.envs.maniskill2.build
+observation_type: pointcloud+state
+env_kwargs:
+  reward_mode: normalized_dense
+  camera_cfgs:
+    # converting an image at default resolution to a pointcloud is extremely expensive and wasteful
+    width: 128
+    height: 128
+  renderer_kwargs:
+    offscreen_only: True
+    # if EGL_DEVICE_ID is set (e.g. by clusterduck for rendering resource),
+    # then ask all environments to use it for rendering
+    # otherwise, use cuda:0
+    device: cuda:${oc.env:EGL_DEVICE_ID,0}
+pcd_kwargs:
+  crop:
+    # remove the floor
+    min_bound: [-10, -10, 1e-4]
+    max_bound: [10, 10, 10]
+  obs_frame: base  # egocentric pointcloud
+continuous_task: True  # never terminate trajectory, only time out
+max_episode_steps: 200
+traj_info: pprl.traj_info.ManiTrajInfo

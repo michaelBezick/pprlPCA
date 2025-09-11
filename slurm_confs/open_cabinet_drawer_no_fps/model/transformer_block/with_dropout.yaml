@@ -1,0 +1,8 @@
+defaults:
+  - default
+  - _self_
+
+attention:
+  dropout: 0.1
+mlp:
+  dropout: 0.1

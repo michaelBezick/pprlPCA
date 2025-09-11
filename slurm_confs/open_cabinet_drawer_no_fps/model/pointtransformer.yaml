@@ -1,0 +1,5 @@
+name: PointTransformer
+_target_: pprl.models.pointtransformer.PointTransformer
+embed_dim: 384
+dim_model: [32, 64, 128, 256, 512]
+state_embed_dim: ${.embed_dim}  # Philipp says these should be the same
