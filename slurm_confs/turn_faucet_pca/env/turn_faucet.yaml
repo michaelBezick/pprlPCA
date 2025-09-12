@@ -7,7 +7,8 @@ env_kwargs:
   robot_cameras: ["render_camera"]
   control_mode: pd_joint_delta_pos
   observe_render_cam: true
-  n_models: 1
+  n_models: null
+  model_ids: ["5002"]
   render_mode: rgb_array
   camera_cfgs: # no need to render at such high resolution
     width: 128

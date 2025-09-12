@@ -1,50 +1,0 @@
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-wandb: Currently logged in as: michael-bezick (michael-bezick-purdue-university) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
-wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
-wandb: Tracking run with wandb version 0.21.3
-wandb: Run data is saved locally in /scratch/gilbreth/mbezick/pprlPCA2/wandb/run-20250911_141441-140ldhh7
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run pretty-disco-1328
-wandb: ⭐️ View project at https://wandb.ai/michael-bezick-purdue-university/pprl
-wandb: 🚀 View run at https://wandb.ai/michael-bezick-purdue-university/pprl/runs/140ldhh7
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/mbezick/.conda/envs/pprl_quat/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-  0%|          | 0/1000000 [00:00<?, ?steps/s]wandb: WARNING Step cannot be set when using tensorboard syncing. Please use `run.define_metric(...)` to define a custom metric to log your step values.
-wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
-                                                0%|          | 0/1000000 [02:32<?, ?steps/s]  1%|          | 5120/1000000 [03:14<10:31:12, 26.27steps/s]                                                              1%|          | 5120/1000000 [03:14<10:31:12, 26.27steps/s]  1%|          | 5120/1000000 [03:30<10:31:12, 26.27steps/s]  1%|          | 10240/1000000 [17:37<31:33:25,  8.71steps/s]                                                               1%|          | 10240/1000000 [17:37<31:33:25,  8.71steps/s]  2%|▏         | 15360/1000000 [31:54<37:57:47,  7.20steps/s]wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
-                                                               2%|▏         | 15360/1000000 [34:22<37:57:47,  7.20steps/s]  2%|▏         | 20480/1000000 [48:37<43:53:52,  6.20steps/s]                                                               2%|▏         | 20480/1000000 [48:37<43:53:52,  6.20steps/s]  3%|▎         | 25600/1000000 [1:02:53<44:14:10,  6.12steps/s]                                                                 3%|▎         | 25600/1000000 [1:02:53<44:14:10,  6.12steps/s]  3%|▎         | 30720/1000000 [1:17:05<44:17:05,  6.08steps/s]wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
-                                                                 3%|▎         | 30720/1000000 [1:19:33<44:17:05,  6.08steps/s]  4%|▎         | 35840/1000000 [1:33:44<46:43:25,  5.73steps/s]                                                                 4%|▎         | 35840/1000000 [1:33:44<46:43:25,  5.73steps/s]  4%|▍         | 40960/1000000 [1:47:55<45:46:27,  5.82steps/s]                                                                 4%|▍         | 40960/1000000 [1:47:55<45:46:27,  5.82steps/s]  5%|▍         | 46080/1000000 [2:02:03<45:01:44,  5.88steps/s]wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
-                                                                 5%|▍         | 46080/1000000 [2:04:31<45:01:44,  5.88steps/s]

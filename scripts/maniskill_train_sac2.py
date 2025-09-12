@@ -163,26 +163,10 @@ def _build_eval_cameras(base_pos, base_quat_wxyz) -> Dict[str, dict]:
             "quat_wxyz": roll_local_with_comp_wxyz(q0, +15.0, 20).tolist(),
             "vertical_field_of_view": vfov0,
         },
-        "roll+30deg": {
-            "position": pos0.tolist(),
-            "quat_wxyz": roll_local_with_comp_wxyz(q0, +30.0, 30).tolist(),
-            "vertical_field_of_view": vfov0,
-        },
         "nominal": {
             "position": pos0.tolist(),
             "quat_wxyz": q0.tolist(),
             "vertical_field_of_view": vfov0,
-        },
-        # FOV sweeps
-        "fov70": {
-            "position": pos0.tolist(),
-            "quat_wxyz": q0.tolist(),
-            "vertical_field_of_view": 70.0,
-        },
-        "fov50": {
-            "position": pos0.tolist(),
-            "quat_wxyz": q0.tolist(),
-            "vertical_field_of_view": 50.0,
         },
         # World-axis translations
         "shift+x+5cm": {

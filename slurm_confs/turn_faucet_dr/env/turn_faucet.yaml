@@ -4,7 +4,8 @@ defaults:
 name: TurnFaucet
 env_id: TurnFaucet-v1
 env_kwargs:
-  n_models: 1
+  n_models: null
+  model_ids: ["5002"]
   control_mode: pd_joint_delta_pos
   robot_cameras: ["render_camera"]
   observe_render_cam: true

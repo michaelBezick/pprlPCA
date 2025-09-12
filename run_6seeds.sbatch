@@ -1,17 +1,17 @@
 #!/bin/bash
 #SBATCH -J ms2_ppt_seeds
 #SBATCH -A kildisha
-#SBATCH -p v100
-#SBATCH --qos=normal
+#SBATCH -p training
+#SBATCH --qos=training
 
 # -- key fixes --
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --gpus-per-node=1          # (or use: #SBATCH --gres=gpu:1)
+#SBATCH --gpus-per-node=1
 #SBATCH --cpus-per-task=16
 # ----------------
 
-#SBATCH --mem=30G
+#SBATCH --mem=80G
 #SBATCH --time=48:00:00
 
 #SBATCH -o logs/%x/%A_%a.out
