@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH -J ms2_ppt_seeds
 #SBATCH -A kildisha
-#SBATCH -p training
-#SBATCH --qos=training
+#SBATCH -p a100-80gb
+#SBATCH --qos=normal
 
 # -- key fixes --
 #SBATCH --nodes=1
