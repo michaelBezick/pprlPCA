@@ -146,10 +146,10 @@ def _build_eval_cameras(base_pos, base_quat_wxyz) -> Dict[str, dict]:
     right, up, view = _basis_from_quat_wxyz(q0)
 
     # Translations (meters)
-    dx = 0.05  # 5 cm
-    dy = 0.05
-    dz = 0.05
-    dv = 0.05  # along viewing axis
+    dx = 0.2  # 5 cm
+    dy = 0.2
+    dz = 0.2
+    dv = 0.2  # along viewing axis
 
     cams = {
         "along_view-5cm": {
@@ -160,7 +160,7 @@ def _build_eval_cameras(base_pos, base_quat_wxyz) -> Dict[str, dict]:
         # Rolls (local +Z axis), composed by multiplying with the base quaternion
         "roll+15deg": {
             "position": pos0.tolist(),
-            "quat_wxyz": roll_local_with_comp_wxyz(q0, +15.0, 20).tolist(),
+            "quat_wxyz": roll_local_with_comp_wxyz(q0, +30.0, 25).tolist(),
             "vertical_field_of_view": vfov0,
         },
         "nominal": {
@@ -720,7 +720,7 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
             recorder = RecordVectorizedVideo(
                 sample_tree=eval_sample_tree,
                 buffer_key_to_record="env_info.rendering",
-                env_fps=50,
+                env_fps=24,
                 output_dir=Path(config.video_path) / name,
                 video_length=config.env.max_episode_steps,
                 use_wandb=True,

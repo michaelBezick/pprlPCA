@@ -111,6 +111,8 @@ class PointCloudWrapper(gym.ObservationWrapper):
         self.use_fps = use_fps
         self.fps_n = fps_n
 
+        self.max_expected_num_points = max_expected_num_points
+
         if crop is not None:
             self.crop_min = np.asarray(crop["min_bound"])
             self.crop_max = np.asarray(crop["max_bound"])
@@ -323,6 +325,9 @@ class PointCloudWrapper(gym.ObservationWrapper):
             pad = np.zeros((pad_rows, d), dtype=new_points.dtype)
             new_points = np.vstack([new_points, pad])
 
+        if n > self.max_expected_num_points:
+            new_points = new_points[:self.max_expected_num_points]
+
         if self.points_only:
             return new_points
         else:
@@ -460,6 +465,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
             )
             point_cloud = point_cloud[choice]
 
+        '''
         if self.obs_frame == "base":
             # TODO: not sure if this is always valid
             base_pose = observation["agent"]["base_pose"]
@@ -472,6 +478,16 @@ class PointCloudWrapper(gym.ObservationWrapper):
             p, q = tcp_pose[:3], tcp_pose[3:]
             to_origin = Pose(p=p, q=q).inv()
             point_cloud[..., :3] = apply_pose_to_points(point_cloud[..., :3], to_origin)
+        '''
+
+        #IMPORTANT HUGE BUG, NEED TO ALWAYS ORIENT RELATIVE TO CAMERA'S FRAME
+        cam_pose = self._get_active_camera_pose()
+        if cam_pose is not None:
+            to_cam = cam_pose.inv()                         # world -> camera
+            point_cloud[..., :3] = apply_pose_to_points(point_cloud[..., :3], to_cam)
+        else:
+            # leave as-is if no camera pose is available
+            pass
 
         if self.normalize:
             pos = point_cloud[:, :3]
@@ -480,20 +496,6 @@ class PointCloudWrapper(gym.ObservationWrapper):
             scale = 0.999999 / np.abs(pos).max()
             pos[...] *= scale
 
-        pca = False
-        # print(point_cloud)
-        # exit()
-        if pca:
-            # Append PCA components as fake points
-            centered = point_cloud[:, :3] - point_cloud[:, :3].mean(axis=0, keepdims=True)
-            _, _, vh = np.linalg.svd(centered, full_matrices=False)
-            components = vh.astype(np.float32)  # shape (3, 3)
-
-
-            # Concatenate to point cloud
-            point_cloud = np.concatenate([point_cloud, components], axis=0)
-            dummy = np.array([[-100, -100, -100]])
-            point_cloud = np.concatenate(([point_cloud, dummy]), axis=0)
 
         return point_cloud
 

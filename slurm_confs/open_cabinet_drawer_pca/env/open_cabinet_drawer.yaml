@@ -9,15 +9,15 @@ env_kwargs:
   control_mode: base_pd_joint_vel_arm_pd_joint_delta_pos
   observe_render_cam: true
   camera_cfgs:
-    height: 128
-    width: 128
+    height: 64
+    width: 64
     fov: 2
     far: 30.0
     p: [-5, 0, 1.5]
     q: [0.92388, 0, 0.382683, 0]
   render_mode: rgb_array
 pcd_kwargs:
-  max_expected_num_points: 800
+  max_expected_num_points: 1200
   color: True
   # crop:
   #   # remove the floor and points more than 0.5m in front of cabinet
@@ -25,11 +25,11 @@ pcd_kwargs:
   #   max_bound: [10, 10, 10]
   n_target_points: 50
   target_points_scale: 0.07
-  # voxel_grid_size: 0.04
-  random_downsample: 800
+  voxel_grid_size: 0.03
+  #random_downsample: 800
   our_method: True
   use_fps: True
-  fps_n: 640
+  fps_n: 400
 # min_num_points: 32
 traj_info: pprl.traj_info.OpenCabinetDrawerTrajInfo
 domain_randomization: false

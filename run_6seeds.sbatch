@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH -J ms2_ppt_seeds
+#SBATCH -J plswork
 #SBATCH -A kildisha
-#SBATCH -p a100-80gb
-#SBATCH --qos=normal
+#SBATCH -p training
+#SBATCH --qos=training
 
 # -- key fixes --
 #SBATCH --nodes=1
@@ -11,8 +11,8 @@
 #SBATCH --cpus-per-task=16
 # ----------------
 
-#SBATCH --mem=80G
-#SBATCH --time=48:00:00
+#SBATCH --mem=100G
+#SBATCH --time=24:00:00
 
 #SBATCH -o logs/%x/%A_%a.out
 #SBATCH -e logs/%x/%A_%a.err
