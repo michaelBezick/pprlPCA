@@ -61,7 +61,8 @@ def merge_dicts(ds, asarray=False):
         ret = {k: np.concatenate(v) for k, v in ret.items()}
     return ret
 
-def farthest_point_sampling(points, num_samples, init_idx=None):
+def farthest_point_sampling(points, num_samples):
+
     """
     Fast Farthest Point Sampling (FPS) from a point cloud.
 
@@ -73,6 +74,8 @@ def farthest_point_sampling(points, num_samples, init_idx=None):
     Returns:
         np.ndarray: (num_samples,) indices of sampled points
     """
+    if points.shape[0] < num_samples:
+        return points
 
     if points.shape[0] <= num_samples:
         return points
@@ -81,7 +84,6 @@ def farthest_point_sampling(points, num_samples, init_idx=None):
     points = points.farthest_point_down_sample(num_samples)
     points = o3d_to_np(points)
     return points
-
 
 class PointCloudWrapper(gym.ObservationWrapper):
     def __init__(
@@ -219,33 +221,42 @@ class PointCloudWrapper(gym.ObservationWrapper):
             neg_sum = dists[neg_mask].sum()
             return pos_sum, neg_sum
 
-    def score_r4(self, centered_points: torch.Tensor,
-                               direction: torch.Tensor):
-            """
-            points      : (N,3) centered cloud (float32/64, CPU or CUDA)
-            direction   : (3,)  line direction (need not be unit length)
+    # def score_r4(self, centered_points: torch.Tensor,
+    #                            direction: torch.Tensor):
+    #         """
+    #         points      : (N,3) centered cloud (float32/64, CPU or CUDA)
+    #         direction   : (3,)  line direction (need not be unit length)
+    #
+    #         Returns
+    #         -------
+    #         pos_sum, neg_sum  (each scalar tensor)
+    #         """
+    #
+    #         v_hat = direction / direction.norm()          # (3,)
+    #         dots  = centered_points @ v_hat                        # (N,)  u·v  (torch.mv is fine too)
+    #
+    #         r2 = centered_points.pow(2).sum(dim=1)
+    #
+    #         r4 = r2 * r2
+    #
+    #         r4 = r4.clamp_min_(0.)                 # avoid tiny neg. due to FP error
+    #
+    #         # masks for the two half‑spaces
+    #         pos_mask = dots > 0
+    #         neg_mask = dots < 0
+    #
+    #         pos_sum = r4[pos_mask].sum()
+    #         neg_sum = r4[neg_mask].sum()
+    #         return pos_sum, neg_sum
 
-            Returns
-            -------
-            pos_sum, neg_sum  (each scalar tensor)
-            """
 
-            v_hat = direction / direction.norm()          # (3,)
-            dots  = centered_points @ v_hat                        # (N,)  u·v  (torch.mv is fine too)
+    def score_r4(self, centered_points, direction):
+        r2 = torch.sum(centered_points * centered_points, dim=1)
+        r4 = r2 * r2
 
-            r2 = centered_points.pow(2).sum(dim=1)
-            
-            r4 = r2 * r2
+        proj = centered_points @ direction
 
-            r4 = r4.clamp_min_(0.)                 # avoid tiny neg. due to FP error
-
-            # masks for the two half‑spaces
-            pos_mask = dots > 0
-            neg_mask = dots < 0
-
-            pos_sum = r4[pos_mask].sum()
-            neg_sum = r4[neg_mask].sum()
-            return pos_sum, neg_sum
+        return r4[proj >= 0].sum(), r4[proj < 0].sum()
 
     def disambiguate(self, centered_pcd, eig_vecs):
         """
@@ -339,6 +350,10 @@ class PointCloudWrapper(gym.ObservationWrapper):
                 STATE_KEY: state,
                 self.points_key: pcd,
             }
+            # return {
+            #     STATE_KEY: observation,
+            #     self.points_key: new_points,
+            # }
 
         # save_point_cloud(new_points, "our_method_ego.ply")
 
