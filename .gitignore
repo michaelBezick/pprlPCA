@@ -23,5 +23,4 @@ __pycache__/
 build/
 *.egg-info/
 nvim*
-gilbreth_scripts/
 logs/
