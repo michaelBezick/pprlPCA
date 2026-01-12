@@ -9,9 +9,10 @@ from parllel.agents import Agent
 from parllel.cages import Cage, TrajInfo
 from parllel.transforms import Transform
 from parllel.types import BatchSpec
-import wandb
 
 from .sampler import Sampler
+import wandb
+
 
 class MultiEvalSampler:
     """
@@ -151,24 +152,3 @@ class EvalSampler(Sampler):
         ]
 
         return completed_trajectories
-
-def _patch_camera(env, cfg):
-    cam = env.scene_creation_result["camera"]
-    cam.set_position(np.asarray(cfg["position"]))
-    cam.set_look_at (np.asarray(cfg["lookAt"]))
-    if "orientation" in cfg:
-        cam.set_orientation(np.asarray(cfg["orientation"]))
-    if "vertical_field_of_view" in cfg:
-        cam.sofa_object.fieldOfView.value = float(cfg["vertical_field_of_view"])
-
-def _set_camera(cage, cfg):
-    # Serial cage
-    if hasattr(cage, "_env"):                      # SerialCage
-        _patch_camera(cage._env.unwrapped, cfg)
-    # Process cage
-    elif hasattr(cage, "call"):                    # ProcessCage
-        from copy import deepcopy                  # make cfg picklable
-        safe_cfg = deepcopy(cfg)                  # lists instead of np arrays not needed; pickle handles np
-        cage.call(_patch_camera, safe_cfg)         # RPC into subprocess
-    else:
-        raise RuntimeError("Unknown cage type")
