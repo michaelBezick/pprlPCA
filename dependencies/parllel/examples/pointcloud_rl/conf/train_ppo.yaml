@@ -1,0 +1,25 @@
+defaults:
+  - ppo@algo
+  - dummy@env
+  - _self_
+
+hydra:
+  job:
+    name: pointcloudrl-ppo
+  run:
+    dir: outputs/${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
+  sweep:
+    dir: multirun/${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
+
+parallel: True
+batch_T: 128
+batch_B: 16
+reward_clip_min: -5
+reward_clip_max: 5
+max_steps_decorrelate: 50
+device: null
+model:
+  hidden_sizes: [1024, 512, 256]
+runner:
+  n_steps: 102400  # 50 iterations
+  log_interval_steps: 10240  # log every 5 iterations

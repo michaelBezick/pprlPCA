@@ -1,0 +1,10 @@
+defaults:
+  - sac_parllel
+  - logdirs
+  - _self_
+
+hydra:
+  job:
+    name: cheetah-sac
+
+env_name: HalfCheetah-v4

@@ -1,0 +1,36 @@
+defaults:
+  - sac@algo
+  - dummy@env
+  - _self_
+
+hydra:
+  job:
+    name: pointcloudrl-sac
+  run:
+    dir: outputs/${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
+  sweep:
+    dir: multirun/${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
+
+parallel: True
+batch_T: 8
+batch_B: 32
+device: "cpu"
+algo:
+  replay_length: 800  # 100 iterations
+  learning_starts: 2560  # 5 iterations
+  replay_ratio: 1
+  target_update_tau: 0.01
+pi_model:
+  hidden_sizes: []
+q_model:
+  hidden_sizes: []
+encoder:
+  encoding_size: 1024
+eval:
+  max_traj_length: 2000
+  max_trajectories: 20
+  n_eval_envs: 8
+runner:
+  n_steps: 204800  # 800 iterations
+  log_interval_steps: 10240  # log every 5 iterations
+  eval_interval_steps: 10240  # evaluate every 5 iterations

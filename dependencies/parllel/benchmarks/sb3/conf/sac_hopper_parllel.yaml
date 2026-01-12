@@ -1,0 +1,12 @@
+defaults:
+  - sac_parllel
+  - logdirs
+  - _self_
+
+hydra:
+  job:
+    name: hopper-sac
+
+env_name: Hopper-v4
+algo:
+  learning_rate_type: linear
