@@ -61,8 +61,7 @@ def merge_dicts(ds, asarray=False):
         ret = {k: np.concatenate(v) for k, v in ret.items()}
     return ret
 
-def farthest_point_sampling(points, num_samples):
-
+def farthest_point_sampling(points, num_samples, init_idx=None):
     """
     Fast Farthest Point Sampling (FPS) from a point cloud.
 
@@ -74,8 +73,6 @@ def farthest_point_sampling(points, num_samples):
     Returns:
         np.ndarray: (num_samples,) indices of sampled points
     """
-    if points.shape[0] < num_samples:
-        return points
 
     if points.shape[0] <= num_samples:
         return points
@@ -84,6 +81,7 @@ def farthest_point_sampling(points, num_samples):
     points = points.farthest_point_down_sample(num_samples)
     points = o3d_to_np(points)
     return points
+
 
 class PointCloudWrapper(gym.ObservationWrapper):
     def __init__(
@@ -112,8 +110,6 @@ class PointCloudWrapper(gym.ObservationWrapper):
         self.our_method = our_method
         self.use_fps = use_fps
         self.fps_n = fps_n
-
-        self.max_expected_num_points = max_expected_num_points
 
         if crop is not None:
             self.crop_min = np.asarray(crop["min_bound"])
@@ -221,42 +217,33 @@ class PointCloudWrapper(gym.ObservationWrapper):
             neg_sum = dists[neg_mask].sum()
             return pos_sum, neg_sum
 
-    # def score_r4(self, centered_points: torch.Tensor,
-    #                            direction: torch.Tensor):
-    #         """
-    #         points      : (N,3) centered cloud (float32/64, CPU or CUDA)
-    #         direction   : (3,)  line direction (need not be unit length)
-    #
-    #         Returns
-    #         -------
-    #         pos_sum, neg_sum  (each scalar tensor)
-    #         """
-    #
-    #         v_hat = direction / direction.norm()          # (3,)
-    #         dots  = centered_points @ v_hat                        # (N,)  u·v  (torch.mv is fine too)
-    #
-    #         r2 = centered_points.pow(2).sum(dim=1)
-    #
-    #         r4 = r2 * r2
-    #
-    #         r4 = r4.clamp_min_(0.)                 # avoid tiny neg. due to FP error
-    #
-    #         # masks for the two half‑spaces
-    #         pos_mask = dots > 0
-    #         neg_mask = dots < 0
-    #
-    #         pos_sum = r4[pos_mask].sum()
-    #         neg_sum = r4[neg_mask].sum()
-    #         return pos_sum, neg_sum
+    def score_r4(self, centered_points: torch.Tensor,
+                               direction: torch.Tensor):
+            """
+            points      : (N,3) centered cloud (float32/64, CPU or CUDA)
+            direction   : (3,)  line direction (need not be unit length)
 
+            Returns
+            -------
+            pos_sum, neg_sum  (each scalar tensor)
+            """
 
-    def score_r4(self, centered_points, direction):
-        r2 = torch.sum(centered_points * centered_points, dim=1)
-        r4 = r2 * r2
+            v_hat = direction / direction.norm()          # (3,)
+            dots  = centered_points @ v_hat                        # (N,)  u·v  (torch.mv is fine too)
 
-        proj = centered_points @ direction
+            r2 = centered_points.pow(2).sum(dim=1)
+            
+            r4 = r2 * r2
 
-        return r4[proj >= 0].sum(), r4[proj < 0].sum()
+            r4 = r4.clamp_min_(0.)                 # avoid tiny neg. due to FP error
+
+            # masks for the two half‑spaces
+            pos_mask = dots > 0
+            neg_mask = dots < 0
+
+            pos_sum = r4[pos_mask].sum()
+            neg_sum = r4[neg_mask].sum()
+            return pos_sum, neg_sum
 
     def disambiguate(self, centered_pcd, eig_vecs):
         """
@@ -300,13 +287,13 @@ class PointCloudWrapper(gym.ObservationWrapper):
 
         pcd = self.pointcloud(observation)
 
-        # save_point_cloud(pcd, f"./turnfaucet_pcds/original/{self.pcd_idx}.ply")
+        #save_point_cloud(pcd, f"./turnfaucet_pcds/original/{self.pcd_idx}.ply")
 
         #our_method = True
 
-        # print(self.env.unwrapped._cameras['render_camera'].camera.get_pose())
+        #print(self.env.unwrapped._cameras['render_camera'].camera.get_pose())
 
-        if (self.our_method and pcd.shape[0] != 0):
+        if (self.our_method):
 
             if (self.use_fps):
             # FPS
@@ -324,20 +311,17 @@ class PointCloudWrapper(gym.ObservationWrapper):
         else:
             new_points = pcd
 
-        # save_point_cloud(new_points, f"./turnfaucet_pcds/pca/{self.pcd_idx}.ply")
+        #save_point_cloud(new_points, f"./turnfaucet_pcds/pca/{self.pcd_idx}.ply")
 
-        # self.pcd_idx += 1
+        #self.pcd_idx += 1
 
-        MIN_POINTS = 100
+        MIN_POINTS = 150
 
         n, d = new_points.shape
         if n < MIN_POINTS:
             pad_rows = MIN_POINTS - n
             pad = np.zeros((pad_rows, d), dtype=new_points.dtype)
             new_points = np.vstack([new_points, pad])
-
-        if n > self.max_expected_num_points:
-            new_points = new_points[:self.max_expected_num_points]
 
         if self.points_only:
             return new_points
@@ -350,10 +334,6 @@ class PointCloudWrapper(gym.ObservationWrapper):
                 STATE_KEY: state,
                 self.points_key: pcd,
             }
-            # return {
-            #     STATE_KEY: observation,
-            #     self.points_key: new_points,
-            # }
 
         # save_point_cloud(new_points, "our_method_ego.ply")
 
@@ -480,7 +460,6 @@ class PointCloudWrapper(gym.ObservationWrapper):
             )
             point_cloud = point_cloud[choice]
 
-        '''
         if self.obs_frame == "base":
             # TODO: not sure if this is always valid
             base_pose = observation["agent"]["base_pose"]
@@ -493,16 +472,6 @@ class PointCloudWrapper(gym.ObservationWrapper):
             p, q = tcp_pose[:3], tcp_pose[3:]
             to_origin = Pose(p=p, q=q).inv()
             point_cloud[..., :3] = apply_pose_to_points(point_cloud[..., :3], to_origin)
-        '''
-
-        #IMPORTANT HUGE BUG, NEED TO ALWAYS ORIENT RELATIVE TO CAMERA'S FRAME
-        cam_pose = self._get_active_camera_pose()
-        if cam_pose is not None:
-            to_cam = cam_pose.inv()                         # world -> camera
-            point_cloud[..., :3] = apply_pose_to_points(point_cloud[..., :3], to_cam)
-        else:
-            # leave as-is if no camera pose is available
-            pass
 
         if self.normalize:
             pos = point_cloud[:, :3]
@@ -511,6 +480,20 @@ class PointCloudWrapper(gym.ObservationWrapper):
             scale = 0.999999 / np.abs(pos).max()
             pos[...] *= scale
 
+        pca = False
+        # print(point_cloud)
+        # exit()
+        if pca:
+            # Append PCA components as fake points
+            centered = point_cloud[:, :3] - point_cloud[:, :3].mean(axis=0, keepdims=True)
+            _, _, vh = np.linalg.svd(centered, full_matrices=False)
+            components = vh.astype(np.float32)  # shape (3, 3)
+
+
+            # Concatenate to point cloud
+            point_cloud = np.concatenate([point_cloud, components], axis=0)
+            dummy = np.array([[-100, -100, -100]])
+            point_cloud = np.concatenate(([point_cloud, dummy]), axis=0)
 
         return point_cloud
 
@@ -905,3 +888,4 @@ class FrameStackWrapper(gym.ObservationWrapper):
 #             point_cloud = normalize(point_cloud)
 #
 #         return point_cloud
+
