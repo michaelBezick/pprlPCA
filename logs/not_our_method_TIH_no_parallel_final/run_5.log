@@ -1,1146 +1,0 @@
----------------------------------------
-Checking SOFA_ROOT and SOFAPYTHON3_ROOT
-Using environment variable SOFA_ROOT: /home/michaelbezick/sofa/build/install
----------------------------------------
-wandb: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
-wandb: Currently logged in as: michael-bezick (michael-bezick-purdue-university) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
-wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
-wandb: Tracking run with wandb version 0.19.9
-wandb: Run data is saved locally in /home/michaelbezick/Repos/pprlPCA/wandb/run-20250723_084946-0i8bmmz1
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run proud-lion-644
-wandb: ⭐️ View project at https://wandb.ai/michael-bezick-purdue-university/pprl
-wandb: 🚀 View run at https://wandb.ai/michael-bezick-purdue-university/pprl/runs/0i8bmmz1
-Group name is:  not_our_method_TIH_no_parallel_final
-Instantiating 20 environments...
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.Linear.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mapping.NonLinear.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Engine.Select.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Mapping.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Intersection.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/plugins/ArticulatedSystemPlugin/lib/libArticulatedSystemPlugin.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Setting.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Geometry.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Projective.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Dynamic.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.IO.Mesh.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Mass.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Rendering3D.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.GL.Component.Shader.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Topology.Container.Constant.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.MechanicalLoad.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.FEM.Elastic.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Model.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Correction.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Visual.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Constraint.Lagrangian.Solver.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Direct.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.LinearSolver.Iterative.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Backward.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.AnimationLoop.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Detection.Algorithm.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.Collision.Response.Contact.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SceneUtility.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.ODESolver.Forward.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.StateContainer.so
-[INFO]    [PluginManager] Loaded plugin: /home/michaelbezick/sofa/build/install/lib/libSofa.Component.SolidMechanics.Spring.so
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-Environments instantiated.
-BasicSampler: Resetting all environments.
-BasicSampler: Resetting agent.
-Instantiating 1 environments...
-[WARNING] [MechanicalObject(unnamed)] Could not read value for data field showColor: 1.0 0.0 1.0 
-[WARNING] [InteractiveCamera(camera)] Too many missing parameters ; taking default ...
-[WARNING] [UncoupledConstraintCorrection(UncoupledConstraintCorrection)] Using 10 as initial compliance
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [FastTetrahedralCorotationalForceField(FastTetrahedralCorotationalForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of FastTetrahedralCorotationalForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-[WARNING] [UniformVelocityDampingForceField(UniformVelocityDampingForceField)] buildStiffnessMatrix not implemented: for compatibility reason, the deprecated API (addKToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of UniformVelocityDampingForceField to ensure right behavior: the function addKToMatrix has been replaced by buildStiffnessMatrix
-[WARNING] [BeamFEMForceField(BeamFEMForceField)] buildDampingMatrix not implemented: for compatibility reason, the deprecated API (addBToMatrix) will be used. This compatibility will disapear in the future, and will cause issues in simulations. Please update the code of BeamFEMForceField to ensure right behavior: the function addBToMatrix has been replaced by buildDampingMatrix
-Environments instantiated.
-AuxPcSAC: Given sampler batch size 2560, training batch size 128, and replay ratio 32, there will be 640 updates per iteration.
-AuxPcSAC: Using learnable entropy coefficient with target entropy of -4
-RLRunner: Starting training...
-RLRunner: Saving log files to /home/michaelbezick/Repos/pprlPCA/wandb/run-20250723_084946-0i8bmmz1/files
-  0%|          | 0/600000 [00:00<?, ?steps/s]RLRunner: Evaluating agent...
-SingleEnvMultiCamSampler: Resetting all environments.
-SingleEnvMultiCamSampler: Resetting agent.
-wandb: WARNING Step cannot be set when using tensorboard syncing. Please use `run.define_metric(...)` to define a custom metric to log your step values.
-RLRunner: Finished evaluating agent.
-                                               0%|          | 0/600000 [00:21<?, ?steps/s]----------------------------------
-| eval/               |          |
-|    Length           | 300      |
-|    Return           | -35      |
-|    NonzeroRewards   | 300      |
-|    DiscountedReturn | -9.63    |
-|    Success          | 0        |
-| time/               |          |
-|    iterations       | 0        |
-|    fps              | 0        |
-|    elapsed_time     | 21.4     |
-|    elapsed_steps    | 0        |
-----------------------------------
-For the first 10000 steps, agent will use a fixed std of 0.75 for exploration.
-  0%|          | 2560/600000 [02:57<11:29:43, 14.44steps/s]  0%|          | 2560/600000 [03:10<11:29:43, 14.44steps/s]  1%|          | 5120/600000 [05:32<10:36:53, 15.57steps/s]  1%|          | 5120/600000 [05:50<10:36:53, 15.57steps/s]  1%|▏         | 7680/600000 [08:13<10:27:47, 15.73steps/s]                                                             1%|▏         | 7680/600000 [08:13<10:27:47, 15.73steps/s]----------------------------------
-| rollout/            |          |
-|    Length           | 300      |
-|    Return           | -65.3    |
-|    NonzeroRewards   | 300      |
-|    DiscountedReturn | -20.9    |
-|    Success          | 0        |
-| time/               |          |
-|    iterations       | 3        |
-|    fps              | 16.3     |
-|    elapsed_time     | 494      |
-|    elapsed_steps    | 7680     |
-----------------------------------
-  1%|▏         | 7680/600000 [08:30<10:27:47, 15.73steps/s]  2%|▏         | 10240/600000 [13:33<14:23:42, 11.38steps/s]  2%|▏         | 12800/600000 [18:59<16:38:49,  9.80steps/s]  3%|▎         | 15360/600000 [24:18<17:49:36,  9.11steps/s]                                                              3%|▎         | 15360/600000 [24:18<17:49:36,  9.11steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 0.0701   |
-|    mean_entropy      | 2.72     |
-|    mean_ent_bonus    | 0.248    |
-|    max_target_q      | 0.516    |
-|    min_target_q      | -0.659   |
-|    max_reward        | 0.533    |
-|    min_reward        | -1.27    |
-|    chamfer_loss      | 223      |
-|    encoder_grad_norm | 85.3     |
-|    q1_grad_norm      | 0.209    |
-|    q2_grad_norm      | 0.201    |
-|    actor_loss        | -0.166   |
-|    ent_coeff         | 0.091    |
-|    ent_coeff_loss    | -16.1    |
-|    pi_grad_norm      | 0.0801   |
-|    n_updates         | 1920     |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -82.3    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -25      |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 6        |
-|    fps               | 7.96     |
-|    elapsed_time      | 1.46e+03 |
-|    elapsed_steps     | 15360    |
------------------------------------
-  3%|▎         | 17920/600000 [29:45<18:41:21,  8.65steps/s]RLRunner: Evaluating agent...
-SingleEnvMultiCamSampler: Resetting all environments.
-SingleEnvMultiCamSampler: Resetting agent.
-RLRunner: Finished evaluating agent.
-  3%|▎         | 20480/600000 [35:32<19:37:38,  8.20steps/s]  4%|▍         | 23040/600000 [40:52<19:42:17,  8.13steps/s]                                                              4%|▍         | 23040/600000 [40:52<19:42:17,  8.13steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 0.166    |
-|    mean_entropy      | 2.7      |
-|    mean_ent_bonus    | 0.203    |
-|    max_target_q      | 0.932    |
-|    min_target_q      | -2.37    |
-|    max_reward        | 0.898    |
-|    min_reward        | -1.79    |
-|    chamfer_loss      | 79.9     |
-|    encoder_grad_norm | 73.1     |
-|    q1_grad_norm      | 0.414    |
-|    q2_grad_norm      | 0.424    |
-|    actor_loss        | 0.448    |
-|    ent_coeff         | 0.0751   |
-|    ent_coeff_loss    | -17.4    |
-|    pi_grad_norm      | 0.0522   |
-|    n_updates         | 3840     |
-| eval/                |          |
-|    Length            | 300      |
-|    Return            | -62.3    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -13.9    |
-|    Success           | 0        |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -92      |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -27.8    |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 9        |
-|    fps               | 7.73     |
-|    elapsed_time      | 2.45e+03 |
-|    elapsed_steps     | 23040    |
------------------------------------
-  4%|▍         | 25600/600000 [46:18<19:50:03,  8.04steps/s]  5%|▍         | 28160/600000 [58:40<27:47:03,  5.72steps/s]  5%|▌         | 30720/600000 [1:11:32<33:44:52,  4.69steps/s]                                                                5%|▌         | 30720/600000 [1:11:32<33:44:52,  4.69steps/s]-----------------------------------
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -154     |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -38.9    |
-|    Success           | 0        |
-| algo/                |          |
-|    critic_loss       | 0.426    |
-|    mean_entropy      | 2.67     |
-|    mean_ent_bonus    | 0.165    |
-|    max_target_q      | 0.531    |
-|    min_target_q      | -5.31    |
-|    max_reward        | 1.68     |
-|    min_reward        | -2.44    |
-|    chamfer_loss      | 55.1     |
-|    encoder_grad_norm | 76.6     |
-|    q1_grad_norm      | 1.14     |
-|    q2_grad_norm      | 1.2      |
-|    actor_loss        | 2.53     |
-|    ent_coeff         | 0.062    |
-|    ent_coeff_loss    | -18.6    |
-|    pi_grad_norm      | 0.046    |
-|    n_updates         | 5760     |
-| time/                |          |
-|    iterations        | 12       |
-|    fps               | 4.18     |
-|    elapsed_time      | 4.29e+03 |
-|    elapsed_steps     | 30720    |
------------------------------------
-  6%|▌         | 33280/600000 [1:16:03<28:28:38,  5.53steps/s]  6%|▌         | 35840/600000 [1:20:37<24:50:47,  6.31steps/s]RLRunner: Evaluating agent...
-SingleEnvMultiCamSampler: Resetting all environments.
-SingleEnvMultiCamSampler: Resetting agent.
-RLRunner: Finished evaluating agent.
-  6%|▋         | 38400/600000 [1:25:51<23:02:33,  6.77steps/s]                                                                6%|▋         | 38400/600000 [1:25:51<23:02:33,  6.77steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 0.857    |
-|    mean_entropy      | 2.53     |
-|    mean_ent_bonus    | 0.13     |
-|    max_target_q      | -1.04    |
-|    min_target_q      | -14.7    |
-|    max_reward        | 2.02     |
-|    min_reward        | -2.89    |
-|    chamfer_loss      | 44.2     |
-|    encoder_grad_norm | 68.2     |
-|    q1_grad_norm      | 3.5      |
-|    q2_grad_norm      | 3.87     |
-|    actor_loss        | 5.23     |
-|    ent_coeff         | 0.0512   |
-|    ent_coeff_loss    | -19.4    |
-|    pi_grad_norm      | 0.0518   |
-|    n_updates         | 7680     |
-| eval/                |          |
-|    Length            | 300      |
-|    Return            | -48.1    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -15.3    |
-|    Success           | 0        |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -63.6    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -22.3    |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 15       |
-|    fps               | 8.94     |
-|    elapsed_time      | 5.15e+03 |
-|    elapsed_steps     | 38400    |
------------------------------------
-  7%|▋         | 40960/600000 [1:30:38<21:16:46,  7.30steps/s]  7%|▋         | 43520/600000 [1:35:35<20:11:58,  7.65steps/s]  8%|▊         | 46080/600000 [1:40:19<19:12:19,  8.01steps/s]                                                                8%|▊         | 46080/600000 [1:40:19<19:12:19,  8.01steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 1.67     |
-|    mean_entropy      | 2.33     |
-|    mean_ent_bonus    | 0.0988   |
-|    max_target_q      | -2.64    |
-|    min_target_q      | -33      |
-|    max_reward        | 1.91     |
-|    min_reward        | -2.78    |
-|    chamfer_loss      | 39.2     |
-|    encoder_grad_norm | 71.5     |
-|    q1_grad_norm      | 7.32     |
-|    q2_grad_norm      | 8.33     |
-|    actor_loss        | 7.53     |
-|    ent_coeff         | 0.0424   |
-|    ent_coeff_loss    | -20      |
-|    pi_grad_norm      | 0.0615   |
-|    n_updates         | 9600     |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -60.6    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -19.6    |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 18       |
-|    fps               | 8.84     |
-|    elapsed_time      | 6.02e+03 |
-|    elapsed_steps     | 46080    |
------------------------------------
-  8%|▊         | 48640/600000 [1:45:15<18:41:29,  8.19steps/s]  9%|▊         | 51200/600000 [1:50:05<18:11:55,  8.38steps/s]  9%|▉         | 53760/600000 [1:54:53<17:47:50,  8.53steps/s]RLRunner: Evaluating agent...
-SingleEnvMultiCamSampler: Resetting all environments.
-SingleEnvMultiCamSampler: Resetting agent.
-RLRunner: Finished evaluating agent.
-                                                                9%|▉         | 53760/600000 [1:55:16<17:47:50,  8.53steps/s]-----------------------------------
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -103     |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -26.5    |
-|    Success           | 0        |
-| algo/                |          |
-|    critic_loss       | 2.88     |
-|    mean_entropy      | 2.11     |
-|    mean_ent_bonus    | 0.0741   |
-|    max_target_q      | -4.19    |
-|    min_target_q      | -50.3    |
-|    max_reward        | 1.99     |
-|    min_reward        | -2.8     |
-|    chamfer_loss      | 36.7     |
-|    encoder_grad_norm | 87.8     |
-|    q1_grad_norm      | 11.8     |
-|    q2_grad_norm      | 13.5     |
-|    actor_loss        | 10.1     |
-|    ent_coeff         | 0.0351   |
-|    ent_coeff_loss    | -20.5    |
-|    pi_grad_norm      | 0.0699   |
-|    n_updates         | 11520    |
-| eval/                |          |
-|    Length            | 300      |
-|    Return            | -51.3    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -15      |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 21       |
-|    fps               | 8.56     |
-|    elapsed_time      | 6.92e+03 |
-|    elapsed_steps     | 53760    |
------------------------------------
-  9%|▉         | 56320/600000 [2:00:29<18:20:40,  8.23steps/s] 10%|▉         | 58880/600000 [2:05:33<18:09:01,  8.28steps/s] 10%|█         | 61440/600000 [2:10:46<18:07:54,  8.25steps/s]                                                               10%|█         | 61440/600000 [2:10:46<18:07:54,  8.25steps/s]-----------------------------------
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -64.4    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -19.9    |
-|    Success           | 0        |
-| algo/                |          |
-|    critic_loss       | 2.39     |
-|    mean_entropy      | 1.99     |
-|    mean_ent_bonus    | 0.058    |
-|    max_target_q      | -6.05    |
-|    min_target_q      | -52.6    |
-|    max_reward        | 1.83     |
-|    min_reward        | -2.72    |
-|    chamfer_loss      | 34.4     |
-|    encoder_grad_norm | 76.9     |
-|    q1_grad_norm      | 10.6     |
-|    q2_grad_norm      | 12.1     |
-|    actor_loss        | 11.6     |
-|    ent_coeff         | 0.029    |
-|    ent_coeff_loss    | -21.2    |
-|    pi_grad_norm      | 0.0666   |
-|    n_updates         | 13440    |
-| time/                |          |
-|    iterations        | 24       |
-|    fps               | 8.26     |
-|    elapsed_time      | 7.85e+03 |
-|    elapsed_steps     | 61440    |
------------------------------------
- 11%|█         | 64000/600000 [2:15:43<17:48:12,  8.36steps/s] 11%|█         | 66560/600000 [2:20:48<17:42:07,  8.37steps/s] 12%|█▏        | 69120/600000 [2:25:48<17:30:51,  8.42steps/s]                                                               12%|█▏        | 69120/600000 [2:25:48<17:30:51,  8.42steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 1.9      |
-|    mean_entropy      | 1.65     |
-|    mean_ent_bonus    | 0.0399   |
-|    max_target_q      | -7.83    |
-|    min_target_q      | -52.1    |
-|    max_reward        | 1.74     |
-|    min_reward        | -2.62    |
-|    chamfer_loss      | 32.5     |
-|    encoder_grad_norm | 69       |
-|    q1_grad_norm      | 8.57     |
-|    q2_grad_norm      | 9.81     |
-|    actor_loss        | 12.7     |
-|    ent_coeff         | 0.0241   |
-|    ent_coeff_loss    | -21.1    |
-|    pi_grad_norm      | 0.0753   |
-|    n_updates         | 15360    |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -57.4    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -19      |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 27       |
-|    fps               | 8.52     |
-|    elapsed_time      | 8.75e+03 |
-|    elapsed_steps     | 69120    |
------------------------------------
- 12%|█▏        | 71680/600000 [2:30:47<17:21:11,  8.46steps/s]RLRunner: Evaluating agent...
-SingleEnvMultiCamSampler: Resetting all environments.
-SingleEnvMultiCamSampler: Resetting agent.
-RLRunner: Finished evaluating agent.
- 12%|█▏        | 74240/600000 [2:36:35<18:02:38,  8.09steps/s] 13%|█▎        | 76800/600000 [2:42:00<18:05:17,  8.03steps/s]                                                               13%|█▎        | 76800/600000 [2:42:00<18:05:17,  8.03steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 1.89     |
-|    mean_entropy      | 1.42     |
-|    mean_ent_bonus    | 0.0283   |
-|    max_target_q      | -9.46    |
-|    min_target_q      | -53      |
-|    max_reward        | 1.63     |
-|    min_reward        | -2.58    |
-|    chamfer_loss      | 31.3     |
-|    encoder_grad_norm | 67.6     |
-|    q1_grad_norm      | 8.97     |
-|    q2_grad_norm      | 10.2     |
-|    actor_loss        | 13.7     |
-|    ent_coeff         | 0.02     |
-|    ent_coeff_loss    | -21.2    |
-|    pi_grad_norm      | 0.0809   |
-|    n_updates         | 17280    |
-| eval/                |          |
-|    Length            | 300      |
-|    Return            | -50.6    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -15.9    |
-|    Success           | 0        |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -66.9    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -20.8    |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 30       |
-|    fps               | 7.9      |
-|    elapsed_time      | 9.72e+03 |
-|    elapsed_steps     | 76800    |
------------------------------------
- 13%|█▎        | 79360/600000 [2:47:35<18:16:38,  7.91steps/s] 14%|█▎        | 81920/600000 [2:52:53<18:05:45,  7.95steps/s] 14%|█▍        | 84480/600000 [2:58:22<18:08:24,  7.89steps/s]                                                               14%|█▍        | 84480/600000 [2:58:22<18:08:24,  7.89steps/s]-----------------------------------
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -62      |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -19.6    |
-|    Success           | 0        |
-| algo/                |          |
-|    critic_loss       | 1.36     |
-|    mean_entropy      | 1.45     |
-|    mean_ent_bonus    | 0.024    |
-|    max_target_q      | -10.8    |
-|    min_target_q      | -52      |
-|    max_reward        | 1.58     |
-|    min_reward        | -2.51    |
-|    chamfer_loss      | 30.2     |
-|    encoder_grad_norm | 58.7     |
-|    q1_grad_norm      | 7.41     |
-|    q2_grad_norm      | 8.43     |
-|    actor_loss        | 14.6     |
-|    ent_coeff         | 0.0165   |
-|    ent_coeff_loss    | -22.4    |
-|    pi_grad_norm      | 0.0715   |
-|    n_updates         | 19200    |
-| time/                |          |
-|    iterations        | 33       |
-|    fps               | 7.81     |
-|    elapsed_time      | 1.07e+04 |
-|    elapsed_steps     | 84480    |
------------------------------------
- 15%|█▍        | 87040/600000 [3:03:45<18:00:52,  7.91steps/s] 15%|█▍        | 89600/600000 [3:09:10<17:56:50,  7.90steps/s]RLRunner: Evaluating agent...
-SingleEnvMultiCamSampler: Resetting all environments.
-SingleEnvMultiCamSampler: Resetting agent.
-RLRunner: Finished evaluating agent.
- 15%|█▌        | 92160/600000 [3:14:57<18:14:42,  7.73steps/s]                                                               15%|█▌        | 92160/600000 [3:14:57<18:14:42,  7.73steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 1.5      |
-|    mean_entropy      | 1.27     |
-|    mean_ent_bonus    | 0.0174   |
-|    max_target_q      | -12      |
-|    min_target_q      | -48.7    |
-|    max_reward        | 1.46     |
-|    min_reward        | -2.52    |
-|    chamfer_loss      | 29.2     |
-|    encoder_grad_norm | 64.4     |
-|    q1_grad_norm      | 7.76     |
-|    q2_grad_norm      | 8.74     |
-|    actor_loss        | 15.4     |
-|    ent_coeff         | 0.0137   |
-|    ent_coeff_loss    | -22.6    |
-|    pi_grad_norm      | 0.0703   |
-|    n_updates         | 21120    |
-| eval/                |          |
-|    Length            | 300      |
-|    Return            | -90.2    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -22.2    |
-|    Success           | 0        |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -59.5    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -19      |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 36       |
-|    fps               | 7.72     |
-|    elapsed_time      | 1.17e+04 |
-|    elapsed_steps     | 92160    |
------------------------------------
- 16%|█▌        | 94720/600000 [3:20:14<17:55:33,  7.83steps/s] 16%|█▌        | 97280/600000 [3:25:32<17:41:16,  7.89steps/s] 17%|█▋        | 99840/600000 [3:30:55<17:34:04,  7.91steps/s]                                                               17%|█▋        | 99840/600000 [3:30:55<17:34:04,  7.91steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 0.879    |
-|    mean_entropy      | 1.17     |
-|    mean_ent_bonus    | 0.0132   |
-|    max_target_q      | -13      |
-|    min_target_q      | -47.9    |
-|    max_reward        | 1.48     |
-|    min_reward        | -2.42    |
-|    chamfer_loss      | 28.1     |
-|    encoder_grad_norm | 52.2     |
-|    q1_grad_norm      | 5.82     |
-|    q2_grad_norm      | 6.54     |
-|    actor_loss        | 16       |
-|    ent_coeff         | 0.0113   |
-|    ent_coeff_loss    | -23.2    |
-|    pi_grad_norm      | 0.0616   |
-|    n_updates         | 23040    |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -62.9    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -20.5    |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 39       |
-|    fps               | 8.02     |
-|    elapsed_time      | 1.27e+04 |
-|    elapsed_steps     | 99840    |
------------------------------------
- 17%|█▋        | 102400/600000 [3:36:18<17:28:06,  7.91steps/s] 17%|█▋        | 104960/600000 [3:41:37<17:18:03,  7.95steps/s] 18%|█▊        | 107520/600000 [3:46:54<17:07:50,  7.99steps/s]RLRunner: Evaluating agent...
-SingleEnvMultiCamSampler: Resetting all environments.
-SingleEnvMultiCamSampler: Resetting agent.
-RLRunner: Finished evaluating agent.
-                                                                18%|█▊        | 107520/600000 [3:47:16<17:07:50,  7.99steps/s]-----------------------------------
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -63.6    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -20.9    |
-|    Success           | 0        |
-| algo/                |          |
-|    critic_loss       | 1.03     |
-|    mean_entropy      | 1.03     |
-|    mean_ent_bonus    | 0.00966  |
-|    max_target_q      | -13.8    |
-|    min_target_q      | -47.5    |
-|    max_reward        | 1.42     |
-|    min_reward        | -2.39    |
-|    chamfer_loss      | 27.5     |
-|    encoder_grad_norm | 55.2     |
-|    q1_grad_norm      | 6.52     |
-|    q2_grad_norm      | 7.3      |
-|    actor_loss        | 16.7     |
-|    ent_coeff         | 0.00935  |
-|    ent_coeff_loss    | -23.5    |
-|    pi_grad_norm      | 0.06     |
-|    n_updates         | 24960    |
-| eval/                |          |
-|    Length            | 300      |
-|    Return            | -71.7    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -19.4    |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 42       |
-|    fps               | 7.83     |
-|    elapsed_time      | 1.36e+04 |
-|    elapsed_steps     | 107520   |
------------------------------------
- 18%|█▊        | 110080/600000 [3:52:26<17:14:04,  7.90steps/s] 19%|█▉        | 112640/600000 [3:57:29<16:48:18,  8.06steps/s] 19%|█▉        | 115200/600000 [4:02:32<16:28:43,  8.17steps/s]                                                                19%|█▉        | 115200/600000 [4:02:32<16:28:43,  8.17steps/s]-----------------------------------
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -70.7    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -22      |
-|    Success           | 0        |
-| algo/                |          |
-|    critic_loss       | 0.88     |
-|    mean_entropy      | 0.829    |
-|    mean_ent_bonus    | 0.00651  |
-|    max_target_q      | -14.4    |
-|    min_target_q      | -46.7    |
-|    max_reward        | 1.51     |
-|    min_reward        | -2.43    |
-|    chamfer_loss      | 27.2     |
-|    encoder_grad_norm | 51.1     |
-|    q1_grad_norm      | 6.13     |
-|    q2_grad_norm      | 6.83     |
-|    actor_loss        | 17.2     |
-|    ent_coeff         | 0.00774  |
-|    ent_coeff_loss    | -23.5    |
-|    pi_grad_norm      | 0.0565   |
-|    n_updates         | 26880    |
-| time/                |          |
-|    iterations        | 45       |
-|    fps               | 8.38     |
-|    elapsed_time      | 1.46e+04 |
-|    elapsed_steps     | 115200   |
------------------------------------
- 20%|█▉        | 117760/600000 [4:07:43<16:21:30,  8.19steps/s] 20%|██        | 120320/600000 [4:12:55<16:15:31,  8.20steps/s] 20%|██        | 122880/600000 [4:18:03<16:06:06,  8.23steps/s]                                                                20%|██        | 122880/600000 [4:18:03<16:06:06,  8.23steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 0.675    |
-|    mean_entropy      | 0.338    |
-|    mean_ent_bonus    | 0.00217  |
-|    max_target_q      | -14.3    |
-|    min_target_q      | -45.1    |
-|    max_reward        | 1.6      |
-|    min_reward        | -2.41    |
-|    chamfer_loss      | 26.6     |
-|    encoder_grad_norm | 46.8     |
-|    q1_grad_norm      | 5.07     |
-|    q2_grad_norm      | 5.58     |
-|    actor_loss        | 17.6     |
-|    ent_coeff         | 0.00645  |
-|    ent_coeff_loss    | -21.9    |
-|    pi_grad_norm      | 0.0516   |
-|    n_updates         | 28800    |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -58.2    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -18.5    |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 48       |
-|    fps               | 8.25     |
-|    elapsed_time      | 1.55e+04 |
-|    elapsed_steps     | 122880   |
------------------------------------
- 21%|██        | 125440/600000 [4:23:08<15:55:58,  8.27steps/s]RLRunner: Evaluating agent...
-SingleEnvMultiCamSampler: Resetting all environments.
-SingleEnvMultiCamSampler: Resetting agent.
-RLRunner: Finished evaluating agent.
- 21%|██▏       | 128000/600000 [4:28:29<16:01:21,  8.18steps/s] 22%|██▏       | 130560/600000 [4:33:21<15:36:28,  8.35steps/s]                                                                22%|██▏       | 130560/600000 [4:33:21<15:36:28,  8.35steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 0.605    |
-|    mean_entropy      | 0.139    |
-|    mean_ent_bonus    | 0.000791 |
-|    max_target_q      | -14.5    |
-|    min_target_q      | -43.4    |
-|    max_reward        | 1.54     |
-|    min_reward        | -2.42    |
-|    chamfer_loss      | 26.1     |
-|    encoder_grad_norm | 47.3     |
-|    q1_grad_norm      | 4.81     |
-|    q2_grad_norm      | 5.25     |
-|    actor_loss        | 17.9     |
-|    ent_coeff         | 0.00535  |
-|    ent_coeff_loss    | -21.7    |
-|    pi_grad_norm      | 0.0521   |
-|    n_updates         | 30720    |
-| eval/                |          |
-|    Length            | 300      |
-|    Return            | -87.7    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -25.7    |
-|    Success           | 0        |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -68.9    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -23.1    |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 51       |
-|    fps               | 8.37     |
-|    elapsed_time      | 1.64e+04 |
-|    elapsed_steps     | 130560   |
------------------------------------
- 22%|██▏       | 133120/600000 [4:38:14<15:19:38,  8.46steps/s] 23%|██▎       | 135680/600000 [4:43:16<15:13:58,  8.47steps/s] 23%|██▎       | 138240/600000 [4:48:21<15:10:51,  8.45steps/s]                                                                23%|██▎       | 138240/600000 [4:48:21<15:10:51,  8.45steps/s]------------------------------------
-| rollout/             |           |
-|    Length            | 300       |
-|    Return            | -74.2     |
-|    NonzeroRewards    | 300       |
-|    DiscountedReturn  | -22.8     |
-|    Success           | 0         |
-| algo/                |           |
-|    critic_loss       | 0.69      |
-|    mean_entropy      | -0.0825   |
-|    mean_ent_bonus    | -0.000363 |
-|    max_target_q      | -15.1     |
-|    min_target_q      | -43.3     |
-|    max_reward        | 1.49      |
-|    min_reward        | -2.45     |
-|    chamfer_loss      | 26        |
-|    encoder_grad_norm | 48.6      |
-|    q1_grad_norm      | 5.22      |
-|    q2_grad_norm      | 5.63      |
-|    actor_loss        | 18.4      |
-|    ent_coeff         | 0.00445   |
-|    ent_coeff_loss    | -21.2     |
-|    pi_grad_norm      | 0.048     |
-|    n_updates         | 32640     |
-| time/                |           |
-|    iterations        | 54        |
-|    fps               | 8.53      |
-|    elapsed_time      | 1.73e+04  |
-|    elapsed_steps     | 138240    |
-------------------------------------
- 23%|██▎       | 140800/600000 [4:53:19<15:01:41,  8.49steps/s] 24%|██▍       | 143360/600000 [4:58:17<14:53:03,  8.52steps/s]RLRunner: Evaluating agent...
-SingleEnvMultiCamSampler: Resetting all environments.
-SingleEnvMultiCamSampler: Resetting agent.
-RLRunner: Finished evaluating agent.
- 24%|██▍       | 145920/600000 [5:03:27<14:57:06,  8.44steps/s]                                                                24%|██▍       | 145920/600000 [5:03:27<14:57:06,  8.44steps/s]------------------------------------
-| algo/                |           |
-|    critic_loss       | 0.616     |
-|    mean_entropy      | -0.198    |
-|    mean_ent_bonus    | -0.000698 |
-|    max_target_q      | -15.7     |
-|    min_target_q      | -41.2     |
-|    max_reward        | 1.49      |
-|    min_reward        | -2.45     |
-|    chamfer_loss      | 25.9      |
-|    encoder_grad_norm | 47.3      |
-|    q1_grad_norm      | 5.13      |
-|    q2_grad_norm      | 5.36      |
-|    actor_loss        | 18.9      |
-|    ent_coeff         | 0.00369   |
-|    ent_coeff_loss    | -21.3     |
-|    pi_grad_norm      | 0.0509    |
-|    n_updates         | 34560     |
-| eval/                |           |
-|    Length            | 300       |
-|    Return            | -110      |
-|    NonzeroRewards    | 300       |
-|    DiscountedReturn  | -30.8     |
-|    Success           | 0         |
-| rollout/             |           |
-|    Length            | 300       |
-|    Return            | -76.2     |
-|    NonzeroRewards    | 300       |
-|    DiscountedReturn  | -23.8     |
-|    Success           | 0         |
-| time/                |           |
-|    iterations        | 57        |
-|    fps               | 8.47      |
-|    elapsed_time      | 1.82e+04  |
-|    elapsed_steps     | 145920    |
-------------------------------------
- 25%|██▍       | 148480/600000 [5:08:08<14:31:56,  8.63steps/s] 25%|██▌       | 151040/600000 [5:12:52<14:15:57,  8.74steps/s] 26%|██▌       | 153600/600000 [5:17:38<14:05:30,  8.80steps/s]                                                                26%|██▌       | 153600/600000 [5:17:38<14:05:30,  8.80steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 0.517    |
-|    mean_entropy      | -0.632   |
-|    mean_ent_bonus    | -0.00192 |
-|    max_target_q      | -15.9    |
-|    min_target_q      | -42.7    |
-|    max_reward        | 1.52     |
-|    min_reward        | -2.41    |
-|    chamfer_loss      | 25.8     |
-|    encoder_grad_norm | 45.7     |
-|    q1_grad_norm      | 4.83     |
-|    q2_grad_norm      | 5.04     |
-|    actor_loss        | 19.3     |
-|    ent_coeff         | 0.00308  |
-|    ent_coeff_loss    | -19.5    |
-|    pi_grad_norm      | 0.0449   |
-|    n_updates         | 36480    |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -78.6    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -24.9    |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 60       |
-|    fps               | 9.02     |
-|    elapsed_time      | 1.91e+04 |
-|    elapsed_steps     | 153600   |
------------------------------------
- 26%|██▌       | 156160/600000 [5:22:27<13:58:55,  8.82steps/s] 26%|██▋       | 158720/600000 [5:27:10<13:47:49,  8.88steps/s] 27%|██▋       | 161280/600000 [5:31:52<13:37:08,  8.95steps/s]RLRunner: Evaluating agent...
-SingleEnvMultiCamSampler: Resetting all environments.
-SingleEnvMultiCamSampler: Resetting agent.
-RLRunner: Finished evaluating agent.
-                                                                27%|██▋       | 161280/600000 [5:32:12<13:37:08,  8.95steps/s]-----------------------------------
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -79      |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -26.1    |
-|    Success           | 0        |
-| algo/                |          |
-|    critic_loss       | 0.509    |
-|    mean_entropy      | -1.1     |
-|    mean_ent_bonus    | -0.00286 |
-|    max_target_q      | -16.2    |
-|    min_target_q      | -43.6    |
-|    max_reward        | 1.52     |
-|    min_reward        | -2.44    |
-|    chamfer_loss      | 25.6     |
-|    encoder_grad_norm | 43.5     |
-|    q1_grad_norm      | 4.51     |
-|    q2_grad_norm      | 4.72     |
-|    actor_loss        | 19.7     |
-|    ent_coeff         | 0.00258  |
-|    ent_coeff_loss    | -17.2    |
-|    pi_grad_norm      | 0.0435   |
-|    n_updates         | 38400    |
-| eval/                |          |
-|    Length            | 300      |
-|    Return            | -88      |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -24.9    |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 63       |
-|    fps               | 8.79     |
-|    elapsed_time      | 1.99e+04 |
-|    elapsed_steps     | 161280   |
------------------------------------
- 27%|██▋       | 163840/600000 [5:36:50<13:42:53,  8.83steps/s] 28%|██▊       | 166400/600000 [5:41:21<13:21:58,  9.01steps/s] 28%|██▊       | 168960/600000 [5:45:52<13:06:42,  9.13steps/s]                                                                28%|██▊       | 168960/600000 [5:45:52<13:06:42,  9.13steps/s]-----------------------------------
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -77.1    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -24.6    |
-|    Success           | 0        |
-| algo/                |          |
-|    critic_loss       | 0.567    |
-|    mean_entropy      | -1.35    |
-|    mean_ent_bonus    | -0.00289 |
-|    max_target_q      | -16.8    |
-|    min_target_q      | -41.9    |
-|    max_reward        | 1.56     |
-|    min_reward        | -2.44    |
-|    chamfer_loss      | 25.2     |
-|    encoder_grad_norm | 43.1     |
-|    q1_grad_norm      | 5.08     |
-|    q2_grad_norm      | 5.31     |
-|    actor_loss        | 20.1     |
-|    ent_coeff         | 0.00216  |
-|    ent_coeff_loss    | -16.3    |
-|    pi_grad_norm      | 0.0451   |
-|    n_updates         | 40320    |
-| time/                |          |
-|    iterations        | 66       |
-|    fps               | 9.37     |
-|    elapsed_time      | 2.08e+04 |
-|    elapsed_steps     | 168960   |
------------------------------------
- 29%|██▊       | 171520/600000 [5:50:33<13:02:00,  9.13steps/s] 29%|██▉       | 174080/600000 [5:55:14<12:58:09,  9.12steps/s] 29%|██▉       | 176640/600000 [5:59:50<12:49:18,  9.17steps/s]                                                                29%|██▉       | 176640/600000 [5:59:50<12:49:18,  9.17steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 0.419    |
-|    mean_entropy      | -1.81    |
-|    mean_ent_bonus    | -0.00327 |
-|    max_target_q      | -17.1    |
-|    min_target_q      | -40.4    |
-|    max_reward        | 1.56     |
-|    min_reward        | -2.46    |
-|    chamfer_loss      | 25.2     |
-|    encoder_grad_norm | 41.2     |
-|    q1_grad_norm      | 4.38     |
-|    q2_grad_norm      | 4.65     |
-|    actor_loss        | 20.5     |
-|    ent_coeff         | 0.00182  |
-|    ent_coeff_loss    | -13.8    |
-|    pi_grad_norm      | 0.041    |
-|    n_updates         | 42240    |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -71      |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -23.4    |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 69       |
-|    fps               | 9.17     |
-|    elapsed_time      | 2.16e+04 |
-|    elapsed_steps     | 176640   |
------------------------------------
- 30%|██▉       | 179200/600000 [6:04:28<12:44:06,  9.18steps/s]RLRunner: Evaluating agent...
-SingleEnvMultiCamSampler: Resetting all environments.
-SingleEnvMultiCamSampler: Resetting agent.
-RLRunner: Finished evaluating agent.
- 30%|███       | 181760/600000 [6:09:22<12:51:48,  9.03steps/s] 31%|███       | 184320/600000 [6:13:48<12:33:11,  9.20steps/s]                                                                31%|███       | 184320/600000 [6:13:48<12:33:11,  9.20steps/s]-----------------------------------
-| algo/                |          |
-|    critic_loss       | 0.513    |
-|    mean_entropy      | -2.23    |
-|    mean_ent_bonus    | -0.00342 |
-|    max_target_q      | -17.4    |
-|    min_target_q      | -41      |
-|    max_reward        | 1.54     |
-|    min_reward        | -2.52    |
-|    chamfer_loss      | 25.5     |
-|    encoder_grad_norm | 44.1     |
-|    q1_grad_norm      | 4.72     |
-|    q2_grad_norm      | 5.05     |
-|    actor_loss        | 20.8     |
-|    ent_coeff         | 0.00154  |
-|    ent_coeff_loss    | -11.4    |
-|    pi_grad_norm      | 0.0511   |
-|    n_updates         | 44160    |
-| eval/                |          |
-|    Length            | 300      |
-|    Return            | -48.9    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -15.6    |
-|    Success           | 0        |
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -78.9    |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -26.1    |
-|    Success           | 0        |
-| time/                |          |
-|    iterations        | 72       |
-|    fps               | 9.16     |
-|    elapsed_time      | 2.24e+04 |
-|    elapsed_steps     | 184320   |
------------------------------------
- 31%|███       | 186880/600000 [6:18:15<12:18:47,  9.32steps/s] 32%|███▏      | 189440/600000 [6:22:33<12:01:12,  9.49steps/s] 32%|███▏      | 192000/600000 [6:26:54<11:49:58,  9.58steps/s]                                                                32%|███▏      | 192000/600000 [6:26:54<11:49:58,  9.58steps/s]-----------------------------------
-| rollout/             |          |
-|    Length            | 300      |
-|    Return            | -90      |
-|    NonzeroRewards    | 300      |
-|    DiscountedReturn  | -29.3    |
-|    Success           | 0        |
-| algo/                |          |
-|    critic_loss       | 0.452    |
-|    mean_entropy      | -2.63    |
-|    mean_ent_bonus    | -0.00345 |
-|    max_target_q      | -17.8    |
-|    min_target_q      | -42.1    |
-|    max_reward        | 1.63     |
-|    min_reward        | -2.57    |
-|    chamfer_loss      | 25.6     |
-|    encoder_grad_norm | 41.5     |
-|    q1_grad_norm      | 4.48     |
-|    q2_grad_norm      | 4.71     |
-|    actor_loss        | 21.2     |
-|    ent_coeff         | 0.00132  |
-|    ent_coeff_loss    | -9.08    |
-|    pi_grad_norm      | 0.0448   |
-|    n_updates         | 46080    |
-| time/                |          |
-|    iterations        | 75       |
-|    fps               | 9.77     |
-|    elapsed_time      | 2.32e+04 |
-|    elapsed_steps     | 192000   |
------------------------------------
- 32%|███▏      | 194560/600000 [6:31:12<11:37:50,  9.68steps/s] 33%|███▎      | 197120/600000 [6:35:26<11:25:09,  9.80steps/s]RLRunner: Evaluating agent...
-SingleEnvMultiCamSampler: Resetting all environments.
-SingleEnvMultiCamSampler: Resetting agent.
-Error executing job with overrides: ['parallel=False', 'wandb.group_name=not_our_method_TIH_no_parallel_final', 'env=thread_in_hole', 'model=pointgpt_rl', 'algo=aux_sac', 'env.image_shape=[64, 64]', 'runner.n_steps=600000']
-Traceback (most recent call last):
-  File "/home/michaelbezick/Repos/pprlPCA/scripts/one_env_multi_eval_train_sac.py", line 529, in main
-    runner.run()
-  File "/home/michaelbezick/Repos/pprlPCA/dependencies/parllel/parllel/runners/rlrunner.py", line 69, in run
-    self.evaluate_agent(elapsed_steps)
-  File "/home/michaelbezick/Repos/pprlPCA/dependencies/parllel/parllel/runners/rlrunner.py", line 122, in evaluate_agent
-    eval_trajs = self.eval_sampler.collect_batch(elapsed_steps)
-  File "/home/michaelbezick/Repos/pprlPCA/dependencies/parllel/parllel/samplers/eval.py", line 201, in collect_batch
-    trajs = super().collect_batch(elapsed_steps)
-  File "/home/michaelbezick/Repos/pprlPCA/dependencies/parllel/parllel/samplers/eval.py", line 113, in collect_batch
-    action[...], agent_info[...] = self.agent.step(observation)
-  File "/home/michaelbezick/.conda/envs/pprl/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
-    return func(*args, **kwargs)
-  File "/home/michaelbezick/Repos/pprlPCA/dependencies/parllel/parllel/torch/agents/sac_agent.py", line 77, in step
-    encoding = self.encode(observation)
-  File "/home/michaelbezick/Repos/pprlPCA/dependencies/parllel/parllel/torch/agents/sac_agent.py", line 59, in encode
-    observation = self.model["encoder"](observation)
-  File "/home/michaelbezick/.conda/envs/pprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/home/michaelbezick/.conda/envs/pprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/home/michaelbezick/Repos/pprlPCA/pprl/models/ppt.py", line 150, in forward
-    x, _, center_points = self.tokenizer(pos, batch, color)
-  File "/home/michaelbezick/.conda/envs/pprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-  File "/home/michaelbezick/.conda/envs/pprl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
-    return forward_call(*args, **kwargs)
-  File "/home/michaelbezick/Repos/pprlPCA/pprl/models/modules/gpt_tokenizer.py", line 69, in forward
-    x, neighborhoods, center_points = super().forward(pos, batch, color)
-  File "/home/michaelbezick/Repos/pprlPCA/pprl/models/modules/tokenizer.py", line 108, in forward
-    center_points_idx = fps(
-  File "/home/michaelbezick/.conda/envs/pprl/lib/python3.10/site-packages/torch_geometric/nn/pool/__init__.py", line 60, in fps
-    return torch_cluster.fps(x, batch, ratio, random_start, batch_size)
-  File "/home/michaelbezick/.conda/envs/pprl/lib/python3.10/site-packages/torch_cluster/fps.py", line 97, in fps
-    batch_size = int(batch.max()) + 1
-RuntimeError: max(): Expected reduction dim to be specified for input.numel() == 0. Specify the reduction dim with the 'dim' argument.
-
-Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
-[1;34mwandb[0m: 
-[1;34mwandb[0m: 🚀 View run [33mproud-lion-644[0m at: [34mhttps://wandb.ai/michael-bezick-purdue-university/pprl/runs/0i8bmmz1[0m
-[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20250723_084946-0i8bmmz1/logs[0m
- 33%|███▎      | 197120/600000 [6:35:29<13:28:19,  8.31steps/s]
-########## SIG 13 - SIGTERM: a termination request was sent to the program ##########
-  sofa::helper::BackTrace::sig(int)
-  send
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  _PyEval_EvalFrameDefault
-  _PyFunction_Vectorcall
-  _PyEval_EvalFrameDefault
-  PyGC_Collect
-  Py_FinalizeEx
-  Py_Exit
-  PyErr_PrintEx
-  _PyRun_AnyFileObject
-  Py_RunMain
-  Py_BytesMain
-  __libc_start_main

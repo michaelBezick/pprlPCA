@@ -1,268 +1,0 @@
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-wandb: Currently logged in as: michael-bezick (michael-bezick-purdue-university) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
-wandb: WARNING Using a boolean value for 'reinit' is deprecated. Use 'return_previous' or 'finish_previous' instead.
-wandb: Tracking run with wandb version 0.20.1
-wandb: Run data is saved locally in /home/exx/Michael/pprlPCA/wandb/run-20250908_141022-0hmw1q6w
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run likely-terrain-971
-wandb: ⭐️ View project at https://wandb.ai/michael-bezick-purdue-university/pprl
-wandb: 🚀 View run at https://wandb.ai/michael-bezick-purdue-university/pprl/runs/0hmw1q6w
-Group name is:  PC_PCA
-Instantiating 8 environments...
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-Environments instantiated.
-Instantiating 1 environments...
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-Environments instantiated.
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
-  depth = (depth - min_depth) / (max_depth - min_depth)
-Instantiating 1 environments...
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-Environments instantiated.
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
-  depth = (depth - min_depth) / (max_depth - min_depth)
-Instantiating 1 environments...
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-Environments instantiated.
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
-  depth = (depth - min_depth) / (max_depth - min_depth)
-Instantiating 1 environments...
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-Environments instantiated.
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
-  depth = (depth - min_depth) / (max_depth - min_depth)
-Instantiating 1 environments...
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-Environments instantiated.
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
-  depth = (depth - min_depth) / (max_depth - min_depth)
-Instantiating 1 environments...
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-Environments instantiated.
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
-  depth = (depth - min_depth) / (max_depth - min_depth)
-Instantiating 1 environments...
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-Environments instantiated.
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
-  depth = (depth - min_depth) / (max_depth - min_depth)
-Instantiating 1 environments...
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-Environments instantiated.
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
-  depth = (depth - min_depth) / (max_depth - min_depth)
-Instantiating 1 environments...
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-Environments instantiated.
-/home/exx/anaconda3/envs/pprl/lib/python3.10/site-packages/mani_skill2/utils/visualization/misc.py:56: RuntimeWarning: invalid value encountered in divide
-  depth = (depth - min_depth) / (max_depth - min_depth)
-BasicSampler: Resetting all environments.
-BasicSampler: Resetting agent.
-SAC: Given sampler batch size 2560, training batch size 512, and replay ratio 16, there will be 80 updates per iteration.
-SAC: Using learnable entropy coefficient with target entropy of -20
-RLRunner: Starting training...
-RLRunner: Saving log files to /home/exx/Michael/pprlPCA/wandb/run-20250908_141022-0hmw1q6w/files
-  0%|          | 0/1000000 [00:00<?, ?steps/s]RLRunner: Evaluating agent...
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-Saved video of policy to videos/2025-09-08/0hmw1q6w/nominal/policy_step_0.mp4.
-wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-wandb: WARNING Step cannot be set when using tensorboard syncing. Please use `run.define_metric(...)` to define a custom metric to log your step values.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-RLRunner: Finished evaluating agent.
-                                                0%|          | 0/1000000 [05:10<?, ?steps/s]----------------------------------
-| eval/               |          |
-|    Length           | 200      |
-|    Return           | -210     |
-|    NonzeroRewards   | 200      |
-|    DiscountedReturn | -210     |
-|    Success          | 0        |
-|    SuccessLength    | 200      |
-| time/               |          |
-|    iterations       | 0        |
-|    fps              | 0        |
-|    elapsed_time     | 311      |
-|    elapsed_steps    | 0        |
-----------------------------------
-For the first 10000 steps, agent will use a fixed std of 0.75 for exploration.
-  0%|          | 2560/1000000 [05:57<38:42:52,  7.16steps/s]  1%|          | 5120/1000000 [06:53<19:26:35, 14.21steps/s]  1%|          | 5120/1000000 [07:10<19:26:35, 14.21steps/s]  1%|          | 7680/1000000 [07:46<13:09:42, 20.94steps/s]                                                              1%|          | 7680/1000000 [07:46<13:09:42, 20.94steps/s]----------------------------------
-| rollout/            |          |
-|    Length           | 200      |
-|    Return           | -212     |
-|    NonzeroRewards   | 200      |
-|    DiscountedReturn | -212     |
-|    Success          | 0        |
-|    SuccessLength    | 200      |
-| time/               |          |
-|    iterations       | 3        |
-|    fps              | 49.1     |
-|    elapsed_time     | 467      |
-|    elapsed_steps    | 7680     |
-----------------------------------
-  1%|          | 7680/1000000 [08:00<13:09:42, 20.94steps/s]  1%|          | 10240/1000000 [09:31<12:22:45, 22.21steps/s]  1%|          | 10240/1000000 [09:50<12:22:45, 22.21steps/s]  1%|▏         | 12800/1000000 [10:58<11:14:35, 24.39steps/s]  1%|▏         | 12800/1000000 [11:10<11:14:35, 24.39steps/s]  2%|▏         | 15360/1000000 [12:22<10:28:49, 26.10steps/s]                                                               2%|▏         | 15360/1000000 [12:22<10:28:49, 26.10steps/s]-----------------------------------
-| rollout/             |          |
-|    Length            | 200      |
-|    Return            | -212     |
-|    NonzeroRewards    | 200      |
-|    DiscountedReturn  | -212     |
-|    Success           | 0        |
-|    SuccessLength     | 200      |
-| algo/                |          |
-|    critic_loss       | 0.00724  |
-|    mean_entropy      | 13.6     |
-|    mean_ent_bonus    | 0.68     |
-|    max_target_q      | -0.389   |
-|    min_target_q      | -0.654   |
-|    max_reward        | -0.753   |
-|    min_reward        | -1.66    |
-|    encoder_grad_norm | 0.0412   |
-|    q1_grad_norm      | 0.128    |
-|    q2_grad_norm      | 0.111    |
-|    actor_loss        | 0.219    |
-|    ent_coeff         | 0.0499   |
-|    ent_coeff_loss    | -101     |
-|    pi_grad_norm      | 0.114    |
-|    n_updates         | 240      |
-| time/                |          |
-|    iterations        | 6        |
-|    fps               | 27.8     |
-|    elapsed_time      | 743      |
-|    elapsed_steps     | 15360    |
------------------------------------
-  2%|▏         | 15360/1000000 [12:40<10:28:49, 26.10steps/s]  2%|▏         | 17920/1000000 [13:39<9:41:55, 28.13steps/s] RLRunner: Evaluating agent...
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-  2%|▏         | 17920/1000000 [13:50<9:41:55, 28.13steps/s]Saved video of policy to videos/2025-09-08/0hmw1q6w/nominal/policy_step_17920.mp4.
-wandb: WARNING `fps` argument does not affect the frame rate of the video when providing a file path or raw bytes.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-EvalSampler: Resetting all environments.
-EvalSampler: Resetting agent.
-RLRunner: Finished evaluating agent.
-  2%|▏         | 20480/1000000 [19:36<18:41:42, 14.55steps/s]  2%|▏         | 23040/1000000 [20:56<15:26:59, 17.57steps/s]                                                               2%|▏         | 23040/1000000 [20:56<15:26:59, 17.57steps/s]-----------------------------------
-| rollout/             |          |
-|    Length            | 200      |
-|    Return            | -214     |
-|    NonzeroRewards    | 200      |
-|    DiscountedReturn  | -214     |
-|    Success           | 0        |
-|    SuccessLength     | 200      |
-| algo/                |          |
-|    critic_loss       | 0.00424  |
-|    mean_entropy      | 13.6     |
-|    mean_ent_bonus    | 0.677    |
-|    max_target_q      | -1.02    |
-|    min_target_q      | -1.76    |
-|    max_reward        | -0.758   |
-|    min_reward        | -1.61    |
-|    encoder_grad_norm | 0.0806   |
-|    q1_grad_norm      | 0.101    |
-|    q2_grad_norm      | 0.119    |
-|    actor_loss        | 1.05     |
-|    ent_coeff         | 0.0496   |
-|    ent_coeff_loss    | -101     |
-|    pi_grad_norm      | 0.0855   |
-|    n_updates         | 480      |
-| eval/                |          |
-|    Length            | 200      |
-|    Return            | -215     |
-|    NonzeroRewards    | 200      |
-|    DiscountedReturn  | -215     |
-|    Success           | 0        |
-|    SuccessLength     | 200      |
-| time/                |          |
-|    iterations        | 9        |
-|    fps               | 15       |
-|    elapsed_time      | 1.26e+03 |
-|    elapsed_steps     | 23040    |
------------------------------------
-  2%|▏         | 23040/1000000 [21:10<15:26:59, 17.57steps/s]  3%|▎         | 25600/1000000 [22:14<13:12:35, 20.49steps/s]  3%|▎         | 25600/1000000 [22:30<13:12:35, 20.49steps/s]  3%|▎         | 28160/1000000 [23:34<11:43:47, 23.01steps/s]/home/exx/anaconda3/envs/pprl/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 998 leaked shared_memory objects to clean up at shutdown
-  warnings.warn('resource_tracker: There appear to be %d '
