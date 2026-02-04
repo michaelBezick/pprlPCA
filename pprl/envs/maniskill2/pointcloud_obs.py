@@ -132,6 +132,11 @@ class PointCloudWrapper(gym.ObservationWrapper):
         self.obs_frame = obs_frame
         self.normalize = normalize
         self.points_only = points_only
+
+
+        'IMPORTANT, TEMP TEST TO SEE IF THIS WORKS'
+        self.points_only = True
+
         self.points_key = points_key
 
                 # ---- PLY dump config (tweak as you like) ----
@@ -283,15 +288,11 @@ class PointCloudWrapper(gym.ObservationWrapper):
 
 
     def observation(self, observation: dict) -> np.ndarray | dict:
-        """Replaces the observation of a step in a sofa_env scene with a point cloud."""
+        """Replaces the observation of a step in a maniskil2 scene with a point cloud."""
+
+        """Furthermore, removes goal / target proprioception"""
 
         pcd = self.pointcloud(observation)
-
-        #save_point_cloud(pcd, f"./turnfaucet_pcds/original/{self.pcd_idx}.ply")
-
-        #our_method = True
-
-        #print(self.env.unwrapped._cameras['render_camera'].camera.get_pose())
 
         if (self.our_method):
 
@@ -311,9 +312,6 @@ class PointCloudWrapper(gym.ObservationWrapper):
         else:
             new_points = pcd
 
-        #save_point_cloud(new_points, f"./turnfaucet_pcds/pca/{self.pcd_idx}.ply")
-
-        #self.pcd_idx += 1
 
         MIN_POINTS = 150
 
@@ -334,46 +332,6 @@ class PointCloudWrapper(gym.ObservationWrapper):
                 STATE_KEY: state,
                 self.points_key: pcd,
             }
-
-        # save_point_cloud(new_points, "our_method_ego.ply")
-
-        # if self.points_only:
-        #     return new_points
-        # else:
-        #     return {
-        #         STATE_KEY: observation,
-        #         self.points_key: new_points,
-        #     }
-
-        # centered = pcd[:, :3] - pcd[:, :3].mean(axis=0, keepdims=True)
-        #
-        # """ we do not want to normalize to unit sphere because scale is guaranteed """
-        #
-        # # scale = np.linalg.norm(centered, axis=1).max()
-        # #
-        # # normalized_and_centered = centered / scale
-        #
-        #
-        # _, _, vh = np.linalg.svd(centered, full_matrices=False)
-        # components = vh.astype(np.float32)  # shape (3, 3)
-        # # dummy = np.array([[-999, -999, -999]])
-        #
-        # pcd = np.concatenate([centered, components], axis=0) # huge correction to unit sphere
-        # # pcd = np.concatenate([pcd, dummy], axis=0)
-        #
-        # if self.points_only:
-        #     print('POINTS ONLY')
-        #     exit()
-        #     return pcd
-        # else:
-        #     state = spaces.flatten(
-        #         self.state_space,
-        #         {"agent": observation["agent"], "extra": observation["extra"]},
-        #     )
-        #     return {
-        #         STATE_KEY: state,
-        #         self.points_key: pcd,
-        #     }
 
     def pointcloud(self, observation) -> np.ndarray:
 
