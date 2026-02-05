@@ -132,11 +132,6 @@ class PointCloudWrapper(gym.ObservationWrapper):
         self.obs_frame = obs_frame
         self.normalize = normalize
         self.points_only = points_only
-
-
-        'IMPORTANT, TEMP TEST TO SEE IF THIS WORKS'
-        self.points_only = True
-
         self.points_key = points_key
 
                 # ---- PLY dump config (tweak as you like) ----
@@ -324,6 +319,17 @@ class PointCloudWrapper(gym.ObservationWrapper):
         if self.points_only:
             return new_points
         else:
+
+            """
+            IMPORTANT: remove all target information through zeroing
+            """
+            for key in list(observation['extra'].keys()):
+                if "target" in key:
+                    #just zero out values
+                    data = observation['extra'][key]
+                    observation['extra'][key] = np.zeros_like(data)
+
+
             state = spaces.flatten(
                 self.state_space,
                 {"agent": observation["agent"], "extra": observation["extra"]},
