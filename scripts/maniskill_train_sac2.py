@@ -146,13 +146,14 @@ def _build_eval_cameras(base_pos, base_quat_wxyz) -> Dict[str, dict]:
     right, up, view = _basis_from_quat_wxyz(q0)
 
     # Translations (meters)
-    dx = 0.2  # 5 cm
+    perturb_string = "20cm"
+    dx = 0.2  # 20 cm perturbation
     dy = 0.2
     dz = 0.2
     dv = 0.2  # along viewing axis
 
     cams = {
-        "along_view-5cm": {
+        f"along_view-{perturb_string}": {
             "position": (pos0 - dv * view).tolist(),
             "quat_wxyz": q0.tolist(),
             "vertical_field_of_view": vfov0,
@@ -169,22 +170,23 @@ def _build_eval_cameras(base_pos, base_quat_wxyz) -> Dict[str, dict]:
             "vertical_field_of_view": vfov0,
         },
         # World-axis translations
-        "shift+x+5cm": {
+        f"shift+x+{perturb_string}": {
             "position": (pos0 + np.array([+dx, 0.0, 0.0])).tolist(),
             "quat_wxyz": q0.tolist(),
             "vertical_field_of_view": vfov0,
         },
-        "shift+y+5cm": {
+        f"shift+y+{perturb_string}": {
             "position": (pos0 + np.array([0.0, +dy, 0.0])).tolist(),
             "quat_wxyz": q0.tolist(),
             "vertical_field_of_view": vfov0,
         },
-        "shift+z+5cm": {
+        f"shift+z+{perturb_string}": {
             "position": (pos0 + np.array([0.0, 0.0, +dz])).tolist(),
             "quat_wxyz": q0.tolist(),
             "vertical_field_of_view": vfov0,
         },
     }
+
     return cams
 
 
