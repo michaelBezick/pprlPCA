@@ -1,2 +1,2 @@
 #!/bin/bash
-sbatch --export=GROUP_NAME=FPS_TF_final,CONF_DIR=../slurm_confs/turn_faucet_no_fps,PPRL_ENV=turn_faucet run_6seeds.sbatch
+sbatch --export=GROUP_NAME=FPS_TF_final,CONF_DIR=/home/mbezick/Repos/pprlPCA/slurm_confs/turn_faucet_no_fps,PPRL_ENV=turn_faucet /home/mbezick/Repos/pprlPCA/gilbreth_scripts/run_6seeds.sbatch
