@@ -146,11 +146,11 @@ def _build_eval_cameras(base_pos, base_quat_wxyz) -> Dict[str, dict]:
     right, up, view = _basis_from_quat_wxyz(q0)
 
     # Translations (meters)
-    perturb_string = "20cm"
-    dx = 0.2  # 20 cm perturbation
-    dy = 0.2
-    dz = 0.2
-    dv = 0.2  # along viewing axis
+    perturb_string = "50cm"
+    dx = 0.5  # 20 cm perturbation
+    dy = 0.5
+    dz = 0.5
+    dv = 0.5  # along viewing axis
 
     cams = {
         f"along_view-{perturb_string}": {
@@ -159,9 +159,9 @@ def _build_eval_cameras(base_pos, base_quat_wxyz) -> Dict[str, dict]:
             "vertical_field_of_view": vfov0,
         },
         # Rolls (local +Z axis), composed by multiplying with the base quaternion
-        "roll+15deg": {
+        "roll+60deg": {
             "position": pos0.tolist(),
-            "quat_wxyz": roll_local_with_comp_wxyz(q0, +30.0, 25).tolist(),
+            "quat_wxyz": roll_local_with_comp_wxyz(q0, +60.0, 25).tolist(),
             "vertical_field_of_view": vfov0,
         },
         "nominal": {
