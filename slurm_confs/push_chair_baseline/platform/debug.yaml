@@ -1,0 +1,17 @@
+# @package _global_
+
+platform_name: debug
+
+algo:
+  replay_length: 10000
+  batch_size: 128
+  learning_starts: 1000
+
+batch_B: 2
+eval:
+  n_eval_envs: 1
+
+runner:
+  n_steps: 1e4
+  log_interval_steps: 1000
+  eval_interval_steps: 1000

@@ -1,0 +1,19 @@
+defaults:
+  - _self_
+  - tokenizer: default
+  - pos_embedder: sinusoidal
+  - transformer_block@transformer_encoder.block_factory: default
+
+# the "???" show the slots that are filled in by the defaults list
+
+name: PointPatchTransformer
+_target_: pprl.models.ppt.PointPatchTransformer
+tokenizer: "???"
+pos_embedder: "???"
+transformer_encoder:
+  _target_: pprl.models.modules.transformer.TransformerEncoder
+  _partial_: True  # requires `embed_dim`
+  block_factory: "???"
+  depth: 3
+embed_dim: 384
+state_embed_dim: ${.embed_dim}  # Philipp says these should be the same

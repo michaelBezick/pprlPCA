@@ -1,0 +1,9 @@
+defaults:
+  - default
+  - _self_
+
+_target_: pprl.models.modules.tokenizer_separate_color.TokenizerSeparateColor
+color_mlp:
+  _target_: torch_geometric.nn.MLP
+  channel_list: [3, 128, 384]
+  act: relu

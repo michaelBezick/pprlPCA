@@ -1,0 +1,10 @@
+# @package _global_
+
+defaults:
+  - sac_deflect_spheres
+  - _self_
+
+# lower values are worse, even though no aux loss at all is better
+algo:
+  chamfer_loss_coeff: 1.0
+  color_loss_coeff: 1.0

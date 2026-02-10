@@ -1,0 +1,38 @@
+defaults:
+  - algo: sac
+  - model: ???
+  - env: ???
+  - optimizer: basic
+  - _self_
+  - optional algoXenv: ${algo}_${env}
+  - platform: workstation
+  - optional algoXplatform: ${algo}_${platform}
+
+parallel: true
+batch_T: 128
+batch_B: 20
+pi_mlp_head:
+  _target_: pprl.models.sac.q_and_pi_heads.PiMlpHead
+  hidden_sizes: [1024, 1024, 1024]
+  hidden_nonlinearity: ELU
+q_mlp_head:
+  _target_: pprl.models.sac.q_and_pi_heads.QMlpHead
+  hidden_sizes: [1024, 1024, 1024]
+  hidden_nonlinearity: ELU
+device: null
+lr_scheduler_gamma: null
+runner:
+  n_steps: 1.5e6
+  log_interval_steps: 10000
+  # eval_interval_steps: 20000
+  eval_interval_steps: 20000
+eval:
+  n_eval_envs: 1
+  max_trajectories: 100
+
+wandb:
+  tags: null
+  notes: null
+  group_name: ???
+
+video_path: videos

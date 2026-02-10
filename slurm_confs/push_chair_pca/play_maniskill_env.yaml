@@ -1,0 +1,22 @@
+defaults:
+  - env: turn_faucet
+  - _self_
+
+env:
+  env_kwargs:
+    render_mode: rgb_array
+    camera_cfgs:
+      width: 256
+      height: 256
+    n_models: null
+    model_ids: ["5011"]
+    robot_cameras: ["hand_camera"]
+  pcd_kwargs:
+    random_downsample: null
+    max_expected_num_points: null
+  max_episode_steps: null
+
+isolate: null
+seed: 3042
+set_qpos: [0.44536698, -0.8668965, -0.00353099, -2.3945825, -0.0347541, 1.6881437, 1.7623705, 0.01500002, 0.01499998]
+save_folder: Downloads

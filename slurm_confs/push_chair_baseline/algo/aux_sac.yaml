@@ -1,0 +1,10 @@
+defaults: 
+  - sac
+  - _self_
+
+name: SAC+Aux
+_target_: pprl.algos.aux_sac.AuxPcSAC
+chamfer_loss_coeff: 0.5
+color_loss_coeff: 0.1
+
+batch_size: 128

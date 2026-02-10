@@ -1,0 +1,25 @@
+defaults:
+  - ppt
+  - _self_
+  - pos_embedder@masked_decoder.pos_embedder: sinusoidal
+  - transformer_block@masked_decoder.transformer_decoder.block_factory: with_dropout  # TODO: check if dropout needed here
+  - override transformer_block@transformer_encoder.block_factory: with_dropout  # TODO: check if dropout needed here
+
+# the "???" show the slots that are filled in by the defaults list
+
+name: PointMAE
+_target_: pprl.models.pointmae_rl.PointMAE
+masked_encoder:
+  _target_: pprl.models.modules.masked_encoder.MaskedEncoder
+  _partial_: True  # requires `transformer_encoder` and `pos_embedder`
+  mask_ratio: 0.8
+  mask_type: rand
+masked_decoder:
+  _target_: pprl.models.modules.masked_decoder.MaskedDecoder
+  _partial_: True  # requires `embed_dim`
+  pos_embedder: "???"
+  transformer_decoder:
+    _target_: pprl.models.modules.transformer.TransformerDecoder
+    _partial_: True  # requires `embed_dim`
+    block_factory: "???"
+    depth: 3

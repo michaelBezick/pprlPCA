@@ -1,0 +1,4 @@
+# @package _global_
+
+algo:
+  batch_size: 512
