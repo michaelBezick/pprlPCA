@@ -39,7 +39,7 @@ echo "Job ${SLURM_JOB_ID} / array task ${SEED} on $(hostname)"
 echo "CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
 
 # ---------------- run ----------------
-srun --unbuffered --export=ALL python scripts/maniskill_train_sac2.py \
+srun --unbuffered --export=ALL python scripts/train_sac.py \
   -cp "$CONF_DIR" \
   wandb.group_name="${GROUP_NAME}" \
   env="${PPRL_ENV}" \

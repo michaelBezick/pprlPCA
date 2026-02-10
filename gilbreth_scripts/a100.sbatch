@@ -56,7 +56,7 @@ srun -n "${SLURM_NTASKS}" \
         mkdir -p "logs/${GROUP}"
         echo "[Task ${SLURM_PROCID}] group=${GROUP}"
 
-        python scripts/maniskill_train_sac2.py \
+        python scripts/train_sac.py \
           -cp "../slurm_confs/open_cabinet_drawer_baseline" \
           wandb.group_name="baseline_OCD_pls" \
           env="open_cabinet_drawer" \
@@ -67,7 +67,7 @@ srun -n "${SLURM_NTASKS}" \
         mkdir -p "logs/${GROUP}"
         echo "[Task ${SLURM_PROCID}] group=${GROUP}"
 
-        python scripts/maniskill_train_sac2.py \
+        python scripts/train_sac.py \
           -cp "../slurm_confs/open_cabinet_drawer_pca" \
           wandb.group_name="PCA_OCD_pls" \
           env="open_cabinet_drawer" \
