@@ -38,8 +38,6 @@ WORLD_UP = (0.0, 0.0, 1.0)
 
 BASE_VFOV_DEG = 60.0
 
-
-
 def orbit_eye_and_lookat_wxyz(
     eye0: np.ndarray,
     target: np.ndarray,
@@ -307,44 +305,6 @@ def _clear_pointcloud_buffers(env):
     if hasattr(u, "_buffer") and isinstance(u._buffer, dict):
         u._buffer.clear()
 
-
-# =========================
-# Keep only one named camera registered in env (same as before)
-# =========================
-def _force_single_camera_registration(
-    env, keep_uid_candidates: tuple[str, ...]
-) -> None:
-    u = env.unwrapped
-    orig = getattr(u, "_register_cameras", None)
-    if orig is None or getattr(u, "_register_cameras_wrapped", False):
-        return  # nothing to do or already wrapped
-
-    def choose_one(cams):
-        try:
-            seq = list(cams) if isinstance(cams, (list, tuple)) else [cams]
-        except TypeError:
-            return cams
-        uid_pairs = [(getattr(c, "uid", None), c) for c in seq]
-        for cand in keep_uid_candidates:
-            for uid, cfg in uid_pairs:
-                if uid == cand:
-                    return [cfg]
-        for common in ("render_camera", "render", "tripod", "scene", "viewer"):
-            for uid, cfg in uid_pairs:
-                if uid == common:
-                    return [cfg]
-        return [uid_pairs[0][1]] if uid_pairs else seq
-
-    def wrapped(*a, **kw):
-        cams = orig(*a, **kw)
-        return choose_one(cams)
-
-    import types
-
-    u._register_cameras = types.MethodType(wrapped, u)
-    u._register_cameras_wrapped = True
-
-
 from gymnasium.wrappers import TimeLimit
 
 
@@ -377,7 +337,6 @@ class TrainCamWrapperFactory:
 
     def __call__(self, *args, **kwargs):
         env = self.base_factory(*args, **kwargs)
-        # force_only_one_camera(env, keep_uid=self.camera_name)
         horizon = self.max_episode_steps or getattr(
             getattr(env, "spec", None), "max_episode_steps", 200
         )
@@ -416,7 +375,6 @@ class EvalCamWrapperFactory:
         import copy as _copy
 
         env = self.base_factory(*args, **kwargs)
-        # force_only_one_camera(env, keep_uid=self.camera_name)
         horizon = self.max_episode_steps or getattr(
             getattr(env, "spec", None), "max_episode_steps", 200
         )
