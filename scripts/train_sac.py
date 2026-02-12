@@ -738,13 +738,19 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
             ],
             dtype=float,
         )
+    elif env_name == "PushChair":
+        base_pos = np.array([1.2, 0, 1.1], dtype=float)
+        target = np.array([0.5, 0.0, 0.45], dtype=float)
+
+        base_quat_wxyz = look_at_wxyz(base_pos, target)
+
     else:
         raise ValueError("Invalid Env Name")
 
-
-    EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras(
-        base_pos, base_quat_wxyz
-    )
+    if env_name == "PushChair":
+        EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras(base_pos, base_quat_wxyz, target=target)
+    else:
+        EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras(base_pos, base_quat_wxyz, target=None)
 
     TrajInfoClass = get_class(traj_info)
     TrajInfoClass.set_discount(discount)
