@@ -1,4 +1,5 @@
 import copy
+import os
 from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
@@ -36,6 +37,74 @@ from pprl.utils.array_dict import build_obs_array
 WORLD_UP = (0.0, 0.0, 1.0)
 
 BASE_VFOV_DEG = 60.0
+
+
+
+def orbit_eye_and_lookat_wxyz(
+    eye0: np.ndarray,
+    target: np.ndarray,
+    base_quat_wxyz: np.ndarray | None = None,
+    *,
+    yaw_deg: float = 0.0,       # orbit around WORLD_UP
+    pitch_deg: float = 0.0,     # orbit around "right" axis
+    radius_delta: float = 0.0,  # dolly in/out while still looking at target
+    up: tuple[float, float, float] = WORLD_UP,
+) -> tuple[np.ndarray, np.ndarray]:
+    """
+    Returns (eye, quat_wxyz) after orbiting eye0 about target and re-orienting to look at target.
+
+    yaw_deg:   rotate the camera position around WORLD_UP (azimuth).
+    pitch_deg: rotate the camera position around a right-axis (elevation).
+    radius_delta: move closer/farther along the radial vector (target->eye).
+    """
+    eye0 = np.asarray(eye0, dtype=float)
+    target = np.asarray(target, dtype=float)
+    up_v = np.asarray(up, dtype=float)
+
+    v = eye0 - target
+    r = float(np.linalg.norm(v))
+    if r < 1e-9:
+        # Degenerate; just return a look-at from eye0
+        return eye0.copy(), look_at_wxyz(eye0, target, up=up)
+
+    # --- yaw about WORLD_UP ---
+    if abs(yaw_deg) > 1e-9:
+        Ryaw = R.from_rotvec(np.deg2rad(yaw_deg) * up_v)
+        v = Ryaw.apply(v)
+    else:
+        Ryaw = None
+
+    # --- choose a right axis for pitch ---
+    if abs(pitch_deg) > 1e-9:
+        if base_quat_wxyz is not None:
+            right0, _, _ = _basis_from_quat_wxyz(base_quat_wxyz)
+            right_axis = right0
+            if Ryaw is not None:
+                right_axis = Ryaw.apply(right_axis)
+        else:
+            # derive a right axis from current v and up
+            forward = (-v) / (np.linalg.norm(v) + 1e-12)
+            right_axis = np.cross(forward, up_v)
+            n = np.linalg.norm(right_axis)
+            if n < 1e-6:
+                # fallback if forward ~ up
+                right_axis = np.array([1.0, 0.0, 0.0], dtype=float)
+            else:
+                right_axis /= n
+
+        Rp = R.from_rotvec(np.deg2rad(pitch_deg) * right_axis)
+        v = Rp.apply(v)
+
+    # --- dolly in/out (radius change) ---
+    if abs(radius_delta) > 1e-9:
+        v_hat = v / (np.linalg.norm(v) + 1e-12)
+        v = v_hat * (np.linalg.norm(v) + radius_delta)
+
+    eye = target + v
+    quat = look_at_wxyz(eye, target, up=up)
+    return eye, quat
+
+
 
 # =========================
 # Quaternion / axes helpers (SAPIEN wxyz)
@@ -130,64 +199,99 @@ def pick_img(d, keys):
 # =========================
 # Eval camera set (built from BASE_POS / BASE_QUAT_WXYZ)
 # =========================
-def _build_eval_cameras(base_pos, base_quat_wxyz) -> Dict[str, dict]:
+def _build_eval_cameras(base_pos, base_quat_wxyz, target: np.ndarray | None = None) -> Dict[str, dict]:
     """
     Build eval configs keyed by name.
-    Each item contains:
-      - position: [x,y,z]
-      - quat_wxyz: [w,x,y,z]
-      - vertical_field_of_view: float
+
+    Linear perturbations are replaced by orbiting the camera around `target`,
+    and re-orienting with look_at so the scene stays centered.
     """
-    pos0 = base_pos.copy()
-    q0 = base_quat_wxyz.copy()
+    pos0 = np.asarray(base_pos, dtype=float).copy()
+    q0 = np.asarray(base_quat_wxyz, dtype=float).copy()
     vfov0 = BASE_VFOV_DEG
 
-    # Axes for along-view motion
-    right, up, view = _basis_from_quat_wxyz(q0)
+    # If caller didn’t provide a target, pick one along the current view ray.
+    # Tune this if needed per-env.
+    if target is None:
+        _, _, view = _basis_from_quat_wxyz(q0)
+        focus_dist = 1.0  # meters; adjust if your scene is farther/closer
+        target = pos0 + focus_dist * view
+    else:
+        target = np.asarray(target, dtype=float)
 
-    # Translations (meters)
+    # Orbit radius
+    r = float(np.linalg.norm(pos0 - target))
+    r = max(r, 1e-6)
+
+    # Your previous translation magnitudes (meters)
     perturb_string = "50cm"
-    dx = 0.5  # 20 cm perturbation
+    dx = 0.5
     dy = 0.5
     dz = 0.5
-    dv = 0.5  # along viewing axis
+    dv = 0.5  # along viewing axis (we'll treat as dolly-out)
+
+    # Convert “meters of shift” into “degrees of orbit” using arc length s = r*theta
+    yaw_dx_deg = float(np.rad2deg(dx / r))
+    yaw_dy_deg = float(np.rad2deg(dy / r))
+    pitch_dz_deg = float(np.rad2deg(dz / r))
+
+    # --- build orbiting variants ---
+    eye_along, q_along = orbit_eye_and_lookat_wxyz(
+        pos0, target, q0, yaw_deg=0.0, pitch_deg=0.0, radius_delta=+dv
+    )
+
+    eye_x, q_x = orbit_eye_and_lookat_wxyz(
+        pos0, target, q0, yaw_deg=+yaw_dx_deg, pitch_deg=0.0, radius_delta=0.0
+    )
+    eye_y, q_y = orbit_eye_and_lookat_wxyz(
+        pos0, target, q0, yaw_deg=-yaw_dy_deg, pitch_deg=0.0, radius_delta=0.0
+    )
+    eye_z, q_z = orbit_eye_and_lookat_wxyz(
+        pos0, target, q0, yaw_deg=0.0, pitch_deg=+pitch_dz_deg, radius_delta=0.0
+    )
 
     cams = {
+        # (was linear along view) -> dolly out while staying locked on target
         f"along_view-{perturb_string}": {
-            "position": (pos0 - dv * view).tolist(),
-            "quat_wxyz": q0.tolist(),
+            "position": eye_along.tolist(),
+            "quat_wxyz": q_along.tolist(),
             "vertical_field_of_view": vfov0,
         },
-        # Rolls (local +Z axis), composed by multiplying with the base quaternion
+
+        # Keep your roll perturbation exactly as-is
         "roll+60deg": {
             "position": pos0.tolist(),
             "quat_wxyz": roll_local_with_comp_wxyz(q0, +60.0, 25).tolist(),
             "vertical_field_of_view": vfov0,
         },
+
+        # Keep nominal exactly as-is
         "nominal": {
             "position": pos0.tolist(),
             "quat_wxyz": q0.tolist(),
             "vertical_field_of_view": vfov0,
         },
-        # World-axis translations
+
+        # (was world-axis translations) -> orbit around target + look-at
         f"shift+x+{perturb_string}": {
-            "position": (pos0 + np.array([+dx, 0.0, 0.0])).tolist(),
-            "quat_wxyz": q0.tolist(),
+            "position": eye_x.tolist(),
+            "quat_wxyz": q_x.tolist(),
             "vertical_field_of_view": vfov0,
         },
         f"shift+y+{perturb_string}": {
-            "position": (pos0 + np.array([0.0, +dy, 0.0])).tolist(),
-            "quat_wxyz": q0.tolist(),
+            "position": eye_y.tolist(),
+            "quat_wxyz": q_y.tolist(),
             "vertical_field_of_view": vfov0,
         },
         f"shift+z+{perturb_string}": {
-            "position": (pos0 + np.array([0.0, 0.0, +dz])).tolist(),
-            "quat_wxyz": q0.tolist(),
+            "position": eye_z.tolist(),
+            "quat_wxyz": q_z.tolist(),
             "vertical_field_of_view": vfov0,
         },
     }
 
     return cams
+
 
 
 def _clear_pointcloud_buffers(env):
@@ -568,6 +672,33 @@ class FixedOrConfiguredCamera(gym.Wrapper):
         _clear_pointcloud_buffers(self.env)
 
         return obs, info
+
+
+import numpy as np
+from scipy.spatial.transform import Rotation as R
+
+
+def look_at_wxyz(eye, target, up=(0, 0, 1)):
+    """
+    Computes quaternion from look-at
+    """
+    eye = np.asarray(eye, float)
+    target = np.asarray(target, float)
+    up = np.asarray(up, float)
+
+    f = target - eye
+    f = f / (np.linalg.norm(f) + 1e-12)  # forward (world)
+    r = np.cross(f, up)
+    r = r / (np.linalg.norm(r) + 1e-12)  # right (world)
+    u = np.cross(r, f)  # corrected up (world)
+
+    # Camera frame: +X right, +Y up, -Z forward
+    # Columns are camera axes in world: [right, up, back]
+    back = -f
+    R_cam_world = np.stack([r, u, back], axis=1)
+
+    q_xyzw = R.from_matrix(R_cam_world).as_quat()  # xyzw
+    return np.array([q_xyzw[3], q_xyzw[0], q_xyzw[1], q_xyzw[2]])  # wxyz
 
 
 # =========================
