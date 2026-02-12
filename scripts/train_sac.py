@@ -377,16 +377,12 @@ class TrainCamWrapperFactory:
 
     def __call__(self, *args, **kwargs):
         env = self.base_factory(*args, **kwargs)
-        keep = tuple(
-            x
-            for x in (self.camera_name, "render_camera", "render", "tripod", "scene")
-            if x
-        )
-        _force_single_camera_registration(env, keep_uid_candidates=keep)
+        # force_only_one_camera(env, keep_uid=self.camera_name)
         horizon = self.max_episode_steps or getattr(
             getattr(env, "spec", None), "max_episode_steps", 200
         )
         env = TimeLimit(env, max_episode_steps=int(horizon))
+
 
         pose = Pose(p=self.train_pos, q=self.train_quat)
         return FixedOrConfiguredCamera(
@@ -420,12 +416,7 @@ class EvalCamWrapperFactory:
         import copy as _copy
 
         env = self.base_factory(*args, **kwargs)
-        keep = tuple(
-            x
-            for x in (self.camera_name, "render_camera", "render", "tripod", "scene")
-            if x
-        )
-        _force_single_camera_registration(env, keep_uid_candidates=keep)
+        # force_only_one_camera(env, keep_uid=self.camera_name)
         horizon = self.max_episode_steps or getattr(
             getattr(env, "spec", None), "max_episode_steps", 200
         )
@@ -1052,6 +1043,7 @@ def main(config: DictConfig) -> None:
         group_name = wandb_config.pop("group_name", None)
         print("Group name is: ", group_name)
 
+
     run = wandb.init(
         project="pprl",
         config=OmegaConf.to_container(config, resolve=True, throw_on_missing=True),  # type: ignore
@@ -1065,7 +1057,9 @@ def main(config: DictConfig) -> None:
 
     logger.init(
         wandb_run=run,
-        log_dir=Path(f"log_data/sac/{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"),
+        log_dir=Path(
+            f"log_data/sac/{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
+        ),
         tensorboard=True,
         output_files={"txt": "log.txt"},  # type: ignore
         config=OmegaConf.to_container(config, resolve=True, throw_on_missing=True),  # type: ignore
