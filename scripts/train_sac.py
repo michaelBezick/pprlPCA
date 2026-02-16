@@ -36,7 +36,7 @@ from pprl.utils.array_dict import build_obs_array
 # =========================
 WORLD_UP = (0.0, 0.0, 1.0)
 
-BASE_VFOV_DEG = 60.0
+BASE_VFOV_DEG = 90.0
 RECORD_EVERY = True
 
 
@@ -671,61 +671,32 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
 
         base_pos += np.array([-1, 1, 0.3])
 
-        base_quat_wxyz = np.array(
-            [
-                0.821655022002333,
-                0.111567041133269,
-                0.188598853451156,
-                -0.526180263998966,
-            ],
-            dtype=float,
-        )
+        target = [-0.09954548, 0.21631327, 0.6722093]
 
-        # target = [0., 0., 0.5]
+        base_quat_wxyz = look_at_wxyz(base_pos, target)
 
     elif env_name == "TurnFaucet":
+
         base_pos = np.array([-0.433352, 0.948292, 0.885752], dtype=float)
 
-        base_quat_wxyz = np.array(
-            [
-                0.717801992001589,
-                0.142621934300541,
-                0.166360199707428,
-                -0.660865300709779,
-            ],
-            dtype=float,
-        )
+        target = [-0.01467387, 0.0249525, 0.25527865]
 
-        # target = [0., 0., 0.5]
+        base_quat_wxyz = look_at_wxyz(base_pos, target)
 
     elif env_name == "PushChair":
-        global BASE_VFOV_DEG
-        BASE_VFOV_DEG = 90.0
+
         base_pos = np.array([2, 2, 2], dtype=float)
+
         target = np.array([0.0, 0.0, 0.5], dtype=float)
 
-        # base_quat_wxyz = np.array(
-        #     [
-        #         0.717801992001589,
-        #         0.142621934300541,
-        #         0.166360199707428,
-        #         -0.660865300709779,
-        #     ],
-        #     dtype=float,
-        # )
         base_quat_wxyz = look_at_wxyz(base_pos, target)
 
     else:
         raise ValueError("Invalid Env Name")
 
-    if env_name != "PushChair":
-        EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras(
-            base_pos, base_quat_wxyz, target=None
-        )
-    else:
-        EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras(
-            base_pos, base_quat_wxyz, target=target
-        )
+    EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras(
+        base_pos, base_quat_wxyz, target=target
+    )
 
     TrajInfoClass = get_class(traj_info)
     TrajInfoClass.set_discount(discount)
