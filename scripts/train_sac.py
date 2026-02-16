@@ -37,16 +37,14 @@ from pprl.utils.array_dict import build_obs_array
 WORLD_UP = (0.0, 0.0, 1.0)
 
 BASE_VFOV_DEG = 60.0
+RECORD_EVERY = True
 
-def orbit_eye_and_lookat_wxyz(
+
+def orbit_eye_and_lookat_wxyz_around(
     eye0: np.ndarray,
     target: np.ndarray,
-    base_quat_wxyz: np.ndarray | None = None,
     *,
-    yaw_deg: float = 0.0,       # orbit around WORLD_UP
-    pitch_deg: float = 0.0,     # orbit around "right" axis
-    radius_delta: float = 0.0,  # dolly in/out while still looking at target
-    up: tuple[float, float, float] = WORLD_UP,
+    yaw_deg: float = 0.0,  # orbit around WORLD_UP
 ) -> tuple[np.ndarray, np.ndarray]:
     """
     Returns (eye, quat_wxyz) after orbiting eye0 about target and re-orienting to look at target.
@@ -57,51 +55,67 @@ def orbit_eye_and_lookat_wxyz(
     """
     eye0 = np.asarray(eye0, dtype=float)
     target = np.asarray(target, dtype=float)
+
+    rad = np.deg2rad(yaw_deg)
+
+    c, s = np.cos(rad), np.sin(rad)
+
+    rot_mat = np.array([[c, -s], [s, c]], dtype=float)
+
+    rel_xy = eye0[:2] - target[:2]
+    new_xy = (rot_mat @ rel_xy.T).T + target[:2]
+
+    new_pos = np.array((new_xy[0], new_xy[1], eye0[2]))
+
+    new_orientation = look_at_wxyz(new_pos, target)
+
+    return (new_pos, new_orientation)
+
+
+def _rot_axis_angle(axis: np.ndarray, deg: float) -> np.ndarray:
+    """Rodrigues rotation matrix for rotating around `axis` by `deg`."""
+    axis = np.asarray(axis, dtype=float)
+    axis = axis / (np.linalg.norm(axis) + 1e-12)
+    th = np.deg2rad(deg)
+    c, s = np.cos(th), np.sin(th)
+    x, y, z = axis
+
+    K = np.array([[0, -z, y], [z, 0, -x], [-y, x, 0]], dtype=float)
+    I = np.eye(3)
+    return I + s * K + (1 - c) * (K @ K)
+
+
+def orbit_up_down_eye_and_lookat_wxyz(
+    eye0: np.ndarray,
+    target: np.ndarray,
+    *,
+    pitch_deg: float = 0.0,  # +pitch moves camera upward (usually)
+    up: tuple[float, float, float] = (0.0, 0.0, 1.0),
+) -> tuple[np.ndarray, np.ndarray]:
+    eye0 = np.asarray(eye0, dtype=float)
+    target = np.asarray(target, dtype=float)
     up_v = np.asarray(up, dtype=float)
 
-    v = eye0 - target
-    r = float(np.linalg.norm(v))
-    if r < 1e-9:
-        # Degenerate; just return a look-at from eye0
-        return eye0.copy(), look_at_wxyz(eye0, target, up=up)
+    rel = eye0 - target  # target->eye
+    right = np.cross(up_v, rel)
+    n = np.linalg.norm(right)
 
-    # --- yaw about WORLD_UP ---
-    if abs(yaw_deg) > 1e-9:
-        Ryaw = R.from_rotvec(np.deg2rad(yaw_deg) * up_v)
-        v = Ryaw.apply(v)
-    else:
-        Ryaw = None
+    # Handle near-pole case (camera nearly above/below target)
+    if n < 1e-8:
+        # pick any axis perpendicular to rel
+        tmp = np.array([1.0, 0.0, 0.0], dtype=float)
+        if abs(np.dot(tmp, rel) / (np.linalg.norm(rel) + 1e-12)) > 0.9:
+            tmp = np.array([0.0, 1.0, 0.0], dtype=float)
+        right = np.cross(tmp, rel)
+        n = np.linalg.norm(right)
 
-    # --- choose a right axis for pitch ---
-    if abs(pitch_deg) > 1e-9:
-        if base_quat_wxyz is not None:
-            right0, _, _ = _basis_from_quat_wxyz(base_quat_wxyz)
-            right_axis = right0
-            if Ryaw is not None:
-                right_axis = Ryaw.apply(right_axis)
-        else:
-            # derive a right axis from current v and up
-            forward = (-v) / (np.linalg.norm(v) + 1e-12)
-            right_axis = np.cross(forward, up_v)
-            n = np.linalg.norm(right_axis)
-            if n < 1e-6:
-                # fallback if forward ~ up
-                right_axis = np.array([1.0, 0.0, 0.0], dtype=float)
-            else:
-                right_axis /= n
+    right = right / (n + 1e-12)
 
-        Rp = R.from_rotvec(np.deg2rad(pitch_deg) * right_axis)
-        v = Rp.apply(v)
+    R_right = _rot_axis_angle(right, pitch_deg)
+    new_pos = target + R_right @ rel
 
-    # --- dolly in/out (radius change) ---
-    if abs(radius_delta) > 1e-9:
-        v_hat = v / (np.linalg.norm(v) + 1e-12)
-        v = v_hat * (np.linalg.norm(v) + radius_delta)
-
-    eye = target + v
-    quat = look_at_wxyz(eye, target, up=up)
-    return eye, quat
-
+    new_orientation = look_at_wxyz(new_pos, target)  # or include up_v if supported
+    return new_pos, new_orientation
 
 
 # =========================
@@ -115,6 +129,10 @@ def _xyzw_to_wxyz(q_xyzw: np.ndarray) -> np.ndarray:
     return np.array([q_xyzw[3], q_xyzw[0], q_xyzw[1], q_xyzw[2]], dtype=float)
 
 
+import numpy as np
+from scipy.spatial.transform import Rotation as R
+
+
 def apply_world_yaw_z_wxyz(q_wxyz: np.ndarray, deg: float) -> np.ndarray:
     """World yaw about +Z by 'deg' degrees: q_new = Rz(deg) * q."""
     r_base = R.from_quat(_wxyz_to_xyzw(q_wxyz))
@@ -123,46 +141,42 @@ def apply_world_yaw_z_wxyz(q_wxyz: np.ndarray, deg: float) -> np.ndarray:
     return _xyzw_to_wxyz(q_new)
 
 
-def apply_world_euler_wxyz(
-    q_wxyz: np.ndarray, yaw_deg: float, pitch_deg: float, roll_deg: float
+def _apply_local_axis_wxyz(
+    q_base_wxyz: np.ndarray, axis_local: np.ndarray, deg: float
 ) -> np.ndarray:
     """
-    Apply EXTRINSIC world rotations Rz(yaw)*Ry(pitch)*Rx(roll) to base orientation q_wxyz.
-    Returns a new wxyz quaternion.
+    Apply an INTRINSIC (local-frame) rotation about `axis_local` (given in camera coords).
+    If q maps camera->world (SAPIEN Pose convention), then:
+        R_new = R_base * R_local
     """
-    r_base = R.from_quat(_wxyz_to_xyzw(q_wxyz))
-    r_deltaW = R.from_euler(
-        "ZYX", [yaw_deg, pitch_deg, roll_deg], degrees=True
-    )  # extrinsic
-    q_new = (r_deltaW * r_base).as_quat()
-    return _xyzw_to_wxyz(q_new)
+    if abs(deg) < 1e-12:
+        return q_base_wxyz.copy()
 
+    r_base = R.from_quat(_wxyz_to_xyzw(q_base_wxyz))
 
-def _apply_local_roll_wxyz(q_base_wxyz, deg):
-    # camera->world rotation
-    Rcw = R.from_quat(_wxyz_to_xyzw(q_base_wxyz)).as_matrix()
-    # Optical axis in world frame: viewing dir = -Rcw[:,2]
-    axis_w = -Rcw[:, 2]
-    axis_w = axis_w / (np.linalg.norm(axis_w) + 1e-12)
-    r_deltaW = R.from_rotvec(np.deg2rad(deg) * axis_w)
-    q_new_xyzw = (r_deltaW * R.from_quat(_wxyz_to_xyzw(q_base_wxyz))).as_quat()
+    axis_local = np.asarray(axis_local, dtype=float)
+    axis_local = axis_local / (np.linalg.norm(axis_local) + 1e-12)
+
+    r_local = R.from_rotvec(np.deg2rad(deg) * axis_local)
+
+    q_new_xyzw = (r_base * r_local).as_quat()
     return _xyzw_to_wxyz(q_new_xyzw)
 
 
-def roll_local_with_comp_wxyz(
-    q_base_wxyz: np.ndarray, roll_deg: float, comp_deg: float = 20.0
-) -> np.ndarray:
+def roll_local_wxyz(q_base_wxyz: np.ndarray, roll_deg: float) -> np.ndarray:
     """
-    Roll locally about camera +Z by roll_deg, then compensate drift by yawing about WORLD +Z
-    in the opposite direction by |comp_deg|.
-        q1 = q_base * R_local_z(roll_deg)
-        q2 = R_world_z(-sign(roll_deg)*comp_deg) * q1
+    Pure camera roll with ZERO look-direction drift (SAPIEN/ManiSkill2):
+    roll about camera forward axis (+X).
     """
-    if abs(roll_deg) < 1e-9:
+    if abs(roll_deg) < 1e-12:
         return q_base_wxyz.copy()
-    q_roll = _apply_local_roll_wxyz(q_base_wxyz, roll_deg)
-    comp = np.sign(roll_deg) * abs(comp_deg)  # opposite direction
-    return apply_world_yaw_z_wxyz(q_roll, comp)
+
+    r_base = R.from_quat(_wxyz_to_xyzw(q_base_wxyz))
+    r_local = R.from_rotvec(
+        np.deg2rad(roll_deg) * np.array([1.0, 0.0, 0.0])
+    )  # +X forward
+    q_new_xyzw = (r_base * r_local).as_quat()  # right-multiply = local/intrinsic
+    return _xyzw_to_wxyz(q_new_xyzw)
 
 
 def _basis_from_quat_wxyz(q_wxyz: np.ndarray):
@@ -197,87 +211,82 @@ def pick_img(d, keys):
 # =========================
 # Eval camera set (built from BASE_POS / BASE_QUAT_WXYZ)
 # =========================
-def _build_eval_cameras(base_pos, base_quat_wxyz, target: np.ndarray | None = None) -> Dict[str, dict]:
+
+
+def _build_eval_cameras(
+    base_pos,
+    base_quat_wxyz,
+    target: np.ndarray | None = None,
+    *,
+    orbit_deg: float = 10.0,
+) -> Dict[str, dict]:
     """
     Build eval configs keyed by name.
 
-    Linear perturbations are replaced by orbiting the camera around `target`,
-    and re-orienting with look_at so the scene stays centered.
+    Perturbations are fixed-angle orbits around `target`:
+      - left/right: yaw about WORLD_UP
+      - up:         pitch about camera-right axis
+    and we always re-orient with look_at so the target stays centered.
     """
     pos0 = np.asarray(base_pos, dtype=float).copy()
     q0 = np.asarray(base_quat_wxyz, dtype=float).copy()
     vfov0 = BASE_VFOV_DEG
 
     # If caller didn’t provide a target, pick one along the current view ray.
-    # Tune this if needed per-env.
     if target is None:
         _, _, view = _basis_from_quat_wxyz(q0)
-        focus_dist = 1.0  # meters; adjust if your scene is farther/closer
+        focus_dist = 1.0  # meters; adjust per-env if needed
         target = pos0 + focus_dist * view
     else:
         target = np.asarray(target, dtype=float)
 
-    # Orbit radius
-    r = float(np.linalg.norm(pos0 - target))
-    r = max(r, 1e-6)
+    perturb_string = f"{orbit_deg:.0f}deg"
 
-    # Your previous translation magnitudes (meters)
-    perturb_string = "50cm"
-    dx = 0.5
-    dy = 0.5
-    dz = 0.5
-
-    # Convert “meters of shift” into “degrees of orbit” using arc length s = r*theta
-    yaw_dx_deg = float(np.rad2deg(dx / r))
-    yaw_dy_deg = float(np.rad2deg(dy / r))
-    pitch_dz_deg = float(np.rad2deg(dz / r))
-
-    # --- build orbiting variants ---
-    eye_x, q_x = orbit_eye_and_lookat_wxyz(
-        pos0, target, q0, yaw_deg=+yaw_dx_deg, pitch_deg=0.0, radius_delta=0.0
+    # NOTE on signs:
+    # With WORLD_UP=(0,0,1) and right-hand rule, +yaw usually moves the camera "left"
+    # around the target (as seen from the camera’s nominal view). If it feels flipped,
+    # just swap the +/- on yaw below.
+    eye_left, q_left = orbit_eye_and_lookat_wxyz_around(
+        pos0,
+        target,
+        yaw_deg=+orbit_deg,
     )
-    eye_y, q_y = orbit_eye_and_lookat_wxyz(
-        pos0, target, q0, yaw_deg=-yaw_dy_deg, pitch_deg=0.0, radius_delta=0.0
+    eye_right, q_right = orbit_eye_and_lookat_wxyz_around(
+        pos0,
+        target,
+        yaw_deg=-orbit_deg,
     )
-    eye_z, q_z = orbit_eye_and_lookat_wxyz(
-        pos0, target, q0, yaw_deg=0.0, pitch_deg=+pitch_dz_deg, radius_delta=0.0
-    )
+    eye_up, q_up = orbit_up_down_eye_and_lookat_wxyz(pos0, target, pitch_deg=-orbit_deg)
 
     cams = {
-        # Keep your roll perturbation exactly as-is
-        "roll+60deg": {
-            "position": pos0.tolist(),
-            "quat_wxyz": roll_local_with_comp_wxyz(q0, +60.0, 25).tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-
-        # Keep nominal exactly as-is
         "nominal": {
             "position": pos0.tolist(),
             "quat_wxyz": q0.tolist(),
             "vertical_field_of_view": vfov0,
         },
-
-        # (was world-axis translations) -> orbit around target + look-at
-        f"shift+x+{perturb_string}": {
-            "position": eye_x.tolist(),
-            "quat_wxyz": q_x.tolist(),
+        f"orbit_up+{perturb_string}": {  # orbit UP
+            "position": eye_up.tolist(),
+            "quat_wxyz": q_up.tolist(),
             "vertical_field_of_view": vfov0,
         },
-        f"shift+y+{perturb_string}": {
-            "position": eye_y.tolist(),
-            "quat_wxyz": q_y.tolist(),
+        f"orbit_left+{perturb_string}": {  # orbit LEFT
+            "position": eye_left.tolist(),
+            "quat_wxyz": q_left.tolist(),
             "vertical_field_of_view": vfov0,
         },
-        f"shift+z+{perturb_string}": {
-            "position": eye_z.tolist(),
-            "quat_wxyz": q_z.tolist(),
+        f"orbit_right+{perturb_string}": {  # orbit RIGHT
+            "position": eye_right.tolist(),
+            "quat_wxyz": q_right.tolist(),
+            "vertical_field_of_view": vfov0,
+        },
+        "roll+30deg": {
+            "position": pos0.tolist(),
+            "quat_wxyz": roll_local_wxyz(q0, +30.0).tolist(),
             "vertical_field_of_view": vfov0,
         },
     }
 
     return cams
-
 
 
 def _clear_pointcloud_buffers(env):
@@ -292,6 +301,7 @@ def _clear_pointcloud_buffers(env):
     u = getattr(env, "unwrapped", None)
     if hasattr(u, "_buffer") and isinstance(u._buffer, dict):
         u._buffer.clear()
+
 
 from gymnasium.wrappers import TimeLimit
 
@@ -329,7 +339,6 @@ class TrainCamWrapperFactory:
             getattr(env, "spec", None), "max_episode_steps", 200
         )
         env = TimeLimit(env, max_episode_steps=int(horizon))
-
 
         pose = Pose(p=self.train_pos, q=self.train_quat)
         return FixedOrConfiguredCamera(
@@ -453,54 +462,30 @@ class FixedOrConfiguredCamera(gym.Wrapper):
             return True
 
     def _apply_pose(self, cam, pose: Pose):
-        ent = getattr(cam, "camera", None) or getattr(cam, "_camera", None)
 
-        for obj in (ent, cam):
-            if obj is not None and hasattr(obj, "set_parent"):
-                try:
-                    obj.set_parent(None)
-                except Exception:
-                    pass
+        ent = getattr(cam, "camera", None) or getattr(cam, "_camera", None) or cam
 
-        def try_world(obj) -> bool:
-            if obj is None:
-                return False
-            for name in ("set_pose", "set_world_pose", "set_model_matrix"):
-                if hasattr(obj, name):
-                    try:
-                        getattr(obj, name)(pose)
-                        return True
-                    except Exception:
-                        pass
-            return False
+        # 1) Detach from any parent (don't swallow failures)
+        if hasattr(ent, "set_parent"):
+            try:
+                # SAPIEN signature: set_parent(parent, keep_pose)
+                ent.set_parent(None, True)
+            except TypeError:
+                # some versions might allow set_parent(None)
+                ent.set_parent(None)
 
-        if try_world(ent) or try_world(cam):
+        # 2) Use set_local_pose; in SAPIEN: if no parent, this is the GLOBAL pose
+        if hasattr(ent, "set_local_pose"):
+            ent.set_local_pose(pose)
             return
 
-        M = pose.to_transformation_matrix()
-
-        def try_matrix(obj) -> bool:
-            if obj is None:
-                return False
-            for name in ("set_extrinsic_cv", "set_extrinsic", "set_cam2world"):
-                if hasattr(obj, name):
-                    try:
-                        getattr(obj, name)(M)
-                        return True
-                    except Exception:
-                        pass
-            return False
-
-        if try_matrix(ent) or try_matrix(cam):
+        # Fallbacks
+        if hasattr(ent, "set_world_pose"):
+            ent.set_world_pose(pose)
             return
-
-        for obj in (ent, cam):
-            if obj is not None and hasattr(obj, "set_local_pose"):
-                try:
-                    obj.set_local_pose(pose)
-                    return
-                except Exception:
-                    pass
+        if hasattr(ent, "set_pose"):
+            ent.set_pose(pose)
+            return
 
         raise RuntimeError("Camera object lacks usable pose setters.")
 
@@ -615,24 +600,48 @@ import numpy as np
 from scipy.spatial.transform import Rotation as R
 
 
-def look_at_wxyz(eye, target, up=(0, 0, 1)):
+def look_at_wxyz(eye, target, world_up=(0, 0, 1), *, eps=1e-6, left_hint_world=None):
     """
-    Computes quaternion from look-at
+    SAPIEN camera convention:
+      camera +X forward, +Y left, +Z up  (robotics)
+    Returns quaternion in wxyz.
     """
     eye = np.asarray(eye, float)
     target = np.asarray(target, float)
-    up = np.asarray(up, float)
+    up = np.asarray(world_up, float)
 
     f = target - eye
-    f = f / (np.linalg.norm(f) + 1e-12)  # forward (world)
-    r = np.cross(f, up)
-    r = r / (np.linalg.norm(r) + 1e-12)  # right (world)
-    u = np.cross(r, f)  # corrected up (world)
+    fn = np.linalg.norm(f)
+    if fn < eps:
+        # degenerate
+        q = np.array([1.0, 0.0, 0.0, 0.0])  # wxyz identity-ish
+        return q
+    f = f / fn  # +X forward in world
 
-    # Camera frame: +X right, +Y up, -Z forward
-    # Columns are camera axes in world: [right, up, back]
-    back = -f
-    R_cam_world = np.stack([r, u, back], axis=1)
+    # left = up x forward  (matches x forward, y left, z up)
+    left = np.cross(up, f)
+    ln = np.linalg.norm(left)
+
+    if ln < eps:
+        # forward ~ parallel to up => singular; pick a stable left direction
+        if left_hint_world is None:
+            # choose something not parallel to f
+            a = np.array([1.0, 0.0, 0.0])
+            if abs(np.dot(a, f)) > 0.9:
+                a = np.array([0.0, 1.0, 0.0])
+            left = np.cross(a, f)
+        else:
+            left = np.asarray(left_hint_world, float)
+            left = left - np.dot(left, f) * f  # project to plane ⟂ f
+        left = left / (np.linalg.norm(left) + 1e-12)
+    else:
+        left = left / ln
+
+    cam_up = np.cross(f, left)  # ensures right-handed basis
+    cam_up = cam_up / (np.linalg.norm(cam_up) + 1e-12)
+
+    # Columns are camera axes in world: [forward(+X), left(+Y), up(+Z)]
+    R_cam_world = np.stack([f, left, cam_up], axis=1)
 
     q_xyzw = R.from_matrix(R_cam_world).as_quat()  # xyzw
     return np.array([q_xyzw[3], q_xyzw[0], q_xyzw[1], q_xyzw[2]])  # wxyz
@@ -672,6 +681,8 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
             dtype=float,
         )
 
+        # target = [0., 0., 0.5]
+
     elif env_name == "TurnFaucet":
         base_pos = np.array([-0.433352, 0.948292, 0.885752], dtype=float)
 
@@ -684,19 +695,37 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
             ],
             dtype=float,
         )
-    elif env_name == "PushChair":
-        base_pos = np.array([1.2, 0, 1.1], dtype=float)
-        target = np.array([0.5, 0.0, 0.45], dtype=float)
 
+        # target = [0., 0., 0.5]
+
+    elif env_name == "PushChair":
+        global BASE_VFOV_DEG
+        BASE_VFOV_DEG = 90.0
+        base_pos = np.array([2, 2, 2], dtype=float)
+        target = np.array([0.0, 0.0, 0.5], dtype=float)
+
+        # base_quat_wxyz = np.array(
+        #     [
+        #         0.717801992001589,
+        #         0.142621934300541,
+        #         0.166360199707428,
+        #         -0.660865300709779,
+        #     ],
+        #     dtype=float,
+        # )
         base_quat_wxyz = look_at_wxyz(base_pos, target)
 
     else:
         raise ValueError("Invalid Env Name")
 
-    if env_name == "PushChair":
-        EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras(base_pos, base_quat_wxyz, target=target)
+    if env_name != "PushChair":
+        EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras(
+            base_pos, base_quat_wxyz, target=None
+        )
     else:
-        EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras(base_pos, base_quat_wxyz, target=None)
+        EVAL_CAMERAS: Dict[str, dict] = _build_eval_cameras(
+            base_pos, base_quat_wxyz, target=target
+        )
 
     TrajInfoClass = get_class(traj_info)
     TrajInfoClass.set_discount(discount)
@@ -790,9 +819,12 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         )
 
         step_transforms = []
+
         # Record EVERY eval mismatch
 
-        if name == "nominal":
+        condition = True if RECORD_EVERY else (name == "nominal")
+
+        if condition:
             recorder = RecordVectorizedVideo(
                 sample_tree=eval_sample_tree,
                 buffer_key_to_record="env_info.rendering",
@@ -995,7 +1027,6 @@ def main(config: DictConfig) -> None:
         group_name = wandb_config.pop("group_name", None)
         print("Group name is: ", group_name)
 
-
     run = wandb.init(
         project="pprl",
         config=OmegaConf.to_container(config, resolve=True, throw_on_missing=True),  # type: ignore
@@ -1009,9 +1040,7 @@ def main(config: DictConfig) -> None:
 
     logger.init(
         wandb_run=run,
-        log_dir=Path(
-            f"log_data/sac/{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"
-        ),
+        log_dir=Path(f"log_data/sac/{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}"),
         tensorboard=True,
         output_files={"txt": "log.txt"},  # type: ignore
         config=OmegaConf.to_container(config, resolve=True, throw_on_missing=True),  # type: ignore
