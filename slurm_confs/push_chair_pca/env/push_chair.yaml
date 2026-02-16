@@ -20,4 +20,6 @@ pcd_kwargs:
   voxel_grid_size: 0.05
   # random_downsample: 500
   max_expected_num_points: 1000
+  our_method: True
+  fps_n: 400
 continuous_task: False  # performance significantly worse without this!
