@@ -12,7 +12,7 @@
 # ----------------
 
 #SBATCH --mem=100G
-#SBATCH --time=48:00:00
+#SBATCH --time=96:00:00
 
 #SBATCH -o logs/%x/%A_%a.out
 #SBATCH -e logs/%x/%A_%a.err
@@ -23,9 +23,7 @@ ulimit -n 4096
 
 cd /home/mbezick/Repos/pprlPCA
 module load conda/2025.09
-conda activate pprl_quat
-
-cd /scratch/gilbreth/mbezick/pprlPCA2
+conda activate pprl
 
 export LD_LIBRARY_PATH="${CONDA_PREFIX:-}/lib:${LD_LIBRARY_PATH:-}"
 
