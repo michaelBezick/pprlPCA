@@ -226,7 +226,6 @@ def _build_eval_cameras(base_pos, base_quat_wxyz, target: np.ndarray | None = No
     dx = 0.5
     dy = 0.5
     dz = 0.5
-    dv = 0.5  # along viewing axis (we'll treat as dolly-out)
 
     # Convert “meters of shift” into “degrees of orbit” using arc length s = r*theta
     yaw_dx_deg = float(np.rad2deg(dx / r))
@@ -234,10 +233,6 @@ def _build_eval_cameras(base_pos, base_quat_wxyz, target: np.ndarray | None = No
     pitch_dz_deg = float(np.rad2deg(dz / r))
 
     # --- build orbiting variants ---
-    eye_along, q_along = orbit_eye_and_lookat_wxyz(
-        pos0, target, q0, yaw_deg=0.0, pitch_deg=0.0, radius_delta=+dv
-    )
-
     eye_x, q_x = orbit_eye_and_lookat_wxyz(
         pos0, target, q0, yaw_deg=+yaw_dx_deg, pitch_deg=0.0, radius_delta=0.0
     )
@@ -249,13 +244,6 @@ def _build_eval_cameras(base_pos, base_quat_wxyz, target: np.ndarray | None = No
     )
 
     cams = {
-        # (was linear along view) -> dolly out while staying locked on target
-        f"along_view-{perturb_string}": {
-            "position": eye_along.tolist(),
-            "quat_wxyz": q_along.tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-
         # Keep your roll perturbation exactly as-is
         "roll+60deg": {
             "position": pos0.tolist(),
