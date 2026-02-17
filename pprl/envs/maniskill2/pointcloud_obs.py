@@ -283,7 +283,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
 
 
     def observation(self, observation: dict) -> np.ndarray | dict:
-        """Replaces the observation of a step in a maniskil2 scene with a point cloud."""
+        """Replaces the observation of a step in a maniskill2 scene with a point cloud."""
 
         """Furthermore, removes goal / target proprioception"""
 
