@@ -41,4 +41,4 @@ srun --unbuffered --export=ALL python scripts/train_sac.py \
   -cp "$CONF_DIR" \
   wandb.group_name="${GROUP_NAME}" \
   env="${PPRL_ENV}" \
-  model=pointgpt_rl algo=aux_sac
+  model=ppt

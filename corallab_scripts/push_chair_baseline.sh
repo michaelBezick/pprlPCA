@@ -10,6 +10,6 @@ fi
 echo "GPU ID: $1"
 
 nohup env GROUP_NAME=PC_Baseline CUDA_VISIBLE_DEVICES="$1" python ./scripts/train_sac.py \
-  -cp "../slurm_confs/push_chair_baseline" env=push_chair model=pointgpt_rl algo=aux_sac \
+  -cp "../slurm_confs/push_chair_baseline" env=push_chair model=ppt \
   > train.log 2>&1 &
 disown

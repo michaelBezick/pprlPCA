@@ -10,6 +10,6 @@ fi
 echo "GPU ID: $1"
 
 nohup env GROUP_NAME=OCD_PCA CUDA_VISIBLE_DEVICES="$1" python ./scripts/train_sac.py \
-  -cp "../slurm_confs/open_cabinet_drawer_pca" env=open_cabinet_drawer model=pointgpt_rl algo=aux_sac \
+  -cp "../slurm_confs/open_cabinet_drawer_pca" env=open_cabinet_drawer model=ppt \
   > train.log 2>&1 &
 disown
