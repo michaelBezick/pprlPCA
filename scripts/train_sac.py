@@ -37,7 +37,7 @@ from pprl.utils.array_dict import build_obs_array
 WORLD_UP = (0.0, 0.0, 1.0)
 
 BASE_VFOV_DEG = 90.0
-RECORD_EVERY = True
+RECORD_EVERY = False
 
 
 def orbit_eye_and_lookat_wxyz_around(
