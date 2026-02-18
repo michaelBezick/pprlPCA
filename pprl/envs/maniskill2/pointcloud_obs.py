@@ -320,14 +320,21 @@ class PointCloudWrapper(gym.ObservationWrapper):
             return new_points
         else:
 
+            remove_all = True
+
             """
             IMPORTANT: remove all target information through zeroing
             """
-            for key in list(observation['extra'].keys()):
-                if "target" in key:
-                    #just zero out values
+
+            if remove_all:
+                for key in list(observation['extra'].keys()):
                     data = observation['extra'][key]
                     observation['extra'][key] = np.zeros_like(data)
+            else:
+                for key in list(observation['extra'].keys()):
+                    if "target" in key:
+                        data = observation['extra'][key]
+                        observation['extra'][key] = np.zeros_like(data)
 
 
             state = spaces.flatten(
