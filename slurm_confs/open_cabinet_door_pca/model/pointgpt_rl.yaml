@@ -1,0 +1,26 @@
+defaults:
+  - ppt
+  - _self_
+  - pos_embedder@gpt_decoder.pos_embedder: sinusoidal
+  - transformer_block@gpt_decoder.transformer_decoder.block_factory: with_dropout  # TODO: check if dropout needed here
+  - override tokenizer: point_gpt
+  - override transformer_block@transformer_encoder.block_factory: with_dropout  # TODO: check if dropout needed here
+
+# the "???" show the slots that are filled in by the defaults list
+
+name: PointGPT
+_target_: pprl.models.pointgpt_rl.PointGPT
+gpt_encoder:
+  _target_: pprl.models.modules.gpt_encoder.GPTEncoder
+  _partial_: True  # requires `transformer_encoder` and `pos_embedder`
+  mask_ratio: 0.7
+  keep_first_tokens_ratio: 0.15
+gpt_decoder:
+  _target_: pprl.models.modules.gpt_decoder.GPTDecoder
+  _partial_: True  # requires `embed_dim`
+  pos_embedder: "???"
+  transformer_decoder:
+    _target_: pprl.models.modules.transformer.TransformerDecoder
+    _partial_: True  # requires `embed_dim`
+    block_factory: "???"
+    depth: 3

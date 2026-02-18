@@ -1,0 +1,6 @@
+_target_: pprl.models.modules.mlp.PositionalEmbedderMLP
+_partial_: True  # requires `token_dim`
+n_dim: 3
+hidden_layers: [128]
+act: gelu
+norm: null

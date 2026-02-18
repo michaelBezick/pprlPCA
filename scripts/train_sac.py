@@ -675,6 +675,16 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
 
         base_quat_wxyz = look_at_wxyz(base_pos, target)
 
+    elif env_name == "OpenCabinetDoor":
+
+        base_pos = np.array([-0.433352, 0.948292, 0.885752], dtype=float)
+
+        base_pos += np.array([-1, 1, 0.3])
+
+        target = [-0.09954548, 0.21631327, 0.6722093]
+
+        base_quat_wxyz = look_at_wxyz(base_pos, target)
+
     elif env_name == "TurnFaucet":
 
         base_pos = np.array([-0.433352, 0.948292, 0.885752], dtype=float)
