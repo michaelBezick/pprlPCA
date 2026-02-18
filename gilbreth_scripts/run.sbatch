@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH -J no_extra
 #SBATCH -A kildisha
-#SBATCH -p v100
-#SBATCH --qos=normal
+#SBATCH -p training
+#SBATCH --qos=training
 
 # -- key fixes --
 #SBATCH --nodes=1
@@ -12,7 +12,7 @@
 # ----------------
 
 #SBATCH --mem=100G
-#SBATCH --time=96:00:00
+#SBATCH --time=1-00:00:00
 
 #SBATCH -o logs/%x/%A_%a.out
 #SBATCH -e logs/%x/%A_%a.err
