@@ -36,6 +36,11 @@ mkdir -p "logs/${GROUP_NAME}"
 echo "Job ${SLURM_JOB_ID} / array task ${SEED} on $(hostname)"
 echo "CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES"
 
+#attempt to fix
+export WANDB_START_METHOD=thread
+export WANDB__SERVICE_WAIT=300
+
+
 # ---------------- run ----------------
 srun --unbuffered --export=ALL python scripts/train_sac.py \
   -cp "$CONF_DIR" \
