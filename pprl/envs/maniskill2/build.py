@@ -63,6 +63,7 @@ def build(
             env_kwargs["camera_cfgs"]["add_segmentation"] = True
 
         points_only = "state" not in observation_components
+        points_only = True
         env = PointCloudWrapper(
             env,
             points_only=points_only,
