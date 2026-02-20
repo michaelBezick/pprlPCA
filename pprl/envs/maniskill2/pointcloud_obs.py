@@ -320,7 +320,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
             return new_points
         else:
 
-            remove_all = True
+            remove_all = False
 
             """
             IMPORTANT: remove all target information through zeroing
