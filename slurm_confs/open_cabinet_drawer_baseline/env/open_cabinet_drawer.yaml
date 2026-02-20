@@ -4,7 +4,7 @@ defaults:
 name: OpenCabinetDrawer
 env_id: OpenCabinetDrawer-v2
 env_kwargs:
-  n_models: 1
+  n_models: 10
   robot_cameras: ["render_camera"]
   observe_render_cam: true
   control_mode: base_pd_joint_vel_arm_pd_joint_delta_pos

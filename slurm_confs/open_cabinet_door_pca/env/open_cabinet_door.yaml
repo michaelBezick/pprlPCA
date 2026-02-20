@@ -8,7 +8,7 @@ env_kwargs:
   control_mode: base_pd_joint_vel_arm_pd_joint_delta_pos
   camera_cfgs:
     fov: 1.5
-  n_models: 1
+  n_models: 10
   fixed_target_link_idx: 0  # always use the same target for each cabinet
 pcd_kwargs:
   max_expected_num_points: 400
