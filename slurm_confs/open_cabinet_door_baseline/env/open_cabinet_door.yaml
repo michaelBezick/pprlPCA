@@ -12,7 +12,7 @@ env_kwargs:
   n_models: 10
   fixed_target_link_idx: 0  # always use the same target for each cabinet
 pcd_kwargs:
-  max_expected_num_points: 800
+  max_expected_num_points: 400
   color: True
   crop:
     # remove the floor and points more than 0.5m in front of cabinet
@@ -20,7 +20,7 @@ pcd_kwargs:
     max_bound: [10, 10, 10]
   n_target_points: 50
   target_points_scale: 0.07
-  random_downsample: 800
+  random_downsample: 400
   our_method: false
   use_fps: false
   fps_n: 0

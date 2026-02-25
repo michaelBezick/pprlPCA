@@ -12,7 +12,7 @@ env_kwargs:
     height: 64
     width: 64
     fov: 2
-    far: 30.0
+    far: 50.0
     p: [-5, 0, 1.5]
     q: [0.92388, 0, 0.382683, 0]
   render_mode: rgb_array

@@ -19,7 +19,7 @@ env_kwargs:
     q: [0.717801992001589, 0.142621934300541, 0.166360199707428, -0.660865300709779]
 pcd_kwargs:
   max_expected_num_points: 800
-  random_downsample: 800
+  random_downsample: 300
   our_method: false
   use_fps: false
   fps_n: 0

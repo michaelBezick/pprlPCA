@@ -18,11 +18,11 @@ env_kwargs:
     p: [-0.433352, 0.948292, 0.885752]
     q: [0.717801992001589, 0.142621934300541, 0.166360199707428, -0.660865300709779]
 pcd_kwargs:
-  max_expected_num_points: 800
+  max_expected_num_points: 300
   random_downsample: 800
   our_method: true
   use_fps: true
-  fps_n: 640
+  fps_n: 300
 min_num_points: 32
 domain_randomization: false
 camera_name: render_camera

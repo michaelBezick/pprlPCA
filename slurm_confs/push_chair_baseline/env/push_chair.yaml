@@ -17,8 +17,8 @@ env_kwargs:
 pcd_kwargs:
   n_target_points: 50
   target_points_scale: 0.14
-  voxel_grid_size: 0.05
-  # random_downsample: 500
-  max_expected_num_points: 1000
+  # voxel_grid_size: 0.05
+  random_downsample: 300
+  max_expected_num_points: 300
   our_method: false
 continuous_task: False  # performance significantly worse without this!
