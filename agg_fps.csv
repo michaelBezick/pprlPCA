@@ -1,0 +1,7 @@
+experiment,method,n_files,mean_fps_over_files,std_fps_over_files,min_file_mean_fps,max_file_mean_fps,total_fps_samples
+OCD,PCA,1,21.3152,0,21.3152,21.3152,33
+OCD,baseline,1,20.8182,0,20.8182,20.8182,33
+PC,PCA,2,41.7332,0.280786,41.4524,42.014,85
+PC,baseline,1,41.1333,0,41.1333,41.1333,42
+TF,PCA,1,17.9292,0,17.9292,17.9292,24
+TF,baseline,1,14.3476,0,14.3476,14.3476,21

@@ -1,0 +1,8 @@
+path,group,experiment,method,fps_count,fps_mean
+/home/mbezick/Repos/pprlPCA/logs/no_extra/10303089_4294967294.out,OCD_PCA,OCD,PCA,33,21.3152
+/home/mbezick/Repos/pprlPCA/logs/no_extra/10303090_4294967294.out,OCD_baseline,OCD,baseline,33,20.8182
+/home/mbezick/Repos/pprlPCA/logs/no_extra/10303085_4294967294.out,PC_PCA,PC,PCA,42,41.4524
+/home/mbezick/Repos/pprlPCA/logs/no_extra/10303091_4294967294.out,PC_PCA,PC,PCA,43,42.014
+/home/mbezick/Repos/pprlPCA/logs/no_extra/10303086_4294967294.out,PC_baseline,PC,baseline,42,41.1333
+/home/mbezick/Repos/pprlPCA/logs/no_extra/10303087_4294967294.out,TF_PCA,TF,PCA,24,17.9292
+/home/mbezick/Repos/pprlPCA/logs/no_extra/10303088_4294967294.out,TF_baseline,TF,baseline,21,14.3476
