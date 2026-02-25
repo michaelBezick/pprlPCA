@@ -38,6 +38,7 @@ WORLD_UP = (0.0, 0.0, 1.0)
 
 BASE_VFOV_DEG = 90.0
 RECORD_EVERY = False
+RECORD_NONE = True
 
 
 def orbit_eye_and_lookat_wxyz_around(
@@ -804,6 +805,8 @@ def build(config: DictConfig) -> Iterator[RLRunner]:
         # Record EVERY eval mismatch
 
         condition = True if RECORD_EVERY else (name == "nominal")
+        if RECORD_NONE:
+            condition = False
 
         if condition:
             recorder = RecordVectorizedVideo(
