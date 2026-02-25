@@ -484,7 +484,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
             )
             return {
                 STATE_KEY: state,
-                self.points_key: pcd,
+                self.points_key: new_points,
             }
 
     def pointcloud(self, observation) -> np.ndarray:
