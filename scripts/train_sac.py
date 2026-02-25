@@ -39,6 +39,7 @@ WORLD_UP = (0.0, 0.0, 1.0)
 BASE_VFOV_DEG = 90.0
 RECORD_EVERY = False
 RECORD_NONE = True
+DEBUG = False
 
 
 def orbit_eye_and_lookat_wxyz_around(
@@ -219,7 +220,7 @@ def _build_eval_cameras(
     base_quat_wxyz,
     target: np.ndarray | None = None,
     *,
-    orbit_deg: float = 20.0,
+    orbit_deg: float = 10.0,
 ) -> Dict[str, dict]:
     """
     Build eval configs keyed by name.
@@ -259,33 +260,44 @@ def _build_eval_cameras(
     )
     eye_up, q_up = orbit_up_down_eye_and_lookat_wxyz(pos0, target, pitch_deg=-orbit_deg)
 
-    cams = {
-        "nominal": {
-            "position": pos0.tolist(),
-            "quat_wxyz": q0.tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        f"orbit_up+{perturb_string}": {  # orbit UP
-            "position": eye_up.tolist(),
-            "quat_wxyz": q_up.tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        f"orbit_left+{perturb_string}": {  # orbit LEFT
-            "position": eye_left.tolist(),
-            "quat_wxyz": q_left.tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        f"orbit_right+{perturb_string}": {  # orbit RIGHT
-            "position": eye_right.tolist(),
-            "quat_wxyz": q_right.tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-        "roll+45deg": {
-            "position": pos0.tolist(),
-            "quat_wxyz": roll_local_wxyz(q0, +45.0).tolist(),
-            "vertical_field_of_view": vfov0,
-        },
-    }
+    if not DEBUG:
+
+        cams = {
+            "nominal": {
+                "position": pos0.tolist(),
+                "quat_wxyz": q0.tolist(),
+                "vertical_field_of_view": vfov0,
+            },
+            f"orbit_up+{perturb_string}": {  # orbit UP
+                "position": eye_up.tolist(),
+                "quat_wxyz": q_up.tolist(),
+                "vertical_field_of_view": vfov0,
+            },
+            f"orbit_left+{perturb_string}": {  # orbit LEFT
+                "position": eye_left.tolist(),
+                "quat_wxyz": q_left.tolist(),
+                "vertical_field_of_view": vfov0,
+            },
+            f"orbit_right+{perturb_string}": {  # orbit RIGHT
+                "position": eye_right.tolist(),
+                "quat_wxyz": q_right.tolist(),
+                "vertical_field_of_view": vfov0,
+            },
+            "roll+30deg": {
+                "position": pos0.tolist(),
+                "quat_wxyz": roll_local_wxyz(q0, +30.0).tolist(),
+                "vertical_field_of_view": vfov0,
+            },
+        }
+    else:
+
+        cams = {
+            "nominal": {
+                "position": pos0.tolist(),
+                "quat_wxyz": q0.tolist(),
+                "vertical_field_of_view": vfov0,
+            },
+        }
 
     return cams
 
