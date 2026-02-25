@@ -217,7 +217,7 @@ class PointCloudWrapper(gym.ObservationWrapper):
         exclude_handle_points: bool = False,
         handle_voxel_grid_size: float | None = None,
         random_downsample: int | None = None,
-        obs_frame: Literal["world", "base", "ee"] = "world",
+        obs_frame: Literal["world", "base", "ee","camera"] = "camera",
         normalize: bool = False,
         points_only: bool = True,
         points_key: str = "points",
@@ -249,6 +249,9 @@ class PointCloudWrapper(gym.ObservationWrapper):
         self.exclude_handle_points = exclude_handle_points
         self.handle_voxel_grid_size = handle_voxel_grid_size
         self.random_downsample = random_downsample
+
+        # VERY IMPORTANT
+        obs_frame = 'camera'
 
         self.obs_frame = obs_frame
         self.normalize = normalize
@@ -581,6 +584,11 @@ class PointCloudWrapper(gym.ObservationWrapper):
             p, q = tcp_pose[:3], tcp_pose[3:]
             to_origin = Pose(p=p, q=q).inv()
             point_cloud[..., :3] = apply_pose_to_points(point_cloud[..., :3], to_origin)
+        elif self.obs_frame == "camera":
+            cam = list(self.env.unwrapped.unwrapped._cameras.items())[0][1]
+            camera_pose = cam.camera.pose
+            to_camera = camera_pose.inv()
+            point_cloud[..., :3] = apply_pose_to_points(point_cloud[..., :3],to_camera)
 
         if self.normalize:
             pos = point_cloud[:, :3]
