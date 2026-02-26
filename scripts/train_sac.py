@@ -220,7 +220,7 @@ def _build_eval_cameras(
     base_quat_wxyz,
     target: np.ndarray | None = None,
     *,
-    orbit_deg: float = 10.0,
+    orbit_deg: float = 30.0,
 ) -> Dict[str, dict]:
     """
     Build eval configs keyed by name.
@@ -283,9 +283,9 @@ def _build_eval_cameras(
                 "quat_wxyz": q_right.tolist(),
                 "vertical_field_of_view": vfov0,
             },
-            "roll+30deg": {
+            "roll+90deg": {
                 "position": pos0.tolist(),
-                "quat_wxyz": roll_local_wxyz(q0, +30.0).tolist(),
+                "quat_wxyz": roll_local_wxyz(q0, +90.0).tolist(),
                 "vertical_field_of_view": vfov0,
             },
         }
